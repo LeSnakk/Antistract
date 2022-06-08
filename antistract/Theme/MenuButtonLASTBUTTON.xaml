@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+           TargetType="{x:Type RadioButton}"
+           x:Key="MenuButtonThemeLASTBUTTON">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border 
+                            x:Name="Border" 
+                            CornerRadius="0,0,31,7" 
+                            BorderThickness="0">
+
+                            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <TextBlock Text="{TemplateBinding Property=Content}"
+                                       VerticalAlignment="Center" 
+                                       Margin="15,0,0,0"
+                                       FontFamily="/Fonts/#Dosis"
+                                       x:Name="textbox">
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#88D498" />
+                                <Setter TargetName="textbox" Property="Margin" Value="25,0,0,0" />
+                                <Setter TargetName="textbox" Property="FontWeight" Value="SemiBold" />
+                            </Trigger>
+                            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="#BAD2B1" />
+                                <Setter TargetName="textbox" Property="FontWeight" Value="Medium" />
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True" />
+                                    <Condition Property="IsChecked" Value="True" />
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="Border" Property="Background" Value="#88D498" />
+                                <Setter TargetName="textbox" Property="FontWeight" Value="SemiBold" />
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+</ResourceDictionary>

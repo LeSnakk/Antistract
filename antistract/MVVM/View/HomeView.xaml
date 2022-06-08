@@ -1,0 +1,232 @@
+﻿<UserControl x:Class="antistract.MVVM.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:antistract.MVVM.View"
+             xmlns:viewModel="clr-namespace:antistract.MVVM.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="570" d:DesignWidth="710">
+
+    <UserControl.DataContext>
+        <viewModel:HomeViewModel />
+    </UserControl.DataContext>
+
+    <Border Padding="35,0,0,0" 
+            Margin="0,535,0,0" 
+            Background="#88D498"
+            CornerRadius="0,0,7,0">
+        
+        <Border CornerRadius="31,7,7,0"
+                Padding="0,30,0,0"
+                Margin="0,-535,0,0">
+            
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform Angle="-87" CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF88D498"/>
+                    <GradientStop Color="#FFC2D488" Offset="0.304"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <StackPanel>
+                <TextBlock x:Name="HeyName" 
+                   Text="Hey USERNAME"
+                   Foreground="#114B5F"
+                   FontSize="28" 
+                   HorizontalAlignment="left"
+                   Margin="20,20,0,20"
+                   FontFamily="/Fonts/#Joan"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Border Width="300"
+                    Height="200"
+                    HorizontalAlignment="Left" Margin="25,0,12.5,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                <GradientStop Color="#88D498" Offset="0.0" />
+                                <GradientStop Color="#1A936F" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Clip>
+                            <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,300,200" />
+                        </Border.Clip>
+
+                        <Grid>
+                            <Image Width="167"
+                           Height="167"
+                           Source="/Images/heart_book.png"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5">
+                                <Image.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="-16.852"/>
+                                    </TransformGroup>
+                                </Image.RenderTransform>
+                            </Image>
+
+                            <StackPanel>
+                                <TextBlock Text="This week"
+                                   Foreground="#114B5F"
+                                   FontSize="45"
+                                   Margin="20,10,10,0" 
+                                   FontFamily="/Fonts/#Joan"/>
+
+                                <TextBlock Text="you've studied"
+                                   Foreground="#114B5F"
+                                   FontSize="28"
+                                   Margin="20,10,10,0" 
+                                   FontFamily="/Fonts/#Joan"/>
+
+                                <StackPanel Orientation="Horizontal">
+
+                                    <TextBlock Text="for  "
+                                       Foreground="#114B5F"
+                                       FontSize="28"
+                                       Margin="20,10,0,0" 
+                                       HorizontalAlignment="Left"
+                                       FontFamily="/Fonts/#Joan"/>
+
+                                    <TextBlock x:Name="WeekStudyHours" 
+                                       Text="69"
+                                       Foreground="#114B5F"
+                                       FontSize="40"
+                                       Margin="0,10,0,0" 
+                                       HorizontalAlignment="Left"
+                                       FontFamily="/Fonts/#Joan"/>
+
+                                    <TextBlock Text="  hours."
+                                       Foreground="#114B5F"
+                                       FontSize="28"
+                                       Margin="0,10,0,0" 
+                                       HorizontalAlignment="Left"
+                                       FontFamily="/Fonts/#Joan"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <Border Width="300"
+                    Height="200"
+                    HorizontalAlignment="Right" Margin="12.5,0,25,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                <GradientStop Color="#84F1FF" Offset="0.0" />
+                                <GradientStop Color="#FF006977" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Clip>
+                            <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,300,200" />
+                        </Border.Clip>
+
+                        <Grid>
+                            <Image Width="180"
+                           Height="180"
+                           Source="/Images/todo_list.png"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom" Margin="0,0,-27,2" RenderTransformOrigin="0.54,0.708">
+                                <Image.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-16.852"/>
+                                        <TranslateTransform X="9.783" Y="-3.427"/>
+                                    </TransformGroup>
+                                </Image.RenderTransform>
+                            </Image>
+
+                            <StackPanel>
+                                <TextBlock Text="You achieved"
+                                   Foreground="#114B5F"
+                                   FontSize="45"
+                                   Margin="20,10,10,0" 
+                                   FontFamily="/Fonts/#Joan"/>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="WeekTasksCompleted" 
+                                       Text="12"
+                                       Foreground="#114B5F"
+                                       FontSize="40"
+                                       Margin="20,5,0,0" 
+                                       FontFamily="/Fonts/#Joan"/>
+
+                                    <TextBlock Text="  tasks"
+                                       Foreground="#114B5F"
+                                       FontSize="28"
+                                       Margin="0,10,0,0" 
+                                       HorizontalAlignment="Left"
+                                       FontFamily="/Fonts/#Joan"/>
+
+                                </StackPanel>
+                                <TextBlock Text="off your to-do list."
+                                   Foreground="#114B5F"
+                                   FontSize="28"
+                                   Margin="20,0,0,0" 
+                                   HorizontalAlignment="Left"
+                                   FontFamily="/Fonts/#Joan"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+
+
+                </StackPanel>
+
+                <Border>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock x:Name="RewardText"
+                       Text="That's great!"
+                       Foreground="#114B5F"
+                       FontSize="40"
+                       Margin="0,30,0,0" 
+                       HorizontalAlignment="Center"
+                       FontFamily="/Fonts/#Joan" />
+
+                        <TextBlock x:Name="MotivationMessage"
+                       Text="Let's see what you will accomplish today."
+                       Foreground="#114B5F"
+                       FontSize="30"
+                       Margin="0,30,0,0" 
+                       HorizontalAlignment="Center"
+                       FontFamily="/Fonts/#Joan" />
+                    </StackPanel>
+                </Border>
+
+                <Border>
+                    <StackPanel>
+                        <Button x:Name="GetStarted"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource BasicButtonTheme}"
+                        Content="Get Started" 
+                        Margin="0,45,0,0"
+                        Padding="20,0,20,5"
+                        FontFamily="/Fonts/#Dosis"
+                        Foreground="#F3E9D2"
+                        FontSize="50" 
+                        Command="{Binding DataContext.ProductivityViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                        Click="GetStarted_Click">
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                    <GradientStop Color="#88D" Offset="0.0" />
+                                    <GradientStop Color="#FF006977" Offset="1" />
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </Border>
+    </Border>
+</UserControl>

@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="avatar_placeholder.png" />
+    <None Remove="avatar_placeholder.svg" />
+    <None Remove="Fonts\Dosis-VariableFont_wght.ttf" />
+    <None Remove="Fonts\Joan-Regular.ttf" />
+    <None Remove="Images\avatar_placeholder.png" />
+    <None Remove="Images\heart_book.png" />
+    <None Remove="Images\todo_list.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MVVM\Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="avatar_placeholder.png" />
+    <Resource Include="avatar_placeholder.svg" />
+    <Resource Include="Fonts\Dosis-VariableFont_wght.ttf" />
+    <Resource Include="Fonts\Joan-Regular.ttf" />
+    <Resource Include="Images\avatar_placeholder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\heart_book.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\todo_list.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Theme\MenuButtonLASTBUTTON.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

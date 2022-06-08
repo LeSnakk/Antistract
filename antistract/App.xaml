@@ -1,0 +1,37 @@
+﻿<Application x:Class="antistract.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:antistract"
+             xmlns:viewModel="clr-namespace:antistract.MVVM.ViewModel"
+             xmlns:view="clr-namespace:antistract.MVVM.View"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MenuButton.xaml" />
+                <ResourceDictionary Source="Theme/MenuButtonLASTBUTTON.xaml" />
+                <ResourceDictionary Source="Theme/BasicButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModel:ProductivityViewModel}">
+                <view:ProductivityView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:PlansViewModel}">
+                <view:PlansView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ToDoViewModel}">
+                <view:ToDoView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
+                <view:SettingsView />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

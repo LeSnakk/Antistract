@@ -103,9 +103,18 @@ namespace antistract.MVVM.View
 
         private void BgWorker_DoWork(object? sender, DoWorkEventArgs e)
         {
+            
             while (isChecked() == false)
             {
-                Debug.WriteLine("success " + DateTime.Now);
+                Process[] processes = Process.GetProcessesByName("Taskmgr");
+                if (processes.Length == 0)
+                {
+                    Debug.WriteLine("TaskManager is not running");
+                }
+                else if (processes.Length >= 1)
+                {
+                    Debug.WriteLine("TaskManager is running");
+                }
             }
             return;
         }

@@ -106,17 +106,24 @@ namespace antistract.MVVM.View
             
             while (isChecked() == false)
             {
-                Process[] processes = Process.GetProcessesByName("Taskmgr");
+                var names = new[] { "systemsettings", "notepad", "steam" };
+                Process[] processes = names.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 if (processes.Length == 0)
                 {
-                    Debug.WriteLine("TaskManager is not running");
+                    Debug.WriteLine("Notepad is not running");
                 }
                 else if (processes.Length >= 1)
                 {
-                    Debug.WriteLine("TaskManager is running");
+                    Debug.WriteLine("Notepad is running");
+                    foreach (Process process in processes)
+                    {
+                        Debug.WriteLine("Closing...");
+                        process.Kill();
+                        
+                    }
                 }
             }
-            return;
+            Debug.WriteLine("Checking stopped");
         }
 
         public bool isChecked()

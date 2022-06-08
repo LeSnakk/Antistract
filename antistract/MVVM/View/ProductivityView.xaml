@@ -46,13 +46,13 @@
                         <ListBoxItem>Item 10</ListBoxItem>
                     </ListBox>
                     <TextBox Name="tb" Width="140" Height="30"></TextBox>
-
-                    <Button x:Name="button" Content="Send To Save" HorizontalAlignment="Left" Height="26" Margin="359,10,0,0" VerticalAlignment="Top" Width="92"/>
+                    <CheckBox x:Name="isCheckingg" IsChecked="False" Content="Is checking"/>
+                    <Button x:Name="button" Content="Start checking..." Click="startChecking" HorizontalAlignment="Left" Height="26" Margin="359,10,0,0" VerticalAlignment="Top" Width="92"/>
                     <ListBox x:Name="listBox" Grid.Row="1" SelectionChanged="listBox_SelectionChanged" Height="200" Margin="5">
                         <ListBoxItem>Click to load installed programs</ListBoxItem>
                     </ListBox>
                     <Button x:Name="btn_load" Content="Show List" HorizontalAlignment="Left" Height="26" Margin="25,10,0,0" VerticalAlignment="Top" Width="97" Click="GetInstalledPrograms"/>
-
+                       
                 </StackPanel>
             </Grid>
 

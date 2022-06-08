@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace antistract.MVVM.View
 {
@@ -22,10 +24,16 @@ namespace antistract.MVVM.View
     /// </summary>
     public partial class ProductivityView : UserControl
     {
+        BackgroundWorker bgWorker = new BackgroundWorker();
+        public List<RegistryKey> installedPrograms = new List<RegistryKey>();
+
         public ProductivityView()
         {
             InitializeComponent();
+            bgWorker.DoWork += BgWorker_DoWork;
         }
+
+        
 
         void PrintText(object sender, SelectionChangedEventArgs args)
         {
@@ -37,7 +45,7 @@ namespace antistract.MVVM.View
         {
             listBox.Items.Clear();
 
-            var installedPrograms = new List<RegistryKey>();
+            //var installedPrograms = new List<RegistryKey>();
 
             string uninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
             using (RegistryKey rk = Registry.LocalMachine.OpenSubKey(uninstallKey))
@@ -58,10 +66,13 @@ namespace antistract.MVVM.View
                             if (displayName != null)
                             {
                                 installedPrograms.Add(sk);
+
                                 //Debug.WriteLine(sk.GetValue("DisplayName"));
                                 listBox.Items.Add(sk.GetValue("DisplayName"));
                             }
-                            
+
+                            //Debug.WriteLine("Length List: " + installedPrograms.Count + "\nLength Displayed: " + listBox.Items.Count);
+
                         }
                         catch (Exception ex)
                         { }
@@ -78,10 +89,37 @@ namespace antistract.MVVM.View
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+
             ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
-            Debug.WriteLine(lbi.Content.ToString());
+            
 
         }
+
+        private void startChecking(object sender, RoutedEventArgs e)
+        {
+            bgWorker.RunWorkerAsync();
+        }
+
+        private void BgWorker_DoWork(object? sender, DoWorkEventArgs e)
+        {
+            while (isChecked() == false)
+            {
+                Debug.WriteLine("success " + DateTime.Now);
+            }
+            return;
+        }
+
+        public bool isChecked()
+        {
+            bool temp = false;
+            this.Dispatcher.Invoke(() =>
+            {
+                temp = this.isCheckingg.IsChecked.Value;
+            });
+           return temp;
+        }
+
     }
 
 

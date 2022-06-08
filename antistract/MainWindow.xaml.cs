@@ -61,5 +61,7 @@ namespace antistract
         {
             //this.ButtonGetStarted.Visibility = Visibility.Hidden;
         }
+
+        
     }
 }

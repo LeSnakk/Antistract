@@ -5,9 +5,39 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:antistract.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Background="PowderBlue">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="570" d:DesignWidth="710">
+    <Border Padding="35,0,0,0" 
+            Margin="0,535,0,0" 
+            Background="#88D498"
+            CornerRadius="0,0,7,0">
+
+        <Border CornerRadius="31,7,7,0"
+                Padding="0,30,0,0"
+                Margin="0,-535,0,0">
+
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform Angle="-87" CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF88D498"/>
+                    <GradientStop Color="#FFC2D488" Offset="0.304"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <TextBlock Text="Productivity View" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+            </Grid>
+
+
+        </Border>
+    </Border>
 </UserControl>

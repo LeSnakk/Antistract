@@ -88,21 +88,21 @@
                              Foreground="#114B5F"
                              FontSize="25"
                              Style="{StaticResource MenuButtonTheme}"
-                             Click="RemoveGetStartedButton"/>
+                             Command="{Binding PlansViewCommand}"/>
 
                 <RadioButton Content="To-Do Lists"
                              Height="84"
                              Foreground="#114B5F"
                              FontSize="25"
                              Style="{StaticResource MenuButtonTheme}"
-                             Click="RemoveGetStartedButton"/>
+                             Command="{Binding ToDoViewCommand}"/>
 
                 <RadioButton Content="Settings"
                              Height="84"
                              Foreground="#114B5F"
                              FontSize="25"
                              Style="{StaticResource MenuButtonThemeLASTBUTTON}"
-                             Click="RemoveGetStartedButton"/>
+                             Command="{Binding SettingsViewCommand}"/>
 
             </StackPanel>
 

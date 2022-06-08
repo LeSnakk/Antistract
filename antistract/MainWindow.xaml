@@ -58,7 +58,7 @@
                              VerticalAlignment="Center" 
                              Margin="0,0,0,30">
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="/avatar_placeholder.png"/>
+                            <ImageBrush ImageSource="/Images/avatar_placeholder.png"/>
                         </Ellipse.Fill>
                     </Ellipse>
                 </Grid>

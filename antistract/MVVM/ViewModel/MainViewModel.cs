@@ -45,7 +45,7 @@ namespace antistract.MVVM.ViewModel
             ToDoVM = new ToDoViewModel();
             SettingsVM = new SettingsViewModel();
 
-            CurrentView = HomeVM;
+            CurrentView = ProductivityVM;
 
             HomeViewCommand = new RelayCommand(o =>
             {

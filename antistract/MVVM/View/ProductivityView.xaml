@@ -31,10 +31,29 @@
             </Border.Background>
 
             <Grid>
-                <TextBlock Text="Productivity View" 
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
+                <StackPanel>
+                    
+                    <ListBox Margin="50" Height="150" SelectionChanged="PrintText" SelectionMode="Single">
+                        <ListBoxItem>Item 1</ListBoxItem>
+                        <ListBoxItem>Item 2</ListBoxItem>
+                        <ListBoxItem>Item 3</ListBoxItem>
+                        <ListBoxItem>Item 4</ListBoxItem>
+                        <ListBoxItem>Item 5</ListBoxItem>
+                        <ListBoxItem>Item 6</ListBoxItem>
+                        <ListBoxItem>Item 7</ListBoxItem>
+                        <ListBoxItem>Item 8</ListBoxItem>
+                        <ListBoxItem>Item 9</ListBoxItem>
+                        <ListBoxItem>Item 10</ListBoxItem>
+                    </ListBox>
+                    <TextBox Name="tb" Width="140" Height="30"></TextBox>
 
+                    <Button x:Name="button" Content="Send To Save" HorizontalAlignment="Left" Height="26" Margin="359,10,0,0" VerticalAlignment="Top" Width="92"/>
+                    <ListBox x:Name="listBox" Grid.Row="1" SelectionChanged="listBox_SelectionChanged" Height="200" Margin="5">
+                        <ListBoxItem>Click to load installed programs</ListBoxItem>
+                    </ListBox>
+                    <Button x:Name="btn_load" Content="Show List" HorizontalAlignment="Left" Height="26" Margin="25,10,0,0" VerticalAlignment="Top" Width="97" Click="GetInstalledPrograms"/>
+
+                </StackPanel>
             </Grid>
 
 

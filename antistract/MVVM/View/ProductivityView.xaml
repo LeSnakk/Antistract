@@ -53,8 +53,8 @@
                               IsEditable="False"
                               Width="{Binding Width, ElementName=PickPlanDropdownDefaultText}"
                               SelectionChanged="PickPlanDropdown_SelectionChanged">
-
                     </ComboBox>
+
                     <TextBox Name="tb" Width="540" Height="30"></TextBox>
                     <CheckBox x:Name="isCheckingg" IsChecked="False" Content="ABORT CHECK"/>
                     <Button x:Name="button" Content="Start checking..." Click="startChecking" HorizontalAlignment="Left" Height="26" Margin="359,10,0,0" VerticalAlignment="Top" Width="92"/>
@@ -65,13 +65,13 @@
 
                 </StackPanel>
                 <Label x:Name="PickPlanDropdownDefaultText"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Top" 
-                           Margin="0,198,0,0"
-                           FontSize="12.5"
-                           Width="165"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top" 
+                       Margin="0,198,0,0"
+                       FontSize="12.5"
+                       Width="235"
                        IsHitTestVisible="False">
-                    Please pick a desired plan
+                Which plan do you want to use today?
                 </Label>
                 <Button x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                         Visibility="Hidden"></Button>

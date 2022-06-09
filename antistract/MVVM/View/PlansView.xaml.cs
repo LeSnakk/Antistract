@@ -28,7 +28,7 @@ namespace antistract.MVVM.View
 
         public void LoadPlans()
         {
-            GlobalVariables.PlanNames.AddRange(new string[] { "AW", "B" });
+            //GlobalVariables.PlanNames.AddRange(new string[] { "Plan A", "Plan B", "Plan C" });
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using antistract.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace antistract.MVVM.View
         public PlansView()
         {
             InitializeComponent();
+        }
+
+        public void LoadPlans()
+        {
+            //GlobalVariables.PlanNames.AddRange(new string[] { "AW", "B" });
         }
     }
 }

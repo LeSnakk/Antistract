@@ -31,8 +31,9 @@
             </Border.Background>
 
             <Grid>
+
                 <StackPanel>
-                    
+
                     <ListBox x:Name="l1" Margin="30,30,30,0" Height="150" SelectionChanged="PrintText" SelectionMode="Single">
                         <ListBoxItem>Item 1</ListBoxItem>
                         <ListBoxItem>Item 2</ListBoxItem>
@@ -45,11 +46,14 @@
                         <ListBoxItem>Item 9</ListBoxItem>
                         <ListBoxItem>Item 10</ListBoxItem>
                     </ListBox>
-                    
+
                     <ComboBox x:Name="PickPlanDropdown"
                               HorizontalAlignment="Center"
-                              Margin="20">
-                        
+                              Margin="20"
+                              IsEditable="False"
+                              Width="{Binding Width, ElementName=PickPlanDropdownDefaultText}"
+                              SelectionChanged="PickPlanDropdown_SelectionChanged">
+
                     </ComboBox>
                     <TextBox Name="tb" Width="540" Height="30"></TextBox>
                     <CheckBox x:Name="isCheckingg" IsChecked="False" Content="ABORT CHECK"/>
@@ -58,8 +62,17 @@
                         <ListBoxItem>Click to load installed programs</ListBoxItem>
                     </ListBox>
                     <Button x:Name="btn_load" Content="Show List" HorizontalAlignment="Left" Height="26" Margin="25,10,0,0" VerticalAlignment="Top" Width="97" Click="GetInstalledPrograms"/>
-                       
+
                 </StackPanel>
+                <Label x:Name="PickPlanDropdownDefaultText"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top" 
+                           Margin="0,198,0,0"
+                           FontSize="12.5"
+                           Width="165"
+                       IsHitTestVisible="False">
+                    Please pick a desired plan
+                </Label>
             </Grid>
 
 

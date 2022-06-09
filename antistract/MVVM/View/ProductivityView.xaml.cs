@@ -38,10 +38,26 @@ namespace antistract.MVVM.View
 
         private void FillPickPlanDropdown()
         {
-            GlobalVariables.Plans = "hello";
-            ComboBoxItem item = new ComboBoxItem();
-            item.Content = GlobalVariables.Plans;
-            PickPlanDropdown.Items.Add(item);
+            PickPlanDropdown.Items.Clear();
+            if (GlobalVariables.PlanNames.Count > 0)
+            {
+                foreach (String name in GlobalVariables.PlanNames)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = name;
+                    PickPlanDropdown.Items.Add(item);
+                    item = null;
+                }
+            }
+            else
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "<Please create a plan first>";
+                PickPlanDropdown.Items.Add(item);
+            }
+            
+            
+            
         }
 
         void PrintText(object sender, SelectionChangedEventArgs args)
@@ -173,6 +189,11 @@ namespace antistract.MVVM.View
            return temp;
         }
 
+        private void PickPlanDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PickPlanDropdownDefaultText.Visibility = Visibility.Hidden;
+            PickPlanDropdown.Width = Double.NaN;
+        }
     }
 
 

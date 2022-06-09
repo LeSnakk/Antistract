@@ -8,6 +8,6 @@ namespace antistract.Core
 {
     public class GlobalVariables
     {
-        public static string Plans { get; set; }
+        public static List<String> PlanNames = new List<string>();
     }
 }

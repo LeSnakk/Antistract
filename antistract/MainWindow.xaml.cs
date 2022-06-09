@@ -1,4 +1,5 @@
-﻿using System;
+﻿using antistract.MVVM.View;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace antistract
         public MainWindow()
         {
             InitializeComponent();
+            InitializePlans();
         }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
@@ -62,6 +64,11 @@ namespace antistract
             //this.ButtonGetStarted.Visibility = Visibility.Hidden;
         }
 
+        private void InitializePlans()
+        {
+            PlansView plansView = new PlansView();
+            plansView.LoadPlans();
+        }
         
     }
 }

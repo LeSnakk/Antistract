@@ -84,6 +84,7 @@
                              Click="RemoveGetStartedButton"/>
 
                 <RadioButton Content="My Plans"
+                             x:Name="MenuButtonPlans"
                              Height="84"
                              Foreground="#114B5F"
                              FontSize="25"
@@ -91,6 +92,7 @@
                              Command="{Binding PlansViewCommand}"/>
 
                 <RadioButton Content="To-Do Lists"
+                             x:Name="MenuButtonsToDo"
                              Height="84"
                              Foreground="#114B5F"
                              FontSize="25"
@@ -98,6 +100,7 @@
                              Command="{Binding ToDoViewCommand}"/>
 
                 <RadioButton Content="Settings"
+                             x:Name="MenuButtonsSettings"
                              Height="84"
                              Foreground="#114B5F"
                              FontSize="25"

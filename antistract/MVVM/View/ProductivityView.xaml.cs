@@ -17,6 +17,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using antistract.Core;
+using antistract.MVVM.ViewModel;
+using System.Windows.Controls.Primitives;
 
 namespace antistract.MVVM.View
 {
@@ -25,6 +27,8 @@ namespace antistract.MVVM.View
     /// </summary>
     public partial class ProductivityView : UserControl
     {
+        readonly MainWindow mainWndw = (MainWindow)Application.Current.MainWindow;
+
         BackgroundWorker bgWorker = new BackgroundWorker();
         Dictionary<String, String> programs = new Dictionary<String, String>();
         public List<RegistryKey> installedPrograms = new List<RegistryKey>();
@@ -193,6 +197,17 @@ namespace antistract.MVVM.View
         {
             PickPlanDropdownDefaultText.Visibility = Visibility.Hidden;
             PickPlanDropdown.Width = Double.NaN;
+
+            if (GlobalVariables.PlanNames.Count < 1)
+            {
+                SwitchToPlansView();
+            }
+        }
+
+        public void SwitchToPlansView()
+        {
+            mainWndw.MenuButtonPlans.IsChecked = true;
+            GoToPlansViewButton.Command.Execute(null);
         }
     }
 

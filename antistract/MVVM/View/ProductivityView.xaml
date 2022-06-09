@@ -73,6 +73,8 @@
                        IsHitTestVisible="False">
                     Please pick a desired plan
                 </Label>
+                <Button x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                        Visibility="Hidden"></Button>
             </Grid>
 
 

@@ -8,23 +8,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.ComponentModel;
 using antistract.Core;
 using antistract.MVVM.ViewModel;
-using System.Windows.Controls.Primitives;
 
 namespace antistract.MVVM.View
 {
-    /// <summary>
-    /// Interaction logic for ProductivityView.xaml
-    /// </summary>
     public partial class ProductivityView : UserControl
     {
         readonly MainWindow mainWndw = (MainWindow)Application.Current.MainWindow;
@@ -40,46 +29,9 @@ namespace antistract.MVVM.View
             bgWorker.DoWork += BgWorker_DoWork;
         }
 
-        private void FillPickPlanDropdown()
-        {
-            PickPlanDropdown.Items.Clear();
-            if (GlobalVariables.PlanNames.Count > 0)
-            {
-                foreach (String name in GlobalVariables.PlanNames)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = name;
-                    PickPlanDropdown.Items.Add(item);
-                    item = null;
-                }
-            }
-            else
-            {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Content = "<Please create a plan first>";
-                PickPlanDropdown.Items.Add(item);
-            }
-            
-            
-            
-        }
-
-        void PrintText(object sender, SelectionChangedEventArgs args)
-        {
-            ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
-            tb.Text = "   You selected " + lbi.Content.ToString() + ".";
-
-            ListBoxItem item = new ListBoxItem();
-            item.Content = "hallo";
-            l1.Items.Add(item);
-
-        }
-
         public void GetInstalledPrograms(object sender, RoutedEventArgs e)
         {
             listBox.Items.Clear();
-
-            //var installedPrograms = new List<RegistryKey>();
 
             string uninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"; //@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
             using (RegistryKey rk = Registry.LocalMachine.OpenSubKey(uninstallKey))
@@ -90,18 +42,14 @@ namespace antistract.MVVM.View
                     {
                         try
                         {
-
                             var displayName = sk.GetValue("DisplayName");
  
                             if (displayName != null)
                             {
-                                //installedPrograms.Add(sk);
-                                //listBox.Items.Add(sk.GetValue("DisplayName"));
-
                                 foreach(String s in sk.GetValueNames())
                                 {
                                     string d;
-                                    //Debug.WriteLine(sk.GetValue("DisplayName - ") + s + ": " + (sk.GetValue(s)));
+
                                     if (sk.GetValueNames().Contains("DisplayIcon"))
                                     {
                                         d = "DisplayIcon";
@@ -114,22 +62,13 @@ namespace antistract.MVVM.View
                                 }
                                 Debug.WriteLine("\n\n");
                             }
-
-                            //Debug.WriteLine("Length List: " + installedPrograms.Count + "\nLength Displayed: " + listBox.Items.Count);
-
                         }
                         catch (Exception ex)
                         { }
                     }
                 }
-
-                
-
-                //label1.Text += " (" + lstDisplayHardware.Items.Count.ToString() + ")";
             }
-
             MakeTheList();
-
         }
 
         private void MakeTheList()
@@ -159,8 +98,7 @@ namespace antistract.MVVM.View
         }
 
         private void BgWorker_DoWork(object? sender, DoWorkEventArgs e)
-        {
-            
+        {    
             while (isChecked() == false)
             {
                 var names = new[] { "systemsettings", "winrar", "steam" };
@@ -176,7 +114,6 @@ namespace antistract.MVVM.View
                     {
                         Debug.WriteLine("Closing...");
                         process.Kill();
-                        
                     }
                 }
             }
@@ -191,6 +128,38 @@ namespace antistract.MVVM.View
                 temp = this.isCheckingg.IsChecked.Value;
             });
            return temp;
+        }
+
+        private void FillPickPlanDropdown()
+        {
+            PickPlanDropdown.Items.Clear();
+            if (GlobalVariables.PlanNames.Count > 0)
+            {
+                foreach (String name in GlobalVariables.PlanNames)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = name;
+                    PickPlanDropdown.Items.Add(item);
+                    item = null;
+                }
+            }
+            else
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "<Please create a plan first>";
+                PickPlanDropdown.Items.Add(item);
+            }
+        }
+
+        void PrintText(object sender, SelectionChangedEventArgs args)
+        {
+            ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
+            tb.Text = "   You selected " + lbi.Content.ToString() + ".";
+
+            ListBoxItem item = new ListBoxItem();
+            item.Content = "hallo";
+            l1.Items.Add(item);
+
         }
 
         private void PickPlanDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -210,6 +179,4 @@ namespace antistract.MVVM.View
             GoToPlansViewButton.Command.Execute(null);
         }
     }
-
-
 }

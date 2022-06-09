@@ -51,17 +51,6 @@ namespace antistract
         private void GetStarted_Click(object sender, RoutedEventArgs e)
         {
             this.MenuButtonProductivity.IsChecked = true;
-            RemoveGetStartedButton(sender, e);
-        }
-
-        private void MenuButtonOverview_Click(object sender, RoutedEventArgs e)
-        {
-            //this.ButtonGetStarted.Visibility = Visibility.Visible;
-        }
-
-        private void RemoveGetStartedButton(object sender, RoutedEventArgs e)
-        {
-            //this.ButtonGetStarted.Visibility = Visibility.Hidden;
         }
 
         private void InitializePlans()

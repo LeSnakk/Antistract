@@ -33,7 +33,7 @@
             <Grid>
                 <StackPanel>
                     
-                    <ListBox Margin="50" Height="150" SelectionChanged="PrintText" SelectionMode="Single">
+                    <ListBox x:Name="l1" Margin="50" Height="150" SelectionChanged="PrintText" SelectionMode="Single">
                         <ListBoxItem>Item 1</ListBoxItem>
                         <ListBoxItem>Item 2</ListBoxItem>
                         <ListBoxItem>Item 3</ListBoxItem>
@@ -45,7 +45,7 @@
                         <ListBoxItem>Item 9</ListBoxItem>
                         <ListBoxItem>Item 10</ListBoxItem>
                     </ListBox>
-                    <TextBox Name="tb" Width="140" Height="30"></TextBox>
+                    <TextBox Name="tb" Width="540" Height="30"></TextBox>
                     <CheckBox x:Name="isCheckingg" IsChecked="False" Content="ABORT CHECK"/>
                     <Button x:Name="button" Content="Start checking..." Click="startChecking" HorizontalAlignment="Left" Height="26" Margin="359,10,0,0" VerticalAlignment="Top" Width="92"/>
                     <ListBox x:Name="listBox" Grid.Row="1" SelectionChanged="listBox_SelectionChanged" Height="200" Margin="5">

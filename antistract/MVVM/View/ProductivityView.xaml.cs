@@ -25,6 +25,7 @@ namespace antistract.MVVM.View
     public partial class ProductivityView : UserControl
     {
         BackgroundWorker bgWorker = new BackgroundWorker();
+        Dictionary<String, String> programs = new Dictionary<String, String>();
         public List<RegistryKey> installedPrograms = new List<RegistryKey>();
 
         public ProductivityView()
@@ -39,6 +40,11 @@ namespace antistract.MVVM.View
         {
             ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
             tb.Text = "   You selected " + lbi.Content.ToString() + ".";
+
+            ListBoxItem item = new ListBoxItem();
+            item.Content = "hallo";
+            l1.Items.Add(item);
+
         }
 
         public void GetInstalledPrograms(object sender, RoutedEventArgs e)
@@ -47,7 +53,7 @@ namespace antistract.MVVM.View
 
             //var installedPrograms = new List<RegistryKey>();
 
-            string uninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
+            string uninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"; //@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
             using (RegistryKey rk = Registry.LocalMachine.OpenSubKey(uninstallKey))
             {
                 foreach (string skName in rk.GetSubKeyNames())
@@ -58,17 +64,27 @@ namespace antistract.MVVM.View
                         {
 
                             var displayName = sk.GetValue("DisplayName");
-                            var size = sk.GetValue("EstimatedSize");
-
-                            Debug.WriteLine(displayName);
-
-                            ListBoxItem item;
+ 
                             if (displayName != null)
                             {
-                                installedPrograms.Add(sk);
+                                //installedPrograms.Add(sk);
+                                //listBox.Items.Add(sk.GetValue("DisplayName"));
 
-                                //Debug.WriteLine(sk.GetValue("DisplayName"));
-                                listBox.Items.Add(sk.GetValue("DisplayName"));
+                                foreach(String s in sk.GetValueNames())
+                                {
+                                    string d;
+                                    //Debug.WriteLine(sk.GetValue("DisplayName - ") + s + ": " + (sk.GetValue(s)));
+                                    if (sk.GetValueNames().Contains("DisplayIcon"))
+                                    {
+                                        d = "DisplayIcon";
+                                    }
+                                    else
+                                    {
+                                        d = "DisplayName";
+                                    }
+                                    programs.Add(sk.GetValue("DisplayName").ToString(), sk.GetValue(d).ToString());
+                                }
+                                Debug.WriteLine("\n\n");
                             }
 
                             //Debug.WriteLine("Length List: " + installedPrograms.Count + "\nLength Displayed: " + listBox.Items.Count);
@@ -84,15 +100,28 @@ namespace antistract.MVVM.View
                 //label1.Text += " (" + lstDisplayHardware.Items.Count.ToString() + ")";
             }
 
+            MakeTheList();
 
+        }
+
+        private void MakeTheList()
+        {
+            foreach (string s in programs.Keys)
+            {
+                ListBoxItem item = new ListBoxItem();
+                item.Content = s;
+                listBox.Items.Add(item);
+            }
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-
+            string output;
             ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
-            
+
+            programs.TryGetValue(lbi.Content.ToString(), out output);
+
+            tb.Text = output;
 
         }
 
@@ -106,7 +135,7 @@ namespace antistract.MVVM.View
             
             while (isChecked() == false)
             {
-                var names = new[] { "systemsettings", "notepad", "steam" };
+                var names = new[] { "systemsettings", "winrar", "steam" };
                 Process[] processes = names.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 if (processes.Length == 0)
                 {

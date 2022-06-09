@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using antistract.Core;
 
 namespace antistract.MVVM.View
 {
@@ -37,7 +38,10 @@ namespace antistract.MVVM.View
 
         private void FillPickPlanDropdown()
         {
-            
+            GlobalVariables.Plans = "hello";
+            ComboBoxItem item = new ComboBoxItem();
+            item.Content = GlobalVariables.Plans;
+            PickPlanDropdown.Items.Add(item);
         }
 
         void PrintText(object sender, SelectionChangedEventArgs args)

@@ -31,10 +31,14 @@ namespace antistract.MVVM.View
         public ProductivityView()
         {
             InitializeComponent();
+            FillPickPlanDropdown();
             bgWorker.DoWork += BgWorker_DoWork;
         }
 
-        
+        private void FillPickPlanDropdown()
+        {
+            
+        }
 
         void PrintText(object sender, SelectionChangedEventArgs args)
         {

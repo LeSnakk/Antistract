@@ -113,17 +113,14 @@
                                 Click="AddPlanElementButton_Click">
                             Add Element
                         </Button>
-                        
-                        
-                        
+
+                        <Border Grid.Row="1">
+                            <ItemsControl></ItemsControl>
+
+                        </Border>
                     </Grid>
-                    
-                    
-                    
                 </Border>
-
             </Grid>
-
         </Border>
     </Border>
 </UserControl>

@@ -101,6 +101,22 @@
                 </Border>
 
                 <Border x:Name="ContentArea" Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="9*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="AddPlanElementButton"
+                                Margin="10"
+                                FontSize="20"
+                                Click="AddPlanElementButton_Click">
+                            Add Element
+                        </Button>
+                        
+                        
+                        
+                    </Grid>
                     
                     
                     

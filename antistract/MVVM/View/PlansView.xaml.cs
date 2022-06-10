@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace antistract.MVVM.View
 {
@@ -31,6 +32,9 @@ namespace antistract.MVVM.View
         public void LoadPlans()
         {
             GlobalVariables.PlanNames.AddRange(new string[] { "Plan A", "Plan B", "Plan C" });
+
+            XmlDocument doc = new XmlDocument();
+
         }
 
         public void DisplayPlans()
@@ -47,6 +51,11 @@ namespace antistract.MVVM.View
         private void AddPlanButton_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Adding plan...");
+        }
+
+        private void AddPlanElementButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

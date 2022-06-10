@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <antistract_plan>
-  <Meta>
-    <Name>Viel Arbeit</Name>
-    <Description>Vormittags 2h arbeiten, Mittagspause, dann wieder arbeiten mit zwei 10-Minuten-Pausen</Description>
-  </Meta>
-  <Plan>
-    <Work>120</Work>
-    <Break>
-      <BreakName>Mittagspause</BreakName>
-      <BreakDuration>120</BreakDuration>
-    </Break>
-    <Work>60</Work>
-    <Break>
-      <BreakName>Verschnaufpause</BreakName>
-      <BreakDuration>10</BreakDuration>
-    </Break>
-    <Work>60</Work>
-    <Break>
-      <BreakName>Kurzspaziergang</BreakName>
-      <BreakDuration>10</BreakDuration>
-    </Break>
-    <Work>60</Work>
-  </Plan>
+	<Meta>
+		<Name>Viel Arbeit</Name>
+		<Description>Vormittags 2h arbeiten, Mittagspause, dann wieder arbeiten mit zwei 10-Minuten-Pausen</Description>
+	</Meta>
+	<Plan>
+		<Work>120</Work>
+		<Break>
+			<BreakName>Mittagspause</BreakName>
+			<BreakDuration>120</BreakDuration>
+		</Break>
+		<Work>60</Work>
+		<Break>
+			<BreakName>Verschnaufpause</BreakName>
+			<BreakDuration>10</BreakDuration>
+		</Break>
+		<Work>60</Work>
+		<Break>
+			<BreakName>Kurzspaziergang</BreakName>
+			<BreakDuration>10</BreakDuration>
+		</Break>
+		<Work>60</Work>
+	</Plan>
 </antistract_plan>

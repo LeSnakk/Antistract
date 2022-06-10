@@ -13,6 +13,7 @@
     <None Remove="Images\avatar_placeholder.png" />
     <None Remove="Images\heart_book.png" />
     <None Remove="Images\todo_list.png" />
+    <None Remove="Plans\paradeplan.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +38,9 @@
     <Resource Include="Images\todo_list.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Plans\paradeplan.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

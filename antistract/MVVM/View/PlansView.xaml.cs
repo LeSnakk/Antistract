@@ -33,8 +33,19 @@ namespace antistract.MVVM.View
         {
             GlobalVariables.PlanNames.AddRange(new string[] { "Plan A", "Plan B", "Plan C" });
 
+            Debug.WriteLine("XXX");
+            String path = "Plans/paradeplan.xml";
             XmlDocument doc = new XmlDocument();
-
+            doc.Load(path);
+            XmlNodeList elements = doc.GetElementsByTagName("Break");
+            for (int i = 0; i < elements.Count; i++)
+            {
+                foreach (XmlNode xmlNode in elements[i].ChildNodes)
+                {
+                    Debug.WriteLine(xmlNode.Name + ": " + xmlNode.InnerText);
+                }
+            }
+            Debug.WriteLine("XXX");
         }
 
         public void DisplayPlans()

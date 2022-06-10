@@ -11,6 +11,8 @@ using System.Windows.Controls;
 using System.ComponentModel;
 using antistract.Core;
 using antistract.MVVM.ViewModel;
+using System.ServiceProcess;
+using System.Management;
 
 namespace antistract.MVVM.View
 {
@@ -89,7 +91,6 @@ namespace antistract.MVVM.View
             programs.TryGetValue(lbi.Content.ToString(), out output);
 
             tb.Text = output;
-
         }
 
         private void startChecking(object sender, RoutedEventArgs e)

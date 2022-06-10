@@ -31,12 +31,87 @@
             </Border.Background>
 
             <Grid>
-                <TextBlock Text="PlansView" 
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.5*" />
+                    <ColumnDefinition Width="7.5*" />
+                </Grid.ColumnDefinitions>
+                <Border>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="8*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontFamily="/Fonts/#Dosis"
+                               FontWeight="SemiBold"
+                               FontSize="30">
+                        My Plans
+                        </TextBlock>
+
+                        <ScrollViewer Grid.Row="1" Margin="10">
+                            <StackPanel>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                                <RadioButton Height="50"></RadioButton>
+                            </StackPanel>
+                        </ScrollViewer>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="0"
+                                    Margin="2">
+                                Delete
+                            </Button>
+                            <Button Grid.Column="1"
+                                    Margin="2">
+                                Edit
+                            </Button>
+
+                            <Grid Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="5*" />
+                                    <RowDefinition Height="5*" />
+                                </Grid.RowDefinitions>
+
+                                <Button Grid.Row="0"
+                                        Margin="2">
+                                    Import
+                                </Button>
+                                <Button Grid.Row="1"
+                                        Margin="2">
+                                    Export
+                                </Button>
+
+                            </Grid>
+
+                        </Grid>
+
+
+                    </Grid>
+                </Border>
+
 
             </Grid>
-
 
         </Border>
     </Border>

@@ -20,6 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Management" Version="6.0.0" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Fonts\Dosis-VariableFont_wght.ttf" />
     <Resource Include="Fonts\Joan-Regular.ttf" />
     <Resource Include="Images\avatar_placeholder.png">

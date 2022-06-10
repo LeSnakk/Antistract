@@ -1,4 +1,5 @@
 ﻿using antistract.Core;
+using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,6 +24,7 @@ namespace antistract.MVVM.View
     /// </summary>
     public partial class PlansView : UserControl
     {
+        public BindableCollection<GlobalVariables> PlanNames { get; set; }
         public PlansView()
         {
             InitializeComponent();

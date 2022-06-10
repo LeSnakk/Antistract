@@ -35,7 +35,7 @@
                     <ColumnDefinition Width="2.5*" />
                     <ColumnDefinition Width="7.5*" />
                 </Grid.ColumnDefinitions>
-                <Border>
+                <Border x:Name="MenuArea">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*" />
@@ -43,32 +43,22 @@
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" 
+                        <StackPanel>
+                            <TextBlock Grid.Row="0" 
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                FontFamily="/Fonts/#Dosis"
                                FontWeight="SemiBold"
                                FontSize="30">
                         My Plans
-                        </TextBlock>
+                            </TextBlock>
+                            <Button x:Name="AddPlanButton"
+                                    HorizontalAlignment="Center"
+                                    Click="AddPlanButton_Click">Add Plan</Button>
+                        </StackPanel>
 
                         <ScrollViewer Grid.Row="1" Margin="10">
-                            <StackPanel>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
-                                <RadioButton Height="50"></RadioButton>
+                            <StackPanel x:Name="PlanOverviewStackPanel">
                             </StackPanel>
                         </ScrollViewer>
                         <Grid Grid.Row="2">
@@ -110,6 +100,11 @@
                     </Grid>
                 </Border>
 
+                <Border x:Name="ContentArea" Grid.Column="1">
+                    
+                    
+                    
+                </Border>
 
             </Grid>
 

@@ -115,8 +115,9 @@
                         </Button>
 
                         <Border Grid.Row="1">
-                            <ItemsControl></ItemsControl>
-
+                            <ItemsControl x:Name="PlanNames">
+                                
+                            </ItemsControl>
                         </Border>
                     </Grid>
                 </Border>

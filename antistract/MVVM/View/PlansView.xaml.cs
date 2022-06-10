@@ -23,9 +23,7 @@ namespace antistract.MVVM.View
     /// Interaction logic for PlansView.xaml
     /// </summary>
     public partial class PlansView : UserControl
-    {
-        public BindableCollection<GlobalVariables> PlanNames { get; set; }
-        public PlansView()
+    {        public PlansView()
         {
             InitializeComponent();
             DisplayPlans();
@@ -41,12 +39,11 @@ namespace antistract.MVVM.View
 
         public void DisplayPlans()
         {
-            
             foreach (String planName in GlobalVariables.PlanNames)
             {
                 Debug.WriteLine(planName);
                 RadioButton radioButton = new RadioButton() { Content = planName };
-                PlanOverviewStackPanel.Children.Add(radioButton);
+                PlanNames.Items.Add(radioButton);
             }
         }
 

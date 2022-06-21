@@ -104,11 +104,17 @@
                         </Grid.RowDefinitions>
 
                         <Button x:Name="SavePlan"
+                                Width="250"
                                 Margin="10"
                                 FontSize="20"
                                 Click="SavePlanButton_Click">
                             Save Plan
                         </Button>
+                        <TextBox Height="20"
+                                 Margin="0,14,383,20"
+                                 x:Name="EntryName">
+                            
+                        </TextBox>
 
                         <Border Grid.Row="1">
                             <WrapPanel x:Name="PlanCreatorWrapPanel"
@@ -145,7 +151,7 @@
                                         <TextBox Grid.Column="1" Grid.Row="0"
                                                  x:Name="EntryTitle0"
                                                  Margin="0,3,0,3">
-                                            
+
                                         </TextBox>
                                         <ComboBox Grid.Column="1" Grid.Row="1"
                                                   x:Name="EntryType0"
@@ -156,7 +162,7 @@
                                         <TextBox Grid.Column="1" Grid.Row="2"
                                                  x:Name="EntryDuration0"
                                                  Margin="0,3,0,3">
-                                            
+
                                         </TextBox>
                                         <Button Grid.ColumnSpan="2" Grid.Row="3"
                                                 x:Name="EntryDelete0"
@@ -198,7 +204,7 @@
                                         <TextBox Grid.Column="1" Grid.Row="0"
                                                  x:Name="EntryTitle1"
                                                  Margin="0,3,0,3">
-                                            
+
                                         </TextBox>
                                         <ComboBox Grid.Column="1" Grid.Row="1"
                                                   x:Name="EntryType1"
@@ -209,7 +215,7 @@
                                         <TextBox Grid.Column="1" Grid.Row="2"
                                                  x:Name="EntryDuration1"
                                                  Margin="0,3,0,3">
-                                            
+
                                         </TextBox>
                                         <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource BasicButtonTheme}"
                                                 x:Name="EntryDelete1"
@@ -219,7 +225,7 @@
                                         </Button>
                                     </Grid>
                                 </Border>
-                                
+
                                 <Border Visibility="Collapsed" 
                                         x:Name="EntryBlock2"
                                         Width="150"

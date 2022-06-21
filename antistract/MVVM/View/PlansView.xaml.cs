@@ -93,21 +93,26 @@ namespace antistract.MVVM.View
 
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
         {
+            string _entryName = EntryName.Text;
 
-            for (int i = 0; i < PlanCreatorWrapPanel.Children.Count-1; i++)
-            {
-                TextBox title = (TextBox)this.FindName("EntryTitle" + i);
-                string _title = title.Text;
+            if (!String.IsNullOrWhiteSpace(_entryName))
+            { 
+                Debug.WriteLine("PLAN: " + _entryName.ToUpper());
 
-                ComboBox type = (ComboBox)this.FindName("EntryType" + i);
-                string _type = type.Text;
+                for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+                {
+                    TextBox title = (TextBox)this.FindName("EntryTitle" + i);
+                    string _title = title.Text;
 
-                TextBox duration = (TextBox)this.FindName("EntryDuration" + i);
-                string _duration = duration.Text;
+                    ComboBox type = (ComboBox)this.FindName("EntryType" + i);
+                    string _type = type.Text;
 
-                Debug.WriteLine("Title: " + _title + "\nType: " + _type + "\nDuration: " + _duration + "\n");
+                    TextBox duration = (TextBox)this.FindName("EntryDuration" + i);
+                    string _duration = duration.Text;
+
+                    Debug.WriteLine("Title: " + _title + "\nType: " + _type + "\nDuration: " + _duration + "\n");
+                }
             }
-
         }
     }
 }

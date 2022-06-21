@@ -158,9 +158,10 @@
                                                  Margin="0,3,0,3">
                                             
                                         </TextBox>
-                                        <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource BasicButtonTheme}"
+                                        <Button Grid.ColumnSpan="2" Grid.Row="3"
                                                 x:Name="EntryDelete0"
-                                                Margin="0,3,0,3">
+                                                Margin="0,3,0,3"
+                                                Click="EntryDelete_Click">
                                             Remove
                                         </Button>
                                     </Grid>
@@ -212,7 +213,8 @@
                                         </TextBox>
                                         <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource BasicButtonTheme}"
                                                 x:Name="EntryDelete1"
-                                                Margin="0,3,0,3">
+                                                Margin="0,3,0,3"
+                                                Click="EntryDelete_Click">
                                             Remove
                                         </Button>
                                     </Grid>
@@ -224,7 +226,7 @@
                                         BorderBrush="#1A936F" BorderThickness="1" CornerRadius="5"
                                         Margin="5"
                                         Padding="5">
-                                    <Grid>
+                                    <Grid x:Name="sfdeoji">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="25*" />
                                             <RowDefinition Height="25*" />
@@ -264,7 +266,8 @@
                                         </TextBox>
                                         <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource BasicButtonTheme}"
                                                 x:Name="EntryDelete2"
-                                                Margin="0,3,0,3">
+                                                Margin="0,3,0,3"
+                                                Click="EntryDelete_Click">
                                             Remove
                                         </Button>
                                     </Grid>

@@ -26,13 +26,14 @@ namespace antistract.MVVM.View
     public partial class PlansView : UserControl
     {
         private readonly ObservableCollection<String> _Plans = new ObservableCollection<String>();
-
+        private WrapPanel _PlanCreatorWrapPanel;
         public ObservableCollection<String> Plans { get { return _Plans; } }
         public PlansView()
         {
             InitializeComponent();
             
             DisplayPlans();
+            _PlanCreatorWrapPanel = PlanCreatorWrapPanel;
         }
 
         public void LoadPlans()
@@ -80,6 +81,19 @@ namespace antistract.MVVM.View
             var plans = new ObservableCollection<string>();
             DataContext = this;
             Plans.Add("One Block");
+        }
+
+        private void AddElementButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Border PlanEntryField in PlanCreatorWrapPanel.Children)
+            {
+                if (PlanEntryField.Visibility == Visibility.Collapsed)
+                {
+                    PlanEntryField.Visibility = Visibility.Visible;
+                    return;
+                }
+            }
+            
         }
     }
 }

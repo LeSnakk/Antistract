@@ -115,9 +115,22 @@
                         </Button>
 
                         <Border Grid.Row="1">
-                            <ItemsControl x:Name="PlanNames">
+                            <WrapPanel x:Name="PlanCreatorWrapPanel">
+
+                                <Border Margin="10" Visibility="Collapsed">
+                                    <ComboBox></ComboBox>
+                                </Border>
+
+                                <Border Margin="10">
+                                    <ComboBox></ComboBox>
+                                </Border>
                                 
-                            </ItemsControl>
+                                <Button Margin="20"
+                                        Padding="20,10,20,10"
+                                        HorizontalAlignment="Center">
+                                    Test
+                                </Button>
+                            </WrapPanel>
                         </Border>
                     </Grid>
                 </Border>

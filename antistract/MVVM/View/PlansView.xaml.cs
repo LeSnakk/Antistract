@@ -2,6 +2,7 @@
 using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -23,9 +24,14 @@ namespace antistract.MVVM.View
     /// Interaction logic for PlansView.xaml
     /// </summary>
     public partial class PlansView : UserControl
-    {        public PlansView()
+    {
+        private readonly ObservableCollection<String> _Plans = new ObservableCollection<String>();
+
+        public ObservableCollection<String> Plans { get { return _Plans; } }
+        public PlansView()
         {
             InitializeComponent();
+            
             DisplayPlans();
         }
 
@@ -59,8 +65,9 @@ namespace antistract.MVVM.View
             {
                 Debug.WriteLine(planName);
                 RadioButton radioButton = new RadioButton() { Content = planName };
-                PlanNames.Items.Add(radioButton);
+                PlanOverviewStackPanel.Children.Add((radioButton));
             }
+
         }
 
         private void AddPlanButton_Click(object sender, RoutedEventArgs e)
@@ -70,7 +77,9 @@ namespace antistract.MVVM.View
 
         private void AddPlanElementButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var plans = new ObservableCollection<string>();
+            DataContext = this;
+            Plans.Add("One Block");
         }
     }
 }

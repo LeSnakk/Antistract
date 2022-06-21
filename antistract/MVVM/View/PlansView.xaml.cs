@@ -20,14 +20,9 @@ using System.Xml;
 
 namespace antistract.MVVM.View
 {
-    /// <summary>
-    /// Interaction logic for PlansView.xaml
-    /// </summary>
     public partial class PlansView : UserControl
     {
-        private readonly ObservableCollection<String> _Plans = new ObservableCollection<String>();
         private WrapPanel _PlanCreatorWrapPanel;
-        public ObservableCollection<String> Plans { get { return _Plans; } }
         public PlansView()
         {
             InitializeComponent();
@@ -68,19 +63,11 @@ namespace antistract.MVVM.View
                 RadioButton radioButton = new RadioButton() { Content = planName };
                 PlanOverviewStackPanel.Children.Add((radioButton));
             }
-
         }
 
         private void AddPlanButton_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Adding plan...");
-        }
-
-        private void AddPlanElementButton_Click(object sender, RoutedEventArgs e)
-        {
-            var plans = new ObservableCollection<string>();
-            DataContext = this;
-            Plans.Add("One Block");
         }
 
         private void AddElementButton_Click(object sender, RoutedEventArgs e)
@@ -102,6 +89,25 @@ namespace antistract.MVVM.View
             Grid grid = button.Parent as Grid;
             Border border = grid.Parent as Border;
             border.Visibility = Visibility.Collapsed;
+        }
+
+        private void SavePlanButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            for (int i = 0; i < PlanCreatorWrapPanel.Children.Count-1; i++)
+            {
+                TextBox title = (TextBox)this.FindName("EntryTitle" + i);
+                string _title = title.Text;
+
+                ComboBox type = (ComboBox)this.FindName("EntryType" + i);
+                string _type = type.Text;
+
+                TextBox duration = (TextBox)this.FindName("EntryDuration" + i);
+                string _duration = duration.Text;
+
+                Debug.WriteLine("Title: " + _title + "\nType: " + _type + "\nDuration: " + _duration + "\n");
+            }
+
         }
     }
 }

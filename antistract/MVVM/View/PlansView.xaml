@@ -103,11 +103,11 @@
                             <RowDefinition Height="9*" />
                         </Grid.RowDefinitions>
 
-                        <Button x:Name="AddPlanElementButton"
+                        <Button x:Name="SavePlan"
                                 Margin="10"
                                 FontSize="20"
-                                Click="AddPlanElementButton_Click">
-                            Add Element
+                                Click="SavePlanButton_Click">
+                            Save Plan
                         </Button>
 
                         <Border Grid.Row="1">

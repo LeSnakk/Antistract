@@ -91,12 +91,8 @@
                                         Margin="2">
                                     Export
                                 </Button>
-
                             </Grid>
-
                         </Grid>
-
-
                     </Grid>
                 </Border>
 
@@ -115,16 +111,167 @@
                         </Button>
 
                         <Border Grid.Row="1">
-                            <WrapPanel x:Name="PlanCreatorWrapPanel">
+                            <WrapPanel x:Name="PlanCreatorWrapPanel"
+                                       HorizontalAlignment="Center">
 
-                                <Border Margin="10" Visibility="Collapsed">
-                                    <ComboBox></ComboBox>
+                                <Border Visibility="Visible" 
+                                        x:Name="EntryBlock0"
+                                        Width="150"
+                                        BorderBrush="#1A936F" BorderThickness="1" CornerRadius="5"
+                                        Margin="5"
+                                        Padding="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="25*" />
+                                            <RowDefinition Height="25*" />
+                                            <RowDefinition Height="25*" />
+                                            <RowDefinition Height="25*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50*" />
+                                            <ColumnDefinition Width="50*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0" Grid.Row="0">
+                                            Title
+                                        </Label>
+                                        <Label Grid.Column="0" Grid.Row="1">
+                                            Type
+                                        </Label>
+                                        <Label Grid.Column="0" Grid.Row="2">
+                                            Duration
+                                        </Label>
+
+                                        <TextBox Grid.Column="1" Grid.Row="0"
+                                                 x:Name="EntryTitle0"
+                                                 Margin="0,3,0,3">
+                                            
+                                        </TextBox>
+                                        <ComboBox Grid.Column="1" Grid.Row="1"
+                                                  x:Name="EntryType0"
+                                                  Margin="0,3,0,3">
+                                            <ComboBoxItem>Work</ComboBoxItem>
+                                            <ComboBoxItem>Break</ComboBoxItem>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="2"
+                                                 x:Name="EntryDuration0"
+                                                 Margin="0,3,0,3">
+                                            
+                                        </TextBox>
+                                        <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource BasicButtonTheme}"
+                                                x:Name="EntryDelete0"
+                                                Margin="0,3,0,3">
+                                            Remove
+                                        </Button>
+                                    </Grid>
                                 </Border>
 
-                                <Border Margin="10">
-                                    <ComboBox></ComboBox>
+                                <Border Visibility="Visible" 
+                                        x:Name="EntryBlock1"
+                                        Width="150"
+                                        BorderBrush="#1A936F" BorderThickness="1" CornerRadius="5"
+                                        Margin="5"
+                                        Padding="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="25*" />
+                                            <RowDefinition Height="25*" />
+                                            <RowDefinition Height="25*" />
+                                            <RowDefinition Height="25*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50*" />
+                                            <ColumnDefinition Width="50*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0" Grid.Row="0">
+                                            Title
+                                        </Label>
+                                        <Label Grid.Column="0" Grid.Row="1">
+                                            Type
+                                        </Label>
+                                        <Label Grid.Column="0" Grid.Row="2">
+                                            Duration
+                                        </Label>
+
+                                        <TextBox Grid.Column="1" Grid.Row="0"
+                                                 x:Name="EntryTitle1"
+                                                 Margin="0,3,0,3">
+                                            
+                                        </TextBox>
+                                        <ComboBox Grid.Column="1" Grid.Row="1"
+                                                  x:Name="EntryType1"
+                                                  Margin="0,3,0,3">
+                                            <ComboBoxItem>Work</ComboBoxItem>
+                                            <ComboBoxItem>Break</ComboBoxItem>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="2"
+                                                 x:Name="EntryDuration1"
+                                                 Margin="0,3,0,3">
+                                            
+                                        </TextBox>
+                                        <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource BasicButtonTheme}"
+                                                x:Name="EntryDelete1"
+                                                Margin="0,3,0,3">
+                                            Remove
+                                        </Button>
+                                    </Grid>
                                 </Border>
                                 
+                                <Border Visibility="Visible" 
+                                        x:Name="EntryBlock2"
+                                        Width="150"
+                                        BorderBrush="#1A936F" BorderThickness="1" CornerRadius="5"
+                                        Margin="5"
+                                        Padding="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="25*" />
+                                            <RowDefinition Height="25*" />
+                                            <RowDefinition Height="25*" />
+                                            <RowDefinition Height="25*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50*" />
+                                            <ColumnDefinition Width="50*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0" Grid.Row="0">
+                                            Title
+                                        </Label>
+                                        <Label Grid.Column="0" Grid.Row="1">
+                                            Type
+                                        </Label>
+                                        <Label Grid.Column="0" Grid.Row="2">
+                                            Duration
+                                        </Label>
+
+                                        <TextBox Grid.Column="1" Grid.Row="0"
+                                                 x:Name="EntryTitle2"
+                                                 Margin="0,3,0,3">
+
+                                        </TextBox>
+                                        <ComboBox Grid.Column="1" Grid.Row="1"
+                                                  x:Name="EntryType2"
+                                                  Margin="0,3,0,3">
+                                            <ComboBoxItem>Work</ComboBoxItem>
+                                            <ComboBoxItem>Break</ComboBoxItem>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="2"
+                                                 x:Name="EntryDuration2"
+                                                 Margin="0,3,0,3">
+
+                                        </TextBox>
+                                        <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource BasicButtonTheme}"
+                                                x:Name="EntryDelete2"
+                                                Margin="0,3,0,3">
+                                            Remove
+                                        </Button>
+                                    </Grid>
+                                </Border>
+
+
+
                                 <Button Margin="20"
                                         Padding="20,10,20,10"
                                         HorizontalAlignment="Center">

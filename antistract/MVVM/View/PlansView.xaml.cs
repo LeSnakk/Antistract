@@ -95,7 +95,7 @@ namespace antistract.MVVM.View
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
         {
             XDocument doc = XDocument.Load(path);
-            XElement root = new XElement("antistract_plan");
+            XElement root = new XElement("entry");
 
             string _entryName = EntryName.Text;
 

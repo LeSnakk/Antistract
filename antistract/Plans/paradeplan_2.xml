@@ -1,19 +1,21 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <antistract_plan>
-  <entryName>Test Plan</entryName>
-  <event>
-    <title>Lesen</title>
-    <type>Work</type>
-    <duration>60</duration>
-  </event>
-  <event>
-    <title>Mittagspause</title>
-    <type>Break</type>
-    <duration>45</duration>
-  </event>
-  <event>
-    <title>Schreiben</title>
-    <type>Work</type>
-    <duration>120</duration>
-  </event>
+  <entry>
+    <entryName>Test Plan</entryName>
+    <event>
+      <title>Lesen</title>
+      <type>Work</type>
+      <duration>60</duration>
+    </event>
+    <event>
+      <title>Mittagspause</title>
+      <type>Break</type>
+      <duration>45</duration>
+    </event>
+    <event>
+      <title>Schreiben</title>
+      <type>Work</type>
+      <duration>120</duration>
+    </event>
+  </entry>
 </antistract_plan>

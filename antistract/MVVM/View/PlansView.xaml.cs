@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace antistract.MVVM.View
 {
@@ -113,6 +114,13 @@ namespace antistract.MVVM.View
                     Debug.WriteLine("Title: " + _title + "\nType: " + _type + "\nDuration: " + _duration + "\n");
                 }
             }
+
+            /*XDocument xmlDoc = new XDocument(
+                new XDeclaration("1.0", Encoding.UTF8.HeaderName, String.Empty),
+                new XComment("antistract planDB"),
+                new XElement("antistract_plan", 
+                    new XElement())*/
+
         }
     }
 }

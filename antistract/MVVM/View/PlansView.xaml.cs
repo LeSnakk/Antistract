@@ -24,6 +24,7 @@ namespace antistract.MVVM.View
     public partial class PlansView : UserControl
     {
         private WrapPanel _PlanCreatorWrapPanel;
+        readonly string path = "Plans/paradeplan_2.xml";
         public PlansView()
         {
             InitializeComponent();
@@ -37,7 +38,6 @@ namespace antistract.MVVM.View
             //GlobalVariables.PlanNames.AddRange(new string[] { "Plan A", "Plan B", "Plan C" });
 
             Debug.WriteLine("XXX");
-            String path = "Plans/paradeplan_2.xml";
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
             XmlNodeList elements = doc.ChildNodes;
@@ -94,7 +94,12 @@ namespace antistract.MVVM.View
 
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
         {
+            XDocument doc = XDocument.Load(path);
+            XElement root = new XElement("antistract_plan");
+
             string _entryName = EntryName.Text;
+
+            root.Add(new XElement("entryName", _entryName));
 
             if (!String.IsNullOrWhiteSpace(_entryName))
             { 
@@ -112,15 +117,22 @@ namespace antistract.MVVM.View
                     string _duration = duration.Text;
 
                     Debug.WriteLine("Title: " + _title + "\nType: " + _type + "\nDuration: " + _duration + "\n");
+
+                    WriteToXMLFile(doc, root, _title, _type, _duration);
                 }
             }
 
-            /*XDocument xmlDoc = new XDocument(
-                new XDeclaration("1.0", Encoding.UTF8.HeaderName, String.Empty),
-                new XComment("antistract planDB"),
-                new XElement("antistract_plan", 
-                    new XElement())*/
+            doc.Element("antistract_plan").Add(root);  //ACHTUNG! Element wird oben erst erstellt, dh dass es null ist, da es
+            doc.Save(path);                                                 //noch nicht im Doc ist
 
+        }
+
+        public void WriteToXMLFile(XDocument doc, XElement root, string _title, string _type, string _duration)
+        {
+            root.Add(new XElement("event",
+                new XElement("title", _title),
+                new XElement("type", _type),
+                new XElement("duration", _duration)));
         }
     }
 }

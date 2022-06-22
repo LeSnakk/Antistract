@@ -25,6 +25,7 @@ namespace antistract.MVVM.View
     {
         private WrapPanel _PlanCreatorWrapPanel;
         readonly string path = "Plans/paradeplan_2.xml";
+        public List<Plans> Plans = new List<Plans>();
         public PlansView()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace antistract.MVVM.View
 
             Debug.WriteLine("HOSDIF" + elements.Count);
 
+            Plans.Add()
 
             for (int i = 0; i < elements.Count; i++)
             {

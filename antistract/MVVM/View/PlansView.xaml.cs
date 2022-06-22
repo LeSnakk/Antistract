@@ -35,12 +35,13 @@ namespace antistract.MVVM.View
 
         public void LoadPlans()
         {
-            //GlobalVariables.PlanNames.AddRange(new string[] { "Plan A", "Plan B", "Plan C" });
-
-            Debug.WriteLine("XXX");
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
             XmlNodeList elements = doc.ChildNodes;
+
+            Debug.WriteLine("HOSDIF" + elements.Count);
+
+
             for (int i = 0; i < elements.Count; i++)
             {
                 foreach (XmlNode xmlNode in elements[i].ChildNodes)

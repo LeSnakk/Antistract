@@ -101,7 +101,7 @@ namespace antistract.MVVM.View
 
         private void AddPlanButton_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Adding plan...");
+            Debug.WriteLine("Adding plan....");
         }
 
         private void AddElementButton_Click(object sender, RoutedEventArgs e)

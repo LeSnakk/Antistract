@@ -10,11 +10,11 @@ namespace antistract.Core
     public class Plans
     {
 
-        public ObservableCollection<Entries> Entries;
+        public ObservableCollection<EntryNames> EntryNames;
 
         public Plans()
         {
-            Entries = new ObservableCollection<Entries>();
+            EntryNames = new ObservableCollection<EntryNames>();
         }
 
 
@@ -33,9 +33,9 @@ namespace antistract.Core
     }
 }
 
-public class Entries 
+public class EntryNames 
 {
-    public Entries()
+    public EntryNames()
     {
 
     }
@@ -45,26 +45,5 @@ public class Entries
     {
         get { return _entryName; }
         set { _entryName = value; }
-    }
-
-    private string _title;
-    public string title
-    {
-        get { return _title; }
-        set { _title = value; }
-    }
-
-    private string _type;
-    public string type
-    {
-        get { return _type; }
-        set { _type = value; }
-    }
-
-    private string _duration;
-    public string duration
-    {
-        get { return _duration; }
-        set { _duration = value; }
     }
 }

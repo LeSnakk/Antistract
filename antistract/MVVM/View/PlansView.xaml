@@ -58,9 +58,21 @@
                         </StackPanel>
 
                         <ScrollViewer Grid.Row="1" Margin="10">
-                            <StackPanel x:Name="PlanOverviewStackPanel">
-                            </StackPanel>
+
+                            <ItemsControl ItemsSource="{Binding}" x:Name="PlanOverviewStackPanel" Grid.Column="0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Vertical"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <RadioButton Content="{Binding entryName}"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </ScrollViewer>
+                        
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*" />

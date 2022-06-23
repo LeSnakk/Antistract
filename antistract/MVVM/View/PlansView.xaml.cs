@@ -1,6 +1,7 @@
 ﻿using antistract.Core;
 using Caliburn.Micro;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -36,6 +37,8 @@ namespace antistract.MVVM.View
 
         public void LoadPlans()
         {
+            GlobalVariables.PlanNames.Clear();
+
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
             XmlNodeList elements = doc.ChildNodes;
@@ -62,15 +65,38 @@ namespace antistract.MVVM.View
             //GlobalVariables.PlanNames.AddRange(new List<String>() { "Plan A", "Plan B", "Plan C" });
         }
 
+        public void GVPlanNamesToOCPlanNames()
+        {
+            Plans plans = new Plans();
+
+            for (int i = 0; i < GlobalVariables.PlanNames.Count; i++)
+            {
+                EntryNames entryNames = new EntryNames();
+                entryNames.entryName = GlobalVariables.PlanNames[i];
+                plans.EntryNames.Add(entryNames);
+                Debug.WriteLine("FVP" + entryNames.entryName);
+            }
+            PlanOverviewStackPanel.DataContext = plans.EntryNames;
+        }
+
         public void DisplayPlans()
         {
-            
+            GVPlanNamesToOCPlanNames();
+            /*Plans plans = new Plans();
+
+            for (int i = 0; i < 4; i++)
+            {
+                Entries entries = new Entries();
+                entries.entryName = //Weise ich hier den Plans zu oder ziehe ich aus den Plans? Muss der Verweis nicht beim
+            }                             //Einlesen der XML stattfinden? Warte nein, die ObservableCollection existiert ja noch nicht
+                                            //Muss aus der GlobalVariables die PlanNames nehmen. Brauche in der Plans Class ja dann
+                                            //Nur die entryName Variable, oder? GlobalVatiables.PlanNames -> ObservableCollection -> StackPanel
             foreach (String planName in GlobalVariables.PlanNames)
             {
                 Debug.WriteLine(planName);
                 RadioButton radioButton = new RadioButton() { Content = planName };
                 PlanOverviewStackPanel.Children.Add((radioButton));
-            }
+            }*/
         }
 
         private void AddPlanButton_Click(object sender, RoutedEventArgs e)
@@ -131,7 +157,6 @@ namespace antistract.MVVM.View
 
             doc.Element("antistract_plan").Add(root);
             doc.Save(path);
-            ClearPlanOverviewStackPanel();
             LoadPlans();
             DisplayPlans();
         }
@@ -146,16 +171,10 @@ namespace antistract.MVVM.View
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
+            /*
             PlanOverviewStackPanel.Children.Clear();
             Debug.WriteLine(PlanOverviewStackPanel.Children.Count);
-        }
-
-        public void ClearPlanOverviewStackPanel()
-        {
-            while (PlanOverviewStackPanel.Children.Count > 0)
-            {
-                PlanOverviewStackPanel.Children.Clear();
-            }
+            */
         }
     }
 }

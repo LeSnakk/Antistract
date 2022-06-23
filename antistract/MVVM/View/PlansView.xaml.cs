@@ -42,25 +42,29 @@ namespace antistract.MVVM.View
 
             Debug.WriteLine("HOSDIF" + elements.Count);
 
-            Plans.Add()
-
             for (int i = 0; i < elements.Count; i++)
             {
-                foreach (XmlNode xmlNode in elements[i].ChildNodes)
+                foreach (XmlNode Event in elements[i].ChildNodes)
                 {
-                    Debug.WriteLine(xmlNode.Name + ": " + xmlNode.InnerText);
+                    Debug.WriteLine(Event["entryName"].InnerText);
+                    for (int j = 1; j < Event.ChildNodes.Count; j++)
+                    {
+                        Debug.WriteLine(Event.ChildNodes[j]["title"].InnerText);
+                        Debug.WriteLine(Event.ChildNodes[j]["type"].InnerText);
+                        Debug.WriteLine(Event.ChildNodes[j]["duration"].InnerText);
+                    }
+                    GlobalVariables.PlanNames.Add(Event["entryName"].InnerText);
                 }
             }
+
             Debug.WriteLine("XXX");
 
-            List<String> PlanNames = new List<String>();
-            PlanNames.Add(doc.GetElementsByTagName("entryName")[0].InnerText);
-            GlobalVariables.PlanNames.AddRange(PlanNames);
             //GlobalVariables.PlanNames.AddRange(new List<String>() { "Plan A", "Plan B", "Plan C" });
         }
 
         public void DisplayPlans()
         {
+            
             foreach (String planName in GlobalVariables.PlanNames)
             {
                 Debug.WriteLine(planName);
@@ -125,9 +129,11 @@ namespace antistract.MVVM.View
                 }
             }
 
-            doc.Element("antistract_plan").Add(root);  //ACHTUNG! Element wird oben erst erstellt, dh dass es null ist, da es
-            doc.Save(path);                                                 //noch nicht im Doc ist
-
+            doc.Element("antistract_plan").Add(root);
+            doc.Save(path);
+            ClearPlanOverviewStackPanel();
+            LoadPlans();
+            DisplayPlans();
         }
 
         public void WriteToXMLFile(XDocument doc, XElement root, string _title, string _type, string _duration)
@@ -136,6 +142,20 @@ namespace antistract.MVVM.View
                 new XElement("title", _title),
                 new XElement("type", _type),
                 new XElement("duration", _duration)));
+        }
+
+        private void Delete_Button_Click(object sender, RoutedEventArgs e)
+        {
+            PlanOverviewStackPanel.Children.Clear();
+            Debug.WriteLine(PlanOverviewStackPanel.Children.Count);
+        }
+
+        public void ClearPlanOverviewStackPanel()
+        {
+            while (PlanOverviewStackPanel.Children.Count > 0)
+            {
+                PlanOverviewStackPanel.Children.Clear();
+            }
         }
     }
 }

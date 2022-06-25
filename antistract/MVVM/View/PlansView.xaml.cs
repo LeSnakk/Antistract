@@ -176,5 +176,11 @@ namespace antistract.MVVM.View
             Debug.WriteLine(PlanOverviewStackPanel.Children.Count);
             */
         }
+
+        private void PlanEntryNameList_Click(object sender, RoutedEventArgs e)
+        {
+            RadioButton radiobutton = (RadioButton)sender;
+            Debug.WriteLine(radiobutton.Content);
+        }
     }
 }

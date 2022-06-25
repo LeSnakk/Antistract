@@ -48,6 +48,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Theme\PlansListButton.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="Theme\MenuButtonLASTBUTTON.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>

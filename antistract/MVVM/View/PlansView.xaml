@@ -68,7 +68,8 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <RadioButton Content="{Binding entryName}"
-                                                     GroupName="PlanSelection"/>
+                                                     GroupName="PlanSelection"
+                                                     Style="{StaticResource PlansListButtonTheme}"/>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>

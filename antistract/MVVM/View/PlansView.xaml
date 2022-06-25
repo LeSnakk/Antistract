@@ -67,7 +67,8 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <RadioButton Content="{Binding entryName}"/>
+                                        <RadioButton Content="{Binding entryName}"
+                                                     GroupName="PlanSelection"/>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>

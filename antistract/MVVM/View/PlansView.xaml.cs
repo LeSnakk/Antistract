@@ -65,6 +65,30 @@ namespace antistract.MVVM.View
             //GlobalVariables.PlanNames.AddRange(new List<String>() { "Plan A", "Plan B", "Plan C" });
         }
 
+        public void GetPlan(string PlanName)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+            XmlNodeList elements = doc.ChildNodes;
+
+            for (int i = 0; i < elements.Count; i++)
+            {
+                foreach (XmlNode Event in elements[i].ChildNodes)
+                {
+                    if (Event["entryName"].InnerText == PlanName)
+                    {
+                        Debug.WriteLine("SELECTED PLAN:\n" + Event["entryName"].InnerText);
+                        for (int j = 1; j < Event.ChildNodes.Count; j++)
+                        {
+                            Debug.WriteLine(Event.ChildNodes[j]["title"].InnerText);
+                            Debug.WriteLine(Event.ChildNodes[j]["type"].InnerText);
+                            Debug.WriteLine(Event.ChildNodes[j]["duration"].InnerText);
+                        }
+                    }
+                }
+            }
+        }
+
         public void GVPlanNamesToOCPlanNames()
         {
             Plans plans = new Plans();
@@ -181,6 +205,7 @@ namespace antistract.MVVM.View
         {
             RadioButton radiobutton = (RadioButton)sender;
             Debug.WriteLine(radiobutton.Content);
+            GetPlan(radiobutton.Content.ToString());
         }
     }
 }

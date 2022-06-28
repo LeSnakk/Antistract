@@ -175,14 +175,18 @@ namespace antistract.MVVM.View
 
         private void AddElementButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Border PlanCreatorItem in PlanCreatorWrapPanel.Children)
+            foreach (Object PlanCreatorItem in PlanCreatorWrapPanel.Children)
             {
-                if (PlanCreatorItem.Visibility == Visibility.Collapsed)
+                if (PlanCreatorItem is Border)
                 {
-                    PlanCreatorItem.Visibility = Visibility.Visible;
-                    return;
+                    Border temp = PlanCreatorItem as Border;
+                    if (temp.Visibility == Visibility.Collapsed)
+                    {
+                        temp.Visibility = Visibility.Visible;
+                        return;
+                    }
                 }
-            }          
+            }
         }
 
         private void EntryDelete_Click(object sender, RoutedEventArgs e)

@@ -204,12 +204,17 @@ namespace antistract.MVVM.View
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
-            RadioButton radiobutton = (RadioButton)sender;
-            string planName = radiobutton.Content.ToString();
-
             XDocument doc = XDocument.Load(path);
-            doc.Element("antistract_plan").Attribute(planName).Remove();
 
+            doc.Descendants("entry").Where(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault().Remove();
+
+            /*XElement selectedElement = doc.Descendants()
+            .Where(x => (string)x.Attribute("PlanName") == GetCurrentlySelectedPlan()).SingleOrDefault();
+            selectedElement.RemoveAll();*/
+            doc.Save(path);
+
+            LoadPlans();
+            DisplayPlans();
         }
 
         private void PlanEntryNameList_Click(object sender, RoutedEventArgs e)

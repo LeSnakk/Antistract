@@ -27,6 +27,7 @@ namespace antistract.MVVM.View
         private WrapPanel _PlanCreatorWrapPanel;
         readonly string path = "Plans/paradeplan_2.xml";
         public List<Plans> Plans = new List<Plans>();
+        private string _currentlySelectedPlan;
 
         public PlansView()
         {
@@ -34,6 +35,15 @@ namespace antistract.MVVM.View
             
             DisplayPlans();
             _PlanCreatorWrapPanel = PlanCreatorWrapPanel;
+        }
+
+        public string GetCurrentlySelectedPlan()
+        {
+            return _currentlySelectedPlan;
+        }
+        public void SetCurrentlySelectedPlan(string planName)
+        {
+            _currentlySelectedPlan = planName;
         }
 
         public void LoadPlans()
@@ -194,17 +204,19 @@ namespace antistract.MVVM.View
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            PlanOverviewStackPanel.Children.Clear();
-            Debug.WriteLine(PlanOverviewStackPanel.Children.Count);
-            */
+            RadioButton radiobutton = (RadioButton)sender;
+            string planName = radiobutton.Content.ToString();
+
+            XDocument doc = XDocument.Load(path);
+            doc.Element("antistract_plan").Attribute(planName).Remove();
+
         }
 
         private void PlanEntryNameList_Click(object sender, RoutedEventArgs e)
         {
             RadioButton radiobutton = (RadioButton)sender;
-            Debug.WriteLine(radiobutton.Content);
             GetPlan(radiobutton.Content.ToString());
+            SetCurrentlySelectedPlan(radiobutton.Content.ToString());
         }
     }
 }

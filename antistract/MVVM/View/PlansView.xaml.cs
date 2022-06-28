@@ -154,13 +154,9 @@ namespace antistract.MVVM.View
                             TextBox duration = (TextBox)this.FindName("EntryDuration" + (j-1));
                             duration.Text = Event.ChildNodes[j]["duration"].InnerText;
 
-                            Debug.WriteLine(Event.ChildNodes[j]["title"].InnerText);
-                            Debug.WriteLine(Event.ChildNodes[j]["type"].InnerText);
-                            Debug.WriteLine(Event.ChildNodes[j]["duration"].InnerText);
-
                             if (PlanCreatorWrapPanel.Children[j-1].Visibility == Visibility.Collapsed)
                             {
-                                PlanCreatorWrapPanel.Children[j - 1].Visibility = Visibility.Visible;
+                                PlanCreatorWrapPanel.Children[j-1].Visibility = Visibility.Visible;
                             }
                         }
                     }
@@ -283,11 +279,24 @@ namespace antistract.MVVM.View
 
                 TextBox duration = (TextBox)this.FindName("EntryDuration" + (i));
                 duration.Clear();
-
-                PlanCreatorWrapPanel.Children[i].Visibility = Visibility.Collapsed;
-
-
             }
+            for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+            {
+                DisablePlanCreatorItem(i);
+                PlanCreatorWrapPanel.Children[i].Visibility = Visibility.Collapsed;
+            }
+        }
+
+        public void DisablePlanCreatorItem(int item)
+        {
+            TextBox title = (TextBox)this.FindName("EntryTitle" + (item));
+            title.IsEnabled = false;
+
+            ComboBox type = (ComboBox)this.FindName("EntryType" + (item));
+            type.IsEnabled = false;
+
+            TextBox duration = (TextBox)this.FindName("EntryDuration" + (item));
+            duration.IsEnabled = false;
         }
     }
 }

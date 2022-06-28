@@ -27,6 +27,7 @@ namespace antistract.MVVM.View
         private WrapPanel _PlanCreatorWrapPanel;
         readonly string path = "Plans/paradeplan_2.xml";
         public List<Plans> Plans = new List<Plans>();
+
         public PlansView()
         {
             InitializeComponent();
@@ -43,8 +44,6 @@ namespace antistract.MVVM.View
             doc.Load(path);
             XmlNodeList elements = doc.ChildNodes;
 
-            Debug.WriteLine("HOSDIF" + elements.Count);
-
             for (int i = 0; i < elements.Count; i++)
             {
                 foreach (XmlNode Event in elements[i].ChildNodes)
@@ -59,10 +58,7 @@ namespace antistract.MVVM.View
                     GlobalVariables.PlanNames.Add(Event["entryName"].InnerText);
                 }
             }
-
             Debug.WriteLine("XXX");
-
-            //GlobalVariables.PlanNames.AddRange(new List<String>() { "Plan A", "Plan B", "Plan C" });
         }
 
         public void GetPlan(string PlanName)
@@ -98,7 +94,6 @@ namespace antistract.MVVM.View
                 EntryNames entryNames = new EntryNames();
                 entryNames.entryName = GlobalVariables.PlanNames[i];
                 plans.EntryNames.Add(entryNames);
-                Debug.WriteLine("FVP" + entryNames.entryName);
             }
             PlanOverviewStackPanel.DataContext = plans.EntryNames;
         }
@@ -137,8 +132,7 @@ namespace antistract.MVVM.View
                     PlanCreatorItem.Visibility = Visibility.Visible;
                     return;
                 }
-            }
-            
+            }          
         }
 
         private void EntryDelete_Click(object sender, RoutedEventArgs e)
@@ -183,7 +177,6 @@ namespace antistract.MVVM.View
                 doc.Element("antistract_plan").Add(root);
                 doc.Save(path);
             }
-            Debug.WriteLine("Element count: " + root.Elements().Count<XElement>());
             LoadPlans();
             DisplayPlans();
         }

@@ -128,6 +128,46 @@ namespace antistract.MVVM.View
             }*/
         }
 
+        public void ShowSelectedPlan(string PlanName)
+        {
+            ResetPlanCreatorItems();
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+            XmlNodeList elements = doc.ChildNodes;
+
+            for (int i = 0; i < elements.Count; i++)
+            {
+                foreach (XmlNode Event in elements[i].ChildNodes)
+                {
+                    if (Event["entryName"].InnerText == PlanName)
+                    {
+                        Debug.WriteLine("SELECTED PLAN:\n" + Event["entryName"].InnerText);
+                        for (int j = 1; j < Event.ChildNodes.Count; j++)
+                        {
+                            TextBox title = (TextBox)this.FindName("EntryTitle" + (j-1));
+                            title.Text = Event.ChildNodes[j]["title"].InnerText;
+
+                            ComboBox type = (ComboBox)this.FindName("EntryType" + (j-1));
+                            type.Text = Event.ChildNodes[j]["type"].InnerText;
+
+                            TextBox duration = (TextBox)this.FindName("EntryDuration" + (j-1));
+                            duration.Text = Event.ChildNodes[j]["duration"].InnerText;
+
+                            Debug.WriteLine(Event.ChildNodes[j]["title"].InnerText);
+                            Debug.WriteLine(Event.ChildNodes[j]["type"].InnerText);
+                            Debug.WriteLine(Event.ChildNodes[j]["duration"].InnerText);
+
+                            if (PlanCreatorWrapPanel.Children[j-1].Visibility == Visibility.Collapsed)
+                            {
+                                PlanCreatorWrapPanel.Children[j - 1].Visibility = Visibility.Visible;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private void AddPlanButton_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Adding plan....");
@@ -208,9 +248,6 @@ namespace antistract.MVVM.View
 
             doc.Descendants("entry").Where(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault().Remove();
 
-            /*XElement selectedElement = doc.Descendants()
-            .Where(x => (string)x.Attribute("PlanName") == GetCurrentlySelectedPlan()).SingleOrDefault();
-            selectedElement.RemoveAll();*/
             doc.Save(path);
 
             LoadPlans();
@@ -222,6 +259,31 @@ namespace antistract.MVVM.View
             RadioButton radiobutton = (RadioButton)sender;
             GetPlan(radiobutton.Content.ToString());
             SetCurrentlySelectedPlan(radiobutton.Content.ToString());
+            ShowSelectedPlan(GetCurrentlySelectedPlan());
+        }
+
+        private void Edit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ShowSelectedPlan(GetCurrentlySelectedPlan());
+        }
+
+        public void ResetPlanCreatorItems()
+        {
+            for (int i = 1; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+            {
+                TextBox title = (TextBox)this.FindName("EntryTitle" + (i));
+                title.Clear();
+
+                ComboBox type = (ComboBox)this.FindName("EntryType" + (i));
+                type.SelectedIndex = -1;
+
+                TextBox duration = (TextBox)this.FindName("EntryDuration" + (i));
+                duration.Clear();
+
+                PlanCreatorWrapPanel.Children[i].Visibility = Visibility.Collapsed;
+
+
+            }
         }
     }
 }

@@ -178,19 +178,25 @@ namespace antistract.MVVM.View
                     WriteToXMLFile(doc, root, _title, _type, _duration);
                 }
             }
-
-            doc.Element("antistract_plan").Add(root);
-            doc.Save(path);
+            if (root.Elements().Count<XElement>() > 1)
+            {
+                doc.Element("antistract_plan").Add(root);
+                doc.Save(path);
+            }
+            Debug.WriteLine("Element count: " + root.Elements().Count<XElement>());
             LoadPlans();
             DisplayPlans();
         }
 
         public void WriteToXMLFile(XDocument doc, XElement root, string _title, string _type, string _duration)
         {
-            root.Add(new XElement("event",
-                new XElement("title", _title),
-                new XElement("type", _type),
-                new XElement("duration", _duration)));
+            if (!string.IsNullOrEmpty(_title))
+            {
+                root.Add(new XElement("event",
+                    new XElement("title", _title),
+                    new XElement("type", _type),
+                    new XElement("duration", _duration)));
+            }
         }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)

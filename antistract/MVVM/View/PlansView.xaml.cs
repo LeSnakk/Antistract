@@ -46,6 +46,19 @@ namespace antistract.MVVM.View
             _currentlySelectedPlan = planName;
         }
 
+        public void GVPlanNamesToOCPlanNames()
+        {
+            Plans plans = new Plans();
+
+            for (int i = 0; i < GlobalVariables.PlanNames.Count; i++)
+            {
+                EntryNames entryNames = new EntryNames();
+                entryNames.entryName = GlobalVariables.PlanNames[i];
+                plans.EntryNames.Add(entryNames);
+            }
+            PlanOverviewStackPanel.DataContext = plans.EntryNames;
+        }
+
         public void LoadPlans()
         {
             GlobalVariables.PlanNames.Clear();
@@ -93,19 +106,6 @@ namespace antistract.MVVM.View
                     }
                 }
             }
-        }
-
-        public void GVPlanNamesToOCPlanNames()
-        {
-            Plans plans = new Plans();
-
-            for (int i = 0; i < GlobalVariables.PlanNames.Count; i++)
-            {
-                EntryNames entryNames = new EntryNames();
-                entryNames.entryName = GlobalVariables.PlanNames[i];
-                plans.EntryNames.Add(entryNames);
-            }
-            PlanOverviewStackPanel.DataContext = plans.EntryNames;
         }
 
         public void DisplayPlans()
@@ -164,35 +164,6 @@ namespace antistract.MVVM.View
             }
         }
 
-        private void AddPlanButton_Click(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("Adding plan....");
-        }
-
-        private void AddElementButton_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (Object PlanCreatorItem in PlanCreatorWrapPanel.Children)
-            {
-                if (PlanCreatorItem is Border)
-                {
-                    Border temp = PlanCreatorItem as Border;
-                    if (temp.Visibility == Visibility.Collapsed)
-                    {
-                        temp.Visibility = Visibility.Visible;
-                        return;
-                    }
-                }
-            }
-        }
-
-        private void EntryDelete_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = (Button)sender;
-            Grid grid = button.Parent as Grid;
-            Border border = grid.Parent as Border;
-            border.Visibility = Visibility.Collapsed;
-        }
-
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
         {
             string _entryName = EntryName.Text;
@@ -203,9 +174,7 @@ namespace antistract.MVVM.View
             root.Add(new XElement("entryName", _entryName));
 
             if (!String.IsNullOrWhiteSpace(_entryName))
-            { 
-                Debug.WriteLine("PLAN: " + _entryName.ToUpper());
-
+            {
                 for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
                 {
                     TextBox title = (TextBox)this.FindName("EntryTitle" + i);
@@ -216,8 +185,6 @@ namespace antistract.MVVM.View
 
                     TextBox duration = (TextBox)this.FindName("EntryDuration" + i);
                     string _duration = duration.Text;
-
-                    Debug.WriteLine("Title: " + _title + "\nType: " + _type + "\nDuration: " + _duration + "\n");
 
                     WriteToXMLFile(doc, root, _title, _type, _duration);
                 }
@@ -240,31 +207,6 @@ namespace antistract.MVVM.View
                     new XElement("type", _type),
                     new XElement("duration", _duration)));
             }
-        }
-
-        private void Delete_Button_Click(object sender, RoutedEventArgs e)
-        {
-            XDocument doc = XDocument.Load(path);
-
-            doc.Descendants("entry").Where(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault().Remove();
-
-            doc.Save(path);
-
-            LoadPlans();
-            DisplayPlans();
-        }
-
-        private void PlanEntryNameList_Click(object sender, RoutedEventArgs e)
-        {
-            RadioButton radiobutton = (RadioButton)sender;
-            GetPlan(radiobutton.Content.ToString());
-            SetCurrentlySelectedPlan(radiobutton.Content.ToString());
-            ShowSelectedPlan(GetCurrentlySelectedPlan());
-        }
-
-        private void Edit_Button_Click(object sender, RoutedEventArgs e)
-        {
-            ShowSelectedPlan(GetCurrentlySelectedPlan());
         }
 
         public void ResetPlanCreatorItems()
@@ -298,5 +240,57 @@ namespace antistract.MVVM.View
             TextBox duration = (TextBox)this.FindName("EntryDuration" + (item));
             duration.IsEnabled = false;
         }
+
+        private void AddPlanButton_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Adding plan....");
+        }
+
+        private void AddElementButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Object PlanCreatorItem in PlanCreatorWrapPanel.Children)
+            {
+                if (PlanCreatorItem is Border)
+                {
+                    Border temp = PlanCreatorItem as Border;
+                    if (temp.Visibility == Visibility.Collapsed)
+                    {
+                        temp.Visibility = Visibility.Visible;
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void EntryDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Grid grid = button.Parent as Grid;
+            Border border = grid.Parent as Border;
+            border.Visibility = Visibility.Collapsed;
+        }
+
+        private void PlanEntryNameList_Click(object sender, RoutedEventArgs e)
+        {
+            RadioButton radiobutton = (RadioButton)sender;
+            GetPlan(radiobutton.Content.ToString());
+            SetCurrentlySelectedPlan(radiobutton.Content.ToString());
+            ShowSelectedPlan(GetCurrentlySelectedPlan());
+        }
+
+        private void Delete_Button_Click(object sender, RoutedEventArgs e)
+        {
+            XDocument doc = XDocument.Load(path);
+            doc.Descendants("entry").Where(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault().Remove();
+            doc.Save(path);
+
+            LoadPlans();
+            DisplayPlans();
+        }
+
+        private void Edit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        } 
     }
 }

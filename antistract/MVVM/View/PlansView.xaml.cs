@@ -200,8 +200,8 @@ namespace antistract.MVVM.View
                                 TextBox duration = (TextBox)this.FindName("EntryDuration" + (j - 1));
                                 Event.ChildNodes[j]["duration"].InnerText = duration.Text;
 
-                            }
-                        }
+                            } //Wenn weniger Events in der XML sind, als durch's Editing entstanden sind,
+                        }       //müssen dementsprechend neue Nodes im XML erzeugt werden
                     }
                 }
                 doc1.Save(path);

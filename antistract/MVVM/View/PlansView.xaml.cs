@@ -131,6 +131,7 @@ namespace antistract.MVVM.View
         public void ShowSelectedPlan(string PlanName)
         {
             ResetPlanCreatorItems();
+            ToggleAddButton(false);
 
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
@@ -229,6 +230,19 @@ namespace antistract.MVVM.View
             }
         }
 
+        public void ToggleAddButton(bool visibility)
+        {
+            if (visibility)
+            {
+                AddElementButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                AddElementButton.Visibility = Visibility.Hidden;
+            }
+            
+        }
+
         public void TogglePlanCreatorItem(int item, bool toggle)
         {
             TextBox title = (TextBox)this.FindName("EntryTitle" + (item));
@@ -243,7 +257,7 @@ namespace antistract.MVVM.View
 
         private void AddPlanButton_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Adding plan....");
+            ToggleAddButton(true);
         }
 
         private void AddElementButton_Click(object sender, RoutedEventArgs e)

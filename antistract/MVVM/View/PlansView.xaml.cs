@@ -224,21 +224,21 @@ namespace antistract.MVVM.View
             }
             for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
             {
-                DisablePlanCreatorItem(i);
+                TogglePlanCreatorItem(i, false);
                 PlanCreatorWrapPanel.Children[i].Visibility = Visibility.Collapsed;
             }
         }
 
-        public void DisablePlanCreatorItem(int item)
+        public void TogglePlanCreatorItem(int item, bool toggle)
         {
             TextBox title = (TextBox)this.FindName("EntryTitle" + (item));
-            title.IsEnabled = false;
+            title.IsEnabled = toggle;
 
             ComboBox type = (ComboBox)this.FindName("EntryType" + (item));
-            type.IsEnabled = false;
+            type.IsEnabled = toggle;
 
             TextBox duration = (TextBox)this.FindName("EntryDuration" + (item));
-            duration.IsEnabled = false;
+            duration.IsEnabled = toggle;
         }
 
         private void AddPlanButton_Click(object sender, RoutedEventArgs e)

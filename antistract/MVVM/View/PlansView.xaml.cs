@@ -27,7 +27,8 @@ namespace antistract.MVVM.View
         private WrapPanel _PlanCreatorWrapPanel;
         readonly string path = "Plans/paradeplan_2.xml";
         public List<Plans> Plans = new List<Plans>();
-        private string _currentlySelectedPlan;
+        private string _currentlySelectedPlan = "";
+        private bool _isEdited = false;
 
         public PlansView()
         {
@@ -44,6 +45,15 @@ namespace antistract.MVVM.View
         public void SetCurrentlySelectedPlan(string planName)
         {
             _currentlySelectedPlan = planName;
+        }
+
+        public bool isEdited()
+        {
+            return _isEdited;
+        }
+        public void isEdited(bool isEdited)
+        {
+            _isEdited = isEdited;
         }
 
         public void GVPlanNamesToOCPlanNames()
@@ -167,33 +177,67 @@ namespace antistract.MVVM.View
 
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
         {
-            string _entryName = EntryName.Text;
-
-            XDocument doc = XDocument.Load(path);
-            XElement root = new XElement("entry", new XAttribute("PlanName", _entryName));
-
-            root.Add(new XElement("entryName", _entryName));
-
-            if (!String.IsNullOrWhiteSpace(_entryName))
+            if (isEdited())
             {
-                for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+                XmlDocument doc1 = new XmlDocument();
+                doc1.Load(path);
+                XmlNodeList elements = doc1.ChildNodes;
+
+                for (int i = 0; i < elements.Count; i++)
                 {
-                    TextBox title = (TextBox)this.FindName("EntryTitle" + i);
-                    string _title = title.Text;
+                    foreach (XmlNode Event in elements[i].ChildNodes)
+                    {
+                        if (Event["entryName"].InnerText == GetCurrentlySelectedPlan())
+                        {
+                            for (int j = 1; j < Event.ChildNodes.Count; j++)
+                            {
+                                TextBox title = (TextBox)this.FindName("EntryTitle" + (j - 1));
+                                Event.ChildNodes[j]["title"].InnerText = title.Text;
 
-                    ComboBox type = (ComboBox)this.FindName("EntryType" + i);
-                    string _type = type.Text;
+                                ComboBox type = (ComboBox)this.FindName("EntryType" + (j - 1));
+                                Event.ChildNodes[j]["type"].InnerText = type.Text;
 
-                    TextBox duration = (TextBox)this.FindName("EntryDuration" + i);
-                    string _duration = duration.Text;
+                                TextBox duration = (TextBox)this.FindName("EntryDuration" + (j - 1));
+                                Event.ChildNodes[j]["duration"].InnerText = duration.Text;
 
-                    WriteToXMLFile(doc, root, _title, _type, _duration);
+                            }
+                        }
+                    }
                 }
+                doc1.Save(path);
+
             }
-            if (root.Elements().Count<XElement>() > 1)
+            else
             {
-                doc.Element("antistract_plan").Add(root);
-                doc.Save(path);
+
+                string _entryName = EntryName.Text;
+
+                XDocument doc = XDocument.Load(path);
+                XElement root = new XElement("entry", new XAttribute("PlanName", _entryName));
+
+                root.Add(new XElement("entryName", _entryName));
+
+                if (!String.IsNullOrWhiteSpace(_entryName))
+                {
+                    for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+                    {
+                        TextBox title = (TextBox)this.FindName("EntryTitle" + i);
+                        string _title = title.Text;
+
+                        ComboBox type = (ComboBox)this.FindName("EntryType" + i);
+                        string _type = type.Text;
+
+                        TextBox duration = (TextBox)this.FindName("EntryDuration" + i);
+                        string _duration = duration.Text;
+
+                        WriteToXMLFile(doc, root, _title, _type, _duration);
+                    }
+                }
+                if (root.Elements().Count<XElement>() > 1)
+                {
+                    doc.Element("antistract_plan").Add(root);
+                    doc.Save(path);
+                }
             }
             LoadPlans();
             DisplayPlans();
@@ -304,7 +348,12 @@ namespace antistract.MVVM.View
 
         private void Edit_Button_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+            for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+            {
+                TogglePlanCreatorItem(i, true);
+            }
+            ToggleAddButton(true);
+            isEdited(true);
         } 
     }
 }

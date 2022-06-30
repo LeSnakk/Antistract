@@ -189,23 +189,54 @@ namespace antistract.MVVM.View
                     {
                         if (Event["entryName"].InnerText == GetCurrentlySelectedPlan())
                         {
-                            for (int j = 1; j < Event.ChildNodes.Count; j++)
+                            for (int j = 1; j < PlanCreatorWrapPanel.Children.Count; j++)
                             {
-                                TextBox title = (TextBox)this.FindName("EntryTitle" + (j - 1));
-                                Event.ChildNodes[j]["title"].InnerText = title.Text;
+                                if (Event.ChildNodes[j] != null)
+                                {
+                                    Debug.WriteLine("foreach " + elements[i].ChildNodes.Count);
+                                    Debug.WriteLine("Event Childnodes " + Event.ChildNodes.Count);
+                                    Debug.WriteLine("PlanWrap Children" + PlanCreatorWrapPanel.Children.Count);
+                                    TextBox title = (TextBox)this.FindName("EntryTitle" + (j - 1));
+                                    Event.ChildNodes[j]["title"].InnerText = title.Text;
 
-                                ComboBox type = (ComboBox)this.FindName("EntryType" + (j - 1));
-                                Event.ChildNodes[j]["type"].InnerText = type.Text;
+                                    ComboBox type = (ComboBox)this.FindName("EntryType" + (j - 1));
+                                    Event.ChildNodes[j]["type"].InnerText = type.Text;
 
-                                TextBox duration = (TextBox)this.FindName("EntryDuration" + (j - 1));
-                                Event.ChildNodes[j]["duration"].InnerText = duration.Text;
+                                    TextBox duration = (TextBox)this.FindName("EntryDuration" + (j - 1));
+                                    Event.ChildNodes[j]["duration"].InnerText = duration.Text;
 
+                                }
+                                else
+                                {
+                                    XDocument doc2 = XDocument.Load(path);
+                                    XElement root = doc2.Descendants("entry").Where(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault();
+                                    XElement root2 = doc2.Descendants("entry").Where(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault();
+
+                                    Debug.WriteLine("root" + root);
+                                    Debug.WriteLine("toorname" + root.Name + "dfi");
+
+                                    TextBox title = (TextBox)this.FindName("EntryTitle" + (j - 1));
+                                    string _title = title.Text;
+
+                                    ComboBox type = (ComboBox)this.FindName("EntryType" + (j - 1));
+                                    string _type = type.Text;
+
+                                    TextBox duration = (TextBox)this.FindName("EntryDuration" + (j - 1));
+                                    string _duration = duration.Text;
+
+                                    ReplaceInXMLFile(doc2, root, _title, _type, _duration);
+
+                                    Debug.WriteLine("root after" + root);
+
+                                    doc2.Save(path);
+                                }
                             } //Wenn weniger Events in der XML sind, als durch's Editing entstanden sind,
                         }       //müssen dementsprechend neue Nodes im XML erzeugt werden
                     }
                 }
                 doc1.Save(path);
-
+                LoadPlans();
+                DisplayPlans();
             }
             else
             {
@@ -248,6 +279,19 @@ namespace antistract.MVVM.View
             if (!string.IsNullOrEmpty(_title))
             {
                 root.Add(new XElement("event",
+                    new XElement("title", _title),
+                    new XElement("type", _type),
+                    new XElement("duration", _duration)));
+            }
+        }
+
+        public void ReplaceInXMLFile(XDocument doc, XElement root, string _title, string _type, string _duration)
+        {
+            XElement toReplace = doc.Root.Descendants("entryName").Where(x => (string)x.Parent.Element("entry").Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault();
+
+            if (!string.IsNullOrEmpty(_title))
+            {
+                toReplace.ReplaceNodes(new XElement("event",
                     new XElement("title", _title),
                     new XElement("type", _type),
                     new XElement("duration", _duration)));

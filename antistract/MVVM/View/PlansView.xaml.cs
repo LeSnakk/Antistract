@@ -33,7 +33,7 @@ namespace antistract.MVVM.View
         public PlansView()
         {
             InitializeComponent();
-            
+
             DisplayPlans();
             _PlanCreatorWrapPanel = PlanCreatorWrapPanel;
         }
@@ -156,18 +156,18 @@ namespace antistract.MVVM.View
                         Debug.WriteLine("SELECTED PLAN:\n" + Event["entryName"].InnerText);
                         for (int j = 1; j < Event.ChildNodes.Count; j++)
                         {
-                            TextBox title = (TextBox)this.FindName("EntryTitle" + (j-1));
+                            TextBox title = (TextBox)this.FindName("EntryTitle" + (j - 1));
                             title.Text = Event.ChildNodes[j]["title"].InnerText;
 
-                            ComboBox type = (ComboBox)this.FindName("EntryType" + (j-1));
+                            ComboBox type = (ComboBox)this.FindName("EntryType" + (j - 1));
                             type.Text = Event.ChildNodes[j]["type"].InnerText;
 
-                            TextBox duration = (TextBox)this.FindName("EntryDuration" + (j-1));
+                            TextBox duration = (TextBox)this.FindName("EntryDuration" + (j - 1));
                             duration.Text = Event.ChildNodes[j]["duration"].InnerText;
 
-                            if (PlanCreatorWrapPanel.Children[j-1].Visibility == Visibility.Collapsed)
+                            if (PlanCreatorWrapPanel.Children[j - 1].Visibility == Visibility.Collapsed)
                             {
-                                PlanCreatorWrapPanel.Children[j-1].Visibility = Visibility.Visible;
+                                PlanCreatorWrapPanel.Children[j - 1].Visibility = Visibility.Visible;
                             }
                         }
                     }
@@ -287,7 +287,7 @@ namespace antistract.MVVM.View
 
         public void ReplaceInXMLFile(XDocument doc, XElement root, string _title, string _type, string _duration)
         {
-            XElement toReplace = doc.Root.Descendants("entryName").Where(x => (string)x.Parent.Element("entry").Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault();
+            XElement toReplace = doc.Descendants("entry").FirstOrDefault(el => el.Attribute("PlanName")?.Value == GetCurrentlySelectedPlan());
 
             if (!string.IsNullOrEmpty(_title))
             {
@@ -328,7 +328,7 @@ namespace antistract.MVVM.View
             {
                 AddElementButton.Visibility = Visibility.Hidden;
             }
-            
+
         }
 
         public void TogglePlanCreatorItem(int item, bool toggle)
@@ -398,6 +398,6 @@ namespace antistract.MVVM.View
             }
             ToggleAddButton(true);
             isEdited(true);
-        } 
+        }
     }
 }

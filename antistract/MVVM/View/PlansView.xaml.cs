@@ -179,67 +179,106 @@ namespace antistract.MVVM.View
         {
             if (isEdited())
             {
+                Debug.WriteLine("\n\nWENT INTO EDIT MODE\n\n");
                 XmlDocument doc1 = new XmlDocument();
                 doc1.Load(path);
                 XmlNodeList elements = doc1.ChildNodes;
 
-                for (int i = 0; i < elements.Count; i++)
+                for (int l = 0; l < elements.Count; l++)    //All elements in XML
                 {
-                    foreach (XmlNode Event in elements[i].ChildNodes)
+                    foreach (XmlNode Event in elements[l].ChildNodes)
                     {
-                        if (Event["entryName"].InnerText == GetCurrentlySelectedPlan())
+                        
+                        if (Event["entryName"].InnerText == GetCurrentlySelectedPlan())     //Find right entry by Plan Name
                         {
-                            for (int j = 1; j < PlanCreatorWrapPanel.Children.Count; j++)
+                            Debug.WriteLine("\nEvent before delete: \n" + Event.ChildNodes.Count + "\n");
+                            int i = 1; ;
+                            while (i < Event.ChildNodes.Count)
                             {
-                                if (Event.ChildNodes[j] != null)
-                                {
-                                    Debug.WriteLine("foreach " + elements[i].ChildNodes.Count);
-                                    Debug.WriteLine("Event Childnodes " + Event.ChildNodes.Count);
-                                    Debug.WriteLine("PlanWrap Children" + PlanCreatorWrapPanel.Children.Count);
-                                    TextBox title = (TextBox)this.FindName("EntryTitle" + (j - 1));
-                                    Event.ChildNodes[j]["title"].InnerText = title.Text;
-
-                                    ComboBox type = (ComboBox)this.FindName("EntryType" + (j - 1));
-                                    Event.ChildNodes[j]["type"].InnerText = type.Text;
-
-                                    TextBox duration = (TextBox)this.FindName("EntryDuration" + (j - 1));
-                                    Event.ChildNodes[j]["duration"].InnerText = duration.Text;
-
-                                }
-                                else
-                                {
-                                    XDocument doc2 = XDocument.Load(path);
-                                    XElement root = doc2.Descendants("entry").Where(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault();
-                                    XElement root2 = doc2.Descendants("entry").Where(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault();
-
-                                    Debug.WriteLine("root" + root);
-                                    Debug.WriteLine("toorname" + root.Name + "dfi");
-
-                                    TextBox title = (TextBox)this.FindName("EntryTitle" + (j - 1));
-                                    string _title = title.Text;
-
-                                    ComboBox type = (ComboBox)this.FindName("EntryType" + (j - 1));
-                                    string _type = type.Text;
-
-                                    TextBox duration = (TextBox)this.FindName("EntryDuration" + (j - 1));
-                                    string _duration = duration.Text;
-
-                                    ReplaceInXMLFile(doc2, root, _title, _type, _duration);
-
-                                    Debug.WriteLine("root after" + root);
-
-                                    doc2.Save(path);
-                                }
-                            } //Wenn weniger Events in der XML sind, als durch's Editing entstanden sind,
-                        }       //müssen dementsprechend neue Nodes im XML erzeugt werden
+                                Event.RemoveChild(Event.ChildNodes[i]);
+                            }
+                            Debug.WriteLine("\nEvent after delete: \n" + Event.ChildNodes.Count + "\n");
+                        }
+                        
                     }
                 }
+                
                 doc1.Save(path);
+
+                XDocument doc = XDocument.Load(path);
+                XElement root = doc.Descendants("entry").FirstOrDefault(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan());
+                Debug.WriteLine("\nROOT BEFORE REPLACEMENT\n" + root);
+
+                for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+                {
+                    TextBox title = (TextBox)this.FindName("EntryTitle" + i);
+                    string _title = title.Text;
+
+                    ComboBox type = (ComboBox)this.FindName("EntryType" + i);
+                    string _type = type.Text;
+
+                    TextBox duration = (TextBox)this.FindName("EntryDuration" + i);
+                    string _duration = duration.Text;
+
+                    WriteToXMLFile(doc, root, _title, _type, _duration);
+                    Debug.WriteLine("\nROOT AFTER REPLACEMENT DURCHGANG " + i + "\n" + root);
+                }
+                doc.Save(path);
+
+                /*for (int j = 1; j < PlanCreatorWrapPanel.Children.Count; j++)
+                {
+                    Debug.WriteLine("\nITERATION: " + i + " / " + j + "\n");
+                    if (Event.ChildNodes[j] != null)    //
+                    {
+                        Debug.WriteLine("foreach " + elements[i].ChildNodes.Count);
+                        Debug.WriteLine("Event Childnodes " + Event.ChildNodes.Count);
+                        Debug.WriteLine("PlanWrap Children" + PlanCreatorWrapPanel.Children.Count);
+                        TextBox title = (TextBox)this.FindName("EntryTitle" + (j - 1));
+                        Event.ChildNodes[j]["title"].InnerText = title.Text;
+
+                        ComboBox type = (ComboBox)this.FindName("EntryType" + (j - 1));
+                        Event.ChildNodes[j]["type"].InnerText = type.Text;
+
+                        TextBox duration = (TextBox)this.FindName("EntryDuration" + (j - 1));
+                        Event.ChildNodes[j]["duration"].InnerText = duration.Text;
+
+                    }
+                    else
+                    {
+                        XDocument doc2 = XDocument.Load(path);
+                        XElement root = doc2.Descendants("entry").Where(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault();
+                        XElement root2 = doc2.Descendants("entry").Where(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault();
+
+                        Debug.WriteLine("\nroot\n" + root);
+                        Debug.WriteLine("toorname" + root.Name + "dfi");
+
+                        TextBox title = (TextBox)this.FindName("EntryTitle" + (j - 1));
+                        string _title = title.Text;
+
+                        ComboBox type = (ComboBox)this.FindName("EntryType" + (j - 1));
+                        string _type = type.Text;
+
+                        TextBox duration = (TextBox)this.FindName("EntryDuration" + (j - 1));
+                        string _duration = duration.Text;
+
+                        ReplaceInXMLFile(doc2, root, _title, _type, _duration);
+
+                        Debug.WriteLine("\nroot after\n" + root);
+
+                        doc2.Save(path);
+                    }
+                }*/ //Wenn weniger Events in der XML sind, als durch's Editing entstanden sind,
+                    //müssen dementsprechend neue Nodes im XML erzeugt werden
+
+
+
                 LoadPlans();
                 DisplayPlans();
             }
+            //THIS IS ONLY CALLED IF NO EDIT ( = NEW ENTRY)
             else
             {
+                Debug.WriteLine("\n\nWENT INTO NO EDIT\n\n");
 
                 string _entryName = EntryName.Text;
 

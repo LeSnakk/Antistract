@@ -192,7 +192,7 @@ namespace antistract.MVVM.View
                         if (Event["entryName"].InnerText == GetCurrentlySelectedPlan())     //Find right entry by Plan Name
                         {
                             Debug.WriteLine("\nEvent before delete: \n" + Event.ChildNodes.Count + "\n");
-                            int i = 1; ;
+                            int i = 1;
                             while (i < Event.ChildNodes.Count)
                             {
                                 Event.RemoveChild(Event.ChildNodes[i]);
@@ -408,6 +408,21 @@ namespace antistract.MVVM.View
             Button button = (Button)sender;
             Grid grid = button.Parent as Grid;
             Border border = grid.Parent as Border;
+
+            foreach (Object element in grid.Children)
+            {
+                if (element is TextBox)
+                {
+                    var textBox = (TextBox)element;
+                    textBox.Clear();
+                }
+                else if (element is ComboBox)
+                {
+                    var comboBox = (ComboBox)element;
+                    comboBox.SelectedIndex = -1;
+                }
+            }
+
             border.Visibility = Visibility.Collapsed;
         }
 

@@ -177,6 +177,10 @@ namespace antistract.MVVM.View
 
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
         {
+            SavePlanButton_Click();
+        }
+
+        private void SavePlanButton_Click() {
             if (isEdited())
             {
                 Debug.WriteLine("\n\nWENT INTO EDIT MODE\n\n");
@@ -188,7 +192,7 @@ namespace antistract.MVVM.View
                 for (int l = 0; l < elements.Count; l++)    //All elements in XML
                 {
                     foreach (XmlNode Event in elements[l].ChildNodes)
-                    {                 
+                    {
                         if (Event["entryName"].InnerText == GetCurrentlySelectedPlan())     //Find right entry by Plan Name
                         {
                             Debug.WriteLine("\nEvent before delete: \n" + Event.ChildNodes.Count + "\n");
@@ -198,10 +202,11 @@ namespace antistract.MVVM.View
                                 Event.RemoveChild(Event.ChildNodes[i]);
                             }
                             Debug.WriteLine("\nEvent after delete: \n" + Event.ChildNodes.Count + "\n");
-                        }                        
+                        }
                     }
-                }              
-                doc1.Save(path);
+                }
+                Save(null, doc1, path);
+                //doc1.Save(path);
 
                 XDocument doc = XDocument.Load(path);
                 XElement root = doc.Descendants("entry").FirstOrDefault(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan());
@@ -221,7 +226,8 @@ namespace antistract.MVVM.View
                     WriteToXMLFile(doc, root, _title, _type, _duration);
                     Debug.WriteLine("\nROOT AFTER REPLACEMENT DURCHGANG " + i + "\n" + root);
                 }
-                doc.Save(path);
+                //doc.Save(path);
+                Save(doc, null, path);
                 LoadPlans();
                 DisplayPlans();
             }
@@ -255,12 +261,14 @@ namespace antistract.MVVM.View
                 if (root.Elements().Count<XElement>() > 1)
                 {
                     doc.Element("antistract_plan").Add(root);
-                    doc.Save(path);
+                    Save(doc, null, path);
+                    //doc.Save(path);
                 }
             }
             LoadPlans();
             DisplayPlans();
         }
+    
 
         public void WriteToXMLFile(XDocument doc, XElement root, string _title, string _type, string _duration)
         {
@@ -303,6 +311,18 @@ namespace antistract.MVVM.View
             {
                 TogglePlanCreatorItem(i, false);
                 PlanCreatorWrapPanel.Children[i].Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void Save(XDocument document, XmlDocument xmldoc, string path)
+        {
+            if (document == null)
+            {
+                xmldoc.Save(path);
+            }
+            else if (xmldoc == null)
+            {
+                document.Save(path);
             }
         }
 
@@ -372,6 +392,12 @@ namespace antistract.MVVM.View
                 }
             }
             border.Visibility = Visibility.Collapsed;
+
+            SavePlanButton_Click(); //Nicht alles saven hier
+            LoadPlans();
+            DisplayPlans();
+            ShowSelectedPlan(GetCurrentlySelectedPlan());
+            EditButtonClick();
         }
 
         private void PlanEntryNameList_Click(object sender, RoutedEventArgs e)
@@ -386,13 +412,18 @@ namespace antistract.MVVM.View
         {
             XDocument doc = XDocument.Load(path);
             doc.Descendants("entry").Where(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault().Remove();
-            doc.Save(path);
+            Save(doc, null, path);
+            //doc.Save(path);
 
             LoadPlans();
             DisplayPlans();
         }
 
         private void Edit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            EditButtonClick();
+        }
+        private void EditButtonClick()
         {
             for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
             {

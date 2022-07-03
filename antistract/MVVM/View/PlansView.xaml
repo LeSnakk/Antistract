@@ -70,6 +70,7 @@
                                         <RadioButton Content="{Binding entryName}"
                                                      GroupName="PlanSelection"
                                                      Style="{StaticResource PlansListButtonTheme}"
+                                                     IsChecked="{Binding isChecked, Mode=TwoWay}"
                                                      Click="PlanEntryNameList_Click"/>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>

@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -178,6 +179,7 @@ namespace antistract.MVVM.View
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
         {
             SavePlanButton_Click();
+            TickPlan(GetCurrentlySelectedPlan());
         }
 
         private void SavePlanButton_Click() {
@@ -311,6 +313,20 @@ namespace antistract.MVVM.View
             {
                 TogglePlanCreatorItem(i, false);
                 PlanCreatorWrapPanel.Children[i].Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void TickPlan(string PlanName)
+        {
+            EntryNames planName = new EntryNames();
+            for (int i = 0; i < PlanOverviewStackPanel.Items.Count; i++)
+            {
+                planName = (EntryNames)PlanOverviewStackPanel.Items[i];
+
+                if (planName.entryName == PlanName)
+                {
+                    planName.isChecked = true;
+                }
             }
         }
 

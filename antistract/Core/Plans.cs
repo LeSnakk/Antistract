@@ -41,9 +41,15 @@ public class EntryNames
     }
 
     private string _entryName;
+    private bool _isChecked;
     public string entryName
     {
         get { return _entryName; }
         set { _entryName = value; }
+    }
+    public bool isChecked 
+    { 
+        get { return _isChecked; } 
+        set { _isChecked = value; } 
     }
 }

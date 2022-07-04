@@ -250,7 +250,7 @@
                                         BorderBrush="#1A936F" BorderThickness="1" CornerRadius="5"
                                         Margin="5"
                                         Padding="5">
-                                    <Grid x:Name="sfdeoji">
+                                    <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="25*" />
                                             <RowDefinition Height="25*" />
@@ -290,6 +290,59 @@
                                         </TextBox>
                                         <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource BasicButtonTheme}"
                                                 x:Name="EntryDelete2"
+                                                Margin="0,3,0,3"
+                                                Click="EventDelete_Click">
+                                            Remove
+                                        </Button>
+                                    </Grid>
+                                </Border>
+
+                                <Border Visibility="Collapsed" 
+                                        x:Name="EntryBlock3"
+                                        Width="150"
+                                        BorderBrush="#1A936F" BorderThickness="1" CornerRadius="5"
+                                        Margin="5"
+                                        Padding="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="25*" />
+                                            <RowDefinition Height="25*" />
+                                            <RowDefinition Height="25*" />
+                                            <RowDefinition Height="25*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50*" />
+                                            <ColumnDefinition Width="50*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0" Grid.Row="0">
+                                            Title
+                                        </Label>
+                                        <Label Grid.Column="0" Grid.Row="1">
+                                            Type
+                                        </Label>
+                                        <Label Grid.Column="0" Grid.Row="2">
+                                            Duration
+                                        </Label>
+
+                                        <TextBox Grid.Column="1" Grid.Row="0"
+                                                 x:Name="EntryTitle3"
+                                                 Margin="0,3,0,3">
+
+                                        </TextBox>
+                                        <ComboBox Grid.Column="1" Grid.Row="1"
+                                                  x:Name="EntryType3"
+                                                  Margin="0,3,0,3">
+                                            <ComboBoxItem>Work</ComboBoxItem>
+                                            <ComboBoxItem>Break</ComboBoxItem>
+                                        </ComboBox>
+                                        <TextBox Grid.Column="1" Grid.Row="2"
+                                                 x:Name="EntryDuration3"
+                                                 Margin="0,3,0,3">
+
+                                        </TextBox>
+                                        <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource BasicButtonTheme}"
+                                                x:Name="EntryDelete3"
                                                 Margin="0,3,0,3"
                                                 Click="EventDelete_Click">
                                             Remove

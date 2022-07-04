@@ -55,6 +55,8 @@
                             <Button x:Name="AddPlanButton"
                                     HorizontalAlignment="Center"
                                     Click="AddPlanButton_Click">Add Plan</Button>
+                            <Button x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                        Visibility="Hidden"></Button>
                         </StackPanel>
 
                         <ScrollViewer Grid.Row="1" Margin="10">
@@ -102,11 +104,13 @@
                                 </Grid.RowDefinitions>
 
                                 <Button Grid.Row="0"
-                                        Margin="2">
+                                        Margin="2"
+                                        IsEnabled="false">
                                     Import
                                 </Button>
                                 <Button Grid.Row="1"
-                                        Margin="2">
+                                        Margin="2"
+                                        IsEnabled="false">
                                     Export
                                 </Button>
                             </Grid>

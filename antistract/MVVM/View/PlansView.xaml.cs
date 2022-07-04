@@ -306,7 +306,7 @@ namespace antistract.MVVM.View
 
         public void ResetPlanCreatorItems()
         {
-            for (int i = 1; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+            for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)   //Changed: i from 1 to 0, and -1 to -2
             {
                 TextBox title = (TextBox)this.FindName("EntryTitle" + (i));
                 title.Clear();
@@ -373,10 +373,31 @@ namespace antistract.MVVM.View
             TextBox duration = (TextBox)this.FindName("EntryDuration" + (item));
             duration.IsEnabled = toggle;
         }
+        public void TogglePlanCreatorItems(bool toggle)
+        {
+            for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+            {
+                TextBox title = (TextBox)this.FindName("EntryTitle" + (i));
+                title.IsEnabled = toggle;
+
+                ComboBox type = (ComboBox)this.FindName("EntryType" + (i));
+                type.IsEnabled = toggle;
+
+                TextBox duration = (TextBox)this.FindName("EntryDuration" + (i));
+                duration.IsEnabled = toggle;
+            }
+        }
 
         private void AddPlanButton_Click(object sender, RoutedEventArgs e)
         {
+            GoToPlansViewButton.Command.Execute(null);
+            LoadPlans();
+            DisplayPlans();
+            SetCurrentlySelectedPlan("");
+            isEdited(false);
+            ResetPlanCreatorItems();
             ToggleAddButton(true);
+            TogglePlanCreatorItems(true);
         }
 
         private void AddElementButton_Click(object sender, RoutedEventArgs e)
@@ -422,6 +443,7 @@ namespace antistract.MVVM.View
             ShowSelectedPlan(GetCurrentlySelectedPlan());
             EditButtonClick();
             ToggleRemoveButton(true);
+            TickPlan(GetCurrentlySelectedPlan());
         }
 
         private void PlanEntryNameList_Click(object sender, RoutedEventArgs e)  //Plan List

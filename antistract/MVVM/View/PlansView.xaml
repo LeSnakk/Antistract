@@ -185,7 +185,7 @@
                                         <Button Grid.ColumnSpan="2" Grid.Row="3"
                                                 x:Name="EntryDelete0"
                                                 Margin="0,3,0,3"
-                                                Click="EntryDelete_Click">
+                                                Click="EventDelete_Click">
                                             Remove
                                         </Button>
                                     </Grid>
@@ -238,7 +238,7 @@
                                         <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource BasicButtonTheme}"
                                                 x:Name="EntryDelete1"
                                                 Margin="0,3,0,3"
-                                                Click="EntryDelete_Click">
+                                                Click="EventDelete_Click">
                                             Remove
                                         </Button>
                                     </Grid>
@@ -291,7 +291,7 @@
                                         <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource BasicButtonTheme}"
                                                 x:Name="EntryDelete2"
                                                 Margin="0,3,0,3"
-                                                Click="EntryDelete_Click">
+                                                Click="EventDelete_Click">
                                             Remove
                                         </Button>
                                     </Grid>
@@ -303,6 +303,7 @@
                                         x:Name="AddElementButton"
                                         FontSize="50"
                                         Padding="-1,-15.5,0,0"
+                                        Visibility="Hidden"
                                         Click="AddElementButton_Click">
                                     +
                                 </Button>

@@ -143,6 +143,7 @@ namespace antistract.MVVM.View
         {
             ResetPlanCreatorItems();
             ToggleAddButton(false);
+            ToggleRemoveButton(false);
 
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
@@ -180,6 +181,13 @@ namespace antistract.MVVM.View
         {
             SavePlanButton_Click();
             TickPlan(GetCurrentlySelectedPlan());
+            for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+            {
+                TogglePlanCreatorItem(i, false);
+            }
+            ToggleAddButton(false);
+            isEdited(false);
+            ToggleRemoveButton(false);
         }
 
         private void SavePlanButton_Click() {
@@ -352,7 +360,6 @@ namespace antistract.MVVM.View
             {
                 AddElementButton.Visibility = Visibility.Hidden;
             }
-
         }
 
         public void TogglePlanCreatorItem(int item, bool toggle)
@@ -388,7 +395,7 @@ namespace antistract.MVVM.View
             }
         }
 
-        private void EntryDelete_Click(object sender, RoutedEventArgs e)
+        private void EventDelete_Click(object sender, RoutedEventArgs e)    //Event List
         {
             Button button = (Button)sender;
             Grid grid = button.Parent as Grid;
@@ -414,9 +421,10 @@ namespace antistract.MVVM.View
             DisplayPlans();
             ShowSelectedPlan(GetCurrentlySelectedPlan());
             EditButtonClick();
+            ToggleRemoveButton(true);
         }
 
-        private void PlanEntryNameList_Click(object sender, RoutedEventArgs e)
+        private void PlanEntryNameList_Click(object sender, RoutedEventArgs e)  //Plan List
         {
             RadioButton radiobutton = (RadioButton)sender;
             GetPlan(radiobutton.Content.ToString());
@@ -438,6 +446,7 @@ namespace antistract.MVVM.View
         private void Edit_Button_Click(object sender, RoutedEventArgs e)
         {
             EditButtonClick();
+            ToggleRemoveButton(true);
         }
         private void EditButtonClick()
         {
@@ -447,6 +456,34 @@ namespace antistract.MVVM.View
             }
             ToggleAddButton(true);
             isEdited(true);
+        }
+        private void ToggleRemoveButton(bool visibility)
+        {
+            foreach (Object PlanCreatorItem in PlanCreatorWrapPanel.Children)
+            {
+                if (PlanCreatorItem is Border)
+                {
+                    Border temp = PlanCreatorItem as Border;
+                    Grid grid = temp.Child as Grid;
+
+                    foreach (Object element in grid.Children)
+                    {
+                        if (element is Button)
+                        {
+                            var button = (Button)element;
+                            
+                            if (visibility)
+                            {
+                                button.Visibility = Visibility.Visible;
+                            }
+                            else
+                            {
+                                button.Visibility = Visibility.Collapsed;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

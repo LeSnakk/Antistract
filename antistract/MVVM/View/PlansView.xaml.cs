@@ -507,5 +507,11 @@ namespace antistract.MVVM.View
                 }
             }
         }
+
+        private void ShowTimerWindow_Click(object sender, RoutedEventArgs e)
+        {
+            TimerWindow timerWindow = new TimerWindow();
+            timerWindow.Show();
+        }
     }
 }

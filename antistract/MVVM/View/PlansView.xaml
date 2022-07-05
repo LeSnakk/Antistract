@@ -368,6 +368,10 @@
                         </Border>
                     </Grid>
                 </Border>
+                <Button Grid.Column="1" Margin="214,452,123,42"
+                        Click="ShowTimerWindow_Click">
+                    Show Timer Window
+                </Button>
             </Grid>
         </Border>
     </Border>

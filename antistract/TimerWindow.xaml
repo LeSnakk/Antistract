@@ -18,7 +18,8 @@
     <Border Height="100"
             Width="300"
             Background="#BF88D498"
-            CornerRadius="7">
+            CornerRadius="7"
+            MouseDown="TitleBar_MouseDown">
         <Grid>
             <Label>Timer Window</Label>
         </Grid>

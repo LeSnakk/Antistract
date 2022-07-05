@@ -24,5 +24,13 @@ namespace antistract
             InitializeComponent();
             this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
         }
+
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                Application.Current.Windows[1].DragMove(); //Only wirks in build
+            }
+        }
     }
 }

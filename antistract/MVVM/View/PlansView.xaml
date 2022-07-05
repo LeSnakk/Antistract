@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:antistract.MVVM.View"
+             xmlns:local="clr-namespace:antistract.MVVM.View" xmlns:local1="clr-namespace:antistract.Core"
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="710">
+    <UserControl.DataContext>
+        <local1:CurrentlySelectedPlan />
+    </UserControl.DataContext>
     <Border Padding="35,0,0,0" 
             Margin="0,535,0,0" 
             Background="#88D498"
@@ -369,8 +372,8 @@
                     </Grid>
                 </Border>
                 <Button Grid.Column="1" Margin="214,452,123,42"
-                        Click="ShowTimerWindow_Click">
-                    Show Timer Window
+                        Click="ShowTimerWindow_Click" Content="{Binding SelectedPlan, UpdateSourceTrigger=PropertyChanged}">
+                    
                 </Button>
             </Grid>
         </Border>

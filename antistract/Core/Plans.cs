@@ -1,4 +1,5 @@
-﻿using System;
+﻿using antistract.Main;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace antistract.Core
     {
 
         public ObservableCollection<EntryNames> EntryNames;
+        public ObservableObject CurrentlySelectedPlan;
 
         public Plans()
         {
             EntryNames = new ObservableCollection<EntryNames>();
+            CurrentlySelectedPlan = new ObservableObject();
         }
 
 
@@ -52,4 +55,21 @@ public class EntryNames
         get { return _isChecked; } 
         set { _isChecked = value; } 
     }
+}
+
+public class CurrentlySelectedPlan
+{
+    public CurrentlySelectedPlan()
+    {
+
+    }
+
+    private string _currentlySelectedPlan;
+
+    public string currentlySelectedPlan
+    {
+        get { return _currentlySelectedPlan; }
+        set { _currentlySelectedPlan = value; }
+    }
+
 }

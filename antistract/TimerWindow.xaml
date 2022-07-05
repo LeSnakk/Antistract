@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:antistract"
         mc:Ignorable="d"
         Title="TimerWindow" 
         AllowsTransparency="True"
@@ -21,7 +20,12 @@
             CornerRadius="7"
             MouseDown="TitleBar_MouseDown">
         <Grid>
-            <Label>Timer Window</Label>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9*" />
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Label x:Name="CurrentlySelectedPlan"></Label>
         </Grid>
     </Border>
 </Window>

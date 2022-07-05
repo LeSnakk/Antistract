@@ -30,6 +30,7 @@ namespace antistract.MVVM.View
         public List<Plans> Plans = new List<Plans>();
         private string _currentlySelectedPlan = "";
         private bool _isEdited = false;
+        CurrentlySelectedPlan currentlySelectedPlan = new CurrentlySelectedPlan();
 
         public PlansView()
         {
@@ -39,14 +40,14 @@ namespace antistract.MVVM.View
             _PlanCreatorWrapPanel = PlanCreatorWrapPanel;
         }
 
-        public string GetCurrentlySelectedPlan()
+        /*public string GetCurrentlySelectedPlan()
         {
             return _currentlySelectedPlan;
         }
         public void SetCurrentlySelectedPlan(string planName)
         {
             _currentlySelectedPlan = planName;
-        }
+        }*/
 
         public bool isEdited()
         {
@@ -180,7 +181,7 @@ namespace antistract.MVVM.View
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
         {
             SavePlanButton_Click();
-            TickPlan(GetCurrentlySelectedPlan());
+            TickPlan(currentlySelectedPlan.currentlySelectedPlan);
             for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
             {
                 TogglePlanCreatorItem(i, false);
@@ -203,7 +204,7 @@ namespace antistract.MVVM.View
                 {
                     foreach (XmlNode Event in elements[l].ChildNodes)
                     {
-                        if (Event["entryName"].InnerText == GetCurrentlySelectedPlan())     //Find right entry by Plan Name
+                        if (Event["entryName"].InnerText == currentlySelectedPlan.currentlySelectedPlan)     //Find right entry by Plan Name
                         {
                             Debug.WriteLine("\nEvent before delete: \n" + Event.ChildNodes.Count + "\n");
                             int i = 1;
@@ -219,7 +220,7 @@ namespace antistract.MVVM.View
                 //doc1.Save(path);
 
                 XDocument doc = XDocument.Load(path);
-                XElement root = doc.Descendants("entry").FirstOrDefault(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan());
+                XElement root = doc.Descendants("entry").FirstOrDefault(p => p.Attribute("PlanName").Value == currentlySelectedPlan.currentlySelectedPlan);
                 Debug.WriteLine("\nROOT BEFORE REPLACEMENT\n" + root);
 
                 for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
@@ -293,7 +294,7 @@ namespace antistract.MVVM.View
 
         public void ReplaceInXMLFile(XDocument doc, XElement root, string _title, string _type, string _duration)
         {
-            XElement toReplace = doc.Descendants("entry").FirstOrDefault(el => el.Attribute("PlanName")?.Value == GetCurrentlySelectedPlan());
+            XElement toReplace = doc.Descendants("entry").FirstOrDefault(el => el.Attribute("PlanName")?.Value == currentlySelectedPlan.currentlySelectedPlan);
 
             if (!string.IsNullOrEmpty(_title))
             {
@@ -393,7 +394,7 @@ namespace antistract.MVVM.View
             GoToPlansViewButton.Command.Execute(null);
             LoadPlans();
             DisplayPlans();
-            SetCurrentlySelectedPlan("");
+            currentlySelectedPlan.currentlySelectedPlan = "";
             isEdited(false);
             ResetPlanCreatorItems();
             ToggleAddButton(true);
@@ -440,24 +441,26 @@ namespace antistract.MVVM.View
             SavePlanButton_Click(); //Nicht alles saven hier
             LoadPlans();
             DisplayPlans();
-            ShowSelectedPlan(GetCurrentlySelectedPlan());
+            ShowSelectedPlan(currentlySelectedPlan.currentlySelectedPlan);
             EditButtonClick();
             ToggleRemoveButton(true);
-            TickPlan(GetCurrentlySelectedPlan());
+            TickPlan(currentlySelectedPlan.currentlySelectedPlan);
         }
 
         private void PlanEntryNameList_Click(object sender, RoutedEventArgs e)  //Plan List
         {
             RadioButton radiobutton = (RadioButton)sender;
             GetPlan(radiobutton.Content.ToString());
-            SetCurrentlySelectedPlan(radiobutton.Content.ToString());
-            ShowSelectedPlan(GetCurrentlySelectedPlan());
+            currentlySelectedPlan.currentlySelectedPlan = radiobutton.Content.ToString();
+            ShowSelectedPlan(currentlySelectedPlan.currentlySelectedPlan);
+            TimerWindow tw = new TimerWindow();
+            tw.CurrentlySelectedPlan.Content = "test";
         }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
             XDocument doc = XDocument.Load(path);
-            doc.Descendants("entry").Where(p => p.Attribute("PlanName").Value == GetCurrentlySelectedPlan()).FirstOrDefault().Remove();
+            doc.Descendants("entry").Where(p => p.Attribute("PlanName").Value == currentlySelectedPlan.currentlySelectedPlan).FirstOrDefault().Remove();
             Save(doc, null, path);
             //doc.Save(path);
 
@@ -512,6 +515,7 @@ namespace antistract.MVVM.View
         {
             TimerWindow timerWindow = new TimerWindow();
             timerWindow.Show();
+            Debug.WriteLine(currentlySelectedPlan.currentlySelectedPlan);
         }
     }
 }

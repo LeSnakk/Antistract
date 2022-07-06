@@ -35,8 +35,8 @@ namespace antistract
             this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
             SelectedPlanLabel.DataContext = CurrentlySelectedPlan;
             CurrentlySelectedPlan.SelectedPlan = currentlySelectedPlan;
-            GetPlan(currentlySelectedPlan);
-            StartTimer(1);
+            GetPlan(CurrentlySelectedPlan.SelectedPlan);
+            InitializeTimer();
         }
 
         public void GetPlan(string PlanName)
@@ -62,6 +62,11 @@ namespace antistract
                     }
                 }
             }
+        }
+
+        private void InitializeTimer()
+        {
+            StartTimer(Int32.Parse(SelectedPlanNodes.ChildNodes[3]["duration"].InnerText));
         }
 
         private void StartTimer(int Minutes)

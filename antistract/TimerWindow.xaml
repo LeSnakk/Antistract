@@ -42,7 +42,7 @@
             <Label x:Name="TimerSeconds"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
-                   FontSize="25" Margin="243,18,0,0" Grid.Row="1"/>
+                   FontSize="25" Margin="220,18,0,0" Grid.Row="1"/>
 
             <Button Grid.Row="2" 
                     HorizontalAlignment="Center"

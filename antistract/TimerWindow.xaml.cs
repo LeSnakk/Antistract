@@ -24,6 +24,7 @@ namespace antistract
     {
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
         readonly string path = "Plans/paradeplan_2.xml";
+        XmlNode SelectedPlanNodes;
 
         public TimerWindow(string currentlySelectedPlan)
         {
@@ -46,6 +47,7 @@ namespace antistract
                 {
                     if (Event["entryName"].InnerText == PlanName)
                     {
+                        SelectedPlanNodes = Event;
                         Debug.WriteLine("SELECTED PLAN:\n" + Event["entryName"].InnerText);
                         for (int j = 1; j < Event.ChildNodes.Count; j++)
                         {

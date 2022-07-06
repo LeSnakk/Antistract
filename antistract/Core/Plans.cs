@@ -12,12 +12,10 @@ namespace antistract.Core
     {
         public ObservableCollection<EntryNames> EntryNames;
 
-
         public Plans()
         {
             EntryNames = new ObservableCollection<EntryNames>();
         }
-
     }
 }
 
@@ -30,6 +28,7 @@ public class EntryNames
 
     private string _entryName;
     private bool _isChecked;
+
     public string entryName
     {
         get { return _entryName; }

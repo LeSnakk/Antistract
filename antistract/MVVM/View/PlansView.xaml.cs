@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,7 +33,6 @@ namespace antistract.MVVM.View
         private bool _isEdited = false;
 
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
-        
 
         public PlansView()
         {
@@ -40,6 +40,7 @@ namespace antistract.MVVM.View
 
             DisplayPlans();
             _PlanCreatorWrapPanel = PlanCreatorWrapPanel;
+            LBL.DataContext = CurrentlySelectedPlan;
         }
 
         /*public string GetCurrentlySelectedPlan()
@@ -518,6 +519,11 @@ namespace antistract.MVVM.View
             TimerWindow timerWindow = new TimerWindow();
             timerWindow.Show();
             Debug.WriteLine(CurrentlySelectedPlan.SelectedPlan);
+        }
+
+        private void Set_CSP_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

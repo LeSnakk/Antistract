@@ -32,6 +32,10 @@
             <Label x:Name="CurrentlySelectedPlan" Content="{Binding SelectedPlan, UpdateSourceTrigger=PropertyChanged}">
                 
             </Label>
+
+            <Button HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Click="Button_Click">Test</Button>
         </Grid>
     </Border>
 </Window>

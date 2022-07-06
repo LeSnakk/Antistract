@@ -1,6 +1,7 @@
 ﻿using antistract.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,11 @@ namespace antistract
     /// </summary>
     public partial class TimerWindow : Window
     {
+        CurrentlySelectedPlan plan;
         public TimerWindow()
         {
             InitializeComponent();
+            plan = new CurrentlySelectedPlan();
             this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
         }
 
@@ -32,6 +35,12 @@ namespace antistract
             {
                 Application.Current.Windows[1].DragMove(); //Only wirks in build
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            plan.SelectedPlan = "DEMO";
+            Debug.WriteLine(plan.SelectedPlan);
         }
     }
 }

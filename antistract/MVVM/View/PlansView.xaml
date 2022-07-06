@@ -374,9 +374,7 @@
 
                 </Button>
 
-                <Label x:Name="LBL" Content="{Binding SelectedPlan, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="5,434,292,72">
-
-                </Label>
+                <Label x:Name="LBL"  Content="{Binding SelectedPlan, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="5,434,292,72"></Label>
 
                 <Button Grid.Column="1" Margin="26,475,311,19"
                         Click="Set_CSP_Click" Content="Set csp">

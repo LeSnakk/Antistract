@@ -43,15 +43,6 @@ namespace antistract.MVVM.View
             LBL.DataContext = CurrentlySelectedPlan;
         }
 
-        /*public string GetCurrentlySelectedPlan()
-        {
-            return _currentlySelectedPlan;
-        }
-        public void SetCurrentlySelectedPlan(string planName)
-        {
-            _currentlySelectedPlan = planName;
-        }*/
-
         public bool isEdited()
         {
             return _isEdited;
@@ -456,8 +447,6 @@ namespace antistract.MVVM.View
             GetPlan(radiobutton.Content.ToString());
             CurrentlySelectedPlan.SelectedPlan = radiobutton.Content.ToString();
             ShowSelectedPlan(CurrentlySelectedPlan.SelectedPlan);
-            TimerWindow tw = new TimerWindow();
-            tw.CurrentlySelectedPlan.Content = "test";
         }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
@@ -516,14 +505,14 @@ namespace antistract.MVVM.View
 
         private void ShowTimerWindow_Click(object sender, RoutedEventArgs e)
         {
-            TimerWindow timerWindow = new TimerWindow();
+            TimerWindow timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
             timerWindow.Show();
             Debug.WriteLine(CurrentlySelectedPlan.SelectedPlan);
         }
 
         private void Set_CSP_Click(object sender, RoutedEventArgs e)
         {
-            
+            Debug.WriteLine(_currentlySelectedPlan);
         }
     }
 }

@@ -21,12 +21,14 @@ namespace antistract
     /// </summary>
     public partial class TimerWindow : Window
     {
-        CurrentlySelectedPlan plan;
-        public TimerWindow()
+        CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
+
+        public TimerWindow(string currentlySelectedPlan)
         {
             InitializeComponent();
-            plan = new CurrentlySelectedPlan();
             this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
+            SelectedPlanLabel.DataContext = CurrentlySelectedPlan;
+            CurrentlySelectedPlan.SelectedPlan = currentlySelectedPlan;
         }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
@@ -39,8 +41,7 @@ namespace antistract
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            plan.SelectedPlan = "DEMO";
-            Debug.WriteLine(plan.SelectedPlan);
+            
         }
     }
 }

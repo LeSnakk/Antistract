@@ -13,10 +13,7 @@
         Topmost="True"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="Manual">
-    <Window.DataContext>
-        <local:CurrentlySelectedPlan />
-    </Window.DataContext>
-
+ 
     <Border Height="100"
             Width="300"
             Background="#BF88D498"
@@ -28,8 +25,8 @@
                 <RowDefinition Height="6*" />
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
-                       
-            <Label x:Name="CurrentlySelectedPlan" Content="{Binding SelectedPlan, UpdateSourceTrigger=PropertyChanged}">
+
+            <Label x:Name="SelectedPlanLabel" Content="{Binding SelectedPlan, UpdateSourceTrigger=PropertyChanged}">
                 
             </Label>
 

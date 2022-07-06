@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml;
+using System.Windows.Threading;
 
 namespace antistract
 {
@@ -25,6 +26,8 @@ namespace antistract
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
         readonly string path = "Plans/paradeplan_2.xml";
         XmlNode SelectedPlanNodes;
+        DispatcherTimer MainTimer;
+        TimeSpan timeLeft;
 
         public TimerWindow(string currentlySelectedPlan)
         {
@@ -33,6 +36,7 @@ namespace antistract
             SelectedPlanLabel.DataContext = CurrentlySelectedPlan;
             CurrentlySelectedPlan.SelectedPlan = currentlySelectedPlan;
             GetPlan(currentlySelectedPlan);
+            StartTimer(1);
         }
 
         public void GetPlan(string PlanName)
@@ -60,7 +64,30 @@ namespace antistract
             }
         }
 
+        private void StartTimer(int Minutes)
+        {
+            MainTimer = new DispatcherTimer();           
+            timeLeft = TimeSpan.FromMinutes(Minutes);
 
+            MainTimer.Tick += dispatcherTimer_Tick;
+            MainTimer.Interval = new TimeSpan(0, 0, 1);
+
+
+            MainTimer.Start();
+            Timer.Content = timeLeft.TotalSeconds;
+        }
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
+            Timer.Content = ((int)timeLeft.TotalMinutes)+1;
+            TimerSeconds.Content = timeLeft.TotalSeconds;
+
+            if (timeLeft.TotalSeconds <= 0) 
+            {
+                MainTimer.Stop();
+                Timer.Content = ((int)timeLeft.TotalMinutes);
+            }
+        }
 
 
 

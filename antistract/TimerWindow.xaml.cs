@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace antistract
 {
@@ -22,6 +23,7 @@ namespace antistract
     public partial class TimerWindow : Window
     {
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
+        readonly string path = "Plans/paradeplan_2.xml";
 
         public TimerWindow(string currentlySelectedPlan)
         {
@@ -29,7 +31,37 @@ namespace antistract
             this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
             SelectedPlanLabel.DataContext = CurrentlySelectedPlan;
             CurrentlySelectedPlan.SelectedPlan = currentlySelectedPlan;
+            GetPlan(currentlySelectedPlan);
         }
+
+        public void GetPlan(string PlanName)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+            XmlNodeList elements = doc.ChildNodes;
+
+            for (int i = 0; i < elements.Count; i++)
+            {
+                foreach (XmlNode Event in elements[i].ChildNodes)
+                {
+                    if (Event["entryName"].InnerText == PlanName)
+                    {
+                        Debug.WriteLine("SELECTED PLAN:\n" + Event["entryName"].InnerText);
+                        for (int j = 1; j < Event.ChildNodes.Count; j++)
+                        {
+                            Debug.WriteLine(Event.ChildNodes[j]["title"].InnerText);
+                            Debug.WriteLine(Event.ChildNodes[j]["type"].InnerText);
+                            Debug.WriteLine(Event.ChildNodes[j]["duration"].InnerText);
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
+
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {

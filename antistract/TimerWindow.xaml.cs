@@ -29,6 +29,13 @@ namespace antistract
         DispatcherTimer MainTimer;
         TimeSpan timeLeft;
 
+
+        string EventTitle;
+        string EventDescription;
+        string EventDuration;
+        int TotalEvents;
+        int CurrentEvent = 1;
+
         public TimerWindow(string currentlySelectedPlan)
         {
             InitializeComponent();
@@ -52,6 +59,7 @@ namespace antistract
                     if (Event["entryName"].InnerText == PlanName)
                     {
                         SelectedPlanNodes = Event;
+                        TotalEvents = Event.ChildNodes.Count;
                         Debug.WriteLine("SELECTED PLAN:\n" + Event["entryName"].InnerText);
                         for (int j = 1; j < Event.ChildNodes.Count; j++)
                         {
@@ -66,7 +74,10 @@ namespace antistract
 
         private void InitializeTimer()
         {
-            StartTimer(Int32.Parse(SelectedPlanNodes.ChildNodes[3]["duration"].InnerText));
+            if (CurrentEvent < TotalEvents)
+            {
+                StartTimer(Int32.Parse(SelectedPlanNodes.ChildNodes[CurrentEvent]["duration"].InnerText));
+            }
         }
 
         private void StartTimer(int Minutes)
@@ -91,6 +102,8 @@ namespace antistract
             {
                 MainTimer.Stop();
                 Timer.Content = ((int)timeLeft.TotalMinutes);
+                CurrentEvent++;
+                InitializeTimer();
             }
         }
 

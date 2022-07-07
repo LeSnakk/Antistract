@@ -78,6 +78,15 @@ namespace antistract
         {
             if (CurrentEvent < TotalEvents)
             {
+                if (SelectedPlanNodes.ChildNodes[CurrentEvent]["type"].InnerText == "Work")
+                {
+                    Paint("green");
+                }
+                else if (SelectedPlanNodes.ChildNodes[CurrentEvent]["type"].InnerText == "Break")
+                {
+                    Paint("blue");
+                }
+                EntryTitle.Content = SelectedPlanNodes.ChildNodes[CurrentEvent]["title"].InnerText;
                 StartTimer(Int32.Parse(SelectedPlanNodes.ChildNodes[CurrentEvent]["duration"].InnerText));
             }
         }
@@ -93,7 +102,6 @@ namespace antistract
 
             MainTimer.Start();
             Timer.Content = timeLeft.TotalSeconds;
-            Paint("red");
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {

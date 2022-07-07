@@ -104,6 +104,7 @@ namespace antistract.MVVM.View
             bgWorker.RunWorkerAsync();
         }
 
+
         private void BgWorker_DoWork(object? sender, DoWorkEventArgs e)
         {
             while (isChecked() == false)

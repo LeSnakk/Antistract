@@ -78,16 +78,19 @@ namespace antistract
         {
             if (CurrentEvent < TotalEvents)
             {
+                ProductivityView pw = new ProductivityView();
                 if (SelectedPlanNodes.ChildNodes[CurrentEvent]["type"].InnerText == "Work")
                 {
                     Paint("green");
-                    ProductivityView pw = new ProductivityView();
+                    
                     RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
                     pw.button.RaiseEvent(newEventArgs);
                 }
                 else if (SelectedPlanNodes.ChildNodes[CurrentEvent]["type"].InnerText == "Break")
                 {
                     Paint("blue");
+
+                    pw.isCheckingg.IsChecked = true;
                 }
 
                 EntryTitle.Content = SelectedPlanNodes.ChildNodes[CurrentEvent]["title"].InnerText;

@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using System.Xml;
 using System.Windows.Threading;
 using System.Windows.Media;
-
+using antistract.MVVM.View;
 
 namespace antistract
 {
@@ -81,14 +81,25 @@ namespace antistract
                 if (SelectedPlanNodes.ChildNodes[CurrentEvent]["type"].InnerText == "Work")
                 {
                     Paint("green");
+                    ProductivityView pw = new ProductivityView();
+                    RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                    pw.button.RaiseEvent(newEventArgs);
                 }
                 else if (SelectedPlanNodes.ChildNodes[CurrentEvent]["type"].InnerText == "Break")
                 {
                     Paint("blue");
                 }
+
                 EntryTitle.Content = SelectedPlanNodes.ChildNodes[CurrentEvent]["title"].InnerText;
                 StartTimer(Int32.Parse(SelectedPlanNodes.ChildNodes[CurrentEvent]["duration"].InnerText));
+
+                CheckEventType();
             }
+        }
+
+        private void CheckEventType()
+        {
+            
         }
 
         private void StartTimer(int Minutes)

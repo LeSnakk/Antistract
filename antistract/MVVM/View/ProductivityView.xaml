@@ -57,7 +57,7 @@
 
                     <TextBox Name="tb" Width="540" Height="30"></TextBox>
                     <CheckBox x:Name="isCheckingg" IsChecked="False" Content="ABORT CHECK"/>
-                    <Button x:Name="button" Content="Start checking..." Click="startChecking" HorizontalAlignment="Left" Height="26" Margin="359,10,0,0" VerticalAlignment="Top" Width="92"/>
+                    <Button x:Name="button" Content="Start checking..." Click="startChecking" HorizontalAlignment="Left" Height="26" Margin="359,10,0,0" VerticalAlignment="Top" Width="92" IsEnabled="True" Visibility="Visible"/>
                     <ListBox x:Name="listBox" Grid.Row="1" SelectionChanged="listBox_SelectionChanged" Height="200" Margin="5">
                         <ListBoxItem>Click to load installed programs</ListBoxItem>
                     </ListBox>

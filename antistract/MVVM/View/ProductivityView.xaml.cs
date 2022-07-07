@@ -20,7 +20,7 @@ namespace antistract.MVVM.View
     {
         readonly MainWindow mainWndw = (MainWindow)Application.Current.MainWindow;
 
-        BackgroundWorker bgWorker = new BackgroundWorker();
+        static BackgroundWorker bgWorker = new BackgroundWorker();
         Dictionary<String, String> programs = new Dictionary<String, String>();
         public List<RegistryKey> installedPrograms = new List<RegistryKey>();
 
@@ -95,6 +95,12 @@ namespace antistract.MVVM.View
 
         private void startChecking(object sender, RoutedEventArgs e)
         {
+            StartChecking();
+        }
+
+        public static void StartChecking()
+        {
+            Debug.WriteLine("Ich sollte jetzt checken!!");
             bgWorker.RunWorkerAsync();
         }
 

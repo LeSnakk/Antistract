@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml;
 using System.Windows.Threading;
+using System.Windows.Media;
+
 
 namespace antistract
 {
@@ -91,6 +93,7 @@ namespace antistract
 
             MainTimer.Start();
             Timer.Content = timeLeft.TotalSeconds;
+            Paint("red");
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -107,8 +110,28 @@ namespace antistract
             }
         }
 
+        //Colors:
+        //Green: #BF88D498
+        //Blue: #BF2CC3CE
+        //Red: #BFCE2C2C
 
-
+        private void Paint(string color)
+        {
+            Color colour;
+            if (color == "green")
+            {
+                colour = (Color)ColorConverter.ConvertFromString("#BF88D498");
+            }
+            else if (color == "blue")
+            {
+                colour = (Color)ColorConverter.ConvertFromString("#BF2CC3CE");
+            }
+            else if (color == "red")
+            {
+                colour = (Color)ColorConverter.ConvertFromString("#BFCE2C2C");
+            }
+            TimerBorder.Background = new SolidColorBrush(colour);
+        }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {

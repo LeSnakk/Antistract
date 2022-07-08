@@ -111,6 +111,7 @@ namespace antistract.MVVM.View
         {
             while (isChecked())
             {
+                Thread.Sleep(100);
                 var names = new[] { "systemsettings", "winrar", "steam" };
                 Process[] processes = names.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 if (processes.Length == 0)

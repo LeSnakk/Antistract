@@ -24,6 +24,8 @@ namespace antistract.MVVM.View
         Dictionary<String, String> programs = new Dictionary<String, String>();
         public List<RegistryKey> installedPrograms = new List<RegistryKey>();
 
+        public static bool ShouldCheck;
+
         public ProductivityView()
         {
             InitializeComponent();
@@ -107,7 +109,7 @@ namespace antistract.MVVM.View
 
         private void BgWorker_DoWork(object? sender, DoWorkEventArgs e)
         {
-            while (isChecked() == false)
+            while (isChecked())
             {
                 var names = new[] { "systemsettings", "winrar", "steam" };
                 Process[] processes = names.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
@@ -128,14 +130,15 @@ namespace antistract.MVVM.View
             Debug.WriteLine("Checking stopped");
         }
 
-        public bool isChecked()
+        public static bool isChecked()
         {
-            bool temp = false;
+            return ShouldCheck;
+            /*bool temp = false;
             this.Dispatcher.Invoke(() =>
             {
                 temp = this.isCheckingg.IsChecked.Value;
             });
-            return temp;
+            return temp;*/
         }
 
         private void FillPickPlanDropdown()
@@ -185,6 +188,15 @@ namespace antistract.MVVM.View
         {
             mainWndw.MenuButtonPlans.IsChecked = true;
             GoToPlansViewButton.Command.Execute(null);
+        }
+
+        public void ShouldCheckYes(object sender, RoutedEventArgs e)
+        {
+            ShouldCheck = true;
+        }
+        public void ShouldCheckNo(object sender, RoutedEventArgs e)
+        {
+            ShouldCheck = false;
         }
     }
 }

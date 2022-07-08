@@ -45,15 +45,19 @@
                    VerticalAlignment="Top"
                    FontSize="25" Margin="220,18,0,0" Grid.Row="1"/>
 
-            <Button Grid.Row="2" 
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    Click="Button_Click">Test</Button>
-
             <Label x:Name="EntryTitle" 
                    Grid.Row="2"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center" Margin="48,0,0,0" Height="25" />
+            <CheckBox x:Name="TestBox"/>
+
+
+            <Label Grid.Row="1" 
+                   x:Name="TimerWasted"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="10" Margin="0,51,0,0" Grid.RowSpan="2" Height="22" 
+                   Content="00:00:00"/>
 
 
         </Grid>

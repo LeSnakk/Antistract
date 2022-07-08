@@ -17,6 +17,7 @@ using System.Xml;
 using System.Windows.Threading;
 using System.Windows.Media;
 using antistract.MVVM.View;
+using System.Threading;
 
 namespace antistract
 {
@@ -29,7 +30,9 @@ namespace antistract
         readonly string path = "Plans/paradeplan_2.xml";
         XmlNode SelectedPlanNodes;
         DispatcherTimer MainTimer;
+        DispatcherTimer WasteTimer;
         TimeSpan timeLeft;
+        TimeSpan timeWasted;
 
 
         string EventTitle;
@@ -46,6 +49,7 @@ namespace antistract
             CurrentlySelectedPlan.SelectedPlan = currentlySelectedPlan;
             GetPlan(CurrentlySelectedPlan.SelectedPlan);
             InitializeTimer();
+            GlobalVariables.OnlyPausing = true;
         }
 
         public void GetPlan(string PlanName)
@@ -85,8 +89,16 @@ namespace antistract
                 {
                     Paint("green");
                   
-                    pw.button.RaiseEvent(newEventArgs);
-                    pw.ShouldCheckYES.RaiseEvent(newEventArgs);
+                    if (GlobalVariables.OnlyPausing)
+                    {
+
+                    }
+                    else 
+                    {
+                        pw.button.RaiseEvent(newEventArgs);
+                        pw.ShouldCheckYES.RaiseEvent(newEventArgs);
+                    }
+                    
                 }
                 else if (SelectedPlanNodes.ChildNodes[CurrentEvent]["type"].InnerText == "Break")
                 {
@@ -109,21 +121,38 @@ namespace antistract
 
         private void StartTimer(int Minutes)
         {
-            MainTimer = new DispatcherTimer();           
+            MainTimer = new DispatcherTimer();
+            WasteTimer = new DispatcherTimer();
             timeLeft = TimeSpan.FromMinutes(Minutes);
+            timeWasted = TimeSpan.FromSeconds(timeWasted.TotalSeconds);
 
             MainTimer.Tick += dispatcherTimer_Tick;
             MainTimer.Interval = new TimeSpan(0, 0, 1);
 
+            //WasteTimer.Tick += dispatcherTimer_Tick;
+            WasteTimer.Interval = new TimeSpan(0, 0, 1);
 
             MainTimer.Start();
+            WasteTimer.Start();
+            
             Timer.Content = timeLeft.TotalSeconds;
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
+            if (TestBox.IsChecked == false)
+            {
+                timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
+            }
+            else if (TestBox.IsChecked == true)
+            {
+                timeWasted = timeWasted.Add(TimeSpan.FromSeconds(1));
+                Debug.WriteLine("Timer has been stopped");
+            }
+            
             Timer.Content = ((int)timeLeft.TotalMinutes)+1;
             TimerSeconds.Content = timeLeft.TotalSeconds;
+
+            TimerWasted.Content = timeWasted.ToString(@"hh\:mm\:ss");
 
             if (timeLeft.TotalSeconds <= 0) 
             {
@@ -163,11 +192,6 @@ namespace antistract
             {
                 Application.Current.Windows[1].DragMove(); //Only wirks in build
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

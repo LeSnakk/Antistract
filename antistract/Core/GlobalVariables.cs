@@ -9,5 +9,7 @@ namespace antistract.Core
     public class GlobalVariables
     {
         public static List<String> PlanNames { get; set; } = new List<string>();
+
+        public static bool OnlyPausing;
     }
 }

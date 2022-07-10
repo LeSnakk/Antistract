@@ -89,16 +89,8 @@ namespace antistract
                 {
                     Paint("green");
                   
-                    if (GlobalVariables.OnlyPausing)
-                    {
-
-                    }
-                    else 
-                    {
-                        pw.button.RaiseEvent(newEventArgs);
-                        pw.ShouldCheckYES.RaiseEvent(newEventArgs);
-                    }
-                    
+                    pw.ShouldCheckYES.RaiseEvent(newEventArgs);
+                    pw.button.RaiseEvent(newEventArgs);                                 
                 }
                 else if (SelectedPlanNodes.ChildNodes[CurrentEvent]["type"].InnerText == "Break")
                 {

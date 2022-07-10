@@ -393,6 +393,7 @@ namespace antistract.MVVM.View
             ResetPlanCreatorItems();
             ToggleAddButton(true);
             TogglePlanCreatorItems(true);
+            ToggleRemoveButton(true);
         }
 
         private void AddElementButton_Click(object sender, RoutedEventArgs e)

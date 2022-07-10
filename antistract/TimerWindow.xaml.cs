@@ -104,6 +104,16 @@ namespace antistract
 
                 CheckEventType();
             }
+            else
+            {
+                //After Plan being completed:
+
+                ProductivityView pw = new ProductivityView();
+                RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                pw.ShouldCheckNO.RaiseEvent(newEventArgs);
+
+                this.Close();
+            }
         }
 
         private void CheckEventType()

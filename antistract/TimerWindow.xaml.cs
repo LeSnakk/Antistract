@@ -34,6 +34,9 @@ namespace antistract
         DispatcherTimer WasteTimer;
         TimeSpan timeLeft;
         TimeSpan timeWasted;
+        TimeSpan weeklyLearnTime;
+
+        bool ShouldAddToWeeklyLearnTime;
 
         static bool TimerOnHold = false;
 
@@ -86,16 +89,17 @@ namespace antistract
                 if (SelectedPlanNodes.ChildNodes[CurrentEvent]["type"].InnerText == "Work")
                 {
                     Paint("green");
-                  
+                    ShouldAddToWeeklyLearnTime = true;
+
                     ProductivityView.ShouldCheckYes();
                     ProductivityView.startChecking();                         
                 }
                 else if (SelectedPlanNodes.ChildNodes[CurrentEvent]["type"].InnerText == "Break")
                 {
                     Paint("blue");
+                    ShouldAddToWeeklyLearnTime = false;
 
                     ProductivityView.ShouldCheckNo();
-
                 }
 
                 EntryTitle.Content = SelectedPlanNodes.ChildNodes[CurrentEvent]["title"].InnerText;
@@ -125,10 +129,11 @@ namespace antistract
             timeLeft = TimeSpan.FromMinutes(Minutes);
             timeWasted = TimeSpan.FromSeconds(timeWasted.TotalSeconds);
 
+            weeklyLearnTime = TimeSpan.FromSeconds((int)Settings.Default["WeeklyLearnTime"]);
+
             MainTimer.Tick += dispatcherTimer_Tick;
             MainTimer.Interval = new TimeSpan(0, 0, 1);
 
-            //WasteTimer.Tick += dispatcherTimer_Tick;
             WasteTimer.Interval = new TimeSpan(0, 0, 1);
 
             MainTimer.Start();
@@ -141,7 +146,14 @@ namespace antistract
             if (TimerOnHold == false)
             {
                 timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
-                //Settings.Default["WeeklyLearnTime"] += Time.DeltaTime;
+
+                if (ShouldAddToWeeklyLearnTime)
+                {
+                    weeklyLearnTime = weeklyLearnTime.Add(TimeSpan.FromSeconds(1));
+                    Settings.Default["WeeklyLearnTime"] = (int)weeklyLearnTime.TotalSeconds;
+                    Settings.Default.Save();
+                    Debug.WriteLine(Settings.Default["WeeklyLearnTime"]);
+                }
             }
             else if (TimerOnHold == true)
             {
@@ -151,7 +163,7 @@ namespace antistract
             
             Timer.Content = ((int)timeLeft.TotalMinutes)+1;
             TimerSeconds.Content = timeLeft.TotalSeconds;
-
+            
             TimerWasted.Content = timeWasted.ToString(@"hh\:mm\:ss");
 
             if (timeLeft.TotalSeconds <= 0) 
@@ -162,11 +174,6 @@ namespace antistract
                 InitializeTimer();
             }
         }
-
-        //Colors:
-        //Green: #BF88D498
-        //Blue: #BF2CC3CE
-        //Red: #BFCE2C2C
 
         private void Paint(string color)
         {

@@ -21,6 +21,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 using System.Xml.Linq;
+using antistract.Properties;
 
 namespace antistract.MVVM.View
 {
@@ -513,7 +514,9 @@ namespace antistract.MVVM.View
 
         private void Set_CSP_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine(_currentlySelectedPlan);
+            Debug.WriteLine(Settings.Default["WeeklyLearnTime"]);
+            Settings.Default["WeeklyLearnTime"] = 5;
+            Settings.Default.Save();
         }
     }
 }

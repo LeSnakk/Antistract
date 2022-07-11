@@ -199,5 +199,15 @@ namespace antistract.MVVM.View
         {
             ShouldCheck = false;
         }
+
+        private void Close_Program_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Close Program");
+        }
+
+        private void Stop_Timer_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Pause Timer");
+        }
     }
 }

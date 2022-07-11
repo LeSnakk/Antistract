@@ -149,6 +149,7 @@ namespace antistract
 
                 if (ShouldAddToWeeklyLearnTime)
                 {
+                    Paint("green");
                     weeklyLearnTime = weeklyLearnTime.Add(TimeSpan.FromSeconds(1));
                     Settings.Default["WeeklyLearnTime"] = (int)weeklyLearnTime.TotalSeconds;
                     Settings.Default.Save();
@@ -157,7 +158,8 @@ namespace antistract
             }
             else if (TimerOnHold == true)
             {
-                timeWasted = timeWasted.Add(TimeSpan.FromSeconds(1));
+                Paint("red");
+                timeWasted = timeWasted.Add(TimeSpan.FromSeconds(1));   
                 Debug.WriteLine("Timer has been stopped");
             }
             

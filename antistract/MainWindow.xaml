@@ -61,6 +61,37 @@
                             <ImageBrush ImageSource="/Images/avatar_placeholder.png"/>
                         </Ellipse.Fill>
                     </Ellipse>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6.5*" />
+                            <RowDefinition Height="3.5*" />
+                        </Grid.RowDefinitions>
+
+
+                        <TextBlock x:Name="UsernameDisplay"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"
+                                   Grid.Row="1"
+                                   PreviewMouseDown="UsernameDisplay_PreviewMouseDown">
+                                dfgsdgsd
+                        </TextBlock>
+
+                        <TextBox x:Name="UsernameDisplayTextBox"
+                                 VerticalAlignment="Center" 
+                                 HorizontalAlignment="Center"
+                                 Grid.Row="1"
+                                 Visibility="Hidden">
+                        </TextBox>
+                        <Button x:Name="SaveUsername"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Grid.Row="1" Margin="0,36,0,0"
+                                FontSize="8"
+                                Click="SaveUsername_Click">
+                            Save Username
+                        </Button>
+
+                    </Grid>
                 </Grid>
 
                 <!--Left menu buttons-->

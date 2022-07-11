@@ -1,4 +1,5 @@
 ﻿using antistract.MVVM.View;
+using antistract.Properties;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,6 +27,7 @@ namespace antistract
         {
             InitializeComponent();
             InitializePlans();
+            LoadUsername();
         }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
@@ -66,6 +68,34 @@ namespace antistract
             PlansView plansView = new PlansView();
             plansView.LoadPlans();
         }
-        
+
+        private void LoadUsername()
+        {
+            if (Settings.Default["Username"].ToString() == "")
+            {
+                Settings.Default["Username"] = "New User";
+                Settings.Default.Save();
+            }
+            UsernameDisplay.Text = Settings.Default["Username"].ToString();
+            UsernameDisplay.Visibility = Visibility.Visible;
+            
+            UsernameDisplayTextBox.Text = Settings.Default["Username"].ToString();
+            UsernameDisplayTextBox.Visibility = Visibility.Hidden;
+            SaveUsername.Visibility = Visibility.Hidden;
+        }
+
+        private void UsernameDisplay_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            UsernameDisplay.Visibility = Visibility.Hidden;
+            UsernameDisplayTextBox.Visibility = Visibility.Visible;
+            SaveUsername.Visibility=Visibility.Visible;
+        }
+
+        private void SaveUsername_Click(object sender, RoutedEventArgs e)
+        {
+            Settings.Default["Username"] = UsernameDisplayTextBox.Text;
+            Settings.Default.Save();
+            LoadUsername();
+        }
     }
 }

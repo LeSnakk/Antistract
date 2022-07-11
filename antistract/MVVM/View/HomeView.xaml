@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:antistract.MVVM.View"
              xmlns:viewModel="clr-namespace:antistract.MVVM.ViewModel"
+             xmlns:properties="clr-namespace:antistract.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="710">
 
@@ -37,13 +38,22 @@
             </Border.Background>
 
             <StackPanel>
-                <TextBlock x:Name="HeyName" 
-                   Text="Hey USERNAME"
-                   Foreground="#114B5F"
-                   FontSize="28" 
-                   HorizontalAlignment="left"
-                   Margin="20,20,0,20"
-                   FontFamily="/Fonts/#Joan"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Hey,  "
+                               Foreground="#114B5F"
+                               FontSize="28" 
+                               HorizontalAlignment="left"
+                               Margin="20,20,0,20"
+                               FontFamily="/Fonts/#Joan"/>
+                    
+                    <TextBlock x:Name="HeyName" 
+                               Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username, Mode=TwoWay}"
+                               Foreground="#114B5F"
+                               FontSize="28" 
+                               HorizontalAlignment="left"
+                               Margin="0,20,0,20"
+                               FontFamily="/Fonts/#Joan"/>
+                </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <Border Width="300"

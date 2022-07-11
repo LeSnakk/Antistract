@@ -1,4 +1,5 @@
-﻿using System;
+﻿using antistract.Properties;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -25,11 +26,26 @@ namespace antistract.MVVM.View
         public HomeView()
         {
             InitializeComponent();
+            UpdateTotalWeekStudyHours();
         }
 
         private void GetStarted_Click(object sender, RoutedEventArgs e)
         {
             mainWndw.MenuButtonProductivity.IsChecked = true;
+        }
+
+        public void UpdateTotalWeekStudyHours()
+        {
+            if ((int)Settings.Default["WeeklyLearnTime"] >= 3600)
+            {
+                WeekStudyHours.Text = ((int)Settings.Default["WeeklyLearnTime"] / 3600).ToString();
+                TimeUnit.Text = "  hours.";
+            }
+            else
+            {
+                WeekStudyHours.Text = ((int)Settings.Default["WeeklyLearnTime"] / 60).ToString();
+                TimeUnit.Text = "  minutes.";
+            }          
         }
     }
 }

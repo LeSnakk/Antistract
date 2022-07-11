@@ -97,14 +97,15 @@
                                        FontFamily="/Fonts/#Joan"/>
 
                                     <TextBlock x:Name="WeekStudyHours" 
-                                       Text="69"
+                                       Text="00"
                                        Foreground="#114B5F"
                                        FontSize="40"
                                        Margin="0,10,0,0" 
                                        HorizontalAlignment="Left"
                                        FontFamily="/Fonts/#Joan"/>
 
-                                    <TextBlock Text="  hours."
+                                    <TextBlock x:Name="TimeUnit"
+                                       Text="  hours."
                                        Foreground="#114B5F"
                                        FontSize="28"
                                        Margin="0,10,0,0" 

@@ -59,7 +59,7 @@
                    FontSize="10" Margin="0,51,0,0" Grid.RowSpan="2" Height="22" 
                    Content="00:00:00"/>
 
-
+            
         </Grid>
     </Border>
 </Window>

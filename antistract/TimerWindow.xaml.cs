@@ -34,6 +34,7 @@ namespace antistract
         TimeSpan timeLeft;
         TimeSpan timeWasted;
 
+        static bool TimerOnHold = false;
 
         string EventTitle;
         string EventDescription;
@@ -49,7 +50,6 @@ namespace antistract
             CurrentlySelectedPlan.SelectedPlan = currentlySelectedPlan;
             GetPlan(CurrentlySelectedPlan.SelectedPlan);
             InitializeTimer();
-            GlobalVariables.OnlyPausing = true;
         }
 
         public void GetPlan(string PlanName)
@@ -141,11 +141,11 @@ namespace antistract
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            if (TestBox.IsChecked == false)
+            if (TimerOnHold == false)
             {
                 timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
             }
-            else if (TestBox.IsChecked == true)
+            else if (TimerOnHold == true)
             {
                 timeWasted = timeWasted.Add(TimeSpan.FromSeconds(1));
                 Debug.WriteLine("Timer has been stopped");
@@ -194,6 +194,14 @@ namespace antistract
             {
                 Application.Current.Windows[1].DragMove(); //Only wirks in build
             }
+        }
+        public static void TimerOnHoldYES()
+        {
+            TimerOnHold = true;
+        }
+        public static void TimerOnHoldNO()
+        {
+            TimerOnHold = false;
         }
     }
 }

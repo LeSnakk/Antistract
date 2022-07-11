@@ -116,6 +116,7 @@ namespace antistract.MVVM.View
                 Process[] processes = names.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 if (processes.Length == 0)
                 {
+                    TimerWindow.TimerOnHoldNO();
                     Debug.WriteLine("Notepad is not running");
                 }
                 else if (processes.Length >= 1)
@@ -124,7 +125,19 @@ namespace antistract.MVVM.View
                     foreach (Process process in processes)
                     {
                         Debug.WriteLine("Closing...");
-                        process.Kill();
+                        if (!GlobalVariables.OnlyPausing)
+                        {
+                            RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                            TimerWindow.TimerOnHoldNO();
+                            process.Kill();
+                        }
+                        else if (GlobalVariables.OnlyPausing)
+                        {
+                            RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                            TimerWindow.TimerOnHoldYES();
+                            Debug.WriteLine(process);
+                        }
+                        
                     }
                 }
             }
@@ -202,12 +215,12 @@ namespace antistract.MVVM.View
 
         private void Close_Program_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Close Program");
+            GlobalVariables.OnlyPausing = false;
         }
 
         private void Stop_Timer_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Pause Timer");
+            GlobalVariables.OnlyPausing = true;
         }
     }
 }

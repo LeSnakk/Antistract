@@ -95,7 +95,7 @@ namespace antistract.MVVM.View
             tb.Text = output;
         }
 
-        private void startChecking(object sender, RoutedEventArgs e)
+        public static void startChecking()
         {
             StartChecking();
         }
@@ -204,11 +204,11 @@ namespace antistract.MVVM.View
             GoToPlansViewButton.Command.Execute(null);
         }
 
-        public void ShouldCheckYes(object sender, RoutedEventArgs e)
+        public static void ShouldCheckYes()
         {
             ShouldCheck = true;
         }
-        public void ShouldCheckNo(object sender, RoutedEventArgs e)
+        public static void ShouldCheckNo()
         {
             ShouldCheck = false;
         }

@@ -18,6 +18,7 @@ using System.Windows.Threading;
 using System.Windows.Media;
 using antistract.MVVM.View;
 using System.Threading;
+using antistract.Properties;
 
 namespace antistract
 {
@@ -140,6 +141,7 @@ namespace antistract
             if (TimerOnHold == false)
             {
                 timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
+                //Settings.Default["WeeklyLearnTime"] += Time.DeltaTime;
             }
             else if (TimerOnHold == true)
             {

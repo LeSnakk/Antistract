@@ -24,6 +24,8 @@ namespace antistract.MVVM.View
         Dictionary<String, String> programs = new Dictionary<String, String>();
         public List<RegistryKey> installedPrograms = new List<RegistryKey>();
 
+        CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
+
         public static bool ShouldCheck;
 
         public ProductivityView()
@@ -183,18 +185,23 @@ namespace antistract.MVVM.View
 
             ListBoxItem item = new ListBoxItem();
             item.Content = "hallo";
-            l1.Items.Add(item);
-
         }
 
         private void PickPlanDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             PickPlanDropdownDefaultText.Visibility = Visibility.Hidden;
             PickPlanDropdown.Width = Double.NaN;
+            ComboBox pickPlanDropdown = (ComboBox)sender;
 
             if (GlobalVariables.PlanNames.Count < 1)
             {
                 SwitchToPlansView();
+            }
+            else
+            {
+                ComboBoxItem selectedPlan = (ComboBoxItem)pickPlanDropdown.SelectedItem;
+                CurrentlySelectedPlan.SelectedPlan = selectedPlan.Content.ToString();
+                Debug.WriteLine("PÜAAAN " + CurrentlySelectedPlan.SelectedPlan);
             }
         }
 
@@ -216,11 +223,20 @@ namespace antistract.MVVM.View
         private void Close_Program_Click(object sender, RoutedEventArgs e)
         {
             GlobalVariables.OnlyPausing = false;
+            StartTimer.IsEnabled = true;
         }
 
         private void Stop_Timer_Click(object sender, RoutedEventArgs e)
         {
             GlobalVariables.OnlyPausing = true;
+            StartTimer.IsEnabled = true;
+        }
+
+        private void StartTimer_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("CSP: " + CurrentlySelectedPlan.SelectedPlan);
+            TimerWindow timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
+            timerWindow.Show();
         }
     }
 }

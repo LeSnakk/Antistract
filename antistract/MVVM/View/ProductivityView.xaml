@@ -34,19 +34,6 @@
 
                 <StackPanel>
 
-                    <ListBox x:Name="l1" Margin="30,30,30,0" Height="150" SelectionChanged="PrintText" SelectionMode="Single">
-                        <ListBoxItem>Item 1</ListBoxItem>
-                        <ListBoxItem>Item 2</ListBoxItem>
-                        <ListBoxItem>Item 3</ListBoxItem>
-                        <ListBoxItem>Item 4</ListBoxItem>
-                        <ListBoxItem>Item 5</ListBoxItem>
-                        <ListBoxItem>Item 6</ListBoxItem>
-                        <ListBoxItem>Item 7</ListBoxItem>
-                        <ListBoxItem>Item 8</ListBoxItem>
-                        <ListBoxItem>Item 9</ListBoxItem>
-                        <ListBoxItem>Item 10</ListBoxItem>
-                    </ListBox>
-
                     <ComboBox x:Name="PickPlanDropdown"
                               HorizontalAlignment="Center"
                               Margin="20"
@@ -87,6 +74,12 @@
                 </Label>
                 <Button x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                         Visibility="Hidden"></Button>
+                <Button x:Name="StartTimer"
+                        HorizontalAlignment="Left" 
+                        Content="Start Timer" 
+                        Margin="436,107,0,413"
+                        IsEnabled="False"
+                        Click="StartTimer_Click"/>
             </Grid>
 
 

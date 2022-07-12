@@ -146,7 +146,8 @@ namespace antistract
             MainTimer.Start();
             WasteTimer.Start();
             
-            Timer.Content = timeLeft.TotalSeconds;
+            Timer.Content = timeLeft.TotalMinutes;
+            ClosingTime.Content = closingTime.ToString("HH:mm");
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {

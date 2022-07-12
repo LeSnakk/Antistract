@@ -158,7 +158,7 @@
                        Padding="0" 
                        FontFamily="/Fonts/#Dosis"
                        FontWeight="Light"
-                       Content="18:00"/>
+                       Content=""/>
             </StackPanel>
         </Grid>
     </Border>

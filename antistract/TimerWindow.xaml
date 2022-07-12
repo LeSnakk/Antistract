@@ -105,7 +105,7 @@
                        Padding="0"
                        FontSize="12"
                        Visibility="Hidden"
-                       Content="You could've had closing time " />
+                       Content="Closing time will be " />
 
                 <Label x:Name="TimerWasted"
                        VerticalAlignment="Center"
@@ -120,7 +120,7 @@
                        Padding="0"
                        FontSize="12"
                        Visibility="Hidden"
-                       Content=" ago." />
+                       Content=" later today." />
             </StackPanel>
 
             <!--Current task/event/entry area-->
@@ -133,7 +133,7 @@
                        Padding="0" 
                        FontFamily="/Fonts/#Dosis"
                        FontWeight="Medium"
-                       Content="Current Task:"/>
+                       Content="Current task:"/>
                 <Label x:Name="EntryTitle" 
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
@@ -141,6 +141,24 @@
                        FontFamily="/Fonts/#Dosis"
                        FontWeight="Light"
                        Content="taskname"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1" HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Margin="0,0,2,10">
+                <Label x:Name="ClosingTimeTabText"
+                       HorizontalAlignment="Center"
+                       Padding="0" 
+                       FontFamily="/Fonts/#Dosis"
+                       FontWeight="Medium"
+                       Content="Closing time:"/>
+                <Label x:Name="ClosingTime" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Padding="0" 
+                       FontFamily="/Fonts/#Dosis"
+                       FontWeight="Light"
+                       Content="18:00"/>
             </StackPanel>
         </Grid>
     </Border>

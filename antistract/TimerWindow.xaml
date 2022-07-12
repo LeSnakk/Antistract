@@ -51,24 +51,40 @@
             </ItemsControl>
 
             <!--Timer area-->
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center" Margin="0,-13,0,0" Grid.Row="1">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
-                <Label x:Name="Timer"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="45" 
+                <!--Timer-->
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Label x:Name="Timer"
+                           Padding="0"
+                           FontSize="45" 
+                           FontFamily="/Fonts/#Dosis"
+                           FontWeight="Bold"
+                           Content="00"/>
+                    <Label x:Name="TimerUnit"
+                           Padding="0"
+                           Grid.Column="1"
+                           FontSize="45" 
+                           FontFamily="/Fonts/#Dosis"
+                           FontWeight="SemiBold"
+                           Content=" min"/>
+                </StackPanel>
+
+                <!--remaining-->
+                <Label Grid.Column="2"
+                       VerticalAlignment="Bottom"
+                       HorizontalAlignment="Left"
                        FontFamily="/Fonts/#Dosis"
-                       FontWeight="Bold"
-                       Content="00"/>
-                <Label x:Name="TimerUnit"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="45" 
-                       FontFamily="/Fonts/#Dosis"
-                       FontWeight="SemiBold"
-                       Content="min"/>
-            </StackPanel>
+                       FontSize="12" 
+                       Margin="0,0,0,1">
+                    remaining
+                </Label>
+            </Grid>
 
             <!--DEBUG! Timer in seconds-->
             <Label x:Name="TimerSeconds"

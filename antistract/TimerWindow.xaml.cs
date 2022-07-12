@@ -36,6 +36,9 @@ namespace antistract
         TimeSpan timeWasted;
         TimeSpan weeklyLearnTime;
 
+        DateTime currentTime;
+        DateTime closingTime;
+
         bool ShouldAddToWeeklyLearnTime;
 
         static bool TimerOnHold = false;
@@ -44,11 +47,13 @@ namespace antistract
         string EventDescription;
         string EventDuration;
         int TotalEvents;
+        int TotalPlanTime;
         int CurrentEvent = 1;
 
         public TimerWindow(string currentlySelectedPlan)
         {
             InitializeComponent();
+            currentTime = DateTime.Now;
             this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
             SelectedPlanLabel.DataContext = CurrentlySelectedPlan;
             CurrentlySelectedPlan.SelectedPlan = currentlySelectedPlan;
@@ -73,13 +78,15 @@ namespace antistract
                         Debug.WriteLine("SELECTED PLAN:\n" + Event["entryName"].InnerText);
                         for (int j = 1; j < Event.ChildNodes.Count; j++)
                         {
-                            Debug.WriteLine(Event.ChildNodes[j]["title"].InnerText);
+                            /*Debug.WriteLine(Event.ChildNodes[j]["title"].InnerText);
                             Debug.WriteLine(Event.ChildNodes[j]["type"].InnerText);
-                            Debug.WriteLine(Event.ChildNodes[j]["duration"].InnerText);
+                            Debug.WriteLine(Event.ChildNodes[j]["duration"].InnerText);*/
+                            TotalPlanTime += Int32.Parse(Event.ChildNodes[j]["duration"].InnerText);
                         }
                     }
                 }
             }
+            CalculateClosingTime(TotalPlanTime);
         }
 
         private void InitializeTimer()
@@ -161,6 +168,7 @@ namespace antistract
                 ShowWastedTimeArea();
                 Paint("red");
                 timeWasted = timeWasted.Add(TimeSpan.FromSeconds(1));   
+                closingTime = closingTime.Add(TimeSpan.FromSeconds(1));
                 Debug.WriteLine("Timer has been stopped");
             }
             
@@ -168,6 +176,8 @@ namespace antistract
             TimerSeconds.Content = timeLeft.TotalSeconds;
             
             TimerWasted.Content = timeWasted.ToString(@"hh\:mm\:ss");
+            Debug.WriteLine("Current Time" + currentTime);
+            Debug.WriteLine("Closing Time: " + closingTime);
 
             if (timeLeft.TotalSeconds <= 0) 
             {
@@ -194,6 +204,12 @@ namespace antistract
                 colour = (Color)ColorConverter.ConvertFromString("#BFCE2C2C");
             }
             TimerBorder.Background = new SolidColorBrush(colour);
+        }
+
+
+        private void CalculateClosingTime(int TotalMinutes)
+        {
+            closingTime = currentTime.AddMinutes(TotalMinutes);
         }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)

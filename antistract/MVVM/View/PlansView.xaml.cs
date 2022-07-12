@@ -41,7 +41,6 @@ namespace antistract.MVVM.View
 
             DisplayPlans();
             _PlanCreatorWrapPanel = PlanCreatorWrapPanel;
-            LBL.DataContext = CurrentlySelectedPlan;
         }
 
         public bool isEdited()
@@ -510,13 +509,6 @@ namespace antistract.MVVM.View
             TimerWindow timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
             timerWindow.Show();
             Debug.WriteLine(CurrentlySelectedPlan.SelectedPlan);
-        }
-
-        private void Set_CSP_Click(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine(Settings.Default["WeeklyLearnTime"]);
-            Settings.Default["WeeklyLearnTime"] = 5;
-            Settings.Default.Save();
         }
     }
 }

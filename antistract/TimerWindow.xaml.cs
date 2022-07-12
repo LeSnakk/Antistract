@@ -158,6 +158,7 @@ namespace antistract
             }
             else if (TimerOnHold == true)
             {
+                ShowWastedTimeArea();
                 Paint("red");
                 timeWasted = timeWasted.Add(TimeSpan.FromSeconds(1));   
                 Debug.WriteLine("Timer has been stopped");
@@ -202,6 +203,20 @@ namespace antistract
                 Application.Current.Windows[1].DragMove(); //Only wirks in build
             }
         }
+
+        private void ShowWastedTimeArea()
+        {
+            TimerWastedTabTextBefore.Visibility = Visibility.Visible;
+            TimerWasted.Visibility = Visibility.Visible;
+            TimerWastedTabTextAfter.Visibility = Visibility.Visible;
+        }
+        private void HideWastedTimeArea()
+        {
+            TimerWastedTabTextBefore.Visibility = Visibility.Hidden;
+            TimerWasted.Visibility = Visibility.Hidden;
+            TimerWastedTabTextAfter.Visibility = Visibility.Hidden;
+        }
+
         public static void TimerOnHoldYES()
         {
             TimerOnHold = true;

@@ -21,6 +21,7 @@
             Background="#BF88D498"
             CornerRadius="7"
             MouseDown="TitleBar_MouseDown">
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*" />
@@ -28,34 +29,103 @@
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" 
-                   x:Name="SelectedPlanLabel" 
-                   Content="{Binding SelectedPlan, UpdateSourceTrigger=PropertyChanged}">
-            </Label>
 
-            <Label x:Name="Timer"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   FontSize="45" Margin="0,10,0,0" Grid.RowSpan="2">
-                00:00:00
-            </Label>
+            <ItemsControl x:Name="SelectedPlanLabel" ItemsSource="{Binding SelectedPlan, UpdateSourceTrigger=PropertyChanged}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" 
+                                    HorizontalAlignment="Center"
+                                    Margin="0,2,0,0"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"
+                                   FontFamily="/Fonts/#Dosis"
+                                   FontWeight="DemiBold"
+                                   FontSize="15"
+                                   Margin="0,0,1,0"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center" Margin="0,-13,0,0" Grid.Row="1">
+
+                <Label x:Name="Timer"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="45" 
+                       FontFamily="/Fonts/#Dosis"
+                       FontWeight="Bold"
+                       Content="00"/>
+                <Label x:Name="TimerUnit"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="45" 
+                       FontFamily="/Fonts/#Dosis"
+                       FontWeight="SemiBold"
+                       Content="min"/>
+
+            </StackPanel>
 
             <Label x:Name="TimerSeconds"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
-                   FontSize="25" Margin="220,18,0,0" Grid.Row="1"/>
+                   FontSize="7" Margin="280,0,0,0"/>
 
-            <Label x:Name="EntryTitle" 
-                   Grid.Row="2"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center" Margin="48,0,0,0" Height="25" />
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        Grid.Row="1"
+                        Grid.RowSpan="2"
+                        Margin="0,0,0,5" >
 
-            <Label Grid.Row="1" 
-                   x:Name="TimerWasted"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   FontSize="10" Margin="0,51,0,0" Grid.RowSpan="2" Height="22" 
-                   Content="00:00:00"/>
+                <Label x:Name="TimerWastedTabTextBefore"
+                       VerticalAlignment="Center"
+                       Padding="0"
+                       FontSize="12"
+                       Visibility="Hidden"
+                       Content="You could've had closing time " />
+
+                <Label x:Name="TimerWasted"
+                       VerticalAlignment="Center"
+                       Padding="0"
+                       FontSize="12"
+                       FontWeight="DemiBold"
+                       Visibility="Hidden"
+                       Content="00:00:00" />
+
+                <Label x:Name="TimerWastedTabTextAfter"
+                       VerticalAlignment="Center"
+                       Padding="0"
+                       FontSize="12"
+                       Visibility="Hidden"
+                       Content=" ago." />
+
+            </StackPanel>
+
+
+
+            <StackPanel Grid.Row="1" HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="2,0,0,10">
+
+                <Label x:Name="EntryTitleTabText"
+                       HorizontalAlignment="Center"
+                       Padding="0" 
+                       FontFamily="/Fonts/#Dosis"
+                       FontWeight="Medium"
+                       Content="Current Task:"/>
+                <Label x:Name="EntryTitle" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Padding="0" 
+                       FontFamily="/Fonts/#Dosis"
+                       FontWeight="Light"
+                       Content="taskname"/>
+
+            </StackPanel>
         </Grid>
     </Border>
 </Window>

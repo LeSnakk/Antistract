@@ -15,6 +15,7 @@
         WindowStartupLocation="Manual"
         ShowInTaskbar="False">
 
+    <!--TimerWindow background-->
     <Border x:Name="TimerBorder"  
             Height="100"
             Width="300"
@@ -29,7 +30,7 @@
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
 
-
+            <!--Window Title-->
             <ItemsControl x:Name="SelectedPlanLabel" ItemsSource="{Binding SelectedPlan, UpdateSourceTrigger=PropertyChanged}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -49,6 +50,7 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
+            <!--Timer area-->
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center" Margin="0,-13,0,0" Grid.Row="1">
 
@@ -66,14 +68,15 @@
                        FontFamily="/Fonts/#Dosis"
                        FontWeight="SemiBold"
                        Content="min"/>
-
             </StackPanel>
 
+            <!--DEBUG! Timer in seconds-->
             <Label x:Name="TimerSeconds"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    FontSize="7" Margin="280,0,0,0"/>
 
+            <!--Wasted time timer area-->
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Center"
@@ -102,11 +105,9 @@
                        FontSize="12"
                        Visibility="Hidden"
                        Content=" ago." />
-
             </StackPanel>
 
-
-
+            <!--Current task/event/entry area-->
             <StackPanel Grid.Row="1" HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Margin="2,0,0,10">
@@ -124,7 +125,6 @@
                        FontFamily="/Fonts/#Dosis"
                        FontWeight="Light"
                        Content="taskname"/>
-
             </StackPanel>
         </Grid>
     </Border>

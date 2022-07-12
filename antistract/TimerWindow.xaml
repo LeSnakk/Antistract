@@ -44,47 +44,40 @@
                         <TextBlock Text="{Binding}"
                                    FontFamily="/Fonts/#Dosis"
                                    FontWeight="DemiBold"
-                                   FontSize="15"
+                                   FontSize="17"
                                    Margin="0,0,1,0"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
             <!--Timer area-->
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-                <!--Timer-->
-                <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <Label x:Name="Timer"
-                           Padding="0"
-                           FontSize="45" 
-                           FontFamily="/Fonts/#Dosis"
-                           FontWeight="Bold"
-                           Content="00"/>
-                    <Label x:Name="TimerUnit"
-                           Padding="0"
-                           Grid.Column="1"
-                           FontSize="45" 
-                           FontFamily="/Fonts/#Dosis"
-                           FontWeight="SemiBold"
-                           Content=" min"/>
-                </StackPanel>
-
-                <!--remaining-->
-                <Label Grid.Column="2"
-                       VerticalAlignment="Bottom"
-                       HorizontalAlignment="Left"
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center" Margin="0,18,0,0" Grid.RowSpan="2">
+                <Label x:Name="Timer"
+                       Padding="0"
+                       FontSize="45" 
                        FontFamily="/Fonts/#Dosis"
-                       FontSize="12" 
-                       Margin="0,0,0,1">
-                    remaining
-                </Label>
-            </Grid>
+                       FontWeight="Bold"
+                       Content="00"/>
+                <Label x:Name="TimerUnit"
+                       Padding="0"
+                       Grid.Column="1"
+                       FontSize="45" 
+                       FontFamily="/Fonts/#Dosis"
+                       FontWeight="SemiBold"
+                       Content=" min"/>
+            </StackPanel>
+            <!--remaining-->
+            <Label Grid.Row="1"
+                   Padding="0"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="center"
+                   FontFamily="/Fonts/#Dosis"
+                   FontSize="14" 
+                   FontWeight="DemiBold">
+                remaining
+            </Label>
 
             <!--DEBUG! Timer in seconds-->
             <Label x:Name="TimerSeconds"
@@ -98,7 +91,7 @@
                         HorizontalAlignment="Center"
                         Grid.Row="1"
                         Grid.RowSpan="2"
-                        Margin="0,0,0,5" >
+                        Margin="0,0,0,2" >
 
                 <Label x:Name="TimerWastedTabTextBefore"
                        VerticalAlignment="Center"
@@ -125,39 +118,40 @@
 
             <!--Current task/event/entry area-->
             <StackPanel Grid.Row="1" HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="2,0,0,10">
+                        VerticalAlignment="Bottom"
+                        Margin="2,0,0,14.5">
 
                 <Label x:Name="EntryTitleTabText"
                        HorizontalAlignment="Center"
                        Padding="0" 
                        FontFamily="/Fonts/#Dosis"
-                       FontWeight="Medium"
+                       FontWeight="Bold"
                        Content="Current task:"/>
                 <Label x:Name="EntryTitle" 
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Padding="0" 
                        FontFamily="/Fonts/#Dosis"
-                       FontWeight="Light"
+                       FontWeight="DemiBold"
                        Content="taskname"/>
             </StackPanel>
-            
+
+            <!--Closing time area-->
             <StackPanel Grid.Row="1" HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Margin="0,0,2,10">
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,2,14.5">
                 <Label x:Name="ClosingTimeTabText"
                        HorizontalAlignment="Center"
                        Padding="0" 
                        FontFamily="/Fonts/#Dosis"
-                       FontWeight="Medium"
+                       FontWeight="Bold"
                        Content="Closing time:"/>
                 <Label x:Name="ClosingTime" 
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Padding="0" 
                        FontFamily="/Fonts/#Dosis"
-                       FontWeight="Light"
+                       FontWeight="DemiBold"
                        Content=""/>
             </StackPanel>
         </Grid>

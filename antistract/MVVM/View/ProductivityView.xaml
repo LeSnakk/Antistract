@@ -46,7 +46,7 @@
                 <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
                     <StackPanel Orientation="Horizontal"
                                 Margin="0,0,0,14">
-                        <TextBlock Text="Hey,  "
+                        <TextBlock Text="Hey  "
                                Foreground="#114B5F"
                                VerticalAlignment="Center"
                                Padding="0"
@@ -95,10 +95,11 @@
 
                 <Border Grid.Row="1" Grid.ColumnSpan="2"
                         Background="#114B5F"
-                        Margin="20,0,20,10"
+                        Margin="20,0,20,40"
                         Padding="0"
                         Height="1"/>
 
+                <!--Start button area-->
                 <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,81,0,81" Grid.RowSpan="2">
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center">
@@ -137,8 +138,8 @@
                 </StackPanel>
 
 
-                <StackPanel Grid.Row="2"/>
-                <Border HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="2">
+                <!--Select your plan area-->
+                <Border HorizontalAlignment="Left" Margin="20,27,0,27" Grid.Row="1" Grid.RowSpan="2">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                             <GradientStop Color="#88D498" Offset="0.0" />
@@ -194,14 +195,85 @@
                     </Grid>
                 </Border>
 
+                <!--Blacklist programs area-->
+                <Border HorizontalAlignment="Center" Margin="0,130,0,0" Grid.Row="2" Grid.RowSpan="2" Width="452">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                            <GradientStop Color="#88D498" Offset="0.0" />
+                            <GradientStop Color="#1A936F" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Clip>
+                        <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,450,208" />
+                    </Border.Clip>
 
+                    <Grid>
+                        <Image Width="167"
+                           Height="167"
+                           Source="/Images/heart_book.png"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="-16.852"/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+
+                        <StackPanel Margin="0,0,0,22">
+                            <TextBlock Text="Which programs disturb you?"
+                                       HorizontalAlignment="Center"
+                                   Foreground="#114B5F"
+                                   FontSize="30"
+                                   Margin="10,2,10,0" 
+                                   FontFamily="/Fonts/#Joan"/>
+                        </StackPanel>
+
+                        <ListBox x:Name="listBox" 
+                                 SelectionChanged="listBox_SelectionChanged"
+                                 HorizontalAlignment="Left" 
+                                 Margin="5,46,0,10" 
+                                 Width="200">
+                            <ListBoxItem Content="Click to load installed programs"/>
+                        </ListBox>
+
+                        <Button x:Name="AddToBlackList" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Click="AddToBlackList_Click"
+                                Content="&gt;" 
+                                Margin="0,0,3,0"
+                                Padding="11,0,11,5"
+                                FontWeight="Bold"
+                                FontSize="20"
+                                FontFamily="/Fonts/#Dosis"/>
+                        <Button x:Name="RemoveFromBlacklist" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Click="RemoveFromBlacklist_Click"
+                                Content="&lt;" 
+                                Margin="0,70,3,0"
+                                Padding="11,0,11,4"
+                                FontWeight="Bold"
+                                FontSize="20"
+                                FontFamily="/Fonts/#Dosis"/>
+
+                        <ListBox x:Name="blacklistList" 
+                                 SelectionChanged="listBox_SelectionChanged"
+                                 HorizontalAlignment="Right" 
+                                 Margin="0,46,8,10" 
+                                 Width="200">
+                            <ListBoxItem Content="Click to load installed programs"/>
+                        </ListBox>
+                    </Grid>
+                </Border>
 
                 <Button Grid.Row="2" x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                        Visibility="Hidden"></Button>
-                <ListBox x:Name="listBox" SelectionChanged="listBox_SelectionChanged" Margin="20,16,49,38" Grid.Row="3">
-                    <ListBoxItem Content="Click to load installed programs"/>
-                </ListBox>
-                <Button x:Name="btn_load" Content="Show List" Click="GetInstalledPrograms" Margin="338,106,37,30" Grid.Row="3"/>
+                        Visibility="Hidden">
+
+                </Button>
+
+
+
+                <Button x:Name="btn_load" Content="Load programs" Click="GetInstalledPrograms" Margin="63,68,311,68" Grid.Row="3"/>
 
             </Grid>
         </Border>

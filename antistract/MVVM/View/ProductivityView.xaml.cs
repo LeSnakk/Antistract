@@ -235,5 +235,15 @@ namespace antistract.MVVM.View
             TimerWindow timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
             timerWindow.Show();
         }
+
+        private void AddToBlackList_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemoveFromBlacklist_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

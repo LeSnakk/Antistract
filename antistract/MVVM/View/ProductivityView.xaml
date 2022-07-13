@@ -235,8 +235,9 @@
                                  SelectionChanged="listBox_SelectionChanged"
                                  HorizontalAlignment="Left" 
                                  Margin="5,46,0,10" 
-                                 Width="200">
-                            <ListBoxItem Content="Click to load installed programs"/>
+                                 Width="200"
+                                 >
+                            <ListBoxItem/>
                         </ListBox>
 
                         <Button x:Name="AddToBlackList" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -275,6 +276,7 @@
 
                 <Button x:Name="btn_load" Content="Load programs" Click="GetInstalledPrograms" Margin="63,68,311,68" Grid.Row="3"/>
 
+                <Label x:Name="LoadingText" Content="loading programs..." Margin="63,68,311,68" Grid.Row="3"/>
             </Grid>
         </Border>
     </Border>

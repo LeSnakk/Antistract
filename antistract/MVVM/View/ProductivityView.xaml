@@ -148,7 +148,7 @@
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
                                        RadiusY="10"
-                                       Rect="0,0,300,200" />
+                                       Rect="0,0,280,140" />
                     </Border.Clip>
 
                     <Grid>
@@ -164,11 +164,12 @@
                             </Image.RenderTransform>
                         </Image>
 
-                        <StackPanel>
+                        <StackPanel Margin="0,0,0,22">
                             <TextBlock Text="Select your plan"
+                                       HorizontalAlignment="Center"
                                    Foreground="#114B5F"
                                    FontSize="40"
-                                   Margin="20,10,20,0" 
+                                   Margin="10,10,10,0" 
                                    FontFamily="/Fonts/#Joan"/>
 
                             <ComboBox x:Name="PickPlanDropdown"
@@ -194,13 +195,13 @@
                 </Border>
 
 
-                
+
                 <Button Grid.Row="2" x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                         Visibility="Hidden"></Button>
                 <ListBox x:Name="listBox" SelectionChanged="listBox_SelectionChanged" Margin="20,16,49,38" Grid.Row="3">
                     <ListBoxItem Content="Click to load installed programs"/>
                 </ListBox>
-                <Button x:Name="btn_load" Content="Show List" Click="GetInstalledPrograms" Margin="188,109,187,27" Grid.Row="2"/>
+                <Button x:Name="btn_load" Content="Show List" Click="GetInstalledPrograms" Margin="338,106,37,30" Grid.Row="3"/>
 
             </Grid>
         </Border>

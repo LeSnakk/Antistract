@@ -44,15 +44,23 @@
                                FontSize="28" 
                                HorizontalAlignment="left"
                                Margin="20,20,0,20"
-                               FontFamily="/Fonts/#Joan"/>
-                    
+                               FontFamily="/Fonts/#Joan"
+                               FontWeight="Bold"/>
                     <TextBlock x:Name="HeyName" 
                                Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username, Mode=TwoWay}"
                                Foreground="#114B5F"
                                FontSize="28" 
                                HorizontalAlignment="left"
                                Margin="0,20,0,20"
-                               FontFamily="/Fonts/#Joan"/>
+                               FontFamily="/Fonts/#Joan"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="!"
+                               Foreground="#114B5F"
+                               FontSize="28" 
+                               HorizontalAlignment="left"
+                               Margin="1,20,0,20"
+                               FontFamily="/Fonts/#Joan"
+                               FontWeight="Bold"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">

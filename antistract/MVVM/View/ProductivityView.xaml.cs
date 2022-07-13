@@ -93,8 +93,6 @@ namespace antistract.MVVM.View
             ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
 
             programs.TryGetValue(lbi.Content.ToString(), out output);
-
-            tb.Text = output;
         }
 
         public static void startChecking()
@@ -181,7 +179,6 @@ namespace antistract.MVVM.View
         void PrintText(object sender, SelectionChangedEventArgs args)
         {
             ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
-            tb.Text = "   You selected " + lbi.Content.ToString() + ".";
 
             ListBoxItem item = new ListBoxItem();
             item.Content = "hallo";

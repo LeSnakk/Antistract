@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:antistract.MVVM.View"
+             xmlns:properties="clr-namespace:antistract.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="710">
     <Border Padding="35,0,0,0" 
@@ -31,58 +32,177 @@
             </Border.Background>
 
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="3*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
 
-                <StackPanel>
+                <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,14">
+                        <TextBlock Text="Hey,  "
+                               Foreground="#114B5F"
+                               VerticalAlignment="Center"
+                               Padding="0"
+                               FontSize="28" 
+                               HorizontalAlignment="left"
+                               Margin="20,20,0,0"
+                               FontFamily="/Fonts/#Joan"
+                               FontWeight="Bold"/>
+                        <TextBlock x:Name="HeyName" 
+                               Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username, Mode=TwoWay}"
+                               Foreground="#114B5F"
+                               FontSize="28" 
+                               HorizontalAlignment="left"
+                               Margin="0,20,0,0"
+                               FontFamily="/Fonts/#Joan"
+                               FontWeight="Bold"/>
+                        <TextBlock Text=","
+                               Foreground="#114B5F"
+                               VerticalAlignment="Center"
+                               Padding="0"
+                               FontSize="28" 
+                               HorizontalAlignment="left"
+                               Margin="0,20,0,0"
+                               FontFamily="/Fonts/#Joan"
+                               FontWeight="Bold"/>
+                    </StackPanel>
+                    <TextBlock
+                           Text="It's time to be productive!"
+                           Foreground="#114B5F"
+                           VerticalAlignment="Center"
+                           Padding="0"
+                           FontSize="28" 
+                           HorizontalAlignment="left"
+                           Margin="20,0,0,7"
+                           FontFamily="/Fonts/#Joan"/>
+                    <TextBlock Grid.Row="1"
+                           Text="Pick your plan and get started!"
+                           Foreground="#114B5F"
+                           VerticalAlignment="Center"
+                           Padding="0"
+                           FontSize="28" 
+                           HorizontalAlignment="left"
+                           Margin="20,0,0,0"
+                           FontFamily="/Fonts/#Joan"/>
+                </StackPanel>
 
-                    <ComboBox x:Name="PickPlanDropdown"
-                              HorizontalAlignment="Center"
-                              Margin="20"
-                              IsEditable="False"
-                              Width="{Binding Width, ElementName=PickPlanDropdownDefaultText}"
-                              SelectionChanged="PickPlanDropdown_SelectionChanged">
-                    </ComboBox>
+                <Border Grid.Row="1" Grid.ColumnSpan="2"
+                        Background="#114B5F"
+                        Margin="20,0,20,10"
+                        Padding="0"
+                        Height="1"/>
 
-                    <TextBox Name="tb" Width="540" Height="30"></TextBox>
-
+                <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,81,0,81" Grid.RowSpan="2">
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center">
                         <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
-                                     Content="Close Program"
-                                     Click="Close_Program_Click"/>
+                                 VerticalAlignment="Center"
+                                  Content="Close Program"
+                                  Click="Close_Program_Click"/>
                         <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
-                                     Content="Stop Timer"
-                                     Click="Stop_Timer_Click"/>
+                                 VerticalAlignment="Center"
+                                 Content="Stop Timer"
+                                 Click="Stop_Timer_Click"/>
                     </StackPanel>
 
-
-                    <CheckBox x:Name="isCheckingg" IsChecked="False" Content="ABORT CHECK"/>
-
-                    <ListBox x:Name="listBox" Grid.Row="1" SelectionChanged="listBox_SelectionChanged" Height="200" Margin="5">
-                        <ListBoxItem>Click to load installed programs</ListBoxItem>
-                    </ListBox>
-                    <Button x:Name="btn_load" Content="Show List" HorizontalAlignment="Left" Height="26" Margin="25,10,0,0" VerticalAlignment="Top" Width="97" Click="GetInstalledPrograms"/>
-
+                    <Border>
+                        <StackPanel>
+                            <Button x:Name="StartTimer"
+                                    HorizontalAlignment="Center"
+                                    Style="{StaticResource BasicButtonTheme}"
+                                    Content="Start" 
+                                    Margin="0,20,0,0"
+                                    Padding="20,0,20,5"
+                                    FontFamily="/Fonts/#Dosis"
+                                    Foreground="#F3E9D2"
+                                    FontSize="50" 
+                                    IsEnabled="False"
+                                    Click="StartTimer_Click">
+                                <Button.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                        <GradientStop Color="#88D" Offset="0.0" />
+                                        <GradientStop Color="#FF006977" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
-                <Label x:Name="PickPlanDropdownDefaultText"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Top" 
-                       Margin="0,198,0,0"
+
+
+                <StackPanel Grid.Row="2"/>
+                <Border HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="2">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                            <GradientStop Color="#88D498" Offset="0.0" />
+                            <GradientStop Color="#1A936F" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Clip>
+                        <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,300,200" />
+                    </Border.Clip>
+
+                    <Grid>
+                        <Image Width="167"
+                           Height="167"
+                           Source="/Images/heart_book.png"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="-16.852"/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+
+                        <StackPanel>
+                            <TextBlock Text="Select your plan"
+                                   Foreground="#114B5F"
+                                   FontSize="40"
+                                   Margin="20,10,20,0" 
+                                   FontFamily="/Fonts/#Joan"/>
+
+                            <ComboBox x:Name="PickPlanDropdown"
+                                      HorizontalAlignment="Center"
+                              Margin="0,20,0,0"
+                              IsEditable="False"
+                              Width="{Binding Width, ElementName=PickPlanDropdownDefaultText}"
+                              SelectionChanged="PickPlanDropdown_SelectionChanged" RenderTransformOrigin="0.5,0.5">
+
+                            </ComboBox>
+                            <Label x:Name="PickPlanDropdownDefaultText"
+
+                       Margin="10,-19,0,0"
+                       Padding="0"
                        FontSize="12.5"
                        Width="235"
-                       IsHitTestVisible="False">
-                    Which plan do you want to use today?
-                </Label>
-                <Button x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                       IsHitTestVisible="False" Height="28" Grid.Row="2">
+                                Which plan do you want to use today?
+                            </Label>
+
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+
+                
+                <Button Grid.Row="2" x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                         Visibility="Hidden"></Button>
-                <Button x:Name="StartTimer"
-                        HorizontalAlignment="Left" 
-                        Content="Start Timer" 
-                        Margin="436,107,0,413"
-                        IsEnabled="False"
-                        Click="StartTimer_Click"/>
+                <ListBox x:Name="listBox" SelectionChanged="listBox_SelectionChanged" Margin="20,16,49,38" Grid.Row="3">
+                    <ListBoxItem Content="Click to load installed programs"/>
+                </ListBox>
+                <Button x:Name="btn_load" Content="Show List" Click="GetInstalledPrograms" Margin="188,109,187,27" Grid.Row="2"/>
+
             </Grid>
-
-
         </Border>
     </Border>
 </UserControl>

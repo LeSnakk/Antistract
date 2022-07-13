@@ -46,5 +46,17 @@ namespace antistract.Properties {
                 this["Username"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BlacklistedPrograms {
+            get {
+                return ((string)(this["BlacklistedPrograms"]));
+            }
+            set {
+                this["BlacklistedPrograms"] = value;
+            }
+        }
     }
 }

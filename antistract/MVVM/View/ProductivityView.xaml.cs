@@ -28,8 +28,7 @@ namespace antistract.MVVM.View
 
         public static bool ShouldCheck;
 
-        //Thread thread1 = new Thread(LoadInstalledPrograms);
-        ThreadStart starter = LoadInstalledPrograms;
+        ThreadStart loadInstalledPrograms = LoadInstalledPrograms;
 
         public ProductivityView()
         {
@@ -40,14 +39,14 @@ namespace antistract.MVVM.View
 
         public void GetInstalledPrograms(object sender, RoutedEventArgs e)
         {
-            starter += () =>
+            loadInstalledPrograms += () =>
             {
-                ShowListCallBack(programs);
+                ShowListCallBack();
             };
 
-                btn_CallLoad.Visibility = Visibility.Hidden;
-                LoadingText.Visibility = Visibility.Visible;
-            Thread thread = new Thread(starter) { IsBackground = true };
+            btn_CallLoad.Visibility = Visibility.Hidden;
+            LoadingText.Visibility = Visibility.Visible;
+            Thread thread = new Thread(loadInstalledPrograms) { IsBackground = true };
             thread.Start();
         }
 
@@ -90,12 +89,9 @@ namespace antistract.MVVM.View
             }     
         }
 
-        private void ShowListCallBack (Dictionary<String, String> program)
+        private void ShowListCallBack ()
         {
-            Application.Current.Dispatcher.Invoke(new Action(() => 
-            {
-                ShowTheList();
-            }));
+            Application.Current.Dispatcher.Invoke(new Action(() => { ShowTheList(); }));
         }
 
         private void ShowTheList()

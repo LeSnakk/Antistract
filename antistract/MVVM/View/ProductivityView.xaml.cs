@@ -21,12 +21,15 @@ namespace antistract.MVVM.View
         readonly MainWindow mainWndw = (MainWindow)Application.Current.MainWindow;
 
         static BackgroundWorker bgWorker = new BackgroundWorker();
-        Dictionary<String, String> programs = new Dictionary<String, String>();
+        static Dictionary<String, String> programs = new Dictionary<String, String>();
         public List<RegistryKey> installedPrograms = new List<RegistryKey>();
 
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
 
         public static bool ShouldCheck;
+
+        //Thread thread1 = new Thread(LoadInstalledPrograms);
+        ThreadStart starter = LoadInstalledPrograms;
 
         public ProductivityView()
         {
@@ -37,8 +40,19 @@ namespace antistract.MVVM.View
 
         public void GetInstalledPrograms(object sender, RoutedEventArgs e)
         {
-            listBox.Items.Clear();
+            starter += () =>
+            {
+                ShowListCallBack(programs);
+            };
 
+                btn_CallLoad.Visibility = Visibility.Hidden;
+                LoadingText.Visibility = Visibility.Visible;
+            Thread thread = new Thread(starter) { IsBackground = true };
+            thread.Start();
+        }
+
+        public static void LoadInstalledPrograms() 
+        {
             string uninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"; //@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
             using (RegistryKey rk = Registry.LocalMachine.OpenSubKey(uninstallKey))
             {
@@ -73,18 +87,28 @@ namespace antistract.MVVM.View
                         { }
                     }
                 }
-            }
-            MakeTheList();
+            }     
         }
 
-        private void MakeTheList()
+        private void ShowListCallBack (Dictionary<String, String> program)
         {
+            Application.Current.Dispatcher.Invoke(new Action(() => 
+            {
+                ShowTheList();
+            }));
+        }
+
+        private void ShowTheList()
+        {
+            listBox.Items.Clear();
             foreach (string s in programs.Keys)
             {
                 ListBoxItem item = new ListBoxItem();
                 item.Content = s;
                 listBox.Items.Add(item);
             }
+            LoadingText.Visibility = Visibility.Hidden;
+            listBox.Visibility = Visibility.Visible;
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -236,7 +260,7 @@ namespace antistract.MVVM.View
             timerWindow.Show();
         }
 
-        private void AddToBlackList_Click(object sender, RoutedEventArgs e)
+        private void AddToBlacklist_Click(object sender, RoutedEventArgs e)
         {
 
         }

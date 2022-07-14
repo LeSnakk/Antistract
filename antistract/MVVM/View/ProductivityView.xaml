@@ -99,47 +99,8 @@
                         Padding="0"
                         Height="1"/>
 
-                <!--Start button area-->
-                <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,81,0,81" Grid.RowSpan="2">
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Center">
-                        <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
-                                 VerticalAlignment="Center"
-                                  Content="Close Program"
-                                  Click="Close_Program_Click"/>
-                        <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
-                                 VerticalAlignment="Center"
-                                 Content="Stop Timer"
-                                 Click="Stop_Timer_Click"/>
-                    </StackPanel>
-
-                    <Border>
-                        <StackPanel>
-                            <Button x:Name="StartTimer"
-                                    HorizontalAlignment="Center"
-                                    Style="{StaticResource BasicButtonTheme}"
-                                    Content="Start" 
-                                    Margin="0,20,0,0"
-                                    Padding="20,0,20,5"
-                                    FontFamily="/Fonts/#Dosis"
-                                    Foreground="#F3E9D2"
-                                    FontSize="50" 
-                                    IsEnabled="False"
-                                    Click="StartTimer_Click">
-                                <Button.Background>
-                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                                        <GradientStop Color="#88D" Offset="0.0" />
-                                        <GradientStop Color="#FF006977" Offset="1" />
-                                    </LinearGradientBrush>
-                                </Button.Background>
-                            </Button>
-                        </StackPanel>
-                    </Border>
-                </StackPanel>
-
-
                 <!--Select your plan area-->
-                <Border HorizontalAlignment="Left" Margin="20,27,0,27" Grid.Row="1" Grid.RowSpan="2">
+                <Border HorizontalAlignment="Left" Margin="197,27,0,27" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                             <GradientStop Color="#88D498" Offset="0.0" />
@@ -196,7 +157,7 @@
                 </Border>
 
                 <!--Blacklist programs area-->
-                <Border HorizontalAlignment="Center" Margin="0,130,0,0" Grid.Row="2" Grid.RowSpan="2" Width="452">
+                <Border HorizontalAlignment="Left" Margin="112,130,0,0" Grid.Row="2" Grid.RowSpan="2" Width="452" Grid.ColumnSpan="2">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                             <GradientStop Color="#88D498" Offset="0.0" />
@@ -223,7 +184,7 @@
                         </Image>
 
                         <StackPanel Margin="0,0,0,22">
-                            <TextBlock Text="Which programs disturb you?"
+                            <TextBlock Text="Which programs distract you?"
                                        HorizontalAlignment="Center"
                                    Foreground="#114B5F"
                                    FontSize="30"
@@ -236,18 +197,19 @@
                                  HorizontalAlignment="Left" 
                                  Margin="5,46,0,10" 
                                  Width="200"
-                                 >
+                                 Visibility="Hidden">
                             <ListBoxItem/>
                         </ListBox>
 
-                        <Button x:Name="AddToBlackList" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                Click="AddToBlackList_Click"
+                        <Button x:Name="AddToBlacklist" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Click="AddToBlacklist_Click"
                                 Content="&gt;" 
                                 Margin="0,0,3,0"
                                 Padding="11,0,11,5"
                                 FontWeight="Bold"
                                 FontSize="20"
-                                FontFamily="/Fonts/#Dosis"/>
+                                FontFamily="/Fonts/#Dosis"
+                                IsEnabled="False"/>
                         <Button x:Name="RemoveFromBlacklist" HorizontalAlignment="Center" VerticalAlignment="Center"
                                 Click="RemoveFromBlacklist_Click"
                                 Content="&lt;" 
@@ -255,17 +217,105 @@
                                 Padding="11,0,11,4"
                                 FontWeight="Bold"
                                 FontSize="20"
-                                FontFamily="/Fonts/#Dosis"/>
+                                FontFamily="/Fonts/#Dosis"
+                                IsEnabled="False"/>
 
                         <ListBox x:Name="blacklistList" 
                                  SelectionChanged="listBox_SelectionChanged"
                                  HorizontalAlignment="Right" 
                                  Margin="0,46,8,10" 
                                  Width="200">
-                            <ListBoxItem Content="Click to load installed programs"/>
+                            <ListBoxItem HorizontalAlignment="Center" Content="Add distracting programs"
+                                         Height="125"/>
                         </ListBox>
+
+                        <Button x:Name="btn_CallLoad" Content="Load programs" Click="GetInstalledPrograms" 
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top" 
+                                Margin="57,101,0,0"
+                                Padding="2"/>
+
+                        <Button x:Name="btn_load" Visibility="Hidden"/>
+
+                        <Label x:Name="LoadingText" Content="loading programs..." 
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" Margin="43,98,0,0"
+                               Visibility="Hidden"/>
                     </Grid>
                 </Border>
+
+                <!--Start button area-->
+                <Border HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Width="182" Margin="0,10,0,51" Grid.RowSpan="2">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                            <GradientStop Color="#88D498" Offset="0.0" />
+                            <GradientStop Color="#1A936F" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Clip>
+                        <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,180,160" />
+                    </Border.Clip>
+
+                    <Grid>
+                        <Image Width="167"
+                           Height="167"
+                           Source="/Images/heart_book.png"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="-16.852"/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                        Margin="0,30,0,0">
+                                <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
+                                 VerticalAlignment="Center"
+                                  Content="Close Program"
+                                  Click="Close_Program_Click"/>
+                                <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
+                                 VerticalAlignment="Center"
+                                 Content="Stop Timer"
+                                 Click="Stop_Timer_Click"/>
+                            </StackPanel>
+
+                            <Border>
+                                <StackPanel>
+                                    <Button x:Name="StartTimer"
+                                    HorizontalAlignment="Center"
+                                    Style="{StaticResource BasicButtonTheme}"
+                                    Content="Start" 
+                                    Margin="0,22,0,0"
+                                    Padding="20,0,20,5"
+                                    FontFamily="/Fonts/#Dosis"
+                                    Foreground="#F3E9D2"
+                                    FontSize="50" 
+                                    IsEnabled="False"
+                                    Click="StartTimer_Click">
+                                        <Button.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                                <GradientStop Color="#88D" Offset="0.0" />
+                                                <GradientStop Color="#FF006977" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Button.Background>
+                                    </Button>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+
+
+
+
+
+
 
                 <Button Grid.Row="2" x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                         Visibility="Hidden">
@@ -274,9 +324,6 @@
 
 
 
-                <Button x:Name="btn_load" Content="Load programs" Click="GetInstalledPrograms" Margin="63,68,311,68" Grid.Row="3"/>
-
-                <Label x:Name="LoadingText" Content="loading programs..." Margin="63,68,311,68" Grid.Row="3"/>
             </Grid>
         </Border>
     </Border>

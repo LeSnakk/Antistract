@@ -156,8 +156,7 @@ namespace antistract.MVVM.View
                             RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
                             TimerWindow.TimerOnHoldYES();
                             Debug.WriteLine(process);
-                        }
-                        
+                        }                
                     }
                 }
             }

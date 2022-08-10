@@ -13,6 +13,7 @@ using antistract.Core;
 using antistract.MVVM.ViewModel;
 using System.ServiceProcess;
 using System.Management;
+using Microsoft.WindowsAPICodePack.Shell;
 
 namespace antistract.MVVM.View
 {
@@ -27,6 +28,7 @@ namespace antistract.MVVM.View
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
 
         public static bool ShouldCheck;
+        private string SelectedProgram;
 
         ThreadStart loadInstalledPrograms = LoadInstalledPrograms;
 
@@ -52,6 +54,22 @@ namespace antistract.MVVM.View
 
         public static void LoadInstalledPrograms() 
         {
+            var FOLDERID_AppsFolder = new Guid("{1e87508d-89c2-42f0-8a7e-645a0f50ca58}");
+            ShellObject appsFolder = (ShellObject)KnownFolderHelper.FromKnownFolderId(FOLDERID_AppsFolder);
+
+            foreach (var app in (IKnownFolder)appsFolder)
+            {
+                // The friendly app name
+                string name = app.Name;
+                // The ParsingName property is the AppUserModelID
+                string appUserModelID = app.ParsingName; // or app.Properties.System.AppUserModel.ID
+                                                         // You can even get the Jumbo icon in one shot
+                Debug.WriteLine(name);
+            }
+        }
+
+        public static void LoadInstalledPrograms11()
+        {
             string uninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"; //@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
             using (RegistryKey rk = Registry.LocalMachine.OpenSubKey(uninstallKey))
             {
@@ -62,11 +80,11 @@ namespace antistract.MVVM.View
                         try
                         {
                             var displayName = sk.GetValue("DisplayName");
-
                             if (displayName != null)
                             {
                                 foreach (String s in sk.GetValueNames())
                                 {
+
                                     string d;
 
                                     if (sk.GetValueNames().Contains("DisplayIcon"))
@@ -86,7 +104,7 @@ namespace antistract.MVVM.View
                         { }
                     }
                 }
-            }     
+            }
         }
 
         private void ShowListCallBack ()
@@ -116,6 +134,9 @@ namespace antistract.MVVM.View
             ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
 
             programs.TryGetValue(lbi.Content.ToString(), out output);
+            string n2 = output.Replace("\\", "/");
+            SelectedProgram = n2.Split("/").Last();
+            Debug.WriteLine(SelectedProgram);
         }
 
         public static void startChecking()

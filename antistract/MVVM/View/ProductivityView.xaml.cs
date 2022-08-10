@@ -105,7 +105,10 @@ namespace antistract.MVVM.View
             }
             LoadingText.Visibility = Visibility.Hidden;
             listBox.Visibility = Visibility.Visible;
-        }
+
+            ToggleAddToBlacklistButton(true);
+            ToggleRemoveFromBlacklistButton(true);
+        } 
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -253,6 +256,16 @@ namespace antistract.MVVM.View
             Debug.WriteLine("CSP: " + CurrentlySelectedPlan.SelectedPlan);
             TimerWindow timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
             timerWindow.Show();
+        }
+
+        private void ToggleAddToBlacklistButton(bool isDisabled)
+        {
+            AddToBlacklist.IsEnabled = isDisabled;
+        }
+
+        private void ToggleRemoveFromBlacklistButton(bool isDisabled)
+        {
+            RemoveFromBlacklist.IsEnabled = isDisabled;
         }
 
         private void AddToBlacklist_Click(object sender, RoutedEventArgs e)

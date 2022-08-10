@@ -56,7 +56,6 @@ namespace antistract.MVVM.View
         {
             var FOLDERID_AppsFolder = new Guid("{1e87508d-89c2-42f0-8a7e-645a0f50ca58}");
             ShellObject appsFolder = (ShellObject)KnownFolderHelper.FromKnownFolderId(FOLDERID_AppsFolder);
-
             foreach (var app in (IKnownFolder)appsFolder)
             {
                 // The friendly app name
@@ -65,6 +64,25 @@ namespace antistract.MVVM.View
                 string appUserModelID = app.ParsingName; // or app.Properties.System.AppUserModel.ID
                                                          // You can even get the Jumbo icon in one shot
                 Debug.WriteLine(name);
+                if (!programs.ContainsKey(name))
+                {
+                    programs.Add(name, name);
+                } 
+                else
+                {
+                    AddDuplicateEntry(name, 1);
+                }
+            }
+        }
+        public static void AddDuplicateEntry(string name, int i)
+        {
+            if (programs.ContainsKey(name + " (" + i + ")")) 
+            {
+                AddDuplicateEntry(name, ++i);
+            }
+            else
+            {
+                programs.Add(name + " (" + i + ")", name);
             }
         }
 

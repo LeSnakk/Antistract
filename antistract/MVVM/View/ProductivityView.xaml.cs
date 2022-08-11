@@ -30,6 +30,7 @@ namespace antistract.MVVM.View
 
         public static bool ShouldCheck;
         private string SelectedProgram;
+        private List<string> namesList = new List<String>();
 
         ThreadStart loadInstalledPrograms = LoadInstalledPrograms;
 
@@ -193,9 +194,9 @@ namespace antistract.MVVM.View
             ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
 
             programs.TryGetValue(lbi.Content.ToString(), out output);
-            string n2 = output.Replace("\\", "/");
-            SelectedProgram = n2.Split("/").Last();
-            Debug.WriteLine(SelectedProgram);
+
+            Debug.WriteLine(output);
+            SelectedProgram = output;
         }
 
         public static void startChecking()
@@ -215,8 +216,9 @@ namespace antistract.MVVM.View
             while (isChecked())
             {
                 Thread.Sleep(100);
-                var names = new[] { "systemsettings", "winrar", "steam", "RiotClientServices" };
-                Process[] processes = names.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
+                string[] names = namesList.ToArray();
+                Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
+                Debug.WriteLine(processes.Length);
                 if (processes.Length == 0)
                 {
                     TimerWindow.TimerOnHoldNO();
@@ -350,7 +352,12 @@ namespace antistract.MVVM.View
 
         private void AddToBlacklist_Click(object sender, RoutedEventArgs e)
         {
+            SelectedProgram = SelectedProgram.Substring(0, SelectedProgram.LastIndexOf("."));
+            ListBoxItem item = new ListBoxItem();
+            item.Content = SelectedProgram;
+            blacklistList.Items.Add(item);
 
+            namesList.Add(SelectedProgram);
         }
 
         private void RemoveFromBlacklist_Click(object sender, RoutedEventArgs e)

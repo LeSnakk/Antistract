@@ -14,6 +14,7 @@ using antistract.MVVM.ViewModel;
 using System.ServiceProcess;
 using System.Management;
 using Microsoft.WindowsAPICodePack.Shell;
+using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 
 namespace antistract.MVVM.View
 {
@@ -58,15 +59,20 @@ namespace antistract.MVVM.View
             ShellObject appsFolder = (ShellObject)KnownFolderHelper.FromKnownFolderId(FOLDERID_AppsFolder);
             foreach (var app in (IKnownFolder)appsFolder)
             {
+                Debug.WriteLine(app.Name + ": " + app.Properties.System.Link);
+                Debug.WriteLine(app.Name + ": " + app.Properties.System.Link.Description.Value);
+                Debug.WriteLine(app.Name + ": " + app.Properties.System.Link.TargetParsingPath.Value);
+                Debug.WriteLine(app.Name + ": " + app.Properties.System.Link.TargetUrl.Value);
+                Debug.WriteLine(app.Name + ": " + app.Properties.GetProperty("System.AppUserModel.PackageInstallPath").ValueAsObject);
+
                 // The friendly app name
                 string name = app.Name;
                 // The ParsingName property is the AppUserModelID
                 string appUserModelID = app.ParsingName; // or app.Properties.System.AppUserModel.ID
                                                          // You can even get the Jumbo icon in one shot
-                Debug.WriteLine(name);
                 if (!programs.ContainsKey(name))
                 {
-                    programs.Add(name, name);
+                    programs.Add(name, name);                  
                 } 
                 else
                 {
@@ -174,7 +180,7 @@ namespace antistract.MVVM.View
             while (isChecked())
             {
                 Thread.Sleep(100);
-                var names = new[] { "systemsettings", "winrar", "steam" };
+                var names = new[] { "systemsettings", "winrar", "steam", "RiotClientServices" };
                 Process[] processes = names.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 if (processes.Length == 0)
                 {

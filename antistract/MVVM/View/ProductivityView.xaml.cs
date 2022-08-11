@@ -352,7 +352,10 @@ namespace antistract.MVVM.View
 
         private void AddToBlacklist_Click(object sender, RoutedEventArgs e)
         {
-            SelectedProgram = SelectedProgram.Substring(0, SelectedProgram.LastIndexOf("."));
+            if (SelectedProgram.Contains("."))
+            {
+                SelectedProgram = SelectedProgram.Substring(0, SelectedProgram.LastIndexOf("."));
+            }
             ListBoxItem item = new ListBoxItem();
             item.Content = SelectedProgram;
             blacklistList.Items.Add(item);

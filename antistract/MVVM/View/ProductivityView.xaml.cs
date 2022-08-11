@@ -57,38 +57,73 @@ namespace antistract.MVVM.View
         {
             var FOLDERID_AppsFolder = new Guid("{1e87508d-89c2-42f0-8a7e-645a0f50ca58}");
             ShellObject appsFolder = (ShellObject)KnownFolderHelper.FromKnownFolderId(FOLDERID_AppsFolder);
+            int a = 0;
+            int b = 0;
+            int c = 0;
+            int d = 0;
+            int total = 0;
             foreach (var app in (IKnownFolder)appsFolder)
             {
-                Debug.WriteLine(app.Name + ": " + app.Properties.System.Link);
-                Debug.WriteLine(app.Name + ": " + app.Properties.System.Link.Description.Value);
-                Debug.WriteLine(app.Name + ": " + app.Properties.System.Link.TargetParsingPath.Value);
-                Debug.WriteLine(app.Name + ": " + app.Properties.System.Link.TargetUrl.Value);
-                Debug.WriteLine(app.Name + ": " + app.Properties.GetProperty("System.AppUserModel.PackageInstallPath").ValueAsObject);
+                //regular installed programs
+                if (app.Properties.System.Link.TargetParsingPath.Value != null)
+                {
+                    //Debug.WriteLine("b " + app.Name + ": " + app.Properties.System.Link.TargetParsingPath.Value);
+                    AddToInstalledProgramsList(app.Name, app.Properties.System.Link.TargetParsingPath.Value, "reg");
+                }
+                //Windows apps/Microsoft store apps
+                /*else
+                {
+                    //Debug.WriteLine("d " + app.Name + ": " + app.Properties.GetProperty("System.AppUserModel.PackageInstallPath").ValueAsObject.ToString());
+                    AddToInstalledProgramsList(app.Name, app.Properties.GetProperty("System.AppUserModel.PackageInstallPath").ValueAsObject.ToString(), "win");
+                }*/
+
+
+                total++;
+                
+
+                Debug.WriteLine("");
 
                 // The friendly app name
                 string name = app.Name;
                 // The ParsingName property is the AppUserModelID
                 string appUserModelID = app.ParsingName; // or app.Properties.System.AppUserModel.ID
                                                          // You can even get the Jumbo icon in one shot
-                if (!programs.ContainsKey(name))
+            }
+            Debug.WriteLine("\na = " + a + "\nb = " + b + "\nc = " + c + "\nd = " + d + "\ntotal = " + total);
+        }
+
+        public static void AddToInstalledProgramsList(string programName, string programPath, string programType)
+        {
+            string processName = "";
+            if (programType == "reg")
+            {
+                programPath = programPath.Replace("/", "\\");
+                processName = programPath.Split("\\").Last();
+
+                if (!programs.ContainsKey(programName))
                 {
-                    programs.Add(name, name);                  
-                } 
+                    programs.Add(programName, processName);
+                }
                 else
                 {
-                    AddDuplicateEntry(name, 1);
+                    AddDuplicateEntry(programName, processName, 1);
                 }
             }
-        }
-        public static void AddDuplicateEntry(string name, int i)
-        {
-            if (programs.ContainsKey(name + " (" + i + ")")) 
+            else if (programType == "win")
             {
-                AddDuplicateEntry(name, ++i);
+                //...
+            }
+            Debug.WriteLine(programName + ": " + processName);
+        }
+        public static void AddDuplicateEntry(string programName, string processName, int i)
+        {
+            if (programs.ContainsKey(programName + " (" + i + ")")) 
+            {
+                AddDuplicateEntry(programName, processName, ++i);
             }
             else
             {
-                programs.Add(name + " (" + i + ")", name);
+                programs.Add(programName + " (" + i + ")", processName);
             }
         }
 

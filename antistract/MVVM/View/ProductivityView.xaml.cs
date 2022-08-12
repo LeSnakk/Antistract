@@ -30,8 +30,11 @@ namespace antistract.MVVM.View
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
 
         public static bool ShouldCheck;
-        private string SelectedProcessName;
+
         private string SelectedProgramName;
+        private string SelectedProcessName;      
+        private string SelectedProcessPath;
+
         private List<string> BlacklistedPaths = new List<string>();
         private List<string> namesList = new List<String>();
         private bool BlackListPlaceholderText = true;
@@ -142,7 +145,7 @@ namespace antistract.MVVM.View
             }
             else
             {
-                programs.Add(programName + " (" + i + ")", programPath);
+                paths.Add(programName + " (" + i + ")", programPath);
             }
         }
 
@@ -235,7 +238,8 @@ namespace antistract.MVVM.View
             while (isChecked())
             {
                 Thread.Sleep(100);
-                
+
+                //var pathsarr = paths.Values.ToArray();
                 Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 Debug.WriteLine(processes.Length);
                 if (processes.Length == 0)
@@ -248,19 +252,23 @@ namespace antistract.MVVM.View
                     Debug.WriteLine("Notepad is running");
                     foreach (Process process in processes)
                     {
-                        Debug.WriteLine("Closing...");
-                        if (!GlobalVariables.OnlyPausing)
+                        if (BlacklistedPaths.Any(path => process.MainModule.FileName.Contains(path)))
                         {
-                            RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
-                            TimerWindow.TimerOnHoldNO();
-                            process.Kill();
+                            Debug.WriteLine(process.MainModule.FileName);
+                            Debug.WriteLine("Closing...");
+                            if (!GlobalVariables.OnlyPausing)
+                            {
+                                RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                                TimerWindow.TimerOnHoldNO();
+                                process.Kill();
+                            }
+                            else if (GlobalVariables.OnlyPausing)
+                            {
+                                RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                                TimerWindow.TimerOnHoldYES();
+                                Debug.WriteLine(process);
+                            }
                         }
-                        else if (GlobalVariables.OnlyPausing)
-                        {
-                            RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
-                            TimerWindow.TimerOnHoldYES();
-                            Debug.WriteLine(process);
-                        }                
                     }
                 }
             }
@@ -374,15 +382,17 @@ namespace antistract.MVVM.View
             if (SelectedProcessName.Contains("."))
             {
                 SelectedProcessName = SelectedProcessName.Substring(0, SelectedProcessName.LastIndexOf("."));
+                SelectedProcessPath = paths[SelectedProgramName];
             }
             if (namesList.Count < 1)
             {
                 blacklistList.Items.Clear();
             }
             namesList.Add(SelectedProcessName);
+            BlacklistedPaths.Add(SelectedProcessPath);
 
-            
 
+            Debug.WriteLine(SelectedProcessPath);
             ListBoxItem item = new ListBoxItem();
             item.Content = SelectedProgramName + " (" + SelectedProcessName + ")";
             blacklistList.Items.Add(item);   

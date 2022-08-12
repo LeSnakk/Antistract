@@ -24,6 +24,7 @@ namespace antistract.MVVM.View
 
         static BackgroundWorker bgWorker = new BackgroundWorker();
         static Dictionary<String, String> programs = new Dictionary<String, String>();
+        static Dictionary<String, String> paths = new Dictionary<String, String>();
         public List<RegistryKey> installedPrograms = new List<RegistryKey>();
 
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
@@ -31,6 +32,7 @@ namespace antistract.MVVM.View
         public static bool ShouldCheck;
         private string SelectedProcessName;
         private string SelectedProgramName;
+        private List<string> BlacklistedPaths = new List<string>();
         private List<string> namesList = new List<String>();
         private bool BlackListPlaceholderText = true;
 
@@ -100,16 +102,19 @@ namespace antistract.MVVM.View
             string processName = "";
             if (programType == "reg")
             {
+                
                 programPath = programPath.Replace("/", "\\");
                 processName = programPath.Split("\\").Last();
 
                 if (!programs.ContainsKey(programName))
                 {
                     programs.Add(programName, processName);
+                    paths.Add(programName, programPath);
                 }
                 else
                 {
                     AddDuplicateEntry(programName, processName, 1);
+                    AddDuplicateEntryPath(programName, programPath, 1);
                 }
             }
             else if (programType == "win")
@@ -127,6 +132,17 @@ namespace antistract.MVVM.View
             else
             {
                 programs.Add(programName + " (" + i + ")", processName);
+            }
+        }
+        public static void AddDuplicateEntryPath(string programName, string programPath, int i)
+        {
+            if (programs.ContainsKey(programName + " (" + i + ")"))
+            {
+                AddDuplicateEntry(programName, programPath, ++i);
+            }
+            else
+            {
+                programs.Add(programName + " (" + i + ")", programPath);
             }
         }
 
@@ -219,7 +235,7 @@ namespace antistract.MVVM.View
             while (isChecked())
             {
                 Thread.Sleep(100);
-                string[] names = namesList.ToArray();
+                
                 Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 Debug.WriteLine(processes.Length);
                 if (processes.Length == 0)

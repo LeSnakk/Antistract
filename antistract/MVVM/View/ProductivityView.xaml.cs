@@ -29,8 +29,10 @@ namespace antistract.MVVM.View
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
 
         public static bool ShouldCheck;
-        private string SelectedProgram;
+        private string SelectedProcessName;
+        private string SelectedProgramName;
         private List<string> namesList = new List<String>();
+        private bool BlackListPlaceholderText = true;
 
         ThreadStart loadInstalledPrograms = LoadInstalledPrograms;
 
@@ -196,7 +198,8 @@ namespace antistract.MVVM.View
             programs.TryGetValue(lbi.Content.ToString(), out output);
 
             Debug.WriteLine(output);
-            SelectedProgram = output;
+            SelectedProgramName = lbi.Content.ToString();
+            SelectedProcessName = output;
         }
 
         public static void startChecking()
@@ -352,15 +355,21 @@ namespace antistract.MVVM.View
 
         private void AddToBlacklist_Click(object sender, RoutedEventArgs e)
         {
-            if (SelectedProgram.Contains("."))
+            if (SelectedProcessName.Contains("."))
             {
-                SelectedProgram = SelectedProgram.Substring(0, SelectedProgram.LastIndexOf("."));
+                SelectedProcessName = SelectedProcessName.Substring(0, SelectedProcessName.LastIndexOf("."));
             }
-            ListBoxItem item = new ListBoxItem();
-            item.Content = SelectedProgram;
-            blacklistList.Items.Add(item);
+            if (namesList.Count < 1)
+            {
+                blacklistList.Items.Clear();
+            }
+            namesList.Add(SelectedProcessName);
 
-            namesList.Add(SelectedProgram);
+            
+
+            ListBoxItem item = new ListBoxItem();
+            item.Content = SelectedProgramName + " (" + SelectedProcessName + ")";
+            blacklistList.Items.Add(item);   
         }
 
         private void RemoveFromBlacklist_Click(object sender, RoutedEventArgs e)

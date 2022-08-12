@@ -112,7 +112,7 @@ namespace antistract.MVVM.View
                 if (!programs.ContainsKey(programName))
                 {
                     programs.Add(programName, processName);
-                    paths.Add(programName, programPath);
+                    paths.Add(programName, programPath.Substring(0, programPath.LastIndexOf("\\") + 1));
                 }
                 else
                 {
@@ -141,11 +141,11 @@ namespace antistract.MVVM.View
         {
             if (programs.ContainsKey(programName + " (" + i + ")"))
             {
-                AddDuplicateEntry(programName, programPath, ++i);
+                AddDuplicateEntry(programName, programPath.Substring(0, programPath.LastIndexOf("\\") + 1), ++i);
             }
             else
             {
-                paths.Add(programName + " (" + i + ")", programPath);
+                paths.Add(programName + " (" + i + ")", programPath.Substring(0, programPath.LastIndexOf("\\") + 1));
             }
         }
 
@@ -252,22 +252,52 @@ namespace antistract.MVVM.View
                     Debug.WriteLine("Notepad is running");
                     foreach (Process process in processes)
                     {
-                        if (BlacklistedPaths.Any(path => process.MainModule.FileName.Contains(path)))
+                        try
                         {
-                            Debug.WriteLine(process.MainModule.FileName);
-                            Debug.WriteLine("Closing...");
-                            if (!GlobalVariables.OnlyPausing)
+                            if (BlacklistedPaths.Any(path => process.MainModule.FileName.Replace("/", "\\").Substring(0, process.MainModule.FileName.Replace("/", "\\").LastIndexOf("\\") + 1).Contains(path)))
                             {
-                                RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
-                                TimerWindow.TimerOnHoldNO();
-                                process.Kill();
+                                Debug.WriteLine(process.MainModule.FileName);
+                                Debug.WriteLine("Closing...");
+                                if (!GlobalVariables.OnlyPausing)
+                                {
+                                    RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                                    TimerWindow.TimerOnHoldNO();
+                                    process.Kill();
+                                }
+                                else if (GlobalVariables.OnlyPausing)
+                                {
+                                    RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                                    TimerWindow.TimerOnHoldYES();
+                                    Debug.WriteLine(process);
+                                }
                             }
-                            else if (GlobalVariables.OnlyPausing)
+                            else
                             {
-                                RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
-                                TimerWindow.TimerOnHoldYES();
-                                Debug.WriteLine(process);
+                                foreach (string path in BlacklistedPaths)
+                                {
+                                    if ((process.MainModule.FileName.Replace("/", "\\")).Contains(path))
+                                    {
+                                        Debug.WriteLine(process.MainModule.FileName);
+                                        Debug.WriteLine("v2Closing...");
+                                        if (!GlobalVariables.OnlyPausing)
+                                        {
+                                            RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                                            TimerWindow.TimerOnHoldNO();
+                                            process.Kill();
+                                        }
+                                        else if (GlobalVariables.OnlyPausing)
+                                        {
+                                            RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                                            TimerWindow.TimerOnHoldYES();
+                                            Debug.WriteLine(process);
+                                        }
+                                    }
+                                }
                             }
+                        }
+                        catch (Win32Exception ex)
+                        {
+                            Debug.WriteLine(ex.ToString());
                         }
                     }
                 }
@@ -389,6 +419,7 @@ namespace antistract.MVVM.View
                 blacklistList.Items.Clear();
             }
             namesList.Add(SelectedProcessName);
+            namesList.Add(SelectedProgramName);
             BlacklistedPaths.Add(SelectedProcessPath);
 
 

@@ -250,8 +250,10 @@ namespace antistract.MVVM.View
                 else if (processes.Length >= 1)
                 {
                     Debug.WriteLine("Notepad is running");
+                    
                     foreach (Process process in processes)
                     {
+                        Debug.WriteLine(process);
                         try
                         {
                             if (BlacklistedPaths.Any(path => process.MainModule.FileName.Replace("/", "\\").Substring(0, process.MainModule.FileName.Replace("/", "\\").LastIndexOf("\\") + 1).Contains(path)))

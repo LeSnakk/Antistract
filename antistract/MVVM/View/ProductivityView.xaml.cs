@@ -357,16 +357,24 @@ namespace antistract.MVVM.View
             {
                 blacklistList.Items.Clear();
             }
-            namesList.Add(SelectedProcessName);
-            namesList.Add(SelectedProgramName);
-            BlacklistedPaths.Add(SelectedProcessPath);
 
-            DisplayBlacklistedNames.Add(SelectedProgramName);
+            if (namesList.Contains(SelectedProgramName) && namesList.Contains(SelectedProcessName) && BlacklistedPaths.Contains(SelectedProcessPath))
+            {
+                return;
+            }
+            else
+            {
+                namesList.Add(SelectedProcessName);
+                namesList.Add(SelectedProgramName);
+                BlacklistedPaths.Add(SelectedProcessPath);
 
-            Debug.WriteLine(SelectedProcessPath);
-            ListBoxItem item = new ListBoxItem();
-            item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
-            blacklistList.Items.Add(item);   
+                DisplayBlacklistedNames.Add(SelectedProgramName);
+
+                Debug.WriteLine(SelectedProcessPath);
+                ListBoxItem item = new ListBoxItem();
+                item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
+                blacklistList.Items.Add(item);
+            }
         }
 
         private void RemoveFromBlacklist_Click(object sender, RoutedEventArgs e)

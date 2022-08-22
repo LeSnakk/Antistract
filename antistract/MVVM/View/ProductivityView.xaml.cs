@@ -348,33 +348,39 @@ namespace antistract.MVVM.View
 
         private void AddToBlacklist_Click(object sender, RoutedEventArgs e)
         {
-            if (SelectedProcessName.Contains("."))
+            if (SelectedProgramName != null)
             {
-                SelectedProcessName = SelectedProcessName.Substring(0, SelectedProcessName.LastIndexOf("."));
-                SelectedProcessPath = paths[SelectedProgramName];
-            }
-            if (namesList.Count < 1)
-            {
-                blacklistList.Items.Clear();
-            }
+                if (SelectedProcessName.Contains("."))
+                {
+                    SelectedProcessName = SelectedProcessName.Substring(0, SelectedProcessName.LastIndexOf("."));
+                    SelectedProcessPath = paths[SelectedProgramName];
+                }
+                if (namesList.Count < 1)
+                {
+                    blacklistList.Items.Clear();
+                }
 
-            if (namesList.Contains(SelectedProgramName) && namesList.Contains(SelectedProcessName) && BlacklistedPaths.Contains(SelectedProcessPath))
-            {
-                return;
-            }
-            else
-            {
-                namesList.Add(SelectedProcessName);
-                namesList.Add(SelectedProgramName);
-                BlacklistedPaths.Add(SelectedProcessPath);
+                if (namesList.Contains(SelectedProgramName) && namesList.Contains(SelectedProcessName) && BlacklistedPaths.Contains(SelectedProcessPath))
+                {
+                    return;
+                }
+                else
+                {
+                    namesList.Add(SelectedProcessName);
+                    namesList.Add(SelectedProgramName);
+                    BlacklistedPaths.Add(SelectedProcessPath);
 
-                DisplayBlacklistedNames.Add(SelectedProgramName);
+                    DisplayBlacklistedNames.Add(SelectedProgramName);
 
-                Debug.WriteLine(SelectedProcessPath);
-                ListBoxItem item = new ListBoxItem();
-                item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
-                blacklistList.Items.Add(item);
+                    Debug.WriteLine(SelectedProcessPath);
+                    ListBoxItem item = new ListBoxItem();
+                    item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
+                    blacklistList.Items.Add(item);
+                }
             }
+            SelectedProgramName = null;
+            SelectedProcessName = null;
+            SelectedProcessPath = null;
         }
 
         private void RemoveFromBlacklist_Click(object sender, RoutedEventArgs e)
@@ -403,6 +409,9 @@ namespace antistract.MVVM.View
             {
                 Debug.WriteLine(name);
             }
+            RemoveSelectedProgramName = "";
+            RemoveSelectedProcessName = "";
+            RemoveSelectedProcessPath = "";
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

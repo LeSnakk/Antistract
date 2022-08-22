@@ -239,7 +239,6 @@ namespace antistract.MVVM.View
             {
                 Thread.Sleep(100);
 
-                //var pathsarr = paths.Values.ToArray();
                 Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 Debug.WriteLine(processes.Length);
                 if (processes.Length == 0)

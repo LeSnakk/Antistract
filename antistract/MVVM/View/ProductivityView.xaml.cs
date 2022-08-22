@@ -376,6 +376,8 @@ namespace antistract.MVVM.View
                     ListBoxItem item = new ListBoxItem();
                     item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
                     blacklistList.Items.Add(item);
+
+                    
                 }
             }
             SelectedProgramName = null;

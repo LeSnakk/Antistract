@@ -49,13 +49,45 @@ namespace antistract.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string BlacklistedPrograms {
+        public global::System.Collections.Generic.List<System.String> BlacklistedPrograms {
             get {
-                return ((string)(this["BlacklistedPrograms"]));
+                return ((global::System.Collections.Generic.List<System.String>)(this["BlacklistedPrograms"]));
             }
             set {
                 this["BlacklistedPrograms"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Generic.List<System.String> BlacklistedProcesses {
+            get {
+                return ((global::System.Collections.Generic.List<System.String>)(this["BlacklistedProcesses"]));
+            }
+            set {
+                this["BlacklistedProcesses"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Generic.List<System.String> BlacklistedPaths {
+            get {
+                return ((global::System.Collections.Generic.List<System.String>)(this["BlacklistedPaths"]));
+            }
+            set {
+                this["BlacklistedPaths"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Generic.List<System.String> BlacklistedDisplayNames {
+            get {
+                return ((global::System.Collections.Generic.List<System.String>)(this["BlacklistedDisplayNames"]));
+            }
+            set {
+                this["BlacklistedDisplayNames"] = value;
             }
         }
     }

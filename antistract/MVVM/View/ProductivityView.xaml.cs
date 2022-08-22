@@ -15,6 +15,7 @@ using System.ServiceProcess;
 using System.Management;
 using Microsoft.WindowsAPICodePack.Shell;
 using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
+using antistract.Properties;
 
 namespace antistract.MVVM.View
 {
@@ -51,6 +52,19 @@ namespace antistract.MVVM.View
             InitializeComponent();
             FillPickPlanDropdown();
             bgWorker.DoWork += BgWorker_DoWork;
+            LoadBlacklistUserSave();
+        }
+
+        public void LoadBlacklistUserSave()
+        {
+            string programName;
+            string processName;
+            string programpath;
+            string displayname;
+            foreach (string entry in Settings.Default.BlacklistedPrograms)
+            {
+                //just convert it
+            }
         }
 
         public void GetInstalledPrograms(object sender, RoutedEventArgs e)
@@ -377,7 +391,11 @@ namespace antistract.MVVM.View
                     item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
                     blacklistList.Items.Add(item);
 
-                    
+                    Settings.Default.BlacklistedPrograms.Add(SelectedProgramName);
+                    Settings.Default.BlacklistedProcesses.Add(SelectedProcessName);
+                    Settings.Default.BlacklistedPaths.Add(SelectedProcessPath);
+                    Settings.Default.BlacklistedDisplayNames.Add(SelectedProgramName);
+                    Settings.Default.Save();
                 }
             }
             SelectedProgramName = null;
@@ -393,6 +411,13 @@ namespace antistract.MVVM.View
                 namesList.Remove(RemoveSelectedProcessName);
                 BlacklistedPaths.Remove(RemoveSelectedProcessPath);
                 DisplayBlacklistedNames.Remove(RemoveSelectedProgramName);
+
+                Settings.Default.BlacklistedPrograms.Remove(SelectedProgramName);
+                Settings.Default.BlacklistedProcesses.Remove(SelectedProcessName);
+                Settings.Default.BlacklistedPaths.Remove(SelectedProcessPath);
+                Settings.Default.BlacklistedDisplayNames.Remove(SelectedProgramName);
+                Settings.Default.Save();
+
 
                 blacklistList.Items.Clear();
 

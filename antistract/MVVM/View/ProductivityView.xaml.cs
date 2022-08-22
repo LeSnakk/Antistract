@@ -321,12 +321,6 @@ namespace antistract.MVVM.View
         public static bool isChecked()
         {
             return ShouldCheck;
-            /*bool temp = false;
-            this.Dispatcher.Invoke(() =>
-            {
-                temp = this.isCheckingg.IsChecked.Value;
-            });
-            return temp;*/
         }
 
         private void FillPickPlanDropdown()

@@ -68,11 +68,7 @@ namespace antistract.MVVM.View
         {
             var FOLDERID_AppsFolder = new Guid("{1e87508d-89c2-42f0-8a7e-645a0f50ca58}");
             ShellObject appsFolder = (ShellObject)KnownFolderHelper.FromKnownFolderId(FOLDERID_AppsFolder);
-            int a = 0;
-            int b = 0;
-            int c = 0;
-            int d = 0;
-            int total = 0;
+
             foreach (var app in (IKnownFolder)appsFolder)
             {
                 //regular installed programs
@@ -81,26 +77,7 @@ namespace antistract.MVVM.View
                     //Debug.WriteLine("b " + app.Name + ": " + app.Properties.System.Link.TargetParsingPath.Value);
                     AddToInstalledProgramsList(app.Name, app.Properties.System.Link.TargetParsingPath.Value, "reg");
                 }
-                //Windows apps/Microsoft store apps
-                /*else
-                {
-                    //Debug.WriteLine("d " + app.Name + ": " + app.Properties.GetProperty("System.AppUserModel.PackageInstallPath").ValueAsObject.ToString());
-                    AddToInstalledProgramsList(app.Name, app.Properties.GetProperty("System.AppUserModel.PackageInstallPath").ValueAsObject.ToString(), "win");
-                }*/
-
-
-                total++;
-                
-
-                Debug.WriteLine("");
-
-                // The friendly app name
-                string name = app.Name;
-                // The ParsingName property is the AppUserModelID
-                string appUserModelID = app.ParsingName; // or app.Properties.System.AppUserModel.ID
-                                                         // You can even get the Jumbo icon in one shot
             }
-            Debug.WriteLine("\na = " + a + "\nb = " + b + "\nc = " + c + "\nd = " + d + "\ntotal = " + total);
         }
 
         public static void AddToInstalledProgramsList(string programName, string programPath, string programType)
@@ -152,44 +129,6 @@ namespace antistract.MVVM.View
             }
         }
 
-        public static void LoadInstalledPrograms11()
-        {
-            string uninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"; //@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
-            using (RegistryKey rk = Registry.LocalMachine.OpenSubKey(uninstallKey))
-            {
-                foreach (string skName in rk.GetSubKeyNames())
-                {
-                    using (RegistryKey sk = rk.OpenSubKey(skName))
-                    {
-                        try
-                        {
-                            var displayName = sk.GetValue("DisplayName");
-                            if (displayName != null)
-                            {
-                                foreach (String s in sk.GetValueNames())
-                                {
-
-                                    string d;
-
-                                    if (sk.GetValueNames().Contains("DisplayIcon"))
-                                    {
-                                        d = "DisplayIcon";
-                                    }
-                                    else
-                                    {
-                                        d = "DisplayName";
-                                    }
-                                    programs.Add(sk.GetValue("DisplayName").ToString(), sk.GetValue(d).ToString());
-                                }
-                                Debug.WriteLine("\n\n");
-                            }
-                        }
-                        catch (Exception ex)
-                        { }
-                    }
-                }
-            }
-        }
 
         private void ShowListCallBack ()
         {

@@ -35,6 +35,10 @@ namespace antistract.MVVM.View
         private string SelectedProcessName;      
         private string SelectedProcessPath;
 
+        private string RemoveSelectedProgramName;
+        private string RemoveSelectedProcessName;
+        private string RemoveSelectedProcessPath;
+
         private List<string> BlacklistedPaths = new List<string>();
         private List<string> namesList = new List<String>();
         private bool BlackListPlaceholderText = true;
@@ -150,18 +154,6 @@ namespace antistract.MVVM.View
             ToggleAddToBlacklistButton(true);
             ToggleRemoveFromBlacklistButton(true);
         } 
-
-        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string output;
-            ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
-
-            programs.TryGetValue(lbi.Content.ToString(), out output);
-
-            Debug.WriteLine(output);
-            SelectedProgramName = lbi.Content.ToString();
-            SelectedProcessName = output;
-        }
 
         public static void startChecking()
         {
@@ -371,13 +363,41 @@ namespace antistract.MVVM.View
 
             Debug.WriteLine(SelectedProcessPath);
             ListBoxItem item = new ListBoxItem();
-            item.Content = SelectedProgramName + " (" + SelectedProcessName + ")";
+            item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
             blacklistList.Items.Add(item);   
         }
 
         private void RemoveFromBlacklist_Click(object sender, RoutedEventArgs e)
         {
+            namesList.Remove(RemoveSelectedProgramName);
+            namesList.Remove(RemoveSelectedProcessName);
+            BlacklistedPaths.Remove(RemoveSelectedProcessPath);
+        }
 
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string output;
+            ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
+
+            programs.TryGetValue(lbi.Content.ToString(), out output);
+
+            Debug.WriteLine(output);
+            SelectedProgramName = lbi.Content.ToString();
+            SelectedProcessName = output;
+        }
+
+        private void blacklistList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string output;
+            ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
+
+            RemoveSelectedProgramName = lbi.Content.ToString();
+
+            programs.TryGetValue(RemoveSelectedProgramName, out output);
+            RemoveSelectedProcessName = output;
+
+            paths.TryGetValue(RemoveSelectedProgramName, out output);
+            RemoveSelectedProcessPath = output;
         }
     }
 }

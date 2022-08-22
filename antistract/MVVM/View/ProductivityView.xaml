@@ -221,7 +221,7 @@
                                 IsEnabled="False"/>
 
                         <ListBox x:Name="blacklistList" 
-                                 SelectionChanged="listBox_SelectionChanged"
+                                 SelectionChanged="blacklistList_SelectionChanged"
                                  HorizontalAlignment="Right" 
                                  Margin="0,46,8,10" 
                                  Width="200">

@@ -174,15 +174,18 @@ namespace antistract.MVVM.View
 
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
         {
-            SavePlanButton_Click();
-            TickPlan(CurrentlySelectedPlan.SelectedPlan);
-            for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+            if (!GlobalVariables.PlanNames.Contains(EntryName.Text))
             {
-                TogglePlanCreatorItem(i, false);
+                SavePlanButton_Click();
+                for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+                {
+                    TogglePlanCreatorItem(i, false);
+                }
+                ToggleAddButton(false);
+                isEdited(false);
+                ToggleRemoveButton(false);
+                TickPlan(CurrentlySelectedPlan.SelectedPlan);
             }
-            ToggleAddButton(false);
-            isEdited(false);
-            ToggleRemoveButton(false);
         }
 
         private void SavePlanButton_Click() {

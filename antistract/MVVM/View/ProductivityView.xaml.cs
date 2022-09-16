@@ -392,13 +392,16 @@ namespace antistract.MVVM.View
                     item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
                     blacklistList.Items.Add(item);
 
-                    //Settings.Default.BlacklistedPrograms = new StringCollection();
-                    Settings.Default.BlacklistedPrograms.Add(SelectedProgramName.ToString());
+                    //First time initialization
+                    /*Settings.Default.BlacklistedPrograms = new StringCollection();
+                    Settings.Default.BlacklistedProcesses = new StringCollection();
+                    Settings.Default.BlacklistedPaths = new StringCollection();
+                    Settings.Default.BlacklistedDisplayNames = new StringCollection();*/
 
-                    /*Settings.Default.BlacklistedPrograms.Add(SelectedProgramName);
-                    Settings.Default.BlacklistedProcesses.Add(SelectedProcessName);
-                    Settings.Default.BlacklistedPaths.Add(SelectedProcessPath);
-                    Settings.Default.BlacklistedDisplayNames.Add(SelectedProgramName);*/
+                    Settings.Default.BlacklistedPrograms.Add(SelectedProgramName.ToString());
+                    Settings.Default.BlacklistedProcesses.Add(SelectedProcessName.ToString());
+                    Settings.Default.BlacklistedPaths.Add(SelectedProcessPath.ToString());
+                    Settings.Default.BlacklistedDisplayNames.Add(SelectedProgramName.ToString());
 
                     Settings.Default.Save();
 

@@ -67,10 +67,21 @@ namespace antistract.MVVM.View
 
         public void LoadBlacklistUserSave()
         {
+            Debug.WriteLine("Current no of stored blacklisted programs: " + Settings.Default.BlacklistedDisplayNames.Count);
+
             BlacklistedPaths = Settings.Default.BlacklistedPaths.Cast<string>().ToList();
             namesList = Settings.Default.BlacklistedProcesses.Cast<string>().ToList();
             namesList.AddRange(Settings.Default.BlacklistedPrograms.Cast<string>().ToList());
             DisplayBlacklistedNames = Settings.Default.BlacklistedDisplayNames.Cast<string>().ToList();
+
+            blacklistList.Items.Clear();
+            foreach (string name in DisplayBlacklistedNames)
+            {
+                Debug.WriteLine(name);
+                ListBoxItem item = new ListBoxItem();
+                item.Content = name;
+                blacklistList.Items.Add(item);
+            }
         }
 
         public void GetInstalledPrograms(object sender, RoutedEventArgs e)

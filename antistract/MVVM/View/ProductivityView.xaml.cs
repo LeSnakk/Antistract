@@ -53,19 +53,24 @@ namespace antistract.MVVM.View
             InitializeComponent();
             FillPickPlanDropdown();
             bgWorker.DoWork += BgWorker_DoWork;
-            //LoadBlacklistUserSave();
+            LoadBlacklistUserSave();
+            //Debug_ClearUserSettings();
+        }
+
+        public void Debug_ClearUserSettings()
+        {
+            Settings.Default.BlacklistedPaths.Clear();
+            Settings.Default.BlacklistedProcesses.Clear();
+            Settings.Default.BlacklistedPrograms.Clear();
+            Settings.Default.BlacklistedDisplayNames.Clear();
         }
 
         public void LoadBlacklistUserSave()
         {
-            string programName;
-            string processName;
-            string programpath;
-            string displayname;
-            foreach (string entry in Settings.Default.BlacklistedPrograms)
-            {
-                //just convert it
-            }
+            BlacklistedPaths = Settings.Default.BlacklistedPaths.Cast<string>().ToList();
+            namesList = Settings.Default.BlacklistedProcesses.Cast<string>().ToList();
+            namesList.AddRange(Settings.Default.BlacklistedPrograms.Cast<string>().ToList());
+            DisplayBlacklistedNames = Settings.Default.BlacklistedDisplayNames.Cast<string>().ToList();
         }
 
         public void GetInstalledPrograms(object sender, RoutedEventArgs e)

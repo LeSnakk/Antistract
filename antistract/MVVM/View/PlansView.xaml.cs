@@ -182,10 +182,17 @@ namespace antistract.MVVM.View
                     TogglePlanCreatorItem(i, false);
                 }
                 ToggleAddButton(false);
-                isEdited(false);
                 ToggleRemoveButton(false);
+            }
+            if (isEdited())
+            {
                 TickPlan(CurrentlySelectedPlan.SelectedPlan);
             }
+            else
+            {
+                TickPlan(EntryName.Text);
+            }
+            isEdited(false);
         }
 
         private void SavePlanButton_Click() {

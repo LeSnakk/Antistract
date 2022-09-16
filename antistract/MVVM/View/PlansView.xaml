@@ -88,13 +88,17 @@
                             </Grid.ColumnDefinitions>
 
                             <Button Grid.Column="0"
+                                    x:Name="DeleteButton"
                                     Margin="2"
-                                    Click="Delete_Button_Click">
+                                    Click="Delete_Button_Click"
+                                    IsEnabled="False">
                                 Delete
                             </Button>
                             <Button Grid.Column="1"
+                                    x:Name="EditButton"
                                     Margin="2"
-                                    Click="Edit_Button_Click">
+                                    Click="Edit_Button_Click"
+                                    IsEnabled="False">
                                 Edit
                             </Button>
 
@@ -130,7 +134,8 @@
                                 Width="250"
                                 Margin="10"
                                 FontSize="20"
-                                Click="SavePlanButton_Click">
+                                Click="SavePlanButton_Click"
+                                IsEnabled="false">
                             Save Plan
                         </Button>
                         <TextBox Height="20"

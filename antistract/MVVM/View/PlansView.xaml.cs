@@ -174,8 +174,9 @@ namespace antistract.MVVM.View
 
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!GlobalVariables.PlanNames.Contains(EntryName.Text))
+            if ((!GlobalVariables.PlanNames.Contains(EntryName.Text) || isEdited()) && EntryName.Text != "")
             {
+                Debug.WriteLine("WENT!!!");
                 SavePlanButton_Click();
                 for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
                 {
@@ -183,24 +184,31 @@ namespace antistract.MVVM.View
                 }
                 ToggleAddButton(false);
                 ToggleRemoveButton(false);
-            }
-            if (isEdited())
-            {
-                TickPlan(CurrentlySelectedPlan.SelectedPlan);
-                CurrentlySelectedPlan.SelectedPlan = CurrentlySelectedPlan.SelectedPlan;
-            }
-            else
-            {
-                TickPlan(EntryName.Text);
+
+                if (isEdited())
+                {
+                    TickPlan(CurrentlySelectedPlan.SelectedPlan);
+                }
+                else
+                {
+                    TickPlan(EntryName.Text);
+                }
                 CurrentlySelectedPlan.SelectedPlan = EntryName.Text;
-            }
-            isEdited(false);
-            EntryName.Clear();
+                isEdited(false);
+                EntryName.Clear();
+                SavePlan.IsEnabled = false;
+            }       
         }
 
         private void SavePlanButton_Click() {
             if (isEdited())
             {
+                if (EntryName.Text != CurrentlySelectedPlan.SelectedPlan)
+                {
+                    isEdited(false);
+                    SavePlanButton_Click();
+                }
+
                 Debug.WriteLine("\n\nWENT INTO EDIT MODE\n\n");
 
                 XmlDocument doc1 = new XmlDocument();
@@ -344,6 +352,8 @@ namespace antistract.MVVM.View
                     planName.isChecked = true;
                 }
             }
+            ToggleDeleteButton(true);
+            ToggleEditButton(true);
         }
 
         private void Save(XDocument document, XmlDocument xmldoc, string path)
@@ -399,14 +409,19 @@ namespace antistract.MVVM.View
         private void AddPlanButton_Click(object sender, RoutedEventArgs e)
         {
             GoToPlansViewButton.Command.Execute(null);
+            SavePlan.IsEnabled = true;
             LoadPlans();
             DisplayPlans();
             CurrentlySelectedPlan.SelectedPlan = "";
+            EntryName.Clear();
             isEdited(false);
             ResetPlanCreatorItems();
             ToggleAddButton(true);
             TogglePlanCreatorItems(true);
             ToggleRemoveButton(true);
+
+            ToggleDeleteButton(false);
+            ToggleEditButton(false);
         }
 
         private void AddElementButton_Click(object sender, RoutedEventArgs e)
@@ -461,6 +476,10 @@ namespace antistract.MVVM.View
             GetPlan(radiobutton.Content.ToString());
             CurrentlySelectedPlan.SelectedPlan = radiobutton.Content.ToString();
             ShowSelectedPlan(CurrentlySelectedPlan.SelectedPlan);
+            ToggleDeleteButton(true);
+            ToggleEditButton(true);
+            SavePlan.IsEnabled = false;
+            EntryName.Text = CurrentlySelectedPlan.SelectedPlan;
         }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
@@ -470,18 +489,24 @@ namespace antistract.MVVM.View
             Save(doc, null, path);
             //doc.Save(path);
 
+            ResetPlanCreatorItems();
+            ToggleAddButton(false);
             LoadPlans();
             DisplayPlans();
+            ToggleDeleteButton(false);
+            ToggleEditButton(false);
+            EntryName.Clear();
         }
 
         private void Edit_Button_Click(object sender, RoutedEventArgs e)
         {
             EditButtonClick();
             ToggleRemoveButton(true);
+            SavePlan.IsEnabled = true;
         }
         private void EditButtonClick()
         {
-            EntryName.Clear();
+            EntryName.Text = CurrentlySelectedPlan.SelectedPlan;
             for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
             {
                 TogglePlanCreatorItem(i, true);
@@ -523,6 +548,29 @@ namespace antistract.MVVM.View
             TimerWindow timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
             timerWindow.Show();
             Debug.WriteLine(CurrentlySelectedPlan.SelectedPlan);
+        }
+
+        public void ToggleDeleteButton(bool visibility)
+        {
+            if (visibility)
+            {
+                DeleteButton.IsEnabled = true;
+            }
+            else
+            {
+                DeleteButton.IsEnabled = false;
+            }
+        }
+        public void ToggleEditButton(bool visibility)
+        {
+            if (visibility)
+            {
+                EditButton.IsEnabled = true;
+            }
+            else
+            {
+                EditButton.IsEnabled = false;
+            }
         }
     }
 }

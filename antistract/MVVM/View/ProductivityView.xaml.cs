@@ -443,10 +443,10 @@ namespace antistract.MVVM.View
                 BlacklistedPaths.Remove(RemoveSelectedProcessPath);
                 DisplayBlacklistedNames.Remove(RemoveSelectedProgramName);
 
-                Settings.Default.BlacklistedPrograms.Remove(SelectedProgramName);
-                Settings.Default.BlacklistedProcesses.Remove(SelectedProcessName);
-                Settings.Default.BlacklistedPaths.Remove(SelectedProcessPath);
-                Settings.Default.BlacklistedDisplayNames.Remove(SelectedProgramName);
+                Settings.Default.BlacklistedPrograms.Remove(RemoveSelectedProgramName.ToString());
+                Settings.Default.BlacklistedProcesses.Remove(RemoveSelectedProcessName.ToString());
+                Settings.Default.BlacklistedPaths.Remove(RemoveSelectedProcessPath.ToString());
+                Settings.Default.BlacklistedDisplayNames.Remove(RemoveSelectedProgramName.ToString());
                 Settings.Default.Save();
 
 

@@ -187,12 +187,15 @@ namespace antistract.MVVM.View
             if (isEdited())
             {
                 TickPlan(CurrentlySelectedPlan.SelectedPlan);
+                CurrentlySelectedPlan.SelectedPlan = CurrentlySelectedPlan.SelectedPlan;
             }
             else
             {
                 TickPlan(EntryName.Text);
+                CurrentlySelectedPlan.SelectedPlan = EntryName.Text;
             }
             isEdited(false);
+            EntryName.Clear();
         }
 
         private void SavePlanButton_Click() {
@@ -478,6 +481,7 @@ namespace antistract.MVVM.View
         }
         private void EditButtonClick()
         {
+            EntryName.Clear();
             for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
             {
                 TogglePlanCreatorItem(i, true);

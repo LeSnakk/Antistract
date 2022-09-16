@@ -86,6 +86,7 @@ namespace antistract.MVVM.View
             if (blacklistList.Items.Count > 0)
             {
                 NoBlacklistPlaceholderText.Visibility = Visibility.Hidden;
+                blacklistList.IsEnabled = false;
             }
         }
 
@@ -102,7 +103,7 @@ namespace antistract.MVVM.View
             btn_CallLoad.Visibility = Visibility.Hidden;
             LoadingText.Visibility = Visibility.Visible;
             Thread thread = new Thread(loadInstalledPrograms) { IsBackground = true };
-            thread.Start();
+            thread.Start(); 
         }
 
         public static void LoadInstalledPrograms() 
@@ -190,6 +191,7 @@ namespace antistract.MVVM.View
 
             ToggleAddToBlacklistButton(true);
             ToggleRemoveFromBlacklistButton(true);
+            blacklistList.IsEnabled = true;
         } 
 
         public static void startChecking()
@@ -387,6 +389,7 @@ namespace antistract.MVVM.View
             if (SelectedProgramName != null)
             {
                 NoBlacklistPlaceholderText.Visibility = Visibility.Hidden;
+                blacklistList.IsEnabled = true;
                 if (SelectedProcessName.Contains("."))
                 {
                     SelectedProcessName = SelectedProcessName.Substring(0, SelectedProcessName.LastIndexOf("."));
@@ -469,6 +472,7 @@ namespace antistract.MVVM.View
             if (blacklistList.Items.Count <= 0)
             {
                 NoBlacklistPlaceholderText.Visibility = Visibility.Visible;
+                blacklistList.IsEnabled = false;
             }
 
             Debug.WriteLine("Blacklisted Program/Processes count: " + namesList.Count);

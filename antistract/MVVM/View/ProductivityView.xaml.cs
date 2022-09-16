@@ -75,12 +75,17 @@ namespace antistract.MVVM.View
             DisplayBlacklistedNames = Settings.Default.BlacklistedDisplayNames.Cast<string>().ToList();
 
             blacklistList.Items.Clear();
+            
             foreach (string name in DisplayBlacklistedNames)
             {
                 Debug.WriteLine(name);
                 ListBoxItem item = new ListBoxItem();
                 item.Content = name;
                 blacklistList.Items.Add(item);
+            }
+            if (blacklistList.Items.Count > 0)
+            {
+                NoBlacklistPlaceholderText.Visibility = Visibility.Hidden;
             }
         }
 
@@ -381,6 +386,7 @@ namespace antistract.MVVM.View
         {
             if (SelectedProgramName != null)
             {
+                NoBlacklistPlaceholderText.Visibility = Visibility.Hidden;
                 if (SelectedProcessName.Contains("."))
                 {
                     SelectedProcessName = SelectedProcessName.Substring(0, SelectedProcessName.LastIndexOf("."));
@@ -458,6 +464,11 @@ namespace antistract.MVVM.View
                     item.Content = name;
                     blacklistList.Items.Add(item);
                 }
+            }
+            
+            if (blacklistList.Items.Count <= 0)
+            {
+                NoBlacklistPlaceholderText.Visibility = Visibility.Visible;
             }
 
             Debug.WriteLine("Blacklisted Program/Processes count: " + namesList.Count);

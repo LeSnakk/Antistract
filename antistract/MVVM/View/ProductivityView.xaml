@@ -299,7 +299,7 @@
                                     FontFamily="/Fonts/#Dosis"
                                     Foreground="#F3E9D2"
                                     FontSize="50" 
-                                    IsEnabled="False"
+                                    IsEnabled="{Binding Source={x:Static properties:Settings.Default}, Path=StartEnabled, Mode=TwoWay}"
                                     Click="StartTimer_Click">
                                         <Button.Background>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">

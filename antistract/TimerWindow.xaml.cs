@@ -119,7 +119,9 @@ namespace antistract
                 //After Plan being completed:
 
                 ProductivityView.ShouldCheckNo();
-
+                GlobalVariables.TimerRunning = false;
+                Settings.Default.StartEnabled = true;
+                Settings.Default.Save();
                 this.Close();
             }
         }

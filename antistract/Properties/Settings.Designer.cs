@@ -90,5 +90,17 @@ namespace antistract.Properties {
                 this["BlacklistedDisplayNames"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StartEnabled {
+            get {
+                return ((bool)(this["StartEnabled"]));
+            }
+            set {
+                this["StartEnabled"] = value;
+            }
+        }
     }
 }

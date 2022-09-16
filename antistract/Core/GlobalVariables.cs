@@ -11,5 +11,7 @@ namespace antistract.Core
         public static List<String> PlanNames { get; set; } = new List<string>();
 
         public static bool OnlyPausing;
+
+        public static bool TimerRunning;
     }
 }

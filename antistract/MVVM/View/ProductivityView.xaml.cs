@@ -339,7 +339,8 @@ namespace antistract.MVVM.View
                 Debug.WriteLine("PÜAAAN " + CurrentlySelectedPlan.SelectedPlan);
                 if (GlobalVariables.OnlyPausing != null)
                 {
-                    StartTimer.IsEnabled = true;
+                    Settings.Default.StartEnabled = true;
+                    Settings.Default.Save();
                 }
             }
         }
@@ -364,7 +365,8 @@ namespace antistract.MVVM.View
             GlobalVariables.OnlyPausing = false;
             if (CurrentlySelectedPlan.SelectedPlan != null)
             {
-                StartTimer.IsEnabled = true;
+                Settings.Default.StartEnabled = true;
+                Settings.Default.Save();
             }
         }
 
@@ -373,15 +375,23 @@ namespace antistract.MVVM.View
             GlobalVariables.OnlyPausing = true;
             if (CurrentlySelectedPlan.SelectedPlan != null)
             {
-                StartTimer.IsEnabled = true;
+                Settings.Default.StartEnabled = true;
+                Settings.Default.Save();
             }
         }
 
         private void StartTimer_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("CSP: " + CurrentlySelectedPlan.SelectedPlan);
-            TimerWindow timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
-            timerWindow.Show();
+            if (!GlobalVariables.TimerRunning)
+            {
+                Debug.WriteLine("CSP: " + CurrentlySelectedPlan.SelectedPlan);
+                TimerWindow timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
+                timerWindow.Show();
+                GlobalVariables.TimerRunning = true;
+                Settings.Default.StartEnabled = false;
+                Settings.Default.Save();
+                //ToggleStartButton(false);
+            }
         }
 
         private void ToggleAddToBlacklistButton(bool isDisabled)
@@ -533,6 +543,18 @@ namespace antistract.MVVM.View
                 Debug.WriteLine(RemoveSelectedProgramName);
                 Debug.WriteLine(RemoveSelectedProcessName);
                 Debug.WriteLine(RemoveSelectedProcessPath);
+            }
+        }
+
+        public void ToggleStartButton (bool visibility)
+        {
+            if (visibility)
+            {
+                StartTimer.IsEnabled = true;
+            }
+            else
+            {
+                StartTimer.IsEnabled = false;
             }
         }
     }

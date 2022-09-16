@@ -49,9 +49,9 @@ namespace antistract.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Generic.List<System.String> BlacklistedPrograms {
+        public global::System.Collections.Specialized.StringCollection BlacklistedPrograms {
             get {
-                return ((global::System.Collections.Generic.List<System.String>)(this["BlacklistedPrograms"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["BlacklistedPrograms"]));
             }
             set {
                 this["BlacklistedPrograms"] = value;
@@ -60,9 +60,9 @@ namespace antistract.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Generic.List<System.String> BlacklistedProcesses {
+        public global::System.Collections.Specialized.StringCollection BlacklistedProcesses {
             get {
-                return ((global::System.Collections.Generic.List<System.String>)(this["BlacklistedProcesses"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["BlacklistedProcesses"]));
             }
             set {
                 this["BlacklistedProcesses"] = value;
@@ -71,9 +71,9 @@ namespace antistract.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Generic.List<System.String> BlacklistedPaths {
+        public global::System.Collections.Specialized.StringCollection BlacklistedPaths {
             get {
-                return ((global::System.Collections.Generic.List<System.String>)(this["BlacklistedPaths"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["BlacklistedPaths"]));
             }
             set {
                 this["BlacklistedPaths"] = value;
@@ -82,9 +82,9 @@ namespace antistract.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Generic.List<System.String> BlacklistedDisplayNames {
+        public global::System.Collections.Specialized.StringCollection BlacklistedDisplayNames {
             get {
-                return ((global::System.Collections.Generic.List<System.String>)(this["BlacklistedDisplayNames"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["BlacklistedDisplayNames"]));
             }
             set {
                 this["BlacklistedDisplayNames"] = value;

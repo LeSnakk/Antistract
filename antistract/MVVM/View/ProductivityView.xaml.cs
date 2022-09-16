@@ -16,6 +16,7 @@ using System.Management;
 using Microsoft.WindowsAPICodePack.Shell;
 using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 using antistract.Properties;
+using System.Collections.Specialized;
 
 namespace antistract.MVVM.View
 {
@@ -52,7 +53,7 @@ namespace antistract.MVVM.View
             InitializeComponent();
             FillPickPlanDropdown();
             bgWorker.DoWork += BgWorker_DoWork;
-            LoadBlacklistUserSave();
+            //LoadBlacklistUserSave();
         }
 
         public void LoadBlacklistUserSave()
@@ -391,11 +392,22 @@ namespace antistract.MVVM.View
                     item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
                     blacklistList.Items.Add(item);
 
-                    Settings.Default.BlacklistedPrograms.Add(SelectedProgramName);
+                    //Settings.Default.BlacklistedPrograms = new StringCollection();
+                    Settings.Default.BlacklistedPrograms.Add(SelectedProgramName.ToString());
+
+                    /*Settings.Default.BlacklistedPrograms.Add(SelectedProgramName);
                     Settings.Default.BlacklistedProcesses.Add(SelectedProcessName);
                     Settings.Default.BlacklistedPaths.Add(SelectedProcessPath);
-                    Settings.Default.BlacklistedDisplayNames.Add(SelectedProgramName);
+                    Settings.Default.BlacklistedDisplayNames.Add(SelectedProgramName);*/
+
                     Settings.Default.Save();
+
+                    List<string> test = Settings.Default.BlacklistedPrograms.Cast<string>().ToList();
+                    foreach (string name in test)
+                    {
+                        Debug.WriteLine("In user Settings:" + name);
+                    }
+                    Debug.WriteLine(Settings.Default.BlacklistedPrograms.Count);
                 }
             }
             SelectedProgramName = null;

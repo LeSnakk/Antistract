@@ -337,6 +337,10 @@ namespace antistract.MVVM.View
                 ComboBoxItem selectedPlan = (ComboBoxItem)pickPlanDropdown.SelectedItem;
                 CurrentlySelectedPlan.SelectedPlan = selectedPlan.Content.ToString();
                 Debug.WriteLine("PÜAAAN " + CurrentlySelectedPlan.SelectedPlan);
+                if (GlobalVariables.OnlyPausing != null)
+                {
+                    StartTimer.IsEnabled = true;
+                }
             }
         }
 
@@ -358,13 +362,19 @@ namespace antistract.MVVM.View
         private void Close_Program_Click(object sender, RoutedEventArgs e)
         {
             GlobalVariables.OnlyPausing = false;
-            StartTimer.IsEnabled = true;
+            if (CurrentlySelectedPlan.SelectedPlan != null)
+            {
+                StartTimer.IsEnabled = true;
+            }
         }
 
         private void Stop_Timer_Click(object sender, RoutedEventArgs e)
         {
             GlobalVariables.OnlyPausing = true;
-            StartTimer.IsEnabled = true;
+            if (CurrentlySelectedPlan.SelectedPlan != null)
+            {
+                StartTimer.IsEnabled = true;
+            }
         }
 
         private void StartTimer_Click(object sender, RoutedEventArgs e)

@@ -140,6 +140,8 @@ namespace antistract
 
             weeklyLearnTime = TimeSpan.FromSeconds((int)Settings.Default["WeeklyLearnTime"]);
 
+            Timer.Content = (int)Minutes;
+            timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
             MainTimer.Tick += dispatcherTimer_Tick;
             MainTimer.Interval = new TimeSpan(0, 0, 1);
 
@@ -148,7 +150,7 @@ namespace antistract
             MainTimer.Start();
             WasteTimer.Start();
             
-            Timer.Content = timeLeft.TotalMinutes;
+            //Timer.Content = timeLeft.TotalMinutes;
             ClosingTime.Content = closingTime.ToString("HH:mm");
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)

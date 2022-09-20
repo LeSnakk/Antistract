@@ -33,6 +33,7 @@ namespace antistract.MVVM.View
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
 
         public static bool ShouldCheck;
+        string CheckMode;
 
         private string SelectedProgramName;
         private string SelectedProcessName;      
@@ -69,6 +70,8 @@ namespace antistract.MVVM.View
 
         public void FirstStartup()
         {
+            CheckMode = "";
+
             Settings.Default.StartEnabled = false;
             Settings.Default.Save();
 
@@ -365,7 +368,7 @@ namespace antistract.MVVM.View
                 ComboBoxItem selectedPlan = (ComboBoxItem)pickPlanDropdown.SelectedItem;
                 CurrentlySelectedPlan.SelectedPlan = selectedPlan.Content.ToString();
                 Debug.WriteLine("PÜAAAN " + CurrentlySelectedPlan.SelectedPlan);
-                if (GlobalVariables.OnlyPausing != null)
+                if (GlobalVariables.OnlyPausing != null && CheckMode != "")
                 {
                     Settings.Default.StartEnabled = true;
                     Settings.Default.Save();
@@ -391,6 +394,7 @@ namespace antistract.MVVM.View
         private void Close_Program_Click(object sender, RoutedEventArgs e)
         {
             GlobalVariables.OnlyPausing = false;
+            CheckMode = "closing";
             if (CurrentlySelectedPlan.SelectedPlan != null)
             {
                 Settings.Default.StartEnabled = true;
@@ -401,6 +405,7 @@ namespace antistract.MVVM.View
         private void Stop_Timer_Click(object sender, RoutedEventArgs e)
         {
             GlobalVariables.OnlyPausing = true;
+            CheckMode = "pausing";
             if (CurrentlySelectedPlan.SelectedPlan != null)
             {
                 Settings.Default.StartEnabled = true;

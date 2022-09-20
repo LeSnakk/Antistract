@@ -17,6 +17,7 @@ using Microsoft.WindowsAPICodePack.Shell;
 using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 using antistract.Properties;
 using System.Collections.Specialized;
+using System.Configuration;
 
 namespace antistract.MVVM.View
 {
@@ -53,6 +54,7 @@ namespace antistract.MVVM.View
             InitializeComponent();
             FillPickPlanDropdown();
             bgWorker.DoWork += BgWorker_DoWork;
+            FirstStartup();
             LoadBlacklistUserSave();
             //Debug_ClearUserSettings();
         }
@@ -65,9 +67,35 @@ namespace antistract.MVVM.View
             Settings.Default.BlacklistedDisplayNames.Clear();
         }
 
+        public void FirstStartup()
+        {
+            Settings.Default.StartEnabled = false;
+            Settings.Default.Save();
+
+            if (Settings.Default.FirstStartup)
+            {
+                Settings.Default.BlacklistedPrograms = new StringCollection();
+                Settings.Default.BlacklistedProcesses = new StringCollection();
+                Settings.Default.BlacklistedPaths = new StringCollection();
+                Settings.Default.BlacklistedDisplayNames = new StringCollection();
+
+                Settings.Default.FirstStartup = false;
+                Settings.Default.Save();
+
+                Debug.WriteLine("First start");
+            }
+            else
+            {
+                Debug.WriteLine("Not first start");
+                return;
+            }
+        }
+
         public void LoadBlacklistUserSave()
         {
-            Debug.WriteLine("Current no of stored blacklisted programs: " + Settings.Default.BlacklistedDisplayNames.Count);
+            Debug.WriteLine(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
+
+            //Debug.WriteLine("Current no of stored blacklisted programs: " + Settings.Default.BlacklistedDisplayNames.Count);
 
             BlacklistedPaths = Settings.Default.BlacklistedPaths.Cast<string>().ToList();
             namesList = Settings.Default.BlacklistedProcesses.Cast<string>().ToList();
@@ -436,12 +464,6 @@ namespace antistract.MVVM.View
                     ListBoxItem item = new ListBoxItem();
                     item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
                     blacklistList.Items.Add(item);
-
-                    //First time initialization
-                    /*Settings.Default.BlacklistedPrograms = new StringCollection();
-                    Settings.Default.BlacklistedProcesses = new StringCollection();
-                    Settings.Default.BlacklistedPaths = new StringCollection();
-                    Settings.Default.BlacklistedDisplayNames = new StringCollection();*/
 
                     Settings.Default.BlacklistedPrograms.Add(SelectedProgramName.ToString());
                     Settings.Default.BlacklistedProcesses.Add(SelectedProcessName.ToString());

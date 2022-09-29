@@ -22,6 +22,7 @@ using System.Windows.Shapes;
 using System.Xml;
 using System.Xml.Linq;
 using antistract.Properties;
+using System.Text.RegularExpressions;
 
 namespace antistract.MVVM.View
 {
@@ -50,6 +51,12 @@ namespace antistract.MVVM.View
         public void isEdited(bool isEdited)
         {
             _isEdited = isEdited;
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         public void GVPlanNamesToOCPlanNames()

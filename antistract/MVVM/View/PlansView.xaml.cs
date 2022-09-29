@@ -33,6 +33,7 @@ namespace antistract.MVVM.View
         public List<Plans> Plans = new List<Plans>();
         private string _currentlySelectedPlan = "";
         private bool _isEdited = false;
+        private bool saveEnabled = false;
 
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
 
@@ -181,29 +182,34 @@ namespace antistract.MVVM.View
 
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
         {
+            saveEnabled = false;
             if ((!GlobalVariables.PlanNames.Contains(EntryName.Text) || isEdited()) && EntryName.Text != "")
             {
                 Debug.WriteLine("WENT!!!");
                 SavePlanButton_Click();
-                for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+                if (saveEnabled)
                 {
-                    TogglePlanCreatorItem(i, false);
-                }
-                ToggleAddButton(false);
-                ToggleRemoveButton(false);
+                    //check for bool if is valid or so
+                    for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+                    {
+                        TogglePlanCreatorItem(i, false);
+                    }
+                    ToggleAddButton(false);
+                    ToggleRemoveButton(false);
 
-                if (isEdited())
-                {
-                    TickPlan(CurrentlySelectedPlan.SelectedPlan);
+                    if (isEdited())
+                    {
+                        TickPlan(CurrentlySelectedPlan.SelectedPlan);
+                    }
+                    else
+                    {
+                        TickPlan(EntryName.Text);
+                    }
+                    CurrentlySelectedPlan.SelectedPlan = EntryName.Text;
+                    isEdited(false);
+                    EntryName.Clear();
+                    SavePlan.IsEnabled = false;
                 }
-                else
-                {
-                    TickPlan(EntryName.Text);
-                }
-                CurrentlySelectedPlan.SelectedPlan = EntryName.Text;
-                isEdited(false);
-                EntryName.Clear();
-                SavePlan.IsEnabled = false;
             }       
         }
 
@@ -248,16 +254,54 @@ namespace antistract.MVVM.View
                 for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
                 {
                     TextBox title = (TextBox)this.FindName("EntryTitle" + i);
-                    string _title = title.Text;
-
+                    string _title;
                     ComboBox type = (ComboBox)this.FindName("EntryType" + i);
-                    string _type = type.Text;
-
+                    string _type;
                     TextBox duration = (TextBox)this.FindName("EntryDuration" + i);
-                    string _duration = duration.Text;
+                    string _duration;
 
-                    WriteToXMLFile(doc, root, _title, _type, _duration);
-                    Debug.WriteLine("\nROOT AFTER REPLACEMENT DURCHGANG " + i + "\n" + root);
+                    if (String.IsNullOrEmpty(title.Text) && String.IsNullOrEmpty(type.Text) && String.IsNullOrEmpty(duration.Text))
+                    {
+                        //I GUESS NO – maybe fill variables with empty content?
+                        continue;
+                    }
+                    else
+                    {
+                        if (String.IsNullOrWhiteSpace(title.Text))
+                        {
+                            Debug.WriteLine("Invalid input TEXT");
+                            return;
+                        } else
+                        {
+                            _title = title.Text;
+                            saveEnabled = true;
+                        }
+
+                        if (String.IsNullOrWhiteSpace(type.Text))
+                        {
+                            Debug.WriteLine("Invalid input TYPE");
+                            saveEnabled = false;
+                            return;
+                        } else
+                        {
+                            _type = type.Text;
+                            saveEnabled = true;
+                        }
+
+                        if (String.IsNullOrWhiteSpace(duration.Text))
+                        {
+                            Debug.WriteLine("Invalid input DURATION");
+                            saveEnabled = false;
+                            return;
+                        } else
+                        {
+                            _duration = duration.Text;
+                            saveEnabled = true;
+                        }
+
+                        WriteToXMLFile(doc, root, _title, _type, _duration);
+                        Debug.WriteLine("\nROOT AFTER REPLACEMENT DURCHGANG " + i + "\n" + root);
+                    }
                 }
                 //doc.Save(path);
                 Save(doc, null, path);
@@ -280,22 +324,62 @@ namespace antistract.MVVM.View
                     for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
                     {
                         TextBox title = (TextBox)this.FindName("EntryTitle" + i);
-                        string _title = title.Text;
-
+                        string _title;
                         ComboBox type = (ComboBox)this.FindName("EntryType" + i);
-                        string _type = type.Text;
-
+                        string _type;
                         TextBox duration = (TextBox)this.FindName("EntryDuration" + i);
-                        string _duration = duration.Text;
+                        string _duration;
 
-                        WriteToXMLFile(doc, root, _title, _type, _duration);
+                        if (String.IsNullOrEmpty(title.Text) && String.IsNullOrEmpty(type.Text) && String.IsNullOrEmpty(duration.Text))
+                        {
+                            //maybe fill variables with empty content?
+                            continue;
+                        }
+                        else
+                        {
+                            if (String.IsNullOrWhiteSpace(title.Text))
+                            {
+                                Debug.WriteLine("Invalid input TEXT");
+                                return;
+                            }
+                            else
+                            {
+                                _title = title.Text;
+                                saveEnabled = true;
+                            }
+
+                            if (String.IsNullOrWhiteSpace(type.Text))
+                            {
+                                Debug.WriteLine("Invalid input TYPE");
+                                saveEnabled = false;
+                                return;
+                            }
+                            else
+                            {
+                                _type = type.Text;
+                                saveEnabled = true;
+                            }
+
+                            if (String.IsNullOrWhiteSpace(duration.Text))
+                            {
+                                Debug.WriteLine("Invalid input DURATION");
+                                saveEnabled = false;
+                                return;
+                            }
+                            else
+                            {
+                                _duration = duration.Text;
+                                saveEnabled = true;
+                            }
+
+                            WriteToXMLFile(doc, root, _title, _type, _duration);
+                        }
                     }
                 }
                 if (root.Elements().Count<XElement>() > 1)
                 {
                     doc.Element("antistract_plan").Add(root);
                     Save(doc, null, path);
-                    //doc.Save(path);
                 }
             }
             LoadPlans();

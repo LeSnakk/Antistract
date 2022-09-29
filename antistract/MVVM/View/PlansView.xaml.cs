@@ -210,7 +210,7 @@ namespace antistract.MVVM.View
         private void SavePlanButton_Click() {
             if (isEdited())
             {
-                if (EntryName.Text != CurrentlySelectedPlan.SelectedPlan)
+                if (EntryName.Text != CurrentlySelectedPlan.SelectedPlan && !GlobalVariables.PlanNames.Contains(EntryName.Text))
                 {
                     isEdited(false);
                     SavePlanButton_Click();

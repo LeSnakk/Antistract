@@ -224,7 +224,77 @@ namespace antistract.MVVM.View
 
                 Debug.WriteLine("\n\nWENT INTO EDIT MODE\n\n");
 
-                
+                XmlDocument doc1 = new XmlDocument();
+                doc1.Load(path);
+                XmlNodeList elements = doc1.ChildNodes;
+
+                for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 2; i++)
+                {
+                    TextBox title = (TextBox)this.FindName("EntryTitle" + i);
+                    ComboBox type = (ComboBox)this.FindName("EntryType" + i);
+                    TextBox duration = (TextBox)this.FindName("EntryDuration" + i);
+
+                    if (String.IsNullOrEmpty(title.Text) && String.IsNullOrEmpty(type.Text) && String.IsNullOrEmpty(duration.Text))
+                    {
+                        //I GUESS NO – maybe fill variables with empty content?
+                        continue;
+                    }
+                    else
+                    {
+                        if (String.IsNullOrWhiteSpace(title.Text))
+                        {
+                            Debug.WriteLine("Invalid input TEXT0 " + i);
+                            saveEnabled = false;
+                            return;
+                        }
+                        else
+                        {
+                            Debug.WriteLine(i + " " + title.Text + "totallength= " + PlanCreatorWrapPanel.Children.Count);
+                            saveEnabled = true;
+                        }
+
+                        if (String.IsNullOrWhiteSpace(type.Text))
+                        {
+                            Debug.WriteLine("Invalid input TYPE");
+                            saveEnabled = false;
+                            return;
+                        }
+                        else
+                        {
+                            saveEnabled = true;
+                        }
+
+                        if (String.IsNullOrWhiteSpace(duration.Text))
+                        {
+                            Debug.WriteLine("Invalid input DURATION");
+                            saveEnabled = false;
+                            return;
+                        }
+                        else
+                        {
+                            saveEnabled = true;
+                        }
+                    }
+                }
+
+                for (int l = 0; l < elements.Count; l++)    //All elements in XML
+                {
+                    foreach (XmlNode Event in elements[l].ChildNodes)
+                    {
+                        if (Event["entryName"].InnerText == CurrentlySelectedPlan.SelectedPlan)     //Find right entry by Plan Name
+                        {
+                            Debug.WriteLine("\nEvent before delete: \n" + Event.ChildNodes.Count + "\n");
+                            int i = 1;
+                            while (i < Event.ChildNodes.Count)
+                            {
+                                Event.RemoveChild(Event.ChildNodes[i]);
+                            }
+                            Debug.WriteLine("\nEvent after delete: \n" + Event.ChildNodes.Count + "\n");
+                        }
+                    }
+                }
+                Save(null, doc1, path);
+
                 //doc1.Save(path);
 
                 XDocument doc = XDocument.Load(path);
@@ -249,7 +319,7 @@ namespace antistract.MVVM.View
                     {
                         if (String.IsNullOrWhiteSpace(title.Text))
                         {
-                            Debug.WriteLine("Invalid input TEXT");
+                            Debug.WriteLine("Invalid input TEXT1");
                             saveEnabled = false;
                             return;
                         } else
@@ -285,27 +355,7 @@ namespace antistract.MVVM.View
                     }
                 }
 
-                XmlDocument doc1 = new XmlDocument();
-                doc1.Load(path);
-                XmlNodeList elements = doc1.ChildNodes;
-
-                for (int l = 0; l < elements.Count; l++)    //All elements in XML
-                {
-                    foreach (XmlNode Event in elements[l].ChildNodes)
-                    {
-                        if (Event["entryName"].InnerText == CurrentlySelectedPlan.SelectedPlan)     //Find right entry by Plan Name
-                        {
-                            Debug.WriteLine("\nEvent before delete: \n" + Event.ChildNodes.Count + "\n");
-                            int i = 1;
-                            while (i < Event.ChildNodes.Count)
-                            {
-                                Event.RemoveChild(Event.ChildNodes[i]);
-                            }
-                            Debug.WriteLine("\nEvent after delete: \n" + Event.ChildNodes.Count + "\n");
-                        }
-                    }
-                }
-                Save(null, doc1, path);
+                
 
                 //doc.Save(path);
                 Save(doc, null, path);
@@ -343,7 +393,7 @@ namespace antistract.MVVM.View
                         {
                             if (String.IsNullOrWhiteSpace(title.Text))
                             {
-                                Debug.WriteLine("Invalid input TEXT");
+                                Debug.WriteLine("Invalid input TEXT2");
                                 saveEnabled = false;
                                 return;
                             }
@@ -541,6 +591,8 @@ namespace antistract.MVVM.View
             Button button = (Button)sender;
             Grid grid = button.Parent as Grid;
             Border border = grid.Parent as Border;
+            int eventIndex = PlanCreatorWrapPanel.Children.IndexOf(border);
+            Debug.WriteLine("This was event no " + eventIndex);
 
             foreach (Object element in grid.Children)
             {

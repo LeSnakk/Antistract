@@ -368,7 +368,7 @@ namespace antistract.MVVM.View
                 ComboBoxItem selectedPlan = (ComboBoxItem)pickPlanDropdown.SelectedItem;
                 CurrentlySelectedPlan.SelectedPlan = selectedPlan.Content.ToString();
                 Debug.WriteLine("PÜAAAN " + CurrentlySelectedPlan.SelectedPlan);
-                if (GlobalVariables.OnlyPausing != null && CheckMode != "")
+                if (GlobalVariables.OnlyPausing != null && CheckMode != "" && Settings.Default.BlacklistedPrograms.Count != 0)
                 {
                     Settings.Default.StartEnabled = true;
                     Settings.Default.Save();
@@ -395,7 +395,7 @@ namespace antistract.MVVM.View
         {
             GlobalVariables.OnlyPausing = false;
             CheckMode = "closing";
-            if (CurrentlySelectedPlan.SelectedPlan != null)
+            if (CurrentlySelectedPlan.SelectedPlan != null && Settings.Default.BlacklistedPrograms.Count != 0)
             {
                 Settings.Default.StartEnabled = true;
                 Settings.Default.Save();
@@ -406,7 +406,7 @@ namespace antistract.MVVM.View
         {
             GlobalVariables.OnlyPausing = true;
             CheckMode = "pausing";
-            if (CurrentlySelectedPlan.SelectedPlan != null)
+            if (CurrentlySelectedPlan.SelectedPlan != null && Settings.Default.BlacklistedPrograms.Count != 0)
             {
                 Settings.Default.StartEnabled = true;
                 Settings.Default.Save();

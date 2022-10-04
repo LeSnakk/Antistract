@@ -595,6 +595,50 @@ namespace antistract.MVVM.View
             int currentlyEnabledEntrySlots = CurrentlyEnabledEntrySlots();
             Debug.WriteLine("This was event no " + eventToDeleteIndex + "\nTotal active events: " + currentlyEnabledEntrySlots);
 
+            for (int i = eventToDeleteIndex; i < currentlyEnabledEntrySlots; i++)
+            {
+                bool last = true;
+                TextBox title = (TextBox)this.FindName("EntryTitle" + (i));
+                TextBox title2 = (TextBox)this.FindName("EntryTitle" + (i+1));
+                if (title2 != null)
+                {
+                    last = false;
+                    title.Text = title2.Text;
+                }
+
+                ComboBox type = (ComboBox)this.FindName("EntryType" + (i));
+                ComboBox type2 = (ComboBox)this.FindName("EntryType" + (i+1));
+                if (type2 != null)
+                {
+                    type.Text = type2.Text;
+                }
+
+                TextBox duration = (TextBox)this.FindName("EntryDuration" + (i));
+                TextBox duration2 = (TextBox)this.FindName("EntryDuration" + (i+1));
+                if (duration2 != null)
+                {
+                    duration.Text = duration2.Text;
+                }
+
+                if (i == currentlyEnabledEntrySlots-1 && !last)
+                {
+                    Debug.WriteLine("NOT LAST - clearing entry slot: " + i);
+                    title2.Clear();
+                    type2.SelectedIndex = -1;
+                    duration2.Clear();
+                    PlanCreatorWrapPanel.Children[currentlyEnabledEntrySlots - 1].Visibility = Visibility.Collapsed;
+                } 
+                else if (i == currentlyEnabledEntrySlots-1 && last)
+                {
+                    Debug.WriteLine("IS LAST - clearing entry slot: " + i);
+                    title.Clear();
+                    type.SelectedIndex = -1;
+                    duration.Clear();
+                    PlanCreatorWrapPanel.Children[currentlyEnabledEntrySlots-1].Visibility = Visibility.Collapsed;
+                }
+            }
+
+/*
             foreach (Object element in grid.Children)
             {
                 if (element is TextBox)
@@ -617,6 +661,7 @@ namespace antistract.MVVM.View
             EditButtonClick();
             ToggleRemoveButton(true);
             TickPlan(CurrentlySelectedPlan.SelectedPlan);
+*/
         }
 
         private int CurrentlyEnabledEntrySlots()

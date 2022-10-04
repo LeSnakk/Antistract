@@ -23,6 +23,7 @@ using System.Xml;
 using System.Xml.Linq;
 using antistract.Properties;
 using System.Text.RegularExpressions;
+using System.Windows.Controls.Primitives;
 
 namespace antistract.MVVM.View
 {
@@ -178,6 +179,7 @@ namespace antistract.MVVM.View
                     }
                 }
             }
+            DisableInvalidInputText();
         }
 
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
@@ -195,7 +197,7 @@ namespace antistract.MVVM.View
                         //TogglePlanCreatorItem(i, false);
                         
                     }*/
-                    ShowSelectedPlan(CurrentlySelectedPlan.SelectedPlan);
+                    
                     ToggleAddButton(false);
                     ToggleRemoveButton(false);
 
@@ -211,6 +213,7 @@ namespace antistract.MVVM.View
                     isEdited(false);
                     EntryName.Clear();
                     SavePlan.IsEnabled = false;
+                    ShowSelectedPlan(CurrentlySelectedPlan.SelectedPlan);
                 }
             }       
         }
@@ -246,6 +249,7 @@ namespace antistract.MVVM.View
                         if (String.IsNullOrWhiteSpace(title.Text))
                         {
                             Debug.WriteLine("Invalid input TEXT0 " + i);
+                            InvalidInput("text");
                             saveEnabled = false;
                             return;
                         }
@@ -257,7 +261,7 @@ namespace antistract.MVVM.View
 
                         if (String.IsNullOrWhiteSpace(type.Text))
                         {
-                            Debug.WriteLine("Invalid input TYPE");
+                            InvalidInput("type");
                             saveEnabled = false;
                             return;
                         }
@@ -268,7 +272,7 @@ namespace antistract.MVVM.View
 
                         if (String.IsNullOrWhiteSpace(duration.Text))
                         {
-                            Debug.WriteLine("Invalid input DURATION");
+                            InvalidInput("duration");
                             saveEnabled = false;
                             return;
                         }
@@ -322,6 +326,7 @@ namespace antistract.MVVM.View
                         if (String.IsNullOrWhiteSpace(title.Text))
                         {
                             Debug.WriteLine("Invalid input TEXT1");
+                            InvalidInput("text");
                             saveEnabled = false;
                             return;
                         } else
@@ -332,7 +337,7 @@ namespace antistract.MVVM.View
 
                         if (String.IsNullOrWhiteSpace(type.Text))
                         {
-                            Debug.WriteLine("Invalid input TYPE");
+                            InvalidInput("type");
                             saveEnabled = false;
                             return;
                         } else
@@ -343,7 +348,7 @@ namespace antistract.MVVM.View
 
                         if (String.IsNullOrWhiteSpace(duration.Text))
                         {
-                            Debug.WriteLine("Invalid input DURATION");
+                            InvalidInput("duration");
                             saveEnabled = false;
                             return;
                         } else
@@ -396,6 +401,7 @@ namespace antistract.MVVM.View
                             if (String.IsNullOrWhiteSpace(title.Text))
                             {
                                 Debug.WriteLine("Invalid input TEXT2");
+                                InvalidInput("text");
                                 saveEnabled = false;
                                 return;
                             }
@@ -407,7 +413,7 @@ namespace antistract.MVVM.View
 
                             if (String.IsNullOrWhiteSpace(type.Text))
                             {
-                                Debug.WriteLine("Invalid input TYPE");
+                                InvalidInput("type");
                                 saveEnabled = false;
                                 return;
                             }
@@ -419,7 +425,7 @@ namespace antistract.MVVM.View
 
                             if (String.IsNullOrWhiteSpace(duration.Text))
                             {
-                                Debug.WriteLine("Invalid input DURATION");
+                                InvalidInput("duration");
                                 saveEnabled = false;
                                 return;
                             }
@@ -443,6 +449,14 @@ namespace antistract.MVVM.View
             DisplayPlans();
         }
     
+        private void InvalidInput(string type)
+        {
+            InfoField.Visibility = Visibility.Visible;
+        }
+        private void DisableInvalidInputText()
+        {
+            InfoField.Visibility = Visibility.Hidden;
+        }
 
         public void WriteToXMLFile(XDocument doc, XElement root, string _title, string _type, string _duration)
         {
@@ -486,6 +500,7 @@ namespace antistract.MVVM.View
                 TogglePlanCreatorItem(i, false);
                 PlanCreatorWrapPanel.Children[i].Visibility = Visibility.Collapsed;
             }
+            DisableInvalidInputText();
         }
 
         private void TickPlan(string PlanName)
@@ -502,6 +517,7 @@ namespace antistract.MVVM.View
             }
             ToggleDeleteButton(true);
             ToggleEditButton(true);
+            DisableInvalidInputText();
         }
 
         private void Save(XDocument document, XmlDocument xmldoc, string path)
@@ -514,6 +530,7 @@ namespace antistract.MVVM.View
             {
                 document.Save(path);
             }
+            DisableInvalidInputText();
         }
 
         public void ToggleAddButton(bool visibility)
@@ -577,6 +594,7 @@ namespace antistract.MVVM.View
 
             ToggleDeleteButton(false);
             ToggleEditButton(false);
+            DisableInvalidInputText();
         }
 
         private void AddElementButton_Click(object sender, RoutedEventArgs e)
@@ -700,6 +718,7 @@ namespace antistract.MVVM.View
             ToggleEditButton(true);
             SavePlan.IsEnabled = false;
             EntryName.Text = CurrentlySelectedPlan.SelectedPlan;
+            DisableInvalidInputText();
         }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
@@ -716,12 +735,14 @@ namespace antistract.MVVM.View
             ToggleDeleteButton(false);
             ToggleEditButton(false);
             EntryName.Clear();
+            DisableInvalidInputText();
         }
 
         private void Edit_Button_Click(object sender, RoutedEventArgs e)
         {
             EditButtonClick();
             ToggleRemoveButton(true);
+            ToggleEditButton(false);
             SavePlan.IsEnabled = true;
         }
         private void EditButtonClick()

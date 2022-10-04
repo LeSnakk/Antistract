@@ -121,6 +121,7 @@ namespace antistract
                 ProductivityView.ShouldCheckNo();
                 GlobalVariables.TimerRunning = false;
                 Settings.Default.StartEnabled = true;
+                Settings.Default.BlacklistBlocked = false;
                 Settings.Default.Save();
                 this.Close();
             }

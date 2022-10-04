@@ -73,6 +73,7 @@ namespace antistract.MVVM.View
             CheckMode = "";
 
             Settings.Default.StartEnabled = false;
+            Settings.Default.BlacklistBlocked = false;
             Settings.Default.Save();
 
             if (Settings.Default.FirstStartup)
@@ -422,6 +423,7 @@ namespace antistract.MVVM.View
                 timerWindow.Show();
                 GlobalVariables.TimerRunning = true;
                 Settings.Default.StartEnabled = false;
+                Settings.Default.BlacklistBlocked = true;
                 Settings.Default.Save();
                 //ToggleStartButton(false);
             }

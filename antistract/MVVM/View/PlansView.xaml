@@ -143,6 +143,14 @@
                                  x:Name="EntryName">
 
                         </TextBox>
+                        <Label x:Name="InfoField"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="15"
+                               FontFamily="/Fonts/#Dosis"
+                               Foreground="#114B5F"
+                               Visibility="Hidden"
+                               Content="Please fill in all fields" />
 
                         <Border Grid.Row="1">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">

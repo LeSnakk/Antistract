@@ -245,6 +245,9 @@
                                HorizontalAlignment="Left"
                                VerticalAlignment="Top" Margin="43,110,0,0"
                                Visibility="Hidden"/>
+                        
+                        <Label x:Name="BlockBlacklistFields" 
+                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>
                     </Grid>
                 </Border>
 

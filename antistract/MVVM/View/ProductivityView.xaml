@@ -153,6 +153,8 @@
                             </Label>
 
                         </StackPanel>
+                        <Label x:Name="BlockPlanSelectField" 
+                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>
                     </Grid>
                 </Border>
 
@@ -314,23 +316,15 @@
                                 </StackPanel>
                             </Border>
                         </StackPanel>
+                        <Label x:Name="BlockStartFields" 
+                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>
                     </Grid>
                 </Border>
-
-
-
-
-
-
-
 
                 <Button Grid.Row="2" x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                         Visibility="Hidden">
 
                 </Button>
-
-
-
             </Grid>
         </Border>
     </Border>

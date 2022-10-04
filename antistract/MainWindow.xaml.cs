@@ -28,6 +28,8 @@ namespace antistract
             InitializeComponent();
             InitializePlans();
             LoadUsername();
+            Settings.Default.BlacklistBlocked = false;
+            Settings.Default.Save();
         }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)

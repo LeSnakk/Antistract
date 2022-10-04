@@ -73,7 +73,6 @@ namespace antistract.MVVM.View
             CheckMode = "";
 
             Settings.Default.StartEnabled = false;
-            Settings.Default.BlacklistBlocked = false;
             Settings.Default.Save();
 
             if (Settings.Default.FirstStartup)

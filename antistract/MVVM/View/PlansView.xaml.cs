@@ -190,10 +190,12 @@ namespace antistract.MVVM.View
                 if (saveEnabled)
                 {
                     //check for bool if is valid or so
-                    for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
+                    /*for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
                     {
-                        TogglePlanCreatorItem(i, false);
-                    }
+                        //TogglePlanCreatorItem(i, false);
+                        
+                    }*/
+                    ShowSelectedPlan(CurrentlySelectedPlan.SelectedPlan);
                     ToggleAddButton(false);
                     ToggleRemoveButton(false);
 
@@ -536,6 +538,13 @@ namespace antistract.MVVM.View
 
             TextBox duration = (TextBox)this.FindName("EntryDuration" + (item));
             duration.IsEnabled = toggle;
+
+            if(title.Text == "" && type.Text == "" && duration.Text == "")
+            {
+                Grid grid = title.Parent as Grid;
+                Border border = grid.Parent as Border;
+                border.Visibility = Visibility.Collapsed;
+            }
         }
         public void TogglePlanCreatorItems(bool toggle)
         {

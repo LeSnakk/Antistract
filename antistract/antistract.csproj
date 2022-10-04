@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="MVVM\Model\**" />
+    <EmbeddedResource Remove="MVVM\Model\**" />
+    <None Remove="MVVM\Model\**" />
+    <Page Remove="MVVM\Model\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Fonts\Dosis-VariableFont_wght.ttf" />
     <None Remove="Fonts\Joan-Regular.ttf" />
     <None Remove="Images\avatar_placeholder.png" />
@@ -16,10 +23,6 @@
     <None Remove="Images\todo_list.png" />
     <None Remove="Plans\paradeplan.xml" />
     <None Remove="Plans\paradeplan_2.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="MVVM\Model\" />
   </ItemGroup>
 
   <ItemGroup>

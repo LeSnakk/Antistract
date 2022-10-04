@@ -591,8 +591,9 @@ namespace antistract.MVVM.View
             Button button = (Button)sender;
             Grid grid = button.Parent as Grid;
             Border border = grid.Parent as Border;
-            int eventIndex = PlanCreatorWrapPanel.Children.IndexOf(border);
-            Debug.WriteLine("This was event no " + eventIndex);
+            int eventToDeleteIndex = PlanCreatorWrapPanel.Children.IndexOf(border);
+            int currentlyEnabledEntrySlots = CurrentlyEnabledEntrySlots();
+            Debug.WriteLine("This was event no " + eventToDeleteIndex + "\nTotal active events: " + currentlyEnabledEntrySlots);
 
             foreach (Object element in grid.Children)
             {
@@ -616,6 +617,23 @@ namespace antistract.MVVM.View
             EditButtonClick();
             ToggleRemoveButton(true);
             TickPlan(CurrentlySelectedPlan.SelectedPlan);
+        }
+
+        private int CurrentlyEnabledEntrySlots()
+        {
+            int slots = 0;
+            foreach (Object PlanCreatorItem in PlanCreatorWrapPanel.Children)
+            {
+                if (PlanCreatorItem is Border)
+                {
+                    Border temp = PlanCreatorItem as Border;
+                    if (temp.Visibility == Visibility.Visible)
+                    {
+                        slots++;
+                    }
+                }
+            }
+            return slots;
         }
 
         private void PlanEntryNameList_Click(object sender, RoutedEventArgs e)  //Plan List

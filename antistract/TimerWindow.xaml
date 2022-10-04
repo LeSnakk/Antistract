@@ -13,7 +13,8 @@
         Topmost="True"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="Manual"
-        ShowInTaskbar="False">
+        ShowInTaskbar="False"
+        Tag="TimerWindow">
 
     <!--TimerWindow background-->
     <Border x:Name="TimerBorder"  

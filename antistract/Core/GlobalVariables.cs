@@ -13,5 +13,7 @@ namespace antistract.Core
         public static bool OnlyPausing;
 
         public static bool TimerRunning;
+
+        public static TimerWindow timerWindow;
     }
 }

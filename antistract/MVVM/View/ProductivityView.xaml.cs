@@ -18,6 +18,7 @@ using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 using antistract.Properties;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Reflection;
 
 namespace antistract.MVVM.View
 {
@@ -49,6 +50,7 @@ namespace antistract.MVVM.View
         private bool BlackListPlaceholderText = true;
 
         ThreadStart loadInstalledPrograms = LoadInstalledPrograms;
+        TimerWindow timerWindow;
 
         public ProductivityView()
         {
@@ -242,7 +244,7 @@ namespace antistract.MVVM.View
             while (isChecked())
             {
                 //higher = slower = lower CPU usage
-                Thread.Sleep(500);
+                Thread.Sleep(20);
 
                 Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 Debug.WriteLine(processes.Length);
@@ -415,11 +417,14 @@ namespace antistract.MVVM.View
 
         private void StartTimer_Click(object sender, RoutedEventArgs e)
         {
+            timerWindow = null;
+            GlobalVariables.timerWindow = null;
             if (!GlobalVariables.TimerRunning)
             {
                 Debug.WriteLine("CSP: " + CurrentlySelectedPlan.SelectedPlan);
-                TimerWindow timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
-                timerWindow.Show();
+                timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
+                GlobalVariables.timerWindow = timerWindow;
+                GlobalVariables.timerWindow.Show();
                 GlobalVariables.TimerRunning = true;
                 Settings.Default.StartEnabled = false;
                 Settings.Default.BlacklistBlocked = true;
@@ -584,6 +589,18 @@ namespace antistract.MVVM.View
             {
                 StartTimer.IsEnabled = false;
             }
+        }
+
+        private void StopTimer_Click(object sender, RoutedEventArgs e)
+        {
+            ShouldCheckNo();
+            GlobalVariables.TimerRunning = false;
+            Settings.Default.StartEnabled = true; //issue here. Sets the Start button to true even if required values are invalid after a view change
+            Settings.Default.BlacklistBlocked = false;
+            Settings.Default.Save();
+            GlobalVariables.timerWindow.MainTimer.Stop();
+            GlobalVariables.timerWindow.WasteTimer.Stop();
+            GlobalVariables.timerWindow.Close();
         }
     }
 }

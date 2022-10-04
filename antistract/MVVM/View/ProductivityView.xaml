@@ -294,7 +294,7 @@
                             </StackPanel>
 
                             <Border>
-                                <StackPanel>
+                                <Grid>
                                     <Button x:Name="StartTimer"
                                     HorizontalAlignment="Center"
                                     Style="{StaticResource BasicButtonTheme}"
@@ -313,11 +313,30 @@
                                             </LinearGradientBrush>
                                         </Button.Background>
                                     </Button>
-                                </StackPanel>
+                                    <Button x:Name="StopTimer"
+                                    HorizontalAlignment="Center"
+                                    Style="{StaticResource BasicButtonTheme}"
+                                    Content="Stop" 
+                                    Margin="0,22,0,0"
+                                    Padding="23.5,0,23.5,5"
+                                    FontFamily="/Fonts/#Dosis"
+                                    Foreground="#F3E9D2"
+                                    FontSize="50" 
+                                    Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Converter={StaticResource BoolToVis}, Mode=TwoWay}"
+                                    Click="StopTimer_Click">
+                                        <Button.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                                <GradientStop Color="#88D" Offset="0.0" />
+                                                <GradientStop Color="#FF006977" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Button.Background>
+                                    </Button>
+                                </Grid>
                             </Border>
                         </StackPanel>
                         <Label x:Name="BlockStartFields" 
-                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>
+                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}" 
+                               Margin="0,0,0,90"/>
                     </Grid>
                 </Border>
 

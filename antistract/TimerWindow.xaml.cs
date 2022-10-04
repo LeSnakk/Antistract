@@ -30,8 +30,8 @@ namespace antistract
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
         readonly string path = "Plans/paradeplan_2.xml";
         XmlNode SelectedPlanNodes;
-        DispatcherTimer MainTimer;
-        DispatcherTimer WasteTimer;
+        public DispatcherTimer MainTimer;
+        public DispatcherTimer WasteTimer;
         TimeSpan timeLeft;
         TimeSpan timeWasted;
         TimeSpan weeklyLearnTime;
@@ -117,13 +117,7 @@ namespace antistract
             else
             {
                 //After Plan being completed:
-
-                ProductivityView.ShouldCheckNo();
-                GlobalVariables.TimerRunning = false;
-                Settings.Default.StartEnabled = true;
-                Settings.Default.BlacklistBlocked = false;
-                Settings.Default.Save();
-                this.Close();
+                EndTimer();
             }
         }
 
@@ -132,7 +126,17 @@ namespace antistract
             
         }
 
-        private void StartTimer(int Minutes)
+        public void EndTimer()
+        {
+            ProductivityView.ShouldCheckNo();
+            GlobalVariables.TimerRunning = false;
+            Settings.Default.StartEnabled = true;
+            Settings.Default.BlacklistBlocked = false;
+            Settings.Default.Save();
+            this.Close();
+        }
+
+        public void StartTimer(int Minutes)
         {
             MainTimer = new DispatcherTimer();
             WasteTimer = new DispatcherTimer();

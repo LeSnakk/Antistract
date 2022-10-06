@@ -224,6 +224,11 @@ namespace antistract.MVVM.View
                 item.Content = s;
                 listBox.Items.Add(item);
             }
+
+            listBox.Items.SortDescriptions
+                .Add(new System.ComponentModel.SortDescription(
+                    "Content", System.ComponentModel.ListSortDirection.Ascending));
+
             LoadingText.Visibility = Visibility.Hidden;
             listBox.Visibility = Visibility.Visible;
 

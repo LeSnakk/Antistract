@@ -48,6 +48,7 @@ namespace antistract.MVVM.View
         private List<string> namesList = new List<String>();
         private List<string> DisplayBlacklistedNames = new List<String>();
         private bool BlackListPlaceholderText = true;
+        private bool Deselecting = false;
 
         ThreadStart loadInstalledPrograms = LoadInstalledPrograms;
         TimerWindow timerWindow;
@@ -508,6 +509,9 @@ namespace antistract.MVVM.View
             SelectedProgramName = null;
             SelectedProcessName = null;
             SelectedProcessPath = null;
+            Deselecting = true;
+            listBox.UnselectAll();
+            Deselecting = false;
         }
 
         private void RemoveFromBlacklist_Click(object sender, RoutedEventArgs e)
@@ -556,14 +560,17 @@ namespace antistract.MVVM.View
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string output;
-            ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
+            if (!Deselecting)
+            {
+                string output;
+                ListBoxItem lbi = listBox.SelectedItem as ListBoxItem;
 
-            programs.TryGetValue(lbi.Content.ToString(), out output);
+                programs.TryGetValue(lbi.Content.ToString(), out output);
 
-            Debug.WriteLine(output);
-            SelectedProgramName = lbi.Content.ToString();
-            SelectedProcessName = output;
+                Debug.WriteLine(output);
+                SelectedProgramName = lbi.Content.ToString();
+                SelectedProcessName = output;
+            }
         }
 
         private void blacklistList_SelectionChanged(object sender, SelectionChangedEventArgs e)

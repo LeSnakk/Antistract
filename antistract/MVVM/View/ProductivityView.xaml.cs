@@ -102,6 +102,10 @@ namespace antistract.MVVM.View
 
             //Debug.WriteLine("Current no of stored blacklisted programs: " + Settings.Default.BlacklistedDisplayNames.Count);
 
+            BlacklistedPaths.Clear();
+            namesList.Clear();
+            DisplayBlacklistedNames.Clear();
+
             BlacklistedPaths = Settings.Default.BlacklistedPaths.Cast<string>().ToList();
             namesList = Settings.Default.BlacklistedProcesses.Cast<string>().ToList();
             namesList.AddRange(Settings.Default.BlacklistedPrograms.Cast<string>().ToList());
@@ -229,6 +233,7 @@ namespace antistract.MVVM.View
 
         public static void startChecking()
         {
+            
             StartChecking();
         }
 
@@ -241,10 +246,19 @@ namespace antistract.MVVM.View
 
         private void BgWorker_DoWork(object? sender, DoWorkEventArgs e)
         {
+            BlacklistedPaths.Clear();
+            namesList.Clear();
+            DisplayBlacklistedNames.Clear();
+
+            BlacklistedPaths = Settings.Default.BlacklistedPaths.Cast<string>().ToList();
+            namesList = Settings.Default.BlacklistedProcesses.Cast<string>().ToList();
+            namesList.AddRange(Settings.Default.BlacklistedPrograms.Cast<string>().ToList());
+            DisplayBlacklistedNames = Settings.Default.BlacklistedDisplayNames.Cast<string>().ToList();
+            ;
             while (isChecked())
             {
                 //higher = slower = lower CPU usage
-                Thread.Sleep(20);
+                Thread.Sleep(500);
 
                 Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 Debug.WriteLine(processes.Length);
@@ -595,7 +609,11 @@ namespace antistract.MVVM.View
         {
             ShouldCheckNo();
             GlobalVariables.TimerRunning = false;
-            Settings.Default.StartEnabled = true; //issue here. Sets the Start button to true even if required values are invalid after a view change
+            if (GlobalVariables.OnlyPausing != null && CheckMode != "" && Settings.Default.BlacklistedPrograms.Count != 0)
+            {
+                Settings.Default.StartEnabled = true;
+                Settings.Default.Save();
+            }
             Settings.Default.BlacklistBlocked = false;
             Settings.Default.Save();
             GlobalVariables.timerWindow.MainTimer.Stop();

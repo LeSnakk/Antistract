@@ -61,6 +61,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="BrowserExtensions\Chrome\background.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="BrowserExtensions\Chrome\manifest.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="BrowserExtensions\Chrome\script.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +84,11 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BrowserExtensions\Chrome\" />
+    <Folder Include="BrowserExtensions\Firefox\" />
   </ItemGroup>
 
 </Project>

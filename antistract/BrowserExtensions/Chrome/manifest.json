@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "antistract",
+  "version": "0.1",
+  "permissions": [ "scripting" ],
+  "content_scripts": [
+    {
+      "matches": [ "<all_urls>" ],
+      "js": [ "script.js" ],
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

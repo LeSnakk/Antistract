@@ -3,22 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.ComponentModel;
 using antistract.Core;
 using antistract.MVVM.ViewModel;
-using System.ServiceProcess;
-using System.Management;
 using Microsoft.WindowsAPICodePack.Shell;
-using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 using antistract.Properties;
 using System.Collections.Specialized;
 using System.Configuration;
-using System.Reflection;
 
 namespace antistract.MVVM.View
 {

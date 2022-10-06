@@ -215,7 +215,11 @@ namespace antistract.MVVM.View
                     SavePlan.IsEnabled = false;
                     ShowSelectedPlan(CurrentlySelectedPlan.SelectedPlan);
                 }
-            }       
+            } else if (String.IsNullOrWhiteSpace(EntryName.Text))
+            {
+                InfoField.Content = "Please fill in a name";
+                InfoField.Visibility = Visibility.Visible;
+            }
         }
 
         private void SavePlanButton_Click() {
@@ -451,11 +455,19 @@ namespace antistract.MVVM.View
     
         private void InvalidInput(string type)
         {
+            if (String.IsNullOrWhiteSpace(EntryName.Text))
+            {
+                InfoField.Content = "Please fill in a name";
+            } else
+            {
+                InfoField.Content = "Please fill in all fields";
+            }
             InfoField.Visibility = Visibility.Visible;
         }
         private void DisableInvalidInputText()
         {
             InfoField.Visibility = Visibility.Hidden;
+            InfoField.Content = "Please fill in all fields";
         }
 
         public void WriteToXMLFile(XDocument doc, XElement root, string _title, string _type, string _duration)

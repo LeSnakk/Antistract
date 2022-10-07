@@ -3,5 +3,6 @@
   <checkMode>pausing</checkMode>
   <websites>
     <website>www.youtube.com/</website>
+    <website>www.facebook.com</website>
   </websites>
 </antistract_data>

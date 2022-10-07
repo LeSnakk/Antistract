@@ -18,7 +18,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     LogCurrentTabs();
 
 function LoadBlockedWebsites() {
-    fetch('data.xml').then(r => r.text()).then(result => {
+    fetch("data.xml").then(r => r.text()).then(result => {
         ProcessXMLData(result);
     })
 }
@@ -35,8 +35,14 @@ function ProcessXMLData(data) {
 
     var checkMode = xmlStringData.split(checkModeDetermineStart).pop().split(checkModeDetermineEnd)[0];
     var websites = [];
+
+    for (var i = 1; i < xmlStringData.split(websitesDetermineEnd).length; i++) {
+        websites.push(xmlStringData.split(/(?=<website>)/)[i].split(websitesDetermineStart).pop().split(websitesDetermineEnd)[0]);
+    }
+
     
     console.log(checkMode);
+    console.log(websites);
 }
 
 

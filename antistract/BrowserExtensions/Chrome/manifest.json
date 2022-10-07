@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "antistract",
   "version": "0.1",
-  "permissions": [ "scripting" ],
+  "permissions": [ "scripting", "tabs" ],
   "content_scripts": [
     {
       "matches": [ "<all_urls>" ],

@@ -1,7 +1,18 @@
 switch (window.location.hostname) {
     case "www.youtube.com":
-        console.log("test");
-        document.body.innerHTML = "<h1>Oops! Hope nobody saw that. Quick, back to work!</h1>";
+        console.log("closing website...");
+        closeCurrentTab();
         break;
 }
-console.log("hello world 2");
+
+
+function closeCurrentTab() {
+    chrome.runtime.sendMessage(
+        {
+            msg: "tab_close_msg"
+        },
+        function (response) {
+            console.log("response from the bg", response)
+        }
+    );
+}

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <antistract_data>
-  <checkMode></checkMode>
+  <checkMode>pausing</checkMode>
   <websites>
-    <website>www.youtube.com</website>
+    <website>www.youtube.com/</website>
   </websites>
 </antistract_data>

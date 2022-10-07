@@ -3,6 +3,7 @@
   "name": "antistract",
   "version": "0.1",
   "permissions": [ "scripting", "tabs" ],
+  "host_permissions": [ "<all_urls>" ],
   "content_scripts": [
     {
       "matches": [ "<all_urls>" ],

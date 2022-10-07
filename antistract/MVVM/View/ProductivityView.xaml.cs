@@ -13,6 +13,8 @@ using Microsoft.WindowsAPICodePack.Shell;
 using antistract.Properties;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace antistract.MVVM.View
 {
@@ -232,8 +234,7 @@ namespace antistract.MVVM.View
         } 
 
         public static void startChecking()
-        {
-            
+        {            
             StartChecking();
         }
 
@@ -435,6 +436,10 @@ namespace antistract.MVVM.View
             GlobalVariables.timerWindow = null;
             if (!GlobalVariables.TimerRunning)
             {
+                if (!String.IsNullOrWhiteSpace(BrowserWebsites.Text))
+                {
+                    TransmitToBrowserExtension();
+                }
                 Debug.WriteLine("CSP: " + CurrentlySelectedPlan.SelectedPlan);
                 timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
                 GlobalVariables.timerWindow = timerWindow;
@@ -445,6 +450,26 @@ namespace antistract.MVVM.View
                 Settings.Default.Save();
                 //ToggleStartButton(false);
             }
+        }
+
+        private void TransmitToBrowserExtension()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load("BrowserExtensions/data.xml");
+
+            XmlNodeList checkModeNodeList = doc.GetElementsByTagName("checkMode");
+            XmlNode checkMode = checkModeNodeList[0];
+            XmlNodeList websitesNodeList = doc.GetElementsByTagName("websites");
+            XmlNode websitesRoot = websitesNodeList[0];
+            websitesRoot.RemoveAll();
+
+            XmlElement newWebsite = doc.CreateElement("website");
+            newWebsite.InnerText = BrowserWebsites.Text;
+
+            checkMode.InnerText = CheckMode;
+            websitesRoot.AppendChild(newWebsite);
+
+            doc.Save("BrowserExtensions/data.xml");
         }
 
         private void ToggleAddToBlacklistButton(bool isDisabled)

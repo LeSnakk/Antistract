@@ -114,11 +114,15 @@
                     </Border.Clip>
 
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="54*"/>
+                            <ColumnDefinition Width="227*"/>
+                        </Grid.ColumnDefinitions>
                         <Image Width="167"
                            Height="167"
                            Source="/Images/heart_book.png"
                            HorizontalAlignment="Right"
-                           VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5">
+                           VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="-16.852"/>
@@ -126,7 +130,7 @@
                             </Image.RenderTransform>
                         </Image>
 
-                        <StackPanel Margin="0,0,0,22">
+                        <StackPanel Margin="0,0,0,22" Grid.ColumnSpan="2">
                             <TextBlock Text="Select your plan"
                                        HorizontalAlignment="Center"
                                    Foreground="#114B5F"
@@ -154,7 +158,7 @@
 
                         </StackPanel>
                         <Label x:Name="BlockPlanSelectField" 
-                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>
+                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}" Grid.ColumnSpan="2"/>
                     </Grid>
                 </Border>
 
@@ -247,7 +251,7 @@
                                HorizontalAlignment="Left"
                                VerticalAlignment="Top" Margin="43,110,0,0"
                                Visibility="Hidden"/>
-                        
+
                         <Label x:Name="BlockBlacklistFields" 
                                IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>
                     </Grid>
@@ -344,6 +348,13 @@
                         Visibility="Hidden">
 
                 </Button>
+
+                <TextBox x:Name="BrowserWebsites"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"
+                         Text="www.youtube.com">
+
+                </TextBox>
             </Grid>
         </Border>
     </Border>

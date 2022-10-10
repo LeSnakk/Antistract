@@ -11,6 +11,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             chrome.tabs.remove(sender.tab.id);
         });
     }
+    if (request.msg === "reload_db_msg") {
+        console.log("reloadedDB");
+        LoadBlockedWebsites();
+    }
 });
 
 function LoadBlockedWebsites() {

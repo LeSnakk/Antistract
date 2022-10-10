@@ -40,7 +40,11 @@ function reloadDatabase() {
         },
         function (response) {
             console.log("response from the bg", response);
-            FetchBlacklistedWebsites();
+
+            function delay(time) {
+                return new Promise(resolve => setTimeout(resolve, time));
+            }
+            delay(1000).then(() => FetchBlacklistedWebsites());          
         }
     );
 }

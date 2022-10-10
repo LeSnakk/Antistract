@@ -2,7 +2,8 @@
 <antistract_data>
   <checkMode>pausing</checkMode>
   <websites>
-    <website>www.youtube.com/</website>
+    <website>www.youtube.com</website>
     <website>www.facebook.com</website>
+    <website>www.twitter.com</website>
   </websites>
 </antistract_data>

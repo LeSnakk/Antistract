@@ -13,10 +13,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
 });
 
-
-
-    LogCurrentTabs();
-
 function LoadBlockedWebsites() {
     fetch("data.xml").then(r => r.text()).then(result => {
         ProcessXMLData(result);
@@ -26,7 +22,6 @@ function LoadBlockedWebsites() {
 function ProcessXMLData(data) {
     var xmlData = data;
     var xmlStringData = String(xmlData);
-    console.log(xmlStringData);
 
     var checkModeDetermineStart = "<checkMode>";
     var checkModeDetermineEnd = "</checkMode";
@@ -39,8 +34,7 @@ function ProcessXMLData(data) {
     for (var i = 1; i < xmlStringData.split(websitesDetermineEnd).length; i++) {
         websites.push(xmlStringData.split(/(?=<website>)/)[i].split(websitesDetermineStart).pop().split(websitesDetermineEnd)[0]);
     }
-
-    
+    chrome.storage.sync.set({ checkMode, websites });
     console.log(checkMode);
     console.log(websites);
 }

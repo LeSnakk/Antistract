@@ -1,4 +1,4 @@
-var checkModex;
+var checkMode;
 var websites = [];
 
 window.onload = function (e) {
@@ -7,7 +7,7 @@ window.onload = function (e) {
 
 function FetchBlacklistedWebsites() {
     chrome.storage.sync.get(['checkMode', 'websites'], function (items) {
-        checkModex = items.checkMode;
+        checkMode = items.checkMode;
         websites = items.websites;
         CheckCurrentWebsite();
     });
@@ -16,8 +16,14 @@ function FetchBlacklistedWebsites() {
 function CheckCurrentWebsite() {
     for (var i = 0; i < websites.length; i++) {
         if (window.location.hostname === websites[i].toString()) {
-            console.log("Forbidden website: " + websites[i] + " - NOW CLOSING");
-            closeCurrentTab();
+            if (checkMode == "closing") {
+                console.log("Forbidden website: " + websites[i] + " - NOW CLOSING");
+                closeCurrentTab();
+            }
+            else if (checkMode == "pausing")
+            {
+                console.log("Forbidden website: " + websites[i] + " - HALT THE TIMER!");
+            }
         }
     }
 }

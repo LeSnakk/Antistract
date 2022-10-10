@@ -464,6 +464,8 @@ namespace antistract.MVVM.View
             websitesRoot.RemoveAll();
 
             XmlElement newWebsite = doc.CreateElement("website");
+
+            //TODO: Loop through TODO list with blocked website entries
             newWebsite.InnerText = BrowserWebsites.Text;
 
             checkMode.InnerText = CheckMode;

@@ -23,6 +23,7 @@ function CheckCurrentWebsite() {
             else if (checkMode == "pausing")
             {
                 console.log("Forbidden website: " + websites[i] + " - HALT THE TIMER!");
+                brokeDaRules();
             }
         }
     }
@@ -51,6 +52,17 @@ function reloadDatabase() {
                 return new Promise(resolve => setTimeout(resolve, time));
             }
             delay(1000).then(() => FetchBlacklistedWebsites());          
+        }
+    );
+}
+
+function brokeDaRules() {
+    chrome.runtime.sendMessage(
+        {
+            msg: "broke_da_rules_msg"
+        },
+        function (response) {
+            console.log("response from the bg", response)
         }
     );
 }

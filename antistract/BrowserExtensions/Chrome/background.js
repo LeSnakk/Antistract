@@ -15,6 +15,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         console.log("reloadedDB");
         LoadBlockedWebsites();
     }
+    if (request.msg == "broke_da_rules_msg") {
+        console.log("Tab is running");
+        brokeDaRulesTrue();
+    }
 });
 
 function LoadBlockedWebsites() {
@@ -47,6 +51,27 @@ function ProcessXMLData(data) {
     chrome.storage.sync.set({ checkMode, websites });
     console.log(checkMode);
     console.log(websites);
+}
+
+function brokeDaRulesTrue() {
+    fetch("data.txt").then(r => r.text()).then(result => {
+        writeTrue(result);
+    })
+}
+
+function writeTrue(data) {
+    var txtData = data;
+    var txtStringData = String(txtData);
+
+    var brokeDaRules = "true";
+    chrome.storage.sync.set({ brokeDaRules });
+    chrome.storage.sync.get(['brokeDaRules'], function (items) {
+        console.log(items.brokeDaRules);
+    });
+}
+
+function brokeDaRulesFalse() {
+
 }
 
 

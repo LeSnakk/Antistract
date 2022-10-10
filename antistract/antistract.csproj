@@ -90,7 +90,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BrowserExtensions\Chrome\" />
     <Folder Include="BrowserExtensions\Firefox\" />
   </ItemGroup>
 

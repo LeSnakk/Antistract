@@ -17,7 +17,7 @@ function CheckCurrentWebsite() {
     for (var i = 0; i < websites.length; i++) {
         if (window.location.hostname === websites[i].toString()) {
             console.log("Forbidden website: " + websites[i] + " - NOW CLOSING");
-            //closeCurrentTab();
+            closeCurrentTab();
         }
     }
 }

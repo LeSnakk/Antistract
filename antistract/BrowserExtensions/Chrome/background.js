@@ -36,7 +36,13 @@ function ProcessXMLData(data) {
     var websites = [];
 
     for (var i = 1; i < xmlStringData.split(websitesDetermineEnd).length; i++) {
-        websites.push(xmlStringData.split(/(?=<website>)/)[i].split(websitesDetermineStart).pop().split(websitesDetermineEnd)[0]);
+        var temp = xmlStringData.split(/(?=<website>)/)[i].split(websitesDetermineStart).pop().split(websitesDetermineEnd)[0];
+        websites.push(temp);
+        if (temp.toString().substring(0, 4) == "www.") {
+            websites.push(temp.slice(4, temp.length));
+        } else if (!(temp.toString().substring(0, 4) == "www.")) {
+            websites.push("www." + temp);
+        }
     }
     chrome.storage.sync.set({ checkMode, websites });
     console.log(checkMode);

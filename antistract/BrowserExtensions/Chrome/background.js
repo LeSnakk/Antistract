@@ -2,6 +2,14 @@ chrome.runtime.onInstalled.addListener(() => {
     LoadBlockedWebsites();
 })
 
+chrome.tabs.onRemoved.addListener(function (tabid, removed) {
+    console.log("tab closed" + tabid);
+})
+
+chrome.windows.onRemoved.addListener(function (windowid) {
+    console.log("window closed" + windowid);
+})
+
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.msg === "tab_close_msg") {
         chrome.tabs.query({
@@ -22,6 +30,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.msg == "no_broke_da_rules_msg") {
         console.log("Forbidden tab not running")
         brokeDaRulesFalse();
+    }
+    if (request.msg == "checkalltabs_msg") {
+        console.log("checking for all tabs rn")
+        checkAllTabs();
     }
 });
 
@@ -83,7 +95,25 @@ function brokeDaRulesFalse() {
     });
 }
 
+function checkAllTabs() {
+    var websites = [];
+    chrome.storage.sync.get(['websites'], function (items) {
+        websites = items.websites;
 
+        chrome.tabs.query({}, function (tabs) {
+            for (var i = 0; i < tabs.length; i++) {
+                var tab = tabs[i];
+                var url = new URL(tab.url)
+                var domain = url.hostname
+                for (var j = 0; j < websites.length; j++) {
+                    if (domain === websites[j].toString()) {
+                        console.log("found: " + domain);
+                    }
+                }
+            }
+        })
+    });
+}
 
 
 

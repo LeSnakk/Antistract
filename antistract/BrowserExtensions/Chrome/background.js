@@ -3,7 +3,7 @@ chrome.runtime.onInstalled.addListener(() => {
 })
 
 chrome.tabs.onRemoved.addListener(function (tabid, removed) {
-    console.log("tab closed" + tabid);
+    checkAllTabs();
 })
 
 chrome.windows.onRemoved.addListener(function (windowid) {
@@ -22,14 +22,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.msg === "reload_db_msg") {
         console.log("reloadedDB");
         LoadBlockedWebsites();
-    }
-    if (request.msg == "broke_da_rules_msg") {
-        console.log("Forbidden tab is running");
-        brokeDaRulesTrue();
-    }
-    if (request.msg == "no_broke_da_rules_msg") {
-        console.log("Forbidden tab not running")
-        brokeDaRulesFalse();
     }
     if (request.msg == "checkalltabs_msg") {
         console.log("checking for all tabs rn")
@@ -72,35 +64,45 @@ function ProcessXMLData(data) {
 function brokeDaRulesTrue() {
     var tempCheckMode;
     var tempWebsites;
+    var checkMode;
+    var websites;
     var brokeDaRules = "-cT2A;z=YzW}f4ht/H6epiW2!Md*@,";
 
     chrome.storage.sync.get(['checkMode', 'websites'], function (items) {
         tempCheckMode = items.checkMode;
         tempWebsites = items.websites;
         chrome.storage.sync.clear();
-        chrome.storage.sync.set({ tempCheckMode, tempWebsites, brokeDaRules });
+        checkMode = tempCheckMode;
+        websites = tempWebsites;
+        chrome.storage.sync.set({ checkMode, websites, brokeDaRules });
     });
 }
 
 function brokeDaRulesFalse() {
     var tempCheckMode;
     var tempWebsites;
+    var checkMode;
+    var websites;
     var brokeDaRules = "8fj*d-*c@cP}+i3f%aB*BD#63amL*i";
 
     chrome.storage.sync.get(['checkMode', 'websites'], function (items) {
         tempCheckMode = items.checkMode;
         tempWebsites = items.websites;
         chrome.storage.sync.clear();
-        chrome.storage.sync.set({ tempCheckMode, tempWebsites, brokeDaRules });
+        checkMode = tempCheckMode;
+        websites = tempWebsites;
+        chrome.storage.sync.set({ checkMode, websites, brokeDaRules });
     });
 }
 
 function checkAllTabs() {
     var websites = [];
+    found = 0;
     chrome.storage.sync.get(['websites'], function (items) {
         websites = items.websites;
-
+        console.log(websites);
         chrome.tabs.query({}, function (tabs) {
+            var found = 0;
             for (var i = 0; i < tabs.length; i++) {
                 var tab = tabs[i];
                 var url = new URL(tab.url)
@@ -108,11 +110,17 @@ function checkAllTabs() {
                 for (var j = 0; j < websites.length; j++) {
                     if (domain === websites[j].toString()) {
                         console.log("found: " + domain);
+                        ++found;
                     }
                 }
             }
+            if (found > 0) {
+                brokeDaRulesTrue();
+            } else {
+                brokeDaRulesFalse();
+            }
         })
-    });
+    });   
 }
 
 

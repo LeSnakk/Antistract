@@ -67,25 +67,3 @@ function reloadDatabase() {
         }
     );
 }
-
-function brokeDaRules() {
-    chrome.runtime.sendMessage(
-        {
-            msg: "broke_da_rules_msg"
-        },
-        function (response) {
-            console.log("broke the rules", response)
-        }
-    );
-}
-
-function noBrokeDaRules() {
-    chrome.runtime.sendMessage(
-        {
-            msg: "no_broke_da_rules_msg"
-        },
-        function (response) {
-            console.log("no broke the rules", response)
-        }
-    );
-}

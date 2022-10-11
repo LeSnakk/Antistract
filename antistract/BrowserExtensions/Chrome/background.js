@@ -16,8 +16,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         LoadBlockedWebsites();
     }
     if (request.msg == "broke_da_rules_msg") {
-        console.log("Tab is running");
+        console.log("Forbidden tab is running");
         brokeDaRulesTrue();
+    }
+    if (request.msg == "no_broke_da_rules_msg") {
+        console.log("Forbidden tab not running")
+        brokeDaRulesFalse();
     }
 });
 
@@ -54,24 +58,29 @@ function ProcessXMLData(data) {
 }
 
 function brokeDaRulesTrue() {
-    fetch("data.txt").then(r => r.text()).then(result => {
-        writeTrue(result);
-    })
-}
+    var tempCheckMode;
+    var tempWebsites;
+    var brokeDaRules = "-cT2A;z=YzW}f4ht/H6epiW2!Md*@,";
 
-function writeTrue(data) {
-    var txtData = data;
-    var txtStringData = String(txtData);
-
-    var brokeDaRules = "true";
-    chrome.storage.sync.set({ brokeDaRules });
-    chrome.storage.sync.get(['brokeDaRules'], function (items) {
-        console.log(items.brokeDaRules);
+    chrome.storage.sync.get(['checkMode', 'websites'], function (items) {
+        tempCheckMode = items.checkMode;
+        tempWebsites = items.websites;
+        chrome.storage.sync.clear();
+        chrome.storage.sync.set({ tempCheckMode, tempWebsites, brokeDaRules });
     });
 }
 
 function brokeDaRulesFalse() {
+    var tempCheckMode;
+    var tempWebsites;
+    var brokeDaRules = "8fj*d-*c@cP}+i3f%aB*BD#63amL*i";
 
+    chrome.storage.sync.get(['checkMode', 'websites'], function (items) {
+        tempCheckMode = items.checkMode;
+        tempWebsites = items.websites;
+        chrome.storage.sync.clear();
+        chrome.storage.sync.set({ tempCheckMode, tempWebsites, brokeDaRules });
+    });
 }
 
 

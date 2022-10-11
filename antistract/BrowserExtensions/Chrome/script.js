@@ -20,11 +20,13 @@ function CheckCurrentWebsite() {
                 console.log("Forbidden website: " + websites[i] + " - NOW CLOSING");
                 closeCurrentTab();
             }
-            else if (checkMode == "pausing")
-            {
+            else if (checkMode == "pausing") {
                 console.log("Forbidden website: " + websites[i] + " - HALT THE TIMER!");
                 brokeDaRules();
+                break;
             }
+        } else {
+            noBrokeDaRules();
         }
     }
 }
@@ -62,7 +64,18 @@ function brokeDaRules() {
             msg: "broke_da_rules_msg"
         },
         function (response) {
-            console.log("response from the bg", response)
+            console.log("broke the rules", response)
+        }
+    );
+}
+
+function noBrokeDaRules() {
+    chrome.runtime.sendMessage(
+        {
+            msg: "no_broke_da_rules_msg"
+        },
+        function (response) {
+            console.log("no broke the rules", response)
         }
     );
 }

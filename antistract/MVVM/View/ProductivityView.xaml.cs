@@ -265,30 +265,17 @@ namespace antistract.MVVM.View
             {
                 //higher = slower = lower CPU usage
                 Thread.Sleep(500);
-
-                if (checkBrowser)
-                {
-                    if (GlobalVariables.OnlyPausing) {
-                        if (ReadGCExData())
-                        {
-                            RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
-                            TimerWindow.TimerOnHoldYES();
-                            Debug.WriteLine("Chrome forbidden tab open");
-                        }
-                        else if (!ReadGCExData())
-                        {
-                            RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
-                            TimerWindow.TimerOnHoldNO();
-                        }
-                    }
-                }
-
+                
                 Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 Debug.WriteLine(processes.Length);
-                if (processes.Length == 0)
+                if (processes.Length == 0 && !checkBrowser)
                 {
                     TimerWindow.TimerOnHoldNO();
                     Debug.WriteLine("Notepad is not running");
+                }
+                else if (processes.Length == 00 && checkBrowser)
+                {
+                    CheckBrowser();
                 }
                 else if (processes.Length >= 1)
                 {
@@ -354,8 +341,31 @@ namespace antistract.MVVM.View
                         }
                     }
                 }
+                
             }
             Debug.WriteLine("Checking stopped");
+        }
+
+        private void CheckBrowser()
+        {
+            if (checkBrowser)
+            {
+                Debug.WriteLine("checking Chrome browser");
+                if (GlobalVariables.OnlyPausing)
+                {
+                    if (ReadGCExData())
+                    {
+                        RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                        TimerWindow.TimerOnHoldYES();
+                        Debug.WriteLine("Chrome forbidden tab open");
+                    }
+                    else if (!ReadGCExData())
+                    {
+                        RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                        TimerWindow.TimerOnHoldNO();
+                    }
+                }
+            }
         }
 
         public bool ReadGCExData()

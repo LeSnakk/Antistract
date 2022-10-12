@@ -163,7 +163,7 @@
                 </Border>
 
                 <!--Blacklist programs area-->
-                <Border HorizontalAlignment="Left" Margin="112,130,0,0" Grid.Row="2" Grid.RowSpan="2" Width="452" Grid.ColumnSpan="2">
+                <Border HorizontalAlignment="Center" Margin="0,120,0,10" Grid.Row="2" Grid.RowSpan="2" Width="452">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                             <GradientStop Color="#88D498" Offset="0.0" />
@@ -254,6 +254,108 @@
 
                         <Label x:Name="BlockBlacklistFields" 
                                IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>
+                    </Grid>
+                </Border>
+
+                <!-- Website blacklist area -->
+                <Border HorizontalAlignment="Left" Margin="418,103,0,27" Grid.Row="2" Grid.RowSpan="2" Width="257" Grid.ColumnSpan="2">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                            <GradientStop Color="#88D498" Offset="0.0" />
+                            <GradientStop Color="#1A936F" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Clip>
+                        <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,450,208" />
+                    </Border.Clip>
+
+                    <Grid>
+                        <Image Width="167"
+                           Height="167"
+                           Source="/Images/heart_book.png"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="-16.852"/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+
+                        <StackPanel Margin="0,0,0,22">
+                            <TextBlock Text="Websites blacklist"
+                                       HorizontalAlignment="Center"
+                                   Foreground="#114B5F"
+                                   FontSize="30"
+                                   Margin="10,2,10,0" 
+                                   FontFamily="/Fonts/#Joan"/>
+                        </StackPanel>
+
+                        <ListBox x:Name="WebsiteslistBox" 
+                                 SelectionChanged="listBox_SelectionChanged"
+                                 HorizontalAlignment="Left" 
+                                 Margin="5,46,0,10" 
+                                 Width="200"
+                                 Visibility="Hidden">
+                            <ListBoxItem/>
+                        </ListBox>
+
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <Label VerticalAlignment="Top"
+                                   HorizontalAlignment="Center"
+                                   Padding="0"
+                                   Margin="0,43,0,0"
+                                   Content="http(s)://"></Label>
+                            
+                            <TextBox x:Name="BrowserWebsites"
+                                     VerticalAlignment="top"
+                                     Margin="0,43,0,0"
+                                     Width="150"
+                                     Text="www.youtube.com">
+                            </TextBox>
+                            
+                            <Button x:Name="AddToWebsitesBlacklist" HorizontalAlignment="Center" VerticalAlignment="Top"
+                                Click="AddToWebsitesBlacklist_Click"
+                                Content="Add" 
+                                Margin="0,40,0,0"
+                                Padding="5,2,5,2"
+                                FontWeight="Bold"
+                                FontSize="15"
+                                FontFamily="/Fonts/#Dosis"
+                                IsEnabled="False"/>
+                        </StackPanel>
+                        
+                        <Button x:Name="RemoveFromWebsitesBlacklist" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Click="RemoveFromWebsitesBlacklist_Click"
+                                Content="Remove" 
+                                Margin="0,70,3,0"
+                                Padding="5,2,5,2"
+                                FontWeight="Bold"
+                                FontSize="15"
+                                FontFamily="/Fonts/#Dosis"
+                                IsEnabled="False"/>
+
+                        <ListBox x:Name="WebsitesBlacklistList" 
+                                 SelectionChanged="WebsitesBlacklistList_SelectionChanged"
+                                 HorizontalAlignment="Left" 
+                                 Margin="24,76,0,22" 
+                                 Width="200"
+                                 IsEnabled="False">
+                        </ListBox>
+
+                        <Label x:Name="NoWebsitesBlacklistPlaceholderText"
+                               Content="No websites to block" 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center" 
+                               Margin="0,0,0,0"
+                               Visibility="Visible"/>
+
+
+                        <!--<Label x:Name="BlockWebsitesBlacklistFields" 
+                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>-->
                     </Grid>
                 </Border>
 
@@ -349,12 +451,7 @@
 
                 </Button>
 
-                <TextBox x:Name="BrowserWebsites"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Center"
-                         Text="www.youtube.com">
 
-                </TextBox>
             </Grid>
         </Border>
     </Border>

@@ -730,5 +730,20 @@ namespace antistract.MVVM.View
             GlobalVariables.timerWindow.WasteTimer.Stop();
             GlobalVariables.timerWindow.Close();
         }
+
+        private void AddToWebsitesBlacklist_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemoveFromWebsitesBlacklist_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void WebsitesBlacklistList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -241,6 +241,7 @@ namespace antistract.MVVM.View
         public static void startChecking()
         {            
             StartChecking();
+            TimerWindow.TimerOnHoldNO();
         }
 
         public static void StartChecking()
@@ -272,10 +273,12 @@ namespace antistract.MVVM.View
                 {
                     TimerWindow.TimerOnHoldNO();
                     Debug.WriteLine("Notepad is not running");
+                    Debug.WriteLine("!1");
                 }
-                else if (processes.Length == 00 && checkBrowser)
+                else if (processes.Length == 00 && checkBrowser && GlobalVariables.OnlyPausing)
                 {
                     CheckBrowser();
+                    Debug.WriteLine("!2");
                 }
                 else if (processes.Length >= 1)
                 {
@@ -297,6 +300,7 @@ namespace antistract.MVVM.View
                                         {
                                             RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
                                             TimerWindow.TimerOnHoldNO();
+                                            Debug.WriteLine("!3");
                                             while (!process.HasExited)
                                             {
                                                 process.Kill();
@@ -307,6 +311,7 @@ namespace antistract.MVVM.View
                                             RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
                                             TimerWindow.TimerOnHoldYES();
                                             Debug.WriteLine(process);
+                                            Debug.WriteLine("!4");
                                         }
                                     }
                                     else
@@ -321,12 +326,14 @@ namespace antistract.MVVM.View
                                                 {
                                                     RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
                                                     TimerWindow.TimerOnHoldNO();
+                                                    Debug.WriteLine("!5");
                                                     process.Kill();
                                                 }
                                                 else if (GlobalVariables.OnlyPausing)
                                                 {
                                                     RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
                                                     TimerWindow.TimerOnHoldYES();
+                                                    Debug.WriteLine("!6");
                                                     Debug.WriteLine(process);
                                                 }
                                             }
@@ -357,11 +364,13 @@ namespace antistract.MVVM.View
                     {
                         RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
                         TimerWindow.TimerOnHoldYES();
+                        Debug.WriteLine("!2.1");
                         Debug.WriteLine("Chrome forbidden tab open");
                     }
                     else if (!ReadGCExData())
                     {
                         RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                        Debug.WriteLine("!2.2");
                         TimerWindow.TimerOnHoldNO();
                     }
                 }
@@ -476,6 +485,7 @@ namespace antistract.MVVM.View
         {
             GlobalVariables.OnlyPausing = true;
             CheckMode = "pausing";
+            SetExtensionCheckModePausing();
             if (CurrentlySelectedPlan.SelectedPlan != null && Settings.Default.BlacklistedPrograms.Count != 0)
             {
                 Settings.Default.StartEnabled = true;
@@ -508,7 +518,7 @@ namespace antistract.MVVM.View
         private void TransmitToBrowserExtension()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load("BrowserExtensions/data.xml");
+            doc.Load("BrowserExtensions/Chrome/data.xml");
 
             XmlNodeList checkModeNodeList = doc.GetElementsByTagName("checkMode");
             XmlNode checkMode = checkModeNodeList[0];
@@ -524,7 +534,20 @@ namespace antistract.MVVM.View
             checkMode.InnerText = CheckMode;
             websitesRoot.AppendChild(newWebsite);
 
-            doc.Save("BrowserExtensions/data.xml");
+            doc.Save("BrowserExtensions/Chrome/data.xml");
+        }
+
+        private void SetExtensionCheckModePausing()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load("BrowserExtensions/Chrome/data.xml");
+
+            XmlNodeList checkModeNodeList = doc.GetElementsByTagName("checkMode");
+            XmlNode checkMode = checkModeNodeList[0];
+
+            checkMode.InnerText = "pausing";
+            doc.Save("BrowserExtensions/Chrome/data.xml");
+            Debug.WriteLine("SETTING");
         }
 
         private void ToggleAddToBlacklistButton(bool isDisabled)
@@ -695,6 +718,7 @@ namespace antistract.MVVM.View
         {
             ShouldCheckNo();
             GlobalVariables.TimerRunning = false;
+            SetExtensionCheckModePausing();
             if (GlobalVariables.OnlyPausing != null && CheckMode != "" && Settings.Default.BlacklistedPrograms.Count != 0)
             {
                 Settings.Default.StartEnabled = true;

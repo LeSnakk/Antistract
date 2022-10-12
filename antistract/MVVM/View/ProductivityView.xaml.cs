@@ -15,6 +15,8 @@ using System.Collections.Specialized;
 using System.Configuration;
 using System.Xml.Linq;
 using System.Xml;
+using System.IO;
+using System.Text;
 
 namespace antistract.MVVM.View
 {
@@ -45,6 +47,9 @@ namespace antistract.MVVM.View
         private List<string> DisplayBlacklistedNames = new List<String>();
         private bool BlackListPlaceholderText = true;
         private bool Deselecting = false;
+
+        private string GCExLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Google/Chrome/User Data/Default/Sync Extension Settings/dkcmjcfdomcigfioegnmleiijjoccfea/000003.log");
+        private bool checkBrowser = true;
 
         ThreadStart loadInstalledPrograms = LoadInstalledPrograms;
         TimerWindow timerWindow;
@@ -255,11 +260,28 @@ namespace antistract.MVVM.View
             namesList = Settings.Default.BlacklistedProcesses.Cast<string>().ToList();
             namesList.AddRange(Settings.Default.BlacklistedPrograms.Cast<string>().ToList());
             DisplayBlacklistedNames = Settings.Default.BlacklistedDisplayNames.Cast<string>().ToList();
-            ;
+            
             while (isChecked())
             {
                 //higher = slower = lower CPU usage
                 Thread.Sleep(500);
+
+                if (checkBrowser)
+                {
+                    if (GlobalVariables.OnlyPausing) {
+                        if (ReadGCExData())
+                        {
+                            RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                            TimerWindow.TimerOnHoldYES();
+                            Debug.WriteLine("Chrome forbidden tab open");
+                        }
+                        else if (!ReadGCExData())
+                        {
+                            RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                            TimerWindow.TimerOnHoldNO();
+                        }
+                    }
+                }
 
                 Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 Debug.WriteLine(processes.Length);
@@ -334,6 +356,27 @@ namespace antistract.MVVM.View
                 }
             }
             Debug.WriteLine("Checking stopped");
+        }
+
+        public bool ReadGCExData()
+        {
+            using (var fs = new FileStream(GCExLocation, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (var sr = new StreamReader(fs, Encoding.ASCII))
+            {
+                string temp = sr.ReadToEnd();
+                if (temp.Contains("-cT2A;z=YzW}f4ht/H6epiW2!Md*@,"))
+                {
+                    return true;
+                }
+                else if (temp.Contains("8fj*d-*c@cP}+i3f%aB*BD#63amL*i"))
+                {
+                    return false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         public static bool isChecked()

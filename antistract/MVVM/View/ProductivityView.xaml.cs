@@ -537,7 +537,7 @@ namespace antistract.MVVM.View
             doc.Save("BrowserExtensions/Chrome/data.xml");
         }
 
-        private void SetExtensionCheckModePausing()
+        public static void SetExtensionCheckModePausing()
         {
             XmlDocument doc = new XmlDocument();
             doc.Load("BrowserExtensions/Chrome/data.xml");

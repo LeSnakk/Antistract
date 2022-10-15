@@ -1,7 +1,3 @@
-chrome.runtime.onInstalled.addListener(() => {
-    LoadBlockedWebsites();
-})
-
 chrome.tabs.onRemoved.addListener(function (tabid, removed) {
     checkAllTabs();
 })

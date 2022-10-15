@@ -129,6 +129,7 @@ namespace antistract
         public void EndTimer()
         {
             ProductivityView.ShouldCheckNo();
+            ProductivityView.SetExtensionCheckModePausing();
             GlobalVariables.TimerRunning = false;
             Settings.Default.StartEnabled = true;
             Settings.Default.BlacklistBlocked = false;

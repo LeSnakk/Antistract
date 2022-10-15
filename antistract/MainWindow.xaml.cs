@@ -43,6 +43,7 @@ namespace antistract
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("closing...");
+            ProductivityView.SetExtensionCheckModePausing();
             Application.Current.Shutdown();
         }
 

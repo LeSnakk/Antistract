@@ -10,6 +10,11 @@ chrome.windows.onRemoved.addListener(function (windowid) {
     console.log("window closed" + windowid);
 })
 
+chrome.tabs.onUpdated.addListener(function
+    (tabId, changeInfo, tab) {
+    LoadBlockedWebsites();
+})
+
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.msg === "tab_close_msg") {
         chrome.tabs.query({
@@ -59,6 +64,7 @@ function ProcessXMLData(data) {
     chrome.storage.sync.set({ checkMode, websites });
     console.log(checkMode);
     console.log(websites);
+    checkAllTabs();
 }
 
 function brokeDaRulesTrue() {
@@ -97,9 +103,11 @@ function brokeDaRulesFalse() {
 
 function checkAllTabs() {
     var websites = [];
+    var checkmode;
     found = 0;
-    chrome.storage.sync.get(['websites'], function (items) {
+    chrome.storage.sync.get(['websites', 'checkMode'], function (items) {
         websites = items.websites;
+        checkmode = items.checkMode;
         console.log(websites);
         chrome.tabs.query({}, function (tabs) {
             var found = 0;
@@ -109,8 +117,14 @@ function checkAllTabs() {
                 var domain = url.hostname
                 for (var j = 0; j < websites.length; j++) {
                     if (domain === websites[j].toString()) {
-                        console.log("found: " + domain);
-                        ++found;
+                        if (checkmode === "pausing") {
+                            console.log("found: (p) " + domain);
+                            ++found;
+                        } else if (checkmode === "closing") {
+                            console.log("test");
+                            console.log("found: (c) " + domain);
+                            chrome.tabs.remove(tab.id);
+                        }
                     }
                 }
             }

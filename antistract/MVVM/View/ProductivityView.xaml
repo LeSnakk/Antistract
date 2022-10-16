@@ -314,7 +314,7 @@
                                      VerticalAlignment="top"
                                      Margin="0,43,0,0"
                                      Width="150"
-                                     Text="www.youtube.com">
+                                     Text="">
                             </TextBox>
                             
                             <Button x:Name="AddToWebsitesBlacklist" HorizontalAlignment="Center" VerticalAlignment="Top"
@@ -325,7 +325,7 @@
                                 FontWeight="Bold"
                                 FontSize="15"
                                 FontFamily="/Fonts/#Dosis"
-                                IsEnabled="False"/>
+                                IsEnabled="{Binding Text.Length, ElementName=BrowserWebsites}"/>
                         </StackPanel>
                         
                         <Button x:Name="RemoveFromWebsitesBlacklist" HorizontalAlignment="Center" VerticalAlignment="Bottom"

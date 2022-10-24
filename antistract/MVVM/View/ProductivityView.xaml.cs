@@ -742,7 +742,13 @@ namespace antistract.MVVM.View
             NoWebsitesBlacklistPlaceholderText.Visibility = Visibility.Hidden;
             WebsitesBlacklistList.IsEnabled = true;
 
-            if (SelectedProgramName != null)
+            ListBoxItem item = new ListBoxItem();
+            item.Content = BrowserWebsites.Text; // + " (" + SelectedProcessName + ")";
+            WebsitesBlacklistList.Items.Add(item);
+
+            BrowserWebsites.Clear();
+
+            /*if (SelectedProgramName != null)
             {
                 NoBlacklistPlaceholderText.Visibility = Visibility.Hidden;
                 blacklistList.IsEnabled = true;
@@ -794,6 +800,7 @@ namespace antistract.MVVM.View
             Deselecting = true;
             listBox.UnselectAll();
             Deselecting = false;
+            */
         }
 
         private void RemoveFromWebsitesBlacklist_Click(object sender, RoutedEventArgs e)

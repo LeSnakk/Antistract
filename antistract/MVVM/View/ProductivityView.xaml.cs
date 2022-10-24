@@ -37,6 +37,7 @@ namespace antistract.MVVM.View
         private string SelectedProgramName;
         private string SelectedProcessName;      
         private string SelectedProcessPath;
+        private string SelectedWebsite;
 
         private string RemoveSelectedProgramName;
         private string RemoveSelectedProcessName;
@@ -152,6 +153,7 @@ namespace antistract.MVVM.View
             if (WebsitesBlacklistList.Items.Count > 0)
             {
                 NoWebsitesBlacklistPlaceholderText.Visibility = Visibility.Hidden;
+                WebsitesBlacklistList.IsEnabled = true;
             }
         }
 
@@ -853,12 +855,25 @@ namespace antistract.MVVM.View
 
         private void RemoveFromWebsitesBlacklist_Click(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine(SelectedWebsite);
+            //...
 
+
+            SelectedWebsite = "";
+            RemoveFromWebsitesBlacklist.IsEnabled = false;
+            Deselecting = true;
+            WebsitesBlacklistList.UnselectAll();
+            Deselecting = false;
         }
 
         private void WebsitesBlacklistList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (!Deselecting)
+            {
+                ListBoxItem lbi = WebsitesBlacklistList.SelectedItem as ListBoxItem;
+                SelectedWebsite = lbi.Content.ToString();
+                RemoveFromWebsitesBlacklist.IsEnabled = true;
+            }
         }
     }
 }

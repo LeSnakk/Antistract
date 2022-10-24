@@ -528,16 +528,24 @@ namespace antistract.MVVM.View
 
             XmlNodeList checkModeNodeList = doc.GetElementsByTagName("checkMode");
             XmlNode checkMode = checkModeNodeList[0];
+            
+            checkMode.InnerText = CheckMode;
+
+            doc.Save("BrowserExtensions/Chrome/data.xml");
+        }
+
+        public static void AddWebsite(string websiteName)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load("BrowserExtensions/Chrome/data.xml");
+
             XmlNodeList websitesNodeList = doc.GetElementsByTagName("websites");
             XmlNode websitesRoot = websitesNodeList[0];
-            websitesRoot.RemoveAll();
 
             XmlElement newWebsite = doc.CreateElement("website");
 
-            //TODO: Loop through TODO list with blocked website entries
-            newWebsite.InnerText = BrowserWebsites.Text;
+            newWebsite.InnerText = websiteName;
 
-            checkMode.InnerText = CheckMode;
             websitesRoot.AppendChild(newWebsite);
 
             doc.Save("BrowserExtensions/Chrome/data.xml");
@@ -745,6 +753,8 @@ namespace antistract.MVVM.View
             ListBoxItem item = new ListBoxItem();
             item.Content = BrowserWebsites.Text; // + " (" + SelectedProcessName + ")";
             WebsitesBlacklistList.Items.Add(item);
+
+            AddWebsite(BrowserWebsites.Text);
 
             BrowserWebsites.Clear();
 

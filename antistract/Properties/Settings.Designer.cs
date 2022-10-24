@@ -126,5 +126,16 @@ namespace antistract.Properties {
                 this["BlacklistBlocked"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection BlacklistedWebsites {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["BlacklistedWebsites"]));
+            }
+            set {
+                this["BlacklistedWebsites"] = value;
+            }
+        }
     }
 }

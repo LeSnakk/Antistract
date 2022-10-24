@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "antistract",
-  "version": "0.1",
+  "version": "0.2",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl1Hyx4t1SpioIvszthquy0ZvdDf24nL0kLEbJI3UPUskqK5y/TwZzglaizD+izx0I7Nr8aHrTOS5Gg4qDQGXk4J2vUddoUQwBgtypOdsFGywZ4lpZVpJ/0hMMEoY5Gr+9H6WlwP0ex41OMhxJNE/Htybmi8QObae1TNZfcDoXFonCRtzaTi73HApq8fwwCUekbu6w5N3aL9XQ/7zRwDoGzSBEaFlLYFHOTZfPANRl0lGiUBw7RffqD7hUxvrN3ssYg6tZ6Rpyvl4rqg8b+3t0mX2fEQFBJf1Pbcg65WMZO+byl612ipzOOHQNkCZnUlBucFCkeHLDKgxQdfyImcW3QIDAQAB",
   "permissions": [ "scripting", "tabs", "storage" ],
   "host_permissions": [ "<all_urls>" ],

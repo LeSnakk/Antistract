@@ -379,22 +379,28 @@ namespace antistract.MVVM.View
 
         public bool ReadGCExData()
         {
-            using (var fs = new FileStream(GCExLocation, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-            using (var sr = new StreamReader(fs, Encoding.ASCII))
+            try {
+                using (var fs = new FileStream(GCExLocation, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                using (var sr = new StreamReader(fs, Encoding.ASCII))
+                {
+                    string temp = sr.ReadToEnd();
+                    if (temp.Contains("-cT2A;z=YzW}f4ht/H6epiW2!Md*@,"))
+                    {
+                        return true;
+                    }
+                    else if (temp.Contains("8fj*d-*c@cP}+i3f%aB*BD#63amL*i"))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            } catch (Exception ex)
             {
-                string temp = sr.ReadToEnd();
-                if (temp.Contains("-cT2A;z=YzW}f4ht/H6epiW2!Md*@,"))
-                {
-                    return true;
-                }
-                else if (temp.Contains("8fj*d-*c@cP}+i3f%aB*BD#63amL*i"))
-                {
-                    return false;
-                }
-                else
-                {
-                    return false;
-                }
+                Debug.WriteLine(ex);
+                return default;
             }
         }
 
@@ -499,10 +505,10 @@ namespace antistract.MVVM.View
             GlobalVariables.timerWindow = null;
             if (!GlobalVariables.TimerRunning)
             {
-                if (!String.IsNullOrWhiteSpace(BrowserWebsites.Text))
-                {
+                //if (!String.IsNullOrWhiteSpace(BrowserWebsites.Text))
+                //{
                     TransmitToBrowserExtension();
-                }
+                //}
                 Debug.WriteLine("CSP: " + CurrentlySelectedPlan.SelectedPlan);
                 timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
                 GlobalVariables.timerWindow = timerWindow;

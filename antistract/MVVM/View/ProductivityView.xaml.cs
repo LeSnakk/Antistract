@@ -42,9 +42,10 @@ namespace antistract.MVVM.View
         private string RemoveSelectedProcessName;
         private string RemoveSelectedProcessPath;
 
-        private List<string> BlacklistedPaths = new List<string>();
+        private List<string> BlacklistedPaths = new List<String>();
         private List<string> namesList = new List<String>();
         private List<string> DisplayBlacklistedNames = new List<String>();
+        private List<string> BlacklistedWebsites = new List<String>();
         private bool BlackListPlaceholderText = true;
         private bool Deselecting = false;
 
@@ -85,6 +86,7 @@ namespace antistract.MVVM.View
                 Settings.Default.BlacklistedProcesses = new StringCollection();
                 Settings.Default.BlacklistedPaths = new StringCollection();
                 Settings.Default.BlacklistedDisplayNames = new StringCollection();
+                Settings.Default.BlacklistedWebsites = new StringCollection();
 
                 Settings.Default.FirstStartup = false;
                 Settings.Default.Save();
@@ -108,12 +110,17 @@ namespace antistract.MVVM.View
             namesList.Clear();
             DisplayBlacklistedNames.Clear();
 
+            BlacklistedWebsites.Clear();
+
             BlacklistedPaths = Settings.Default.BlacklistedPaths.Cast<string>().ToList();
             namesList = Settings.Default.BlacklistedProcesses.Cast<string>().ToList();
             namesList.AddRange(Settings.Default.BlacklistedPrograms.Cast<string>().ToList());
             DisplayBlacklistedNames = Settings.Default.BlacklistedDisplayNames.Cast<string>().ToList();
 
+            BlacklistedWebsites = Settings.Default.BlacklistedWebsites.Cast<string>().ToList();
+
             blacklistList.Items.Clear();
+            WebsitesBlacklistList.Items.Clear();
             
             foreach (string name in DisplayBlacklistedNames)
             {
@@ -126,6 +133,25 @@ namespace antistract.MVVM.View
             {
                 NoBlacklistPlaceholderText.Visibility = Visibility.Hidden;
                 blacklistList.IsEnabled = false;
+            }
+            int temp = 0;
+            foreach (string name in BlacklistedWebsites)
+            {
+                ListBoxItem item = new ListBoxItem();
+                item.Content = name;
+                WebsitesBlacklistList.Items.Add(item);
+                if (temp < 1)
+                {
+                    AddWebsite(name, true);
+                } else
+                {
+                    AddWebsite(name, false);
+                }
+                temp++;
+            }
+            if (WebsitesBlacklistList.Items.Count > 0)
+            {
+                NoWebsitesBlacklistPlaceholderText.Visibility = Visibility.Hidden;
             }
         }
 
@@ -534,7 +560,7 @@ namespace antistract.MVVM.View
             doc.Save("BrowserExtensions/Chrome/data.xml");
         }
 
-        public static void AddWebsite(string websiteName)
+        public static void AddWebsite(string websiteName, bool clearFirst)
         {
             XmlDocument doc = new XmlDocument();
             doc.Load("BrowserExtensions/Chrome/data.xml");
@@ -542,13 +568,24 @@ namespace antistract.MVVM.View
             XmlNodeList websitesNodeList = doc.GetElementsByTagName("websites");
             XmlNode websitesRoot = websitesNodeList[0];
 
+            if (clearFirst)
+            {
+                websitesRoot.RemoveAll();
+            }
+
             XmlElement newWebsite = doc.CreateElement("website");
 
             newWebsite.InnerText = websiteName;
 
             websitesRoot.AppendChild(newWebsite);
 
-            doc.Save("BrowserExtensions/Chrome/data.xml");
+            doc.Save("BrowserExtensions/Chrome/data.xml");           
+        }
+
+        public static void AddWebsiteToSaves(string websiteName)
+        {
+            Settings.Default.BlacklistedWebsites.Add(websiteName.ToString());
+            Settings.Default.Save();
         }
 
         public static void SetExtensionCheckModePausing()
@@ -754,7 +791,8 @@ namespace antistract.MVVM.View
             item.Content = BrowserWebsites.Text; // + " (" + SelectedProcessName + ")";
             WebsitesBlacklistList.Items.Add(item);
 
-            AddWebsite(BrowserWebsites.Text);
+            AddWebsite(BrowserWebsites.Text, false);
+            AddWebsiteToSaves(BrowserWebsites.Text);
 
             BrowserWebsites.Clear();
 

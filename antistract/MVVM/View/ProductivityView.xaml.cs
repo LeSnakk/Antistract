@@ -816,67 +816,12 @@ namespace antistract.MVVM.View
             AddWebsiteToSaves(BrowserWebsites.Text);
 
             BrowserWebsites.Clear();
-
-            /*if (SelectedProgramName != null)
-            {
-                NoBlacklistPlaceholderText.Visibility = Visibility.Hidden;
-                blacklistList.IsEnabled = true;
-                if (SelectedProcessName.Contains("."))
-                {
-                    SelectedProcessName = SelectedProcessName.Substring(0, SelectedProcessName.LastIndexOf("."));
-                    SelectedProcessPath = paths[SelectedProgramName];
-                }
-                if (namesList.Count < 1)
-                {
-                    blacklistList.Items.Clear();
-                }
-
-                if (namesList.Contains(SelectedProgramName) && namesList.Contains(SelectedProcessName) && BlacklistedPaths.Contains(SelectedProcessPath))
-                {
-                    return;
-                }
-                else
-                {
-                    namesList.Add(SelectedProcessName);
-                    namesList.Add(SelectedProgramName);
-                    BlacklistedPaths.Add(SelectedProcessPath);
-
-                    DisplayBlacklistedNames.Add(SelectedProgramName);
-
-                    Debug.WriteLine(SelectedProcessPath);
-                    ListBoxItem item = new ListBoxItem();
-                    item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
-                    blacklistList.Items.Add(item);
-
-                    Settings.Default.BlacklistedPrograms.Add(SelectedProgramName.ToString());
-                    Settings.Default.BlacklistedProcesses.Add(SelectedProcessName.ToString());
-                    Settings.Default.BlacklistedPaths.Add(SelectedProcessPath.ToString());
-                    Settings.Default.BlacklistedDisplayNames.Add(SelectedProgramName.ToString());
-
-                    Settings.Default.Save();
-
-                    List<string> test = Settings.Default.BlacklistedPrograms.Cast<string>().ToList();
-                    foreach (string name in test)
-                    {
-                        Debug.WriteLine("In user Settings:" + name);
-                    }
-                    Debug.WriteLine(Settings.Default.BlacklistedPrograms.Count);
-                }
-            }
-            SelectedProgramName = null;
-            SelectedProcessName = null;
-            SelectedProcessPath = null;
-            Deselecting = true;
-            listBox.UnselectAll();
-            Deselecting = false;
-            */
         }
 
         private void RemoveFromWebsitesBlacklist_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine(SelectedWebsite);
 
-            //...
             Settings.Default.BlacklistedWebsites.Remove(SelectedWebsite.ToString());
             Settings.Default.Save();
             SyncToXML(SelectedWebsite, false, "remove");
@@ -888,6 +833,11 @@ namespace antistract.MVVM.View
             Deselecting = true;
             WebsitesBlacklistList.UnselectAll();
             Deselecting = false;
+
+            if (WebsitesBlacklistList.Items.Count <= 0)
+            {
+                NoWebsitesBlacklistPlaceholderText.Visibility = Visibility.Visible;
+            }
         }
 
         private void WebsitesBlacklistList_SelectionChanged(object sender, SelectionChangedEventArgs e)

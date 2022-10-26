@@ -143,10 +143,10 @@ namespace antistract.MVVM.View
                 WebsitesBlacklistList.Items.Add(item);
                 if (temp < 1)
                 {
-                    AddWebsite(name, true);
+                    SyncToXML(name, true, "add");
                 } else
                 {
-                    AddWebsite(name, false);
+                    SyncToXML(name, false, "add");
                 }
                 temp++;
             }
@@ -562,7 +562,7 @@ namespace antistract.MVVM.View
             doc.Save("BrowserExtensions/Chrome/data.xml");
         }
 
-        public static void AddWebsite(string websiteName, bool clearFirst)
+        public static void SyncToXML(string websiteName, bool clearFirst, string addOrRemove)
         {
             XmlDocument doc = new XmlDocument();
             doc.Load("BrowserExtensions/Chrome/data.xml");
@@ -570,17 +570,35 @@ namespace antistract.MVVM.View
             XmlNodeList websitesNodeList = doc.GetElementsByTagName("websites");
             XmlNode websitesRoot = websitesNodeList[0];
 
-            if (clearFirst)
+            switch (addOrRemove)
             {
-                websitesRoot.RemoveAll();
+                case "add":
+
+                    if (clearFirst)
+                    {
+                        websitesRoot.RemoveAll();
+                    }
+
+                    XmlElement newWebsite = doc.CreateElement("website");
+
+                    newWebsite.InnerText = websiteName;
+
+                    websitesRoot.AppendChild(newWebsite);
+                    break;
+
+                case "remove":
+                    Debug.WriteLine("+AA+");
+                    foreach (XmlNode website in websitesRoot.ChildNodes)
+                    {
+                        if (website.InnerText == websiteName)
+                        {
+                            Debug.WriteLine(website.InnerText);
+                            websitesRoot.RemoveChild(website);
+                            continue;
+                        }
+                    }
+                    break;
             }
-
-            XmlElement newWebsite = doc.CreateElement("website");
-
-            newWebsite.InnerText = websiteName;
-
-            websitesRoot.AppendChild(newWebsite);
-
             doc.Save("BrowserExtensions/Chrome/data.xml");           
         }
 
@@ -589,6 +607,7 @@ namespace antistract.MVVM.View
             Settings.Default.BlacklistedWebsites.Add(websiteName.ToString());
             Settings.Default.Save();
         }
+
 
         public static void SetExtensionCheckModePausing()
         {
@@ -793,7 +812,7 @@ namespace antistract.MVVM.View
             item.Content = BrowserWebsites.Text; // + " (" + SelectedProcessName + ")";
             WebsitesBlacklistList.Items.Add(item);
 
-            AddWebsite(BrowserWebsites.Text, false);
+            SyncToXML(BrowserWebsites.Text, false, "add");
             AddWebsiteToSaves(BrowserWebsites.Text);
 
             BrowserWebsites.Clear();
@@ -856,8 +875,13 @@ namespace antistract.MVVM.View
         private void RemoveFromWebsitesBlacklist_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine(SelectedWebsite);
-            //...
 
+            //...
+            Settings.Default.BlacklistedWebsites.Remove(SelectedWebsite.ToString());
+            Settings.Default.Save();
+            SyncToXML(SelectedWebsite, false, "remove");
+
+            ReloadWebsitesBlacklistList();
 
             SelectedWebsite = "";
             RemoveFromWebsitesBlacklist.IsEnabled = false;
@@ -874,6 +898,20 @@ namespace antistract.MVVM.View
                 SelectedWebsite = lbi.Content.ToString();
                 RemoveFromWebsitesBlacklist.IsEnabled = true;
             }
+        }
+
+        private void ReloadWebsitesBlacklistList()
+        {
+            Deselecting = true;
+            BlacklistedWebsites = Settings.Default.BlacklistedWebsites.Cast<string>().ToList();
+            WebsitesBlacklistList.Items.Clear();
+            foreach (string name in BlacklistedWebsites)
+            {
+                ListBoxItem item = new ListBoxItem();
+                item.Content = name;
+                WebsitesBlacklistList.Items.Add(item);
+            }
+            Deselecting = false;
         }
     }
 }

@@ -56,9 +56,10 @@
                     <Ellipse Height="100" Width="100" 
                              HorizontalAlignment="Center" 
                              VerticalAlignment="Center" 
-                             Margin="0,0,0,30">
+                             Margin="0,0,0,30"
+                             RenderOptions.BitmapScalingMode="HighQuality">
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="/Images/avatar_placeholder.png"/>
+                            <ImageBrush ImageSource="/Images/avatar_placeholder.png" />
                         </Ellipse.Fill>
                     </Ellipse>
                     <Grid>

@@ -46,7 +46,8 @@
                 <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
                     <StackPanel Orientation="Horizontal"
                                 Margin="0,0,0,14">
-                        <TextBlock Text="Hey  "
+                        <TextBlock x:Name="HeyName"
+                               Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username, Mode=TwoWay}"
                                Foreground="#114B5F"
                                VerticalAlignment="Center"
                                Padding="0"
@@ -55,24 +56,29 @@
                                Margin="20,20,0,0"
                                FontFamily="/Fonts/#Joan"
                                FontWeight="Bold"/>
-                        <TextBlock x:Name="HeyName" 
-                               Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username, Mode=TwoWay}"
+                        <TextBlock
+                               Text=", pick your productivity plan:"
                                Foreground="#114B5F"
-                               FontSize="28" 
-                               HorizontalAlignment="left"
-                               Margin="0,20,0,0"
-                               FontFamily="/Fonts/#Joan"
-                               FontWeight="Bold"/>
-                        <TextBlock Text=","
-                               Foreground="#114B5F"
-                               VerticalAlignment="Center"
-                               Padding="0"
                                FontSize="28" 
                                HorizontalAlignment="left"
                                Margin="0,20,0,0"
                                FontFamily="/Fonts/#Joan"
                                FontWeight="Bold"/>
                     </StackPanel>
+                    <ComboBox x:Name="PickPlanDropdown"
+                              Padding="5"
+                              HorizontalAlignment="Center"
+                              IsEditable="False"
+                              Width="{Binding Width, ElementName=PickPlanDropdownDefaultText}"
+                              SelectionChanged="PickPlanDropdown_SelectionChanged" RenderTransformOrigin="0.5,0.5"/>
+                    <Label x:Name="PickPlanDropdownDefaultText"
+                            Margin="10,-21,0,0"
+                            Padding="0"
+                            FontSize="12.5"
+                            Width="235"
+                            IsHitTestVisible="False" Height="28" Grid.Row="2">
+                        Which plan do you want to use today?
+                    </Label>
                     <TextBlock
                            Text="It's time to be productive!"
                            Foreground="#114B5F"
@@ -138,27 +144,11 @@
                                    Margin="10,10,10,0" 
                                    FontFamily="/Fonts/#Joan"/>
 
-                            <ComboBox x:Name="PickPlanDropdown"
-                                      HorizontalAlignment="Center"
-                              Margin="0,20,0,0"
-                              IsEditable="False"
-                              Width="{Binding Width, ElementName=PickPlanDropdownDefaultText}"
-                              SelectionChanged="PickPlanDropdown_SelectionChanged" RenderTransformOrigin="0.5,0.5">
-
-                            </ComboBox>
-                            <Label x:Name="PickPlanDropdownDefaultText"
-
-                       Margin="10,-19,0,0"
-                       Padding="0"
-                       FontSize="12.5"
-                       Width="235"
-                       IsHitTestVisible="False" Height="28" Grid.Row="2">
-                                Which plan do you want to use today?
-                            </Label>
+                            
 
                         </StackPanel>
-                        <Label x:Name="BlockPlanSelectField" 
-                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}" Grid.ColumnSpan="2"/>
+                        <!--<Label x:Name="BlockPlanSelectField" 
+                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}" Grid.ColumnSpan="2"/>-->
                     </Grid>
                 </Border>
 
@@ -309,14 +299,14 @@
                                    Padding="0"
                                    Margin="0,43,0,0"
                                    Content="http(s)://"></Label>
-                            
+
                             <TextBox x:Name="BrowserWebsites"
                                      VerticalAlignment="top"
                                      Margin="0,43,0,0"
                                      Width="150"
                                      Text="">
                             </TextBox>
-                            
+
                             <Button x:Name="AddToWebsitesBlacklist" HorizontalAlignment="Center" VerticalAlignment="Top"
                                 Click="AddToWebsitesBlacklist_Click"
                                 Content="Add" 
@@ -327,7 +317,7 @@
                                 FontFamily="/Fonts/#Dosis"
                                 IsEnabled="{Binding Text.Length, ElementName=BrowserWebsites}"/>
                         </StackPanel>
-                        
+
                         <Button x:Name="RemoveFromWebsitesBlacklist" HorizontalAlignment="Center" VerticalAlignment="Bottom"
                                 Click="RemoveFromWebsitesBlacklist_Click"
                                 Content="Remove" 
@@ -360,7 +350,7 @@
                 </Border>
 
                 <!--Start button area-->
-                <Border HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Width="182" Margin="0,10,0,51" Grid.RowSpan="2">
+                <Border HorizontalAlignment="Left" Grid.Row="2" Width="182" Margin="54,36,0,133" Grid.RowSpan="2">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                             <GradientStop Color="#88D498" Offset="0.0" />

@@ -152,7 +152,85 @@
                                        Rect="0,-10,475,185" />
                     </Border.Clip>
 
-                    <Label Content="PLACEHOLDERLOLZ"/>
+                    <Grid>
+                        <Image Width="167"
+                           Height="167"
+                           Source="/Images/heart_book.png"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="-16.852"/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+
+                        <StackPanel Margin="0,0,0,22">
+                            <TextBlock Text="Which programs distract you?"
+                                       HorizontalAlignment="Center"
+                                   Foreground="#114B5F"
+                                   FontSize="30"
+                                   Margin="10,2,10,0" 
+                                   FontFamily="/Fonts/#Joan"/>
+                        </StackPanel>
+
+                        <ListBox x:Name="listBox" 
+                                 SelectionChanged="listBox_SelectionChanged"
+                                 HorizontalAlignment="Left" 
+                                 Margin="5,46,0,10" 
+                                 Width="200"
+                                 Visibility="Hidden">
+                            <ListBoxItem/>
+                        </ListBox>
+
+                        <Button x:Name="AddToBlacklist" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Click="AddToBlacklist_Click"
+                                Content="&gt;" 
+                                Margin="0,0,3,0"
+                                Padding="11,0,11,5"
+                                FontWeight="Bold"
+                                FontSize="20"
+                                FontFamily="/Fonts/#Dosis"
+                                IsEnabled="False"/>
+                        <Button x:Name="RemoveFromBlacklist" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Click="RemoveFromBlacklist_Click"
+                                Content="&lt;" 
+                                Margin="0,70,3,0"
+                                Padding="11,0,11,4"
+                                FontWeight="Bold"
+                                FontSize="20"
+                                FontFamily="/Fonts/#Dosis"
+                                IsEnabled="False"/>
+
+                        <ListBox x:Name="blacklistList" 
+                                 SelectionChanged="blacklistList_SelectionChanged"
+                                 HorizontalAlignment="Right" 
+                                 Margin="0,46,8,10" 
+                                 Width="200"
+                                 IsEnabled="False">
+                        </ListBox>
+
+                        <Label x:Name="NoBlacklistPlaceholderText"
+                               Content="No programs selected" 
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left" 
+                               Margin="280,102,0,0"
+                               Visibility="Visible"/>
+
+                        <Button x:Name="btn_CallLoad" Content="Load programs" Click="GetInstalledPrograms" 
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top" 
+                                Margin="57,90,0,0"
+                                Padding="2"/>
+
+                        <Label x:Name="LoadingText" Content="loading programs..." 
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" Margin="43,110,0,0"
+                               Visibility="Hidden"/>
+
+                        <!--<Label x:Name="BlockBlacklistFields" 
+                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>-->
+                    </Grid>
 
                 </Border>
 
@@ -225,85 +303,7 @@
                                        Rect="0,0,450,208" />
                     </Border.Clip>
 
-                    <Grid>
-                        <Image Width="167"
-                           Height="167"
-                           Source="/Images/heart_book.png"
-                           HorizontalAlignment="Right"
-                           VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5">
-                            <Image.RenderTransform>
-                                <TransformGroup>
-                                    <RotateTransform Angle="-16.852"/>
-                                </TransformGroup>
-                            </Image.RenderTransform>
-                        </Image>
-
-                        <StackPanel Margin="0,0,0,22">
-                            <TextBlock Text="Which programs distract you?"
-                                       HorizontalAlignment="Center"
-                                   Foreground="#114B5F"
-                                   FontSize="30"
-                                   Margin="10,2,10,0" 
-                                   FontFamily="/Fonts/#Joan"/>
-                        </StackPanel>
-
-                        <ListBox x:Name="listBox" 
-                                 SelectionChanged="listBox_SelectionChanged"
-                                 HorizontalAlignment="Left" 
-                                 Margin="5,46,0,10" 
-                                 Width="200"
-                                 Visibility="Hidden">
-                            <ListBoxItem/>
-                        </ListBox>
-
-                        <Button x:Name="AddToBlacklist" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                Click="AddToBlacklist_Click"
-                                Content="&gt;" 
-                                Margin="0,0,3,0"
-                                Padding="11,0,11,5"
-                                FontWeight="Bold"
-                                FontSize="20"
-                                FontFamily="/Fonts/#Dosis"
-                                IsEnabled="False"/>
-                        <Button x:Name="RemoveFromBlacklist" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                Click="RemoveFromBlacklist_Click"
-                                Content="&lt;" 
-                                Margin="0,70,3,0"
-                                Padding="11,0,11,4"
-                                FontWeight="Bold"
-                                FontSize="20"
-                                FontFamily="/Fonts/#Dosis"
-                                IsEnabled="False"/>
-
-                        <ListBox x:Name="blacklistList" 
-                                 SelectionChanged="blacklistList_SelectionChanged"
-                                 HorizontalAlignment="Right" 
-                                 Margin="0,46,8,10" 
-                                 Width="200"
-                                 IsEnabled="False">
-                        </ListBox>
-
-                        <Label x:Name="NoBlacklistPlaceholderText"
-                               Content="No programs selected" 
-                               VerticalAlignment="Top"
-                               HorizontalAlignment="Left" 
-                               Margin="280,102,0,0"
-                               Visibility="Visible"/>
-
-                        <Button x:Name="btn_CallLoad" Content="Load programs" Click="GetInstalledPrograms" 
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Top" 
-                                Margin="57,113,0,0"
-                                Padding="2"/>
-
-                        <Label x:Name="LoadingText" Content="loading programs..." 
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top" Margin="43,110,0,0"
-                               Visibility="Hidden"/>
-
-                        <Label x:Name="BlockBlacklistFields" 
-                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>
-                    </Grid>
+                    
                 </Border>
 
                 <!-- Website blacklist area -->

@@ -63,7 +63,7 @@
                                    FontFamily="/Fonts/#Joan"
                                    FontWeight="Bold"/>
                         <TextBlock x:Name="Headline"
-                                   Text=", pick your productivity plan:"
+                                   Text=", pick your productivity schedule:"
                                    Foreground="#114B5F"
                                    FontSize="28" 
                                    HorizontalAlignment="left"
@@ -375,25 +375,30 @@
                                FontSize="28" 
                                FontFamily="/Fonts/#Joan"
                                FontWeight="Bold"
-                               Width="600"
+                               Width="610"
                                TextWrapping="Wrap"
                                TextAlignment="Center">
-                        Distracting processes will be automatically closed.
+                        Which action shall be taken?
                     </TextBlock>
 
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
-                                        Margin="0,10,0,0">
+                                        Margin="0,10,13.5,0">
                         <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
-                                 VerticalAlignment="Center"
-                                  Content="Close Program"
-                                  Click="Close_Program_Click"/>
+                                     VerticalAlignment="Center"
+                                     Content="Close distracting"
+                                     Click="Close_Program_Click"/>
                         <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
-                                 VerticalAlignment="Center"
-                                 Content="Stop Timer"
-                                 Click="Stop_Timer_Click"/>
+                                     VerticalAlignment="Center"
+                                     Content="Stop schedule"
+                                     Click="Stop_Timer_Click" />
                     </StackPanel>
                 </StackPanel>
+
+                <Label x:Name="BlockStartFields" Grid.Row="4" Grid.ColumnSpan="2"
+                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}" 
+                               Margin="238,51,237,10"
+                       Width="200"/>
 
                 <!--Start button area-->
                 <Button x:Name="StartTimer"
@@ -403,6 +408,7 @@
                         Style="{StaticResource BasicButtonTheme}"
                         Content="Start" 
                         Padding="20,0,20,5"
+                        Margin="0,0,0,2"
                         FontFamily="/Fonts/#Dosis"
                         Foreground="#F3E9D2"
                         FontSize="40" 
@@ -422,6 +428,7 @@
                         Style="{StaticResource BasicButtonTheme}"
                         Content="Stop" 
                         Padding="23.5,0,23.5,5"
+                        Margin="0,0,0,2"
                         FontFamily="/Fonts/#Dosis"
                         Foreground="#F3E9D2"
                         FontSize="40" 
@@ -434,12 +441,6 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Label x:Name="BlockStartFields" Grid.Row="5" Grid.ColumnSpan="2"
-                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}" 
-                               Margin="0,0,0,90"
-                       Width="200"
-                       Height="200">
-                </Label>
 
                 <Button Grid.Row="2" x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                         Visibility="Hidden"/>

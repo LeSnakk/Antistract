@@ -514,6 +514,7 @@ namespace antistract.MVVM.View
                 Settings.Default.StartEnabled = true;
                 Settings.Default.Save();
             }
+            ModeText.Text = "Distracting processes will be automatically closed.";
         }
 
         private void Stop_Timer_Click(object sender, RoutedEventArgs e)
@@ -526,6 +527,7 @@ namespace antistract.MVVM.View
                 Settings.Default.StartEnabled = true;
                 Settings.Default.Save();
             }
+            ModeText.Text = "Distracting processes will interrupt your schedule.";
         }
 
         private void StartTimer_Click(object sender, RoutedEventArgs e)

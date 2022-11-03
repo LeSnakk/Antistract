@@ -116,7 +116,8 @@
                               VerticalAlignment="Center">
                         Programs
                     </CheckBox>
-                    <Button x:Name="EditPrograms">
+                    <Button x:Name="EditPrograms"
+                            Click="EditPrograms_Click">
                         edit
                     </Button>
                 </StackPanel>
@@ -132,7 +133,7 @@
                         Websites
                     </CheckBox>
                     <Button x:Name="EditWebsites"
-                            VerticalAlignment="Center">
+                            Click="EditWebsites_Click">
                         edit
                     </Button>
                 </StackPanel>
@@ -234,8 +235,8 @@
                                VerticalAlignment="Top" Margin="43,110,0,0"
                                Visibility="Hidden"/>
 
-                        <!--<Label x:Name="BlockBlacklistFields" 
-                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>-->
+                        <Label x:Name="BlockBlacklistFields" 
+                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>
                     </Grid>
 
                 </Border>
@@ -346,8 +347,8 @@
                                Visibility="Visible"/>
 
 
-                        <!--<Label x:Name="BlockWebsitesBlacklistFields" 
-                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>-->
+                        <Label x:Name="BlockWebsitesBlacklistFields" 
+                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>
 
                     </Grid>
                 </Border>

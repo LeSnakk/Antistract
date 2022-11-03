@@ -863,5 +863,17 @@ namespace antistract.MVVM.View
             }
             Deselecting = false;
         }
+
+        private void EditWebsites_Click(object sender, RoutedEventArgs e)
+        {
+            WebsitesBlacklistBorder.Visibility = Visibility.Visible;
+            ProgramsBlacklistBorder.Visibility = Visibility.Hidden;
+        }
+
+        private void EditPrograms_Click(object sender, RoutedEventArgs e)
+        {
+            ProgramsBlacklistBorder.Visibility = Visibility.Visible;
+            WebsitesBlacklistBorder.Visibility = Visibility.Hidden;
+        }
     }
 }

@@ -36,8 +36,9 @@
                     <RowDefinition Height="1.5*" />
                     <RowDefinition Height="2.5*" />
                     <RowDefinition Height="2*" />
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="1.3*" />
+                    <RowDefinition Height="1.7*" />
+                    <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*" />
@@ -135,11 +136,16 @@
                         edit
                     </Button>
                 </StackPanel>
-                <Border Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2"
+
+                <!--Programs blacklist-->
+                <Border x:Name="ProgramsBlacklistBorder" 
+                        Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Center"
                         Width="475"
-                        Height="175">
+                        Height="175"
+                        Visibility="Hidden"
+                        Margin="0,0,0,0">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                             <GradientStop Color="#88D498" Offset="0.0" />
@@ -234,16 +240,15 @@
 
                 </Border>
 
-                <!--Blacklists area-->
-                <Border Grid.Row="2" Grid.ColumnSpan="2"
-                        Background="#114B5F"
+                <!--Websites blacklist-->
+                <Border x:Name="WebsitesBlacklistBorder" 
+                        Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2"
                         VerticalAlignment="Top"
-                        Height="1"
-                        Width="550"/>
-
-
-                <!--Select your plan area-->
-                <Border HorizontalAlignment="Left" Margin="197,27,0,27" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                        HorizontalAlignment="Center"
+                        Width="475"
+                        Height="175"
+                        Visibility="Visible"
+                        Margin="0,0,0,0">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                             <GradientStop Color="#88D498" Offset="0.0" />
@@ -253,71 +258,7 @@
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
                                        RadiusY="10"
-                                       Rect="0,0,280,140" />
-                    </Border.Clip>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="54*"/>
-                            <ColumnDefinition Width="227*"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Width="167"
-                           Height="167"
-                           Source="/Images/heart_book.png"
-                           HorizontalAlignment="Right"
-                           VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
-                            <Image.RenderTransform>
-                                <TransformGroup>
-                                    <RotateTransform Angle="-16.852"/>
-                                </TransformGroup>
-                            </Image.RenderTransform>
-                        </Image>
-
-                        <StackPanel Margin="0,0,0,22" Grid.ColumnSpan="2">
-                            <TextBlock Text="Select your plan"
-                                       HorizontalAlignment="Center"
-                                   Foreground="#114B5F"
-                                   FontSize="40"
-                                   Margin="10,10,10,0" 
-                                   FontFamily="/Fonts/#Joan"/>
-
-
-
-                        </StackPanel>
-                        <!--<Label x:Name="BlockPlanSelectField" 
-                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}" Grid.ColumnSpan="2"/>-->
-                    </Grid>
-                </Border>
-
-                <!--Blacklist programs area-->
-                <Border HorizontalAlignment="Center" Margin="0,120,0,10" Grid.Row="3" Grid.RowSpan="2" Width="452">
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#88D498" Offset="0.0" />
-                            <GradientStop Color="#1A936F" Offset="1" />
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <Border.Clip>
-                        <RectangleGeometry RadiusX="10"
-                                       RadiusY="10"
-                                       Rect="0,0,450,208" />
-                    </Border.Clip>
-
-                    
-                </Border>
-
-                <!-- Website blacklist area -->
-                <Border HorizontalAlignment="Left" Margin="418,103,0,27" Grid.Row="3" Grid.RowSpan="2" Width="257" Grid.ColumnSpan="2">
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#88D498" Offset="0.0" />
-                            <GradientStop Color="#1A936F" Offset="1" />
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <Border.Clip>
-                        <RectangleGeometry RadiusX="10"
-                                       RadiusY="10"
-                                       Rect="0,0,450,208" />
+                                       Rect="0,-10,475,185" />
                     </Border.Clip>
 
                     <Grid>
@@ -325,7 +266,7 @@
                            Height="167"
                            Source="/Images/heart_book.png"
                            HorizontalAlignment="Right"
-                           VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5">
+                           VerticalAlignment="Bottom" Margin="0,0,-43,-20" RenderTransformOrigin="0.5,0.5">
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="-16.852"/>
@@ -334,7 +275,7 @@
                         </Image>
 
                         <StackPanel Margin="0,0,0,22">
-                            <TextBlock Text="Websites blacklist"
+                            <TextBlock Text="Which websites distract you?"
                                        HorizontalAlignment="Center"
                                    Foreground="#114B5F"
                                    FontSize="30"
@@ -377,10 +318,10 @@
                                 IsEnabled="{Binding Text.Length, ElementName=BrowserWebsites}"/>
                         </StackPanel>
 
-                        <Button x:Name="RemoveFromWebsitesBlacklist" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                        <Button x:Name="RemoveFromWebsitesBlacklist" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                 Click="RemoveFromWebsitesBlacklist_Click"
                                 Content="Remove" 
-                                Margin="0,70,3,0"
+                                Margin="318,0,0,5"
                                 Padding="5,2,5,2"
                                 FontWeight="Bold"
                                 FontSize="15"
@@ -389,9 +330,11 @@
 
                         <ListBox x:Name="WebsitesBlacklistList" 
                                  SelectionChanged="WebsitesBlacklistList_SelectionChanged"
-                                 HorizontalAlignment="Left" 
-                                 Margin="24,76,0,22" 
+                                 HorizontalAlignment="Center" 
+                                 VerticalAlignment="Bottom"
+                                 Margin="0,0,40,5"
                                  Width="200"
+                                 Height="100"
                                  IsEnabled="False">
                         </ListBox>
 
@@ -403,92 +346,97 @@
                                Visibility="Visible"/>
 
 
-                        <Label x:Name="BlockWebsitesBlacklistFields" 
-                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>
+                        <!--<Label x:Name="BlockWebsitesBlacklistFields" 
+                               IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>-->
+
                     </Grid>
                 </Border>
+
+                <!--Blacklists area-->
+                <Border Grid.Row="2" Grid.ColumnSpan="2"
+                        Background="#114B5F"
+                        VerticalAlignment="Top"
+                        Height="1"
+                        Width="550"/>
+
+                <!--Mode area-->
+                <StackPanel Grid.Row="4"
+                            Grid.ColumnSpan="2"
+                            Margin="0,10,0,0">
+                    <TextBlock x:Name="ModeText"
+                               Foreground="#114B5F"
+                               Padding="0"
+                               FontSize="28" 
+                               FontFamily="/Fonts/#Joan"
+                               FontWeight="Bold"
+                               Width="600"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center">
+                        Distracting processes will be automatically closed.
+                    </TextBlock>
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                        Margin="0,10,0,0">
+                        <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
+                                 VerticalAlignment="Center"
+                                  Content="Close Program"
+                                  Click="Close_Program_Click"/>
+                        <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
+                                 VerticalAlignment="Center"
+                                 Content="Stop Timer"
+                                 Click="Stop_Timer_Click"/>
+                    </StackPanel>
+                </StackPanel>
 
                 <!--Start button area-->
-                <Border HorizontalAlignment="Left" Grid.Row="4" Width="182" Margin="316,61,0,0" Grid.ColumnSpan="2">
-                    <Border.Background>
+                <Button x:Name="StartTimer"
+                        Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource BasicButtonTheme}"
+                        Content="Start" 
+                        Padding="20,0,20,5"
+                        FontFamily="/Fonts/#Dosis"
+                        Foreground="#F3E9D2"
+                        FontSize="40" 
+                        IsEnabled="{Binding Source={x:Static properties:Settings.Default}, Path=StartEnabled, Mode=TwoWay}"
+                        Click="StartTimer_Click">
+                    <Button.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#88D498" Offset="0.0" />
-                            <GradientStop Color="#1A936F" Offset="1" />
+                            <GradientStop Color="#88D" Offset="0.0" />
+                            <GradientStop Color="#FF006977" Offset="1" />
                         </LinearGradientBrush>
-                    </Border.Background>
-                    <Border.Clip>
-                        <RectangleGeometry RadiusX="10"
-                                       RadiusY="10"
-                                       Rect="0,0,180,154.5" />
-                    </Border.Clip>
-
-                    <Grid>
-                        <Image Width="167"
-                           Height="167"
-                           Source="/Images/heart_book.png"
-                           HorizontalAlignment="Right"
-                           VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5">
-                            <Image.RenderTransform>
-                                <TransformGroup>
-                                    <RotateTransform Angle="-16.852"/>
-                                </TransformGroup>
-                            </Image.RenderTransform>
-                        </Image>
-                        <StackPanel>
-
-
-                            <Border>
-                                <Grid>
-                                    <Button x:Name="StartTimer"
-                                    HorizontalAlignment="Center"
-                                    Style="{StaticResource BasicButtonTheme}"
-                                    Content="Start" 
-                                    Margin="0,22,0,0"
-                                    Padding="20,0,20,5"
-                                    FontFamily="/Fonts/#Dosis"
-                                    Foreground="#F3E9D2"
-                                    FontSize="50" 
-                                    IsEnabled="{Binding Source={x:Static properties:Settings.Default}, Path=StartEnabled, Mode=TwoWay}"
-                                    Click="StartTimer_Click">
-                                        <Button.Background>
-                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                                                <GradientStop Color="#88D" Offset="0.0" />
-                                                <GradientStop Color="#FF006977" Offset="1" />
-                                            </LinearGradientBrush>
-                                        </Button.Background>
-                                    </Button>
-                                    <Button x:Name="StopTimer"
-                                    HorizontalAlignment="Center"
-                                    Style="{StaticResource BasicButtonTheme}"
-                                    Content="Stop" 
-                                    Margin="0,22,0,0"
-                                    Padding="23.5,0,23.5,5"
-                                    FontFamily="/Fonts/#Dosis"
-                                    Foreground="#F3E9D2"
-                                    FontSize="50" 
-                                    Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Converter={StaticResource BoolToVis}, Mode=TwoWay}"
-                                    Click="StopTimer_Click">
-                                        <Button.Background>
-                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                                                <GradientStop Color="#88D" Offset="0.0" />
-                                                <GradientStop Color="#FF006977" Offset="1" />
-                                            </LinearGradientBrush>
-                                        </Button.Background>
-                                    </Button>
-                                </Grid>
-                            </Border>
-                        </StackPanel>
-                        <Label x:Name="BlockStartFields" 
+                    </Button.Background>
+                </Button>
+                <Button x:Name="StopTimer"
+                        Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource BasicButtonTheme}"
+                        Content="Stop" 
+                        Padding="23.5,0,23.5,5"
+                        FontFamily="/Fonts/#Dosis"
+                        Foreground="#F3E9D2"
+                        FontSize="40" 
+                        Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Converter={StaticResource BoolToVis}, Mode=TwoWay}"
+                        Click="StopTimer_Click">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                            <GradientStop Color="#88D" Offset="0.0" />
+                            <GradientStop Color="#FF006977" Offset="1" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Label x:Name="BlockStartFields" Grid.Row="5" Grid.ColumnSpan="2"
                                IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}" 
-                               Margin="0,0,0,90"/>
-                    </Grid>
-                </Border>
+                               Margin="0,0,0,90"
+                       Width="200"
+                       Height="200">
+                </Label>
 
                 <Button Grid.Row="2" x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                        Visibility="Hidden">
-
-                </Button>
-
+                        Visibility="Hidden"/>
 
             </Grid>
         </Border>

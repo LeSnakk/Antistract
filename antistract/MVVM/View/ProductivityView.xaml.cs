@@ -499,10 +499,18 @@ namespace antistract.MVVM.View
         public static void ShouldCheckYes()
         {
             ShouldCheck = true;
+            if (!GlobalVariables.OnlyPausing)
+            {
+                SetExtensionCheckModeClosing();
+            } else
+            {
+                SetExtensionCheckModePausing();
+            }
         }
         public static void ShouldCheckNo()
         {
             ShouldCheck = false;
+            SetExtensionCheckModePausing();
         }
 
         private void Close_Program_Click(object sender, RoutedEventArgs e)
@@ -626,6 +634,18 @@ namespace antistract.MVVM.View
             XmlNode checkMode = checkModeNodeList[0];
 
             checkMode.InnerText = "pausing";
+            doc.Save("BrowserExtensions/Chrome/data.xml");
+            Debug.WriteLine("SETTING");
+        }
+        public static void SetExtensionCheckModeClosing()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load("BrowserExtensions/Chrome/data.xml");
+
+            XmlNodeList checkModeNodeList = doc.GetElementsByTagName("checkMode");
+            XmlNode checkMode = checkModeNodeList[0];
+
+            checkMode.InnerText = "closing";
             doc.Save("BrowserExtensions/Chrome/data.xml");
             Debug.WriteLine("SETTING");
         }

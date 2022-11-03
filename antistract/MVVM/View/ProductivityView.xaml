@@ -113,7 +113,9 @@
                             Margin="0,115,0,0">
                     <CheckBox x:Name="FilterPrograms"
                               Padding="0"
-                              VerticalAlignment="Center">
+                              VerticalAlignment="Center"
+                              Checked="FilterPrograms_Checked"
+                              Unchecked="FilterPrograms_Checked">
                         Programs
                     </CheckBox>
                     <Button x:Name="EditPrograms"
@@ -129,7 +131,9 @@
                             Margin="0,115,0,0">
                     <CheckBox x:Name="FilterWebsites"
                               Padding="0"
-                              VerticalAlignment="Center">
+                              VerticalAlignment="Center"
+                              Checked="FilterWebsites_Checked"
+                              Unchecked="FilterWebsites_Checked">
                         Websites
                     </CheckBox>
                     <Button x:Name="EditWebsites"

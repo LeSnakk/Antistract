@@ -51,7 +51,7 @@ namespace antistract.MVVM.View
         private bool Deselecting = false;
 
         private string GCExLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Google/Chrome/User Data/Default/Sync Extension Settings/dkcmjcfdomcigfioegnmleiijjoccfea/000003.log");
-        private bool checkBrowser = true;
+        private bool checkBrowser = false;
 
         ThreadStart loadInstalledPrograms = LoadInstalledPrograms;
         TimerWindow timerWindow;
@@ -560,6 +560,11 @@ namespace antistract.MVVM.View
             checkMode.InnerText = CheckMode;
 
             doc.Save("BrowserExtensions/Chrome/data.xml");
+
+            if (!checkBrowser)
+            {
+                SetExtensionCheckModePausing();
+            }
         }
 
         public static void SyncToXML(string websiteName, bool clearFirst, string addOrRemove)
@@ -868,12 +873,23 @@ namespace antistract.MVVM.View
         {
             WebsitesBlacklistBorder.Visibility = Visibility.Visible;
             ProgramsBlacklistBorder.Visibility = Visibility.Hidden;
+            Debug.WriteLine(checkBrowser);
         }
 
         private void EditPrograms_Click(object sender, RoutedEventArgs e)
         {
             ProgramsBlacklistBorder.Visibility = Visibility.Visible;
             WebsitesBlacklistBorder.Visibility = Visibility.Hidden;
+        }
+
+        private void FilterWebsites_Checked(object sender, RoutedEventArgs e)
+        {
+            checkBrowser = FilterWebsites.IsChecked.Value;
+        }
+
+        private void FilterPrograms_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

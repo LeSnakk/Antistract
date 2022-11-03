@@ -886,11 +886,33 @@ namespace antistract.MVVM.View
         private void FilterWebsites_Checked(object sender, RoutedEventArgs e)
         {
             checkBrowser = FilterWebsites.IsChecked.Value;
+            FilteringTextMsg();
         }
 
         private void FilterPrograms_Checked(object sender, RoutedEventArgs e)
         {
             checkPrograms = FilterPrograms.IsChecked.Value;
+            FilteringTextMsg();
+        }
+
+        private void FilteringTextMsg()
+        {
+            if (!checkPrograms && !checkBrowser)
+            {
+                FilteringText.Text = "To help you focus and increase your productivity, this will keep an eye on your distracting...";
+            }
+            else if (checkPrograms && !checkBrowser)
+            {
+                FilteringText.Text = "To help you focus and increase your productivity, this will keep an eye on your distracting programs.";
+            }
+            else if (checkBrowser && !checkPrograms)
+            {
+                FilteringText.Text = "To help you focus and increase your productivity, this will keep an eye on your distracting websites.";
+            }
+            else if (checkPrograms && checkBrowser)
+            {
+                FilteringText.Text = "To help you focus and increase your productivity, this will keep an eye on your distracting programs and websites.";
+            }
         }
     }
 }

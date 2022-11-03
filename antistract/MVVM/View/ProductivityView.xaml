@@ -102,7 +102,7 @@
                                Width="500"
                                TextWrapping="Wrap"
                                TextAlignment="Center">
-                        To help you focus and increase your productivity, this will keep an eye on your distracting...
+                        To help you focus and increase your productivity, this will keep an eye on your distracting programs.
                     </TextBlock>
                 </StackPanel>
 

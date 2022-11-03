@@ -52,6 +52,7 @@ namespace antistract.MVVM.View
 
         private string GCExLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Google/Chrome/User Data/Default/Sync Extension Settings/dkcmjcfdomcigfioegnmleiijjoccfea/000003.log");
         private bool checkBrowser = false;
+        private bool checkPrograms = true;
 
         ThreadStart loadInstalledPrograms = LoadInstalledPrograms;
         TimerWindow timerWindow;
@@ -297,7 +298,7 @@ namespace antistract.MVVM.View
                 
                 Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 Debug.WriteLine(processes.Length);
-                if (processes.Length == 0 && !checkBrowser)
+                if (processes.Length == 0 && !checkBrowser && checkPrograms)
                 {
                     TimerWindow.TimerOnHoldNO();
                     Debug.WriteLine("Notepad is not running");
@@ -308,7 +309,7 @@ namespace antistract.MVVM.View
                     CheckBrowser();
                     Debug.WriteLine("!2");
                 }
-                else if (processes.Length >= 1)
+                else if (processes.Length >= 1 && checkPrograms)
                 {
                     Debug.WriteLine("Notepad is running");
                     
@@ -889,7 +890,7 @@ namespace antistract.MVVM.View
 
         private void FilterPrograms_Checked(object sender, RoutedEventArgs e)
         {
-
+            checkPrograms = FilterPrograms.IsChecked.Value;
         }
     }
 }

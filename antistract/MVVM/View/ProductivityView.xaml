@@ -115,7 +115,8 @@
                               Padding="0"
                               VerticalAlignment="Center"
                               Checked="FilterPrograms_Checked"
-                              Unchecked="FilterPrograms_Checked">
+                              Unchecked="FilterPrograms_Checked"
+                              IsChecked="True">
                         Programs
                     </CheckBox>
                     <Button x:Name="EditPrograms"

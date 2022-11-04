@@ -17,6 +17,7 @@ using System.Xml.Linq;
 using System.Xml;
 using System.IO;
 using System.Text;
+using System.Windows.Media.Animation;
 
 namespace antistract.MVVM.View
 {
@@ -903,6 +904,12 @@ namespace antistract.MVVM.View
         {
             ProgramsBlacklistBorder.Visibility = Visibility.Visible;
             WebsitesBlacklistBorder.Visibility = Visibility.Hidden;
+
+            ThicknessAnimation animateMargin = new ThicknessAnimation(new Thickness(0,-175,0,0), new Duration(TimeSpan.FromMilliseconds(500)));
+            CubicEase cubicEase = new CubicEase();
+            cubicEase.EasingMode = EasingMode.EaseOut;
+            animateMargin.EasingFunction = cubicEase;
+            ProgramsBlacklistBorder.BeginAnimation(MarginProperty, animateMargin);
         }
 
         private void FilterWebsites_Checked(object sender, RoutedEventArgs e)

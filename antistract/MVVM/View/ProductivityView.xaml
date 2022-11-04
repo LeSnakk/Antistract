@@ -266,6 +266,19 @@
                                        RadiusY="10"
                                        Rect="0,-10,475,185" />
                     </Border.Clip>
+                    <!--<Border.Triggers>
+                        <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation Duration="00:00:0.5" From="0,0,0,0" To="0,-175,0,0" Storyboard.TargetProperty="Margin">
+                                        <ThicknessAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Border.Triggers>-->
 
                     <Grid>
                         <Image Width="167"

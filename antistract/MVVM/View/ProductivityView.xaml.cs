@@ -895,26 +895,36 @@ namespace antistract.MVVM.View
 
         private void EditWebsites_Click(object sender, RoutedEventArgs e)
         {
-            WebsitesBlacklistBorder.Visibility = Visibility.Visible;
+            AnimateUp(ProgramsBlacklistBorder);
             ProgramsBlacklistBorder.Visibility = Visibility.Hidden;
-
-            ThicknessAnimation animateMargin = new ThicknessAnimation(new Thickness(0, 0, 0, 0), new Duration(TimeSpan.FromMilliseconds(500)));
-            CubicEase cubicEase = new CubicEase();
-            cubicEase.EasingMode = EasingMode.EaseOut;
-            animateMargin.EasingFunction = cubicEase;
-            WebsitesBlacklistBorder.BeginAnimation(MarginProperty, animateMargin);
+            WebsitesBlacklistBorder.Visibility = Visibility.Visible;
+            AnimateDown(WebsitesBlacklistBorder);
         }
 
         private void EditPrograms_Click(object sender, RoutedEventArgs e)
         {
-            ProgramsBlacklistBorder.Visibility = Visibility.Visible;
+            AnimateUp(WebsitesBlacklistBorder);
             WebsitesBlacklistBorder.Visibility = Visibility.Hidden;
+            ProgramsBlacklistBorder.Visibility = Visibility.Visible;
+            AnimateDown(ProgramsBlacklistBorder);
+        }
 
-            ThicknessAnimation animateMargin = new ThicknessAnimation(new Thickness(0,0,0,0), new Duration(TimeSpan.FromMilliseconds(500)));
+        private void AnimateDown(Border border)
+        {
+            ThicknessAnimation animateMargin = new ThicknessAnimation(new Thickness(0, 0, 0, 0), new Duration(TimeSpan.FromMilliseconds(500)));
             CubicEase cubicEase = new CubicEase();
             cubicEase.EasingMode = EasingMode.EaseOut;
             animateMargin.EasingFunction = cubicEase;
-            ProgramsBlacklistBorder.BeginAnimation(MarginProperty, animateMargin);
+            border.BeginAnimation(MarginProperty, animateMargin);
+        }
+
+        private void AnimateUp(Border border)
+        {
+            ThicknessAnimation animateMargin = new ThicknessAnimation(new Thickness(0, -175, 0, 0), new Duration(TimeSpan.FromMilliseconds(500)));
+            CubicEase cubicEase = new CubicEase();
+            cubicEase.EasingMode = EasingMode.EaseOut;
+            animateMargin.EasingFunction = cubicEase;
+            border.BeginAnimation(MarginProperty, animateMargin);
         }
 
         private void FilterWebsites_Checked(object sender, RoutedEventArgs e)

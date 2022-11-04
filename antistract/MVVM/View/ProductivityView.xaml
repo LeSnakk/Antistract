@@ -151,7 +151,7 @@
                         Width="475"
                         Height="175"
                         Visibility="Hidden"
-                        Margin="0,0,0,0">
+                        Margin="0,-175,0,0">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                             <GradientStop Color="#88D498" Offset="0.0" />
@@ -253,8 +253,8 @@
                         HorizontalAlignment="Center"
                         Width="475"
                         Height="175"
-                        Visibility="Visible"
-                        Margin="0,0,0,0">
+                        Visibility="Hidden"
+                        Margin="0,-175,0,0">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                             <GradientStop Color="#88D498" Offset="0.0" />

@@ -9,27 +9,13 @@
              d:DesignHeight="570" d:DesignWidth="710">
     <Border Padding="35,0,0,0" 
             Margin="0,535,0,0" 
-            Background="#88D498"
-            CornerRadius="0,0,7,0">
+            CornerRadius="0,0,7,0"
+            Background="#F3E9D2">
 
         <Border CornerRadius="31,7,7,0"
                 Padding="0,30,0,0"
-                Margin="0,-535,0,0">
-
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <LinearGradientBrush.RelativeTransform>
-                        <TransformGroup>
-                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
-                            <RotateTransform Angle="-87" CenterX="0.5" CenterY="0.5"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </LinearGradientBrush.RelativeTransform>
-                    <GradientStop Color="#FF88D498"/>
-                    <GradientStop Color="#FFC2D488" Offset="0.304"/>
-                </LinearGradientBrush>
-            </Border.Background>
+                Margin="0,-535,0,0"
+                Background="#F3E9D2">
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -45,103 +31,9 @@
                     <ColumnDefinition Width="5*" />
                 </Grid.ColumnDefinitions>
 
-                <!--Welcome and plan selection area-->
-                <StackPanel Grid.Row="0" Grid.ColumnSpan="2"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Margin="0,-20,0,0">
-                    <StackPanel Orientation="Horizontal"
-                                Margin="0,0,0,14">
-                        <TextBlock x:Name="HeyName" 
-                                   Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username, Mode=TwoWay}"
-                                   Foreground="#114B5F"
-                                   VerticalAlignment="Center"
-                                   Padding="0"
-                                   FontSize="28" 
-                                   HorizontalAlignment="left"
-                                   Margin="20,20,0,0"
-                                   FontFamily="/Fonts/#Joan"
-                                   FontWeight="Bold"/>
-                        <TextBlock x:Name="Headline"
-                                   Text=", pick your productivity schedule:"
-                                   Foreground="#114B5F"
-                                   FontSize="28" 
-                                   HorizontalAlignment="left"
-                                   Margin="0,20,0,0"
-                                   FontFamily="/Fonts/#Joan"
-                                   FontWeight="Bold"/>
-                    </StackPanel>
-                    <ComboBox x:Name="PickPlanDropdown"
-                              Padding="5"
-                              HorizontalAlignment="Center"
-                              IsEditable="False"
-                              Width="{Binding Width, ElementName=PickPlanDropdownDefaultText}"
-                              SelectionChanged="PickPlanDropdown_SelectionChanged" 
-                              RenderTransformOrigin="0.5,0.5"/>
-                    <Label x:Name="PickPlanDropdownDefaultText"
-                           Margin="10,-21,0,0"
-                           Padding="0"
-                           FontSize="12.5"
-                           Width="235"
-                           IsHitTestVisible="False" 
-                           Height="28" 
-                           Grid.Row="2">
-                        Which plan do you want to use today?
-                    </Label>
-                </StackPanel>
 
-                <!--Filtering settings-->
-                <StackPanel Grid.Row="1" Grid.ColumnSpan="2"
-                            HorizontalAlignment="Center">
-                    <TextBlock x:Name="FilteringText"
-                               Foreground="#114B5F"
-                               Padding="0"
-                               FontSize="28" 
-                               FontFamily="/Fonts/#Joan"
-                               FontWeight="Bold"
-                               Width="500"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center">
-                        To help you focus and increase your productivity, this will keep an eye on your distracting programs.
-                    </TextBlock>
-                </StackPanel>
 
-                <StackPanel Orientation="Horizontal"
-                            Grid.Row="1" Grid.Column="0"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Center"
-                            Margin="0,115,0,0">
-                    <CheckBox x:Name="FilterPrograms"
-                              Padding="0"
-                              VerticalAlignment="Center"
-                              Checked="FilterPrograms_Checked"
-                              Unchecked="FilterPrograms_Checked"
-                              IsChecked="True">
-                        Programs
-                    </CheckBox>
-                    <Button x:Name="EditPrograms"
-                            Click="EditPrograms_Click">
-                        edit
-                    </Button>
-                </StackPanel>
 
-                <StackPanel Orientation="Horizontal"
-                            Grid.Row="1" Grid.Column="1"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Center" 
-                            Margin="0,115,0,0">
-                    <CheckBox x:Name="FilterWebsites"
-                              Padding="0"
-                              VerticalAlignment="Center"
-                              Checked="FilterWebsites_Checked"
-                              Unchecked="FilterWebsites_Checked">
-                        Websites
-                    </CheckBox>
-                    <Button x:Name="EditWebsites"
-                            Click="EditWebsites_Click">
-                        edit
-                    </Button>
-                </StackPanel>
 
                 <!--Programs blacklist-->
                 <Border x:Name="ProgramsBlacklistBorder" 
@@ -266,19 +158,6 @@
                                        RadiusY="10"
                                        Rect="0,-10,475,185" />
                     </Border.Clip>
-                    <!--<Border.Triggers>
-                        <EventTrigger RoutedEvent="Mouse.MouseEnter">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ThicknessAnimation Duration="00:00:0.5" From="0,0,0,0" To="0,-175,0,0" Storyboard.TargetProperty="Margin">
-                                        <ThicknessAnimation.EasingFunction>
-                                            <CubicEase EasingMode="EaseOut"/>
-                                        </ThicknessAnimation.EasingFunction>
-                                    </ThicknessAnimation>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Border.Triggers>-->
 
                     <Grid>
                         <Image Width="167"
@@ -370,6 +249,105 @@
 
                     </Grid>
                 </Border>
+                <Border Grid.RowSpan="2" Grid.ColumnSpan="2"
+                        Background="#F3E9D2">
+                </Border>
+
+                <!--Welcome and plan selection area-->
+                <StackPanel Grid.Row="0" Grid.ColumnSpan="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="0,-20,0,0">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,14">
+                        <TextBlock x:Name="HeyName" 
+                                   Text="{Binding Source={x:Static properties:Settings.Default}, Path=Username, Mode=TwoWay}"
+                                   Foreground="#114B5F"
+                                   VerticalAlignment="Center"
+                                   Padding="0"
+                                   FontSize="28" 
+                                   HorizontalAlignment="left"
+                                   Margin="20,20,0,0"
+                                   FontFamily="/Fonts/#Dosis"
+                                   FontWeight="Bold"/>
+                        <TextBlock x:Name="Headline"
+                                   Text=", pick your productivity schedule:"
+                                   Foreground="#114B5F"
+                                   FontSize="28" 
+                                   HorizontalAlignment="left"
+                                   Margin="0,20,0,0"
+                                   FontFamily="/Fonts/#Dosis"
+                                   FontWeight="Bold"/>
+                    </StackPanel>
+                    <ComboBox x:Name="PickPlanDropdown"
+                              Padding="5"
+                              HorizontalAlignment="Center"
+                              IsEditable="False"
+                              FontFamily="/Fonts/#Dosis"
+                              Width="{Binding Width, ElementName=PickPlanDropdownDefaultText}"
+                              SelectionChanged="PickPlanDropdown_SelectionChanged" 
+                              RenderTransformOrigin="0.5,0.5"/>
+                    <Label x:Name="PickPlanDropdownDefaultText"
+                           Margin="10,-21,0,0"
+                           Padding="0"
+                           FontSize="12.5"
+                           Width="235"
+                           IsHitTestVisible="False" 
+                           Height="28" 
+                           Grid.Row="2"
+                           FontFamily="/Fonts/#Dosis">
+                        Which plan do you want to use today?
+                    </Label>
+                </StackPanel>
+
+                <!--Filtering settings-->
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2"
+                            HorizontalAlignment="Center">
+                    <TextBlock x:Name="FilteringText"
+                               Foreground="#114B5F"
+                               Padding="0"
+                               FontSize="28" 
+                               FontFamily="/Fonts/#Dosis"
+                               FontWeight="Medium"
+                               Width="500"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center">
+                        To help you focus and increase your productivity, this will keep an eye on your distracting programs.
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="1" Grid.Column="0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,115,0,0">
+
+                    <CheckBox x:Name="FilterPrograms"
+                              Padding="0"
+                              FontFamily="/Fonts/#Dosis"
+                              VerticalAlignment="Center"
+                              Checked="FilterPrograms_Checked"
+                              Unchecked="FilterPrograms_Checked"
+                              IsChecked="True" Content="Programs"/>
+                    <Button x:Name="EditPrograms"
+                            Click="EditPrograms_Click" Content="edit"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="1" Grid.Column="1"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center" 
+                            Margin="0,115,0,0">
+
+                    <CheckBox x:Name="FilterWebsites"
+                              Padding="0"
+                              FontFamily="/Fonts/#Dosis"
+                              VerticalAlignment="Center"
+                              Checked="FilterWebsites_Checked"
+                              Unchecked="FilterWebsites_Checked" Content="Websites"/>
+                    <Button x:Name="EditWebsites"
+                            Click="EditWebsites_Click" Content="edit"/>
+                </StackPanel>
 
                 <!--Blacklists area-->
                 <Border Grid.Row="2" Grid.ColumnSpan="2"
@@ -386,8 +364,8 @@
                                Foreground="#114B5F"
                                Padding="0"
                                FontSize="28" 
-                               FontFamily="/Fonts/#Joan"
-                               FontWeight="Bold"
+                               FontFamily="/Fonts/#Dosis"
+                               FontWeight="Medium"
                                Width="610"
                                TextWrapping="Wrap"
                                TextAlignment="Center">
@@ -400,10 +378,14 @@
                         <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
                                      VerticalAlignment="Center"
                                      Content="Close distracting"
+                                     FontFamily="/Fonts/#Dosis"
+                                     FontSize="15"
                                      Click="Close_Program_Click"/>
                         <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
                                      VerticalAlignment="Center"
                                      Content="Stop schedule"
+                                     FontFamily="/Fonts/#Dosis"
+                                     FontSize="15"
                                      Click="Stop_Timer_Click" />
                     </StackPanel>
                 </StackPanel>

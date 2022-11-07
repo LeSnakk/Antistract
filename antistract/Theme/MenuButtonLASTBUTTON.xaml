@@ -24,15 +24,15 @@
                         <ControlTemplate.Triggers>
 
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                                <Setter TargetName="Border" Property="Background" Value="#caf0f8"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="#88D498" />
+                                <Setter TargetName="Border" Property="Background" Value="#90e0ef" />
                                 <Setter TargetName="textbox" Property="Margin" Value="25,0,0,0" />
                                 <Setter TargetName="textbox" Property="FontWeight" Value="SemiBold" />
                             </Trigger>
                             <Trigger Property="ToggleButton.IsMouseOver" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="#BAD2B1" />
+                                <Setter TargetName="Border" Property="Background" Value="#ade8f4" />
                                 <Setter TargetName="textbox" Property="FontWeight" Value="Medium" />
                             </Trigger>
                             <MultiTrigger>
@@ -40,7 +40,7 @@
                                     <Condition Property="IsMouseOver" Value="True" />
                                     <Condition Property="IsChecked" Value="True" />
                                 </MultiTrigger.Conditions>
-                                <Setter TargetName="Border" Property="Background" Value="#88D498" />
+                                <Setter TargetName="Border" Property="Background" Value="#90e0ef" />
                                 <Setter TargetName="textbox" Property="FontWeight" Value="SemiBold" />
                             </MultiTrigger>
                         </ControlTemplate.Triggers>

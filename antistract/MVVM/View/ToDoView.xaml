@@ -8,7 +8,7 @@
              d:DesignHeight="570" d:DesignWidth="710">
     <Border Padding="35,0,0,0" 
             Margin="0,535,0,0" 
-            Background="#88D498"
+            Background="#ffffff"
             CornerRadius="0,0,7,0">
 
         <Border CornerRadius="31,7,7,0"
@@ -25,8 +25,8 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </LinearGradientBrush.RelativeTransform>
-                    <GradientStop Color="#FF88D498"/>
-                    <GradientStop Color="#FFC2D488" Offset="0.304"/>
+                    <GradientStop Color="#ffffff"/>
+                    <GradientStop Color="#ffffff" Offset="0.304"/>
                 </LinearGradientBrush>
             </Border.Background>
 

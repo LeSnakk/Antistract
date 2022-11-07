@@ -19,7 +19,7 @@
     </Window.DataContext>
 
     <!--Window frame-->
-    <Border Background="#F3E9D2"
+    <Border Background="White"
             CornerRadius="7">
 
         <!--General layout-->
@@ -37,12 +37,19 @@
             <ContentControl Content="{Binding CurrentView}" 
                             Grid.RowSpan="2" 
                             Grid.ColumnSpan="2" 
-                            Margin="190,0,0,0"/>
+                            Margin="190,0,0,0">
+                <ContentControl.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ContentControl.Background>
+            </ContentControl>
 
             <!--Left menu buttons background-->
             <Border Grid.RowSpan="2"
                     CornerRadius="0,0,31,7" 
-                    Background="#C6DaBF"/>
+                    Background="#caf0f8"/>
 
 
 
@@ -144,9 +151,11 @@
             <!--Custom titlebar-->
             <Border Grid.Row="0" 
                     Grid.ColumnSpan="2"
-                    Background="#4C1A936F"
                     MouseDown="TitleBar_MouseDown"
                     CornerRadius="0,7,0,0">
+                <Border.Background>
+                    <SolidColorBrush Color="#90e0ef" Opacity=".5"/>
+                </Border.Background>
                 <DockPanel x:Name="TitleBar" DockPanel.Dock="Top">
                     <Button x:Name="CloseButton" 
                             Content="X"

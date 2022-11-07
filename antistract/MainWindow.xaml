@@ -19,91 +19,97 @@
     </Window.DataContext>
 
     <!--Window frame-->
-    <Border Background="White"
-            CornerRadius="7">
+    <Border Background="#90e0ef"
+            CornerRadius="0,0,7,0"
+            BorderThickness="1">
 
-        <!--General layout-->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2.5*" />
-                <ColumnDefinition Width="7.5*" />
-            </Grid.ColumnDefinitions>
+        <Border Background="white"
+                CornerRadius="7"
+                BorderThickness="1"
+                Margin="5,0,0,0">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height=".5*"/>
-                <RowDefinition Height="9.5*"/>
-            </Grid.RowDefinitions>
-            <!--Main frame content area-->
-            <ContentControl Content="{Binding CurrentView}" 
+            <!--General layout-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.5*" />
+                    <ColumnDefinition Width="7.5*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".5*"/>
+                    <RowDefinition Height="9.5*"/>
+                </Grid.RowDefinitions>
+                <!--Main frame content area-->
+                <ContentControl Content="{Binding CurrentView}" 
                             Grid.RowSpan="2" 
                             Grid.ColumnSpan="2" 
                             Margin="190,0,0,0">
-                <ContentControl.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </ContentControl.Background>
-            </ContentControl>
+                    <ContentControl.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ContentControl.Background>
+                </ContentControl>
 
-            <!--Left menu buttons background-->
-            <Border Grid.RowSpan="2"
+                <!--Left menu buttons background-->
+                <Border Grid.RowSpan="2"
                     CornerRadius="0,0,31,7" 
                     Background="#caf0f8"/>
 
 
 
-            <!--User profile picture area-->
-            <StackPanel Grid.Row="1">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="150"/>
-                    </Grid.RowDefinitions>
+                <!--User profile picture area-->
+                <StackPanel Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150"/>
+                        </Grid.RowDefinitions>
 
-                    <Ellipse Height="100" Width="100" 
+                        <Ellipse Height="100" Width="100" 
                              HorizontalAlignment="Center" 
                              VerticalAlignment="Center" 
                              Margin="0,0,0,30"
                              RenderOptions.BitmapScalingMode="HighQuality">
-                        <Ellipse.Fill>
-                            <ImageBrush ImageSource="/Images/avatar_placeholder.png" />
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="6.5*" />
-                            <RowDefinition Height="3.5*" />
-                        </Grid.RowDefinitions>
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Images/avatar_placeholder.png" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="6.5*" />
+                                <RowDefinition Height="3.5*" />
+                            </Grid.RowDefinitions>
 
 
-                        <TextBlock x:Name="UsernameDisplay"
+                            <TextBlock x:Name="UsernameDisplay"
                                    VerticalAlignment="Center" 
                                    HorizontalAlignment="Center"
                                    Grid.Row="1"
                                    PreviewMouseDown="UsernameDisplay_PreviewMouseDown">
                                 dfgsdgsd
-                        </TextBlock>
+                            </TextBlock>
 
-                        <TextBox x:Name="UsernameDisplayTextBox"
+                            <TextBox x:Name="UsernameDisplayTextBox"
                                  VerticalAlignment="Center" 
                                  HorizontalAlignment="Center"
                                  Grid.Row="1"
                                  Visibility="Hidden">
-                        </TextBox>
-                        <Button x:Name="SaveUsername"
+                            </TextBox>
+                            <Button x:Name="SaveUsername"
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Center"
                                 Grid.Row="1" Margin="0,36,0,0"
                                 FontSize="8"
                                 Click="SaveUsername_Click">
-                            Save Username
-                        </Button>
+                                Save Username
+                            </Button>
 
+                        </Grid>
                     </Grid>
-                </Grid>
 
-                <!--Left menu buttons-->
-                <RadioButton Content="Overview"
+                    <!--Left menu buttons-->
+                    <RadioButton Content="Overview"
                              x:Name="MenuButtonOverview"
                              Height="84"
                              Foreground="#114B5F"
@@ -113,7 +119,7 @@
                              Command="{Binding HomeViewCommand}"
                              Click="MenuButtonOverview_Click"/>
 
-                <RadioButton Content="Be Productive"
+                    <RadioButton Content="Be Productive"
                              x:Name="MenuButtonProductivity"
                              Height="84"
                              Foreground="#114B5F"
@@ -122,7 +128,7 @@
                              Command="{Binding ProductivityViewCommand}"
                              Click="RemoveGetStartedButton"/>
 
-                <RadioButton Content="My Plans"
+                    <RadioButton Content="My Plans"
                              x:Name="MenuButtonPlans"
                              Height="84"
                              Foreground="#114B5F"
@@ -130,15 +136,14 @@
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding PlansViewCommand}"/>
 
-                <RadioButton Content="To-Do Lists"
+                    <RadioButton Content="To-Do Lists"
                              x:Name="MenuButtonsToDo"
                              Height="84"
                              Foreground="#114B5F"
                              FontSize="25"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding ToDoViewCommand}"/>
-
-                <RadioButton Content="Settings"
+                    <RadioButton Content="Settings"
                              x:Name="MenuButtonsSettings"
                              Height="84"
                              Foreground="#114B5F"
@@ -146,30 +151,30 @@
                              Style="{StaticResource MenuButtonThemeLASTBUTTON}"
                              Command="{Binding SettingsViewCommand}"/>
 
-            </StackPanel>
+                </StackPanel>
 
-            <!--Custom titlebar-->
-            <Border Grid.Row="0" 
+                <!--Custom titlebar-->
+                <Border Grid.Row="0" 
                     Grid.ColumnSpan="2"
                     MouseDown="TitleBar_MouseDown"
                     CornerRadius="0,7,0,0">
-                <Border.Background>
-                    <SolidColorBrush Color="#90e0ef" Opacity=".5"/>
-                </Border.Background>
-                <DockPanel x:Name="TitleBar" DockPanel.Dock="Top">
-                    <Button x:Name="CloseButton" 
+                    <Border.Background>
+                        <SolidColorBrush Color="#90e0ef" Opacity=".5"/>
+                    </Border.Background>
+                    <DockPanel x:Name="TitleBar" DockPanel.Dock="Top">
+                        <Button x:Name="CloseButton" 
                             Content="X"
                             Click="CloseButton_Click"
                             DockPanel.Dock="Right" 
                             Background="#66FFFFFF"/>
 
-                    <Button x:Name="MinButton" 
+                        <Button x:Name="MinButton" 
                             Content="Min"
                             Click="MinimizeButton_Click"
                             DockPanel.Dock="Right" 
                             Background="#33FFFFFF"/>
 
-                    <TextBlock Text="~ antistract"
+                        <TextBlock Text="~ antistract"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                Padding="0,0,0,5"
@@ -177,9 +182,9 @@
                                FontSize="22" 
                                Margin="10,3,0,0"
                                FontFamily="/Fonts/#Dosis"/>
-                </DockPanel>
-            </Border>
-        </Grid>
-
+                    </DockPanel>
+                </Border>
+            </Grid>
+        </Border>
     </Border>
 </Window>

@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Theme/MenuButtonLASTBUTTON.xaml" />
                 <ResourceDictionary Source="Theme/BasicButton.xaml" />
                 <ResourceDictionary Source="Theme/PlansListButton.xaml" />
+                <ResourceDictionary Source="Theme/StandardButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">

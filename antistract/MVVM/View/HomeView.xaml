@@ -226,21 +226,22 @@
                     <StackPanel>
                         <Button x:Name="GetStarted"
                         HorizontalAlignment="Center"
-                        Style="{StaticResource BasicButtonTheme}"
+                                VerticalAlignment="Center"
+                        Style="{StaticResource StandardButtonTheme}"
                         Content="Get Started" 
                         Margin="0,45,0,0"
                         Padding="20,0,20,5"
+                                FontSize="50"
                         FontFamily="/Fonts/#Dosis"
-                        Foreground="#F3E9D2"
-                        FontSize="50" 
                         Command="{Binding DataContext.ProductivityViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                        Click="GetStarted_Click">
-                            <Button.Background>
+                        Click="GetStarted_Click"
+                                IsEnabled="true">
+                            <!--<Button.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                                     <GradientStop Color="#88D" Offset="0.0" />
                                     <GradientStop Color="#FF006977" Offset="1" />
                                 </LinearGradientBrush>
-                            </Button.Background>
+                            </Button.Background>-->
                         </Button>
                     </StackPanel>
                 </Border>

@@ -7,8 +7,8 @@
         xmlns:viewModel="clr-namespace:antistract.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="antistract" 
-        Height="600" 
-        Width="900"
+        Height="620" 
+        Width="920"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
@@ -21,7 +21,17 @@
     <!--Window frame-->
     <Border Background="#90e0ef"
             CornerRadius="0,0,7,0"
-            BorderThickness="1">
+            BorderThickness="1"
+            Margin="10">
+
+        <Border.Effect>
+            <DropShadowEffect Color="Black"
+                              Opacity=".5"
+                              Direction="270"
+                              BlurRadius="10"
+                              ShadowDepth="3" />
+        </Border.Effect>
+
 
         <Border Background="#caf0f8"
                 CornerRadius="7"

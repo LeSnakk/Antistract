@@ -27,7 +27,6 @@
                             </Trigger>
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter TargetName="Border" Property="Background" Value="#90e0ef" />
-                                <Setter TargetName="textbox" Property="Margin" Value="25,0,0,0" />
                                 <Setter TargetName="textbox" Property="FontWeight" Value="SemiBold" />
                             </Trigger>
                             <Trigger Property="ToggleButton.IsMouseOver" Value="true">

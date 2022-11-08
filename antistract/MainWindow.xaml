@@ -68,8 +68,8 @@
 
                         <Ellipse Height="100" Width="100" 
                              HorizontalAlignment="Center" 
-                             VerticalAlignment="Center" 
-                             Margin="0,0,0,30"
+                             VerticalAlignment="Top" 
+                             Margin="0,5,0,0"
                              RenderOptions.BitmapScalingMode="HighQuality">
                             <Ellipse.Fill>
                                 <ImageBrush ImageSource="/Images/avatar_placeholder.png" />
@@ -83,24 +83,30 @@
 
 
                             <TextBlock x:Name="UsernameDisplay"
-                                   VerticalAlignment="Center" 
+                                   VerticalAlignment="Top" 
                                    HorizontalAlignment="Center"
                                    Grid.Row="1"
-                                   PreviewMouseDown="UsernameDisplay_PreviewMouseDown">
+                                   PreviewMouseDown="UsernameDisplay_PreviewMouseDown" 
+                                       Margin="0,13,0,0">
                                 dfgsdgsd
                             </TextBlock>
 
                             <TextBox x:Name="UsernameDisplayTextBox"
-                                 VerticalAlignment="Center" 
+                                 VerticalAlignment="Top" 
                                  HorizontalAlignment="Center"
                                  Grid.Row="1"
-                                 Visibility="Hidden">
+                                 Visibility="Visible"
+                                     Margin="0,12,0,0">
+                                
                             </TextBox>
                             <Button x:Name="SaveUsername"
+                                    Style="{StaticResource StandardSmallButtonTheme}"
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Center"
-                                Grid.Row="1" Margin="0,36,0,0"
-                                FontSize="8"
+                                Grid.Row="1" Margin="0,32,0,0"
+                                    Padding="10,0,10,1.5"
+                                FontSize="10"
+                                    FontFamily="/Fonts/#Dosis"
                                 Click="SaveUsername_Click">
                                 Save Username
                             </Button>

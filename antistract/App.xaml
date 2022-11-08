@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="Theme/BasicButton.xaml" />
                 <ResourceDictionary Source="Theme/PlansListButton.xaml" />
                 <ResourceDictionary Source="Theme/StandardButton.xaml" />
+                <ResourceDictionary Source="Theme/StandardSmallButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">

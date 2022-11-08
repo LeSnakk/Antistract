@@ -36,7 +36,7 @@
         <Border Background="#caf0f8"
                 CornerRadius="7"
                 BorderThickness="1"
-                Margin="5,0,0,0">
+                Margin="3,0,0,0">
 
             <!--General layout-->
             <Grid>
@@ -53,7 +53,7 @@
                 <ContentControl Content="{Binding CurrentView}" 
                             Grid.RowSpan="2" 
                             Grid.ColumnSpan="2" 
-                            Margin="188,0,0,0">
+                            Margin="188.2,0,0,0">
                     <ContentControl.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="Black"/>
@@ -63,9 +63,9 @@
                 </ContentControl>
 
                 <!--Left menu buttons background-->
-                <Border Grid.RowSpan="2"
+                <Border Grid.RowSpan="2" Grid.Column="0"
                     CornerRadius="0,0,31,7" 
-                    Background="#caf0f8" Grid.ColumnSpan="2" Margin="0,0,668,120"/>
+                    Background="#caf0f8"/>
 
 
 
@@ -107,7 +107,7 @@
                                  Grid.Row="1"
                                  Visibility="Visible"
                                      Margin="0,12,0,0">
-                                
+
                             </TextBox>
                             <Button x:Name="SaveUsername"
                                     Style="{StaticResource StandardSmallButtonTheme}"
@@ -161,7 +161,7 @@
                              Command="{Binding ToDoViewCommand}"/>
                     <RadioButton Content="Settings"
                              x:Name="MenuButtonsSettings"
-                             Height="84"
+                             Height="80.5"
                              Foreground="#114B5F"
                              FontSize="25"
                              Style="{StaticResource MenuButtonThemeLASTBUTTON}"

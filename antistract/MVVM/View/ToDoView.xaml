@@ -7,13 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="710">
     <Border Padding="35,0,0,0" 
-            Margin="0,535,0,0" 
+            Margin="0,564.75,0,0" 
             Background="#ffffff"
             CornerRadius="0,0,7,0">
 
         <Border CornerRadius="31,7,7,0"
                 Padding="0,30,0,0"
-                Margin="0,-535,0,0">
+                Margin="0,-565,0,0">
 
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

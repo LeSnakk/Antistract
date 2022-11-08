@@ -8,7 +8,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
 
-                        
+
                         <Border x:Name="Border"
                                 CornerRadius="15" 
                                 BorderThickness="2"
@@ -22,7 +22,7 @@
                                               Margin="{TemplateBinding Padding}" 
                                               VerticalAlignment="Center" />
                         </Border>
-                        
+
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsEnabled" Value="True">
                                 <Setter TargetName="Border" Property="BorderBrush" Value="#0077b6" />
@@ -45,7 +45,6 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="FontSize" Value="{TemplateBinding FontSize}" />
         </Style.Setters>
     </Style>
 </ResourceDictionary>

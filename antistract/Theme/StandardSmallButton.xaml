@@ -27,7 +27,7 @@
                             <Trigger Property="IsEnabled" Value="True">
                                 <Setter TargetName="Border" Property="BorderBrush" Value="#0077b6" />
                                 <Setter Property="Foreground" Value="#48CAE4" />
-                                <Setter Property="FontWeight" Value="DemiBold" />
+                                <Setter Property="FontWeight" Value="Regular" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="Border" Property="BorderBrush" Value="#caf0f8" />

@@ -64,7 +64,8 @@
                         Visibility="Hidden"></Button>
                         </StackPanel>
 
-                        <ScrollViewer Grid.Row="1" Margin="2,10,10,10">
+                        <ScrollViewer Grid.Row="1" Margin="2,10,10,10"
+                                      VerticalScrollBarVisibility="Auto">
 
                             <ItemsControl ItemsSource="{Binding}" x:Name="PlanOverviewStackPanel" Grid.Column="0">
                                 <ItemsControl.ItemsPanel>

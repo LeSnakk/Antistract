@@ -122,6 +122,7 @@
                                Visibility="Visible"/>
 
                         <Button x:Name="btn_CallLoad" Content="Load programs" Click="GetInstalledPrograms" 
+                                Style="{StaticResource StandardSmallButtonTheme}"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Top" 
                                 Margin="57,90,0,0"

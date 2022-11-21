@@ -23,7 +23,7 @@
                                        Padding="4"
                                        FontFamily="/Fonts/#Dosis"
                                        x:Name="textbox"
-                                       FontSize="12"/>
+                                       FontSize="13"/>
                             </Grid>
                         </Border>
                         <ControlTemplate.Triggers>

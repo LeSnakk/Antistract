@@ -9,7 +9,7 @@
                     <ControlTemplate TargetType="RadioButton">
                         <Border 
                             x:Name="Border" 
-                            CornerRadius="4,8,8,4" 
+                            CornerRadius="4,4,12,4" 
                             Margin="0,1,0,1"
                             BorderThickness="0">
                             

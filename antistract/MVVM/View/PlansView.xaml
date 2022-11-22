@@ -66,16 +66,6 @@
                                  Style="{StaticResource PlansNameTextBoxTheme}">
                         </TextBox>
 
-                        
-                        <Label x:Name="InfoField"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               FontSize="15"
-                               FontFamily="/Fonts/#Dosis"
-                               Foreground="#114B5F"
-                               Visibility="Hidden"
-                               Content="Please fill in all fields" />
-
                         <Border Grid.Row="1"
                                 Margin="-8,5,3.5,0">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -3455,6 +3445,15 @@
                                 </WrapPanel>
                             </ScrollViewer>
                         </Border>
+                        <Label x:Name="InfoField"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               Margin="0,43,3,0"
+                               FontSize="12"
+                               FontFamily="/Fonts/#Dosis"
+                               Foreground="#023E8A"
+                               Visibility="Hidden"
+                               Content="Please fill in all fields." Grid.RowSpan="2" />
                     </Grid>
                 </Border>
                 <Border x:Name="MenuArea">

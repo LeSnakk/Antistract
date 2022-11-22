@@ -219,8 +219,9 @@ namespace antistract.MVVM.View
                 }
             } else if (String.IsNullOrWhiteSpace(EntryName.Text))
             {
-                InfoField.Content = "Please fill in a name";
                 InfoField.Visibility = Visibility.Visible;
+                InfoField.Content = "Please fill in a plan name.";
+                
             }
         }
 
@@ -459,17 +460,17 @@ namespace antistract.MVVM.View
         {
             if (String.IsNullOrWhiteSpace(EntryName.Text))
             {
-                InfoField.Content = "Please fill in a name";
+                InfoField.Content = "Please fill in a plan name.";
             } else
             {
-                InfoField.Content = "Please fill in all fields";
+                InfoField.Content = "Please fill in all fields.";
             }
             InfoField.Visibility = Visibility.Visible;
         }
         private void DisableInvalidInputText()
         {
             InfoField.Visibility = Visibility.Hidden;
-            InfoField.Content = "Please fill in all fields";
+            InfoField.Content = "Please fill in all fields.";
         }
 
         public void WriteToXMLFile(XDocument doc, XElement root, string _title, string _type, string _duration)

@@ -70,11 +70,12 @@ HorizontalAlignment="Center"
                                        HorizontalAlignment="Center">
 
                                     <Border Visibility="Collapsed" 
+                                            
                                         x:Name="EntryBlock0"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -130,7 +131,7 @@ HorizontalAlignment="Center"
                                         x:Name="EntryBlock1"
                                         Width="150"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -186,7 +187,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -242,7 +243,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -298,7 +299,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -354,7 +355,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -410,7 +411,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -466,7 +467,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -522,7 +523,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -578,7 +579,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -634,7 +635,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -690,7 +691,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -746,7 +747,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -802,7 +803,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -858,7 +859,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -914,7 +915,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -970,7 +971,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1026,7 +1027,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1082,7 +1083,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1138,7 +1139,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1194,7 +1195,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1250,7 +1251,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1306,7 +1307,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1362,7 +1363,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1418,7 +1419,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1474,7 +1475,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1530,7 +1531,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1586,7 +1587,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1642,7 +1643,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1698,7 +1699,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1754,7 +1755,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1810,7 +1811,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1866,7 +1867,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1922,7 +1923,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1978,7 +1979,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2034,7 +2035,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2090,7 +2091,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2146,7 +2147,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2202,7 +2203,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2258,7 +2259,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2314,7 +2315,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2370,7 +2371,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2426,7 +2427,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2482,7 +2483,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2538,7 +2539,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2594,7 +2595,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2650,7 +2651,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2706,7 +2707,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2762,7 +2763,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2818,7 +2819,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2874,7 +2875,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2930,7 +2931,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -2986,7 +2987,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -3042,7 +3043,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -3098,7 +3099,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -3154,7 +3155,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -3210,7 +3211,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -3266,7 +3267,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -3322,7 +3323,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -3378,7 +3379,7 @@ HorizontalAlignment="Center"
                                         Width="150"
                                         Style="{StaticResource EntryBlockTheme}"
                                         BorderBrush="#48cae4" BorderThickness="1.7" CornerRadius="5"
-                                        Margin="5,0,5,10"
+                                        Margin="5.5,0,5,11"
                                         Padding="5">
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -3436,7 +3437,7 @@ HorizontalAlignment="Center"
                                             FontFamily="/Fonts/#Dosis"
                                         Padding="-0,-14.2,0,0"
                                         Margin="55,20"
-                                        Visibility="Hidden"
+                                        Visibility="Collapsed"
                                         Click="AddElementButton_Click" Content="+"/>
                                 </WrapPanel>
                             </ScrollViewer>
@@ -3446,8 +3447,8 @@ HorizontalAlignment="Center"
                 <Border x:Name="MenuArea">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="8*" />
+                            <RowDefinition Height="1.1*" />
+                            <RowDefinition Height="7.9*" />
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
 
@@ -3457,10 +3458,19 @@ HorizontalAlignment="Center"
                                HorizontalAlignment="Center"
                                FontFamily="/Fonts/#Dosis"
                                FontWeight="SemiBold"
+                                       Padding="0"
+                                       Margin="0,-3,0,3"
                                FontSize="30"><Run Text="My Plans"/></TextBlock>
                             <Button x:Name="AddPlanButton"
+                                    Padding="0,-1,0,0"
+                                    Margin="2,0,0,0"
+                                    Width="168.5"
+                                    Height="20"
                                     Style="{StaticResource StandardSmallButtonTheme}"
-                                    HorizontalAlignment="Center"
+                                    HorizontalAlignment="left"
+                                    FontSize="16"
+                                    FontWeight="Medium"
+                                    FontFamily="/Fonts/#Dosis"
                                     Click="AddPlanButton_Click" Content="Add Plan"/>
 
                             <Button x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
@@ -3512,7 +3522,7 @@ HorizontalAlignment="Center"
                                         IsEnabled="false" Content="Export"/>
                             </Grid>
                         </Grid>
-                        <ScrollViewer Grid.Row="1" Margin="2,4,0,2"
+                        <ScrollViewer Grid.Row="1" Margin="2,-1,0,2"
                                       VerticalScrollBarVisibility="Auto">
 
                             <ItemsControl ItemsSource="{Binding}" x:Name="PlanOverviewStackPanel" Grid.Column="0">
@@ -3528,7 +3538,8 @@ HorizontalAlignment="Center"
                                                      Style="{StaticResource PlansListButtonTheme}"
                                                      IsChecked="{Binding isChecked, Mode=TwoWay}"
                                                      Click="PlanEntryNameList_Click"
-                                                     Margin="0,0,12,0"/>
+                                                     Margin="0,0,10,0"
+                                                     Padding="0"/>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>

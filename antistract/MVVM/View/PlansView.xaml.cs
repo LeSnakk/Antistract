@@ -553,7 +553,7 @@ namespace antistract.MVVM.View
             }
             else
             {
-                AddElementButton.Visibility = Visibility.Hidden;
+                AddElementButton.Visibility = Visibility.Collapsed;
             }
         }
 

@@ -212,6 +212,8 @@ namespace antistract.MVVM.View
                     CurrentlySelectedPlan.SelectedPlan = EntryName.Text;
                     isEdited(false);
                     EntryName.Clear();
+                    EntryName.Text = CurrentlySelectedPlan.SelectedPlan;
+                    EntryName.IsEnabled = false;
                     SavePlan.IsEnabled = false;
                     ShowSelectedPlan(CurrentlySelectedPlan.SelectedPlan);
                 }
@@ -594,10 +596,13 @@ namespace antistract.MVVM.View
         {
             GoToPlansViewButton.Command.Execute(null);
             SavePlan.IsEnabled = true;
+            
             LoadPlans();
             DisplayPlans();
             CurrentlySelectedPlan.SelectedPlan = "";
             EntryName.Clear();
+            EntryName.Text = "New Plan";
+            EntryName.IsEnabled = true;
             isEdited(false);
             ResetPlanCreatorItems();
             ToggleAddButton(true);
@@ -607,6 +612,7 @@ namespace antistract.MVVM.View
             ToggleDeleteButton(false);
             ToggleEditButton(false);
             DisableInvalidInputText();
+            
         }
 
         private void AddElementButton_Click(object sender, RoutedEventArgs e)
@@ -730,6 +736,7 @@ namespace antistract.MVVM.View
             ToggleEditButton(true);
             SavePlan.IsEnabled = false;
             EntryName.Text = CurrentlySelectedPlan.SelectedPlan;
+            EntryName.IsEnabled = false;
             DisableInvalidInputText();
         }
 
@@ -760,6 +767,7 @@ namespace antistract.MVVM.View
         private void EditButtonClick()
         {
             EntryName.Text = CurrentlySelectedPlan.SelectedPlan;
+            EntryName.IsEnabled = true;
             for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
             {
                 TogglePlanCreatorItem(i, true);

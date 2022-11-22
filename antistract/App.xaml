@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="Theme/StandardSmallButton.xaml" />
                 <ResourceDictionary Source="Theme/EntryBlock.xaml" />
                 <ResourceDictionary Source="Theme/Scrollbar.xaml" />
+                <ResourceDictionary Source="Theme/PlansNameTextBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">

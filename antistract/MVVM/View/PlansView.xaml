@@ -47,13 +47,24 @@
                                 Style="{StaticResource StandardSmallButtonTheme}"
                                 FontFamily="/Fonts/#Dosis"
                                 FontSize="20"
-HorizontalAlignment="Center"
+                                HorizontalAlignment="Right"
                                 Margin="10"
                                 Click="SavePlanButton_Click"
                                 IsEnabled="false" Content="Save Plan"/>
-                        <TextBox Height="20"
-                                 Margin="0,14,383,20"
-                                 x:Name="EntryName"/>
+                        <TextBox 
+                                 FontSize="30"
+                                 x:Name="EntryName"
+                                 Width="400"
+                                 HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                                 FontFamily="/Fonts/#Dosis"
+                                 Margin="0,5,0,0"
+                                 Padding="0"
+                                 Style="{StaticResource PlansNameTextBoxTheme}">
+                        </TextBox>
+
+                        
                         <Label x:Name="InfoField"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"

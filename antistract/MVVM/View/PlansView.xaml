@@ -44,13 +44,15 @@
                         </Grid.RowDefinitions>
 
                         <Button x:Name="SavePlan"
-                                Style="{StaticResource StandardSmallButtonTheme}"
+                                Style="{StaticResource PlansSaveButtonTheme}"
                                 FontFamily="/Fonts/#Dosis"
-                                FontSize="20"
+                                FontSize="23"
                                 HorizontalAlignment="Right"
-                                Margin="10"
+                                VerticalAlignment="Center"
+                                Margin="0,5,10,0"
+                                Padding="10,5,10,5"
                                 Click="SavePlanButton_Click"
-                                IsEnabled="false" Content="Save Plan"/>
+                                IsEnabled="false" Content="S"/>
                         <TextBox 
                                  FontSize="30"
                                  x:Name="EntryName"
@@ -59,7 +61,7 @@
                             VerticalAlignment="Center"
                             HorizontalContentAlignment="Center"
                                  FontFamily="/Fonts/#Dosis"
-                                 Margin="0,5,0,0"
+                                 Margin="-10.5,5,0,0"
                                  Padding="0"
                                  Style="{StaticResource PlansNameTextBoxTheme}">
                         </TextBox>

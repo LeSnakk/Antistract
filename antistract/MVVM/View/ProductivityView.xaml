@@ -43,24 +43,20 @@
                         Width="475"
                         Height="175"
                         Visibility="Hidden"
+                        Background="#3FCAF0F8"
+                        BorderThickness="1.7,0,1.7,1.7"
+                        CornerRadius="0,0,20,20"
+                        BorderBrush="#48cae4"
                         Margin="0,-175,0,0">
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#88D498" Offset="0.0" />
-                            <GradientStop Color="#1A936F" Offset="1" />
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <Border.Clip>
-                        <RectangleGeometry RadiusX="10"
-                                       RadiusY="10"
-                                       Rect="0,-10,475,185" />
-                    </Border.Clip>
+
+
 
                     <Grid>
                         <Image Width="167"
                            Height="167"
                            Source="/Images/heart_book.png"
                            HorizontalAlignment="Right"
+                               Opacity="0"
                            VerticalAlignment="Bottom" Margin="0,0,-31,1" RenderTransformOrigin="0.5,0.5">
                             <Image.RenderTransform>
                                 <TransformGroup>
@@ -88,6 +84,7 @@
                         </ListBox>
 
                         <Button x:Name="AddToBlacklist" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Style="{StaticResource BlacklistAddRemoveButtonTheme}"
                                 Click="AddToBlacklist_Click"
                                 Content="&gt;" 
                                 Margin="0,0,3,0"
@@ -97,6 +94,7 @@
                                 FontFamily="/Fonts/#Dosis"
                                 IsEnabled="False"/>
                         <Button x:Name="RemoveFromBlacklist" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Style="{StaticResource BlacklistAddRemoveButtonTheme}"
                                 Click="RemoveFromBlacklist_Click"
                                 Content="&lt;" 
                                 Margin="0,70,3,0"
@@ -144,27 +142,23 @@
                         Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Center"
+                        Background="#3FCAF0F8"
                         Width="475"
                         Height="175"
                         Visibility="Hidden"
+                        BorderThickness="1.7,0,1.7,1.7"
+                        CornerRadius="0,0,20,20"
+                        BorderBrush="#48cae4"
                         Margin="0,-175,0,0">
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#88D498" Offset="0.0" />
-                            <GradientStop Color="#1A936F" Offset="1" />
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <Border.Clip>
-                        <RectangleGeometry RadiusX="10"
-                                       RadiusY="10"
-                                       Rect="0,-10,475,185" />
-                    </Border.Clip>
+
 
                     <Grid>
+                        
                         <Image Width="167"
                            Height="167"
                            Source="/Images/heart_book.png"
                            HorizontalAlignment="Right"
+                                                       Opacity="0"
                            VerticalAlignment="Bottom" Margin="0,0,-43,-20" RenderTransformOrigin="0.5,0.5">
                             <Image.RenderTransform>
                                 <TransformGroup>
@@ -192,7 +186,8 @@
                         </ListBox>
 
                         <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center">
+                                    HorizontalAlignment="Center"
+                                    Margin="0,0,40.5,0">
                             <Label VerticalAlignment="Top"
                                    HorizontalAlignment="Center"
                                    Padding="0"
@@ -202,24 +197,28 @@
                             <TextBox x:Name="BrowserWebsites"
                                      VerticalAlignment="top"
                                      Margin="0,43,0,0"
-                                     Width="150"
+                                     Width="154.2"
                                         Background="#19CAF0F8"
                                      Text="">
                             </TextBox>
 
-                            <Button x:Name="AddToWebsitesBlacklist" HorizontalAlignment="Center" VerticalAlignment="Top"
+
+                        </StackPanel>
+
+                        <Button x:Name="AddToWebsitesBlacklist" HorizontalAlignment="Left" VerticalAlignment="Top"
                                 Click="AddToWebsitesBlacklist_Click"
+                                    Style="{StaticResource StandardSmallButtonTheme}"
                                 Content="Add" 
-                                Margin="0,40,0,0"
+                                Margin="318,39.5,0,0"
                                 Padding="5,2,5,2"
                                 FontWeight="Bold"
                                 FontSize="15"
                                 FontFamily="/Fonts/#Dosis"
                                 IsEnabled="{Binding Text.Length, ElementName=BrowserWebsites}"/>
-                        </StackPanel>
-
+                        
                         <Button x:Name="RemoveFromWebsitesBlacklist" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                 Click="RemoveFromWebsitesBlacklist_Click"
+                                Style="{StaticResource StandardSmallButtonTheme}"
                                 Content="Remove" 
                                 Margin="318,0,0,5"
                                 Padding="5,2,5,2"
@@ -240,9 +239,9 @@
 
                         <Label x:Name="NoWebsitesBlacklistPlaceholderText"
                                Content="No websites to block" 
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center" 
-                               Margin="0,0,0,0"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left" 
+                               Margin="160,102,0,0"
                                Visibility="Visible"/>
 
 

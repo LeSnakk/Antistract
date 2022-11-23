@@ -22,6 +22,8 @@
                 <ResourceDictionary Source="Theme/BlacklistListbox.xaml" />
                 <ResourceDictionary Source="Theme/BlacklistEditButton.xaml" />
                 <ResourceDictionary Source="Theme/BlacklistTickbox.xaml" />
+                <ResourceDictionary Source="Theme/ActionTypeLeftButton.xaml" />
+                <ResourceDictionary Source="Theme/ActionTypeRightButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">

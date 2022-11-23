@@ -387,13 +387,13 @@
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                         Margin="0,10,13.5,0">
-                        <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
+                        <RadioButton Style="{StaticResource ActionTypeLeftButtonTheme}" 
                                      VerticalAlignment="Center"
                                      Content="Close distracting"
                                      FontFamily="/Fonts/#Dosis"
                                      FontSize="15"
                                      Click="Close_Program_Click"/>
-                        <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
+                        <RadioButton Style="{StaticResource ActionTypeRightButtonTheme}" 
                                      VerticalAlignment="Center"
                                      Content="Stop schedule"
                                      FontFamily="/Fonts/#Dosis"

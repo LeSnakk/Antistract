@@ -222,6 +222,10 @@ namespace antistract.MVVM.View
                 InfoField.Visibility = Visibility.Visible;
                 InfoField.Content = "Please fill in a plan name.";
                 
+            } else if (GlobalVariables.PlanNames.Contains(EntryName.Text))
+            {
+                InfoField.Visibility = Visibility.Visible;
+                InfoField.Content = "Please pick a plan name that does not exist yet.";
             }
         }
 

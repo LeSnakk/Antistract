@@ -12,6 +12,8 @@ namespace antistract.Core
 
         public static bool OnlyPausing;
 
+        public static bool BrowserClose;
+
         public static bool TimerRunning;
 
         public static TimerWindow timerWindow;

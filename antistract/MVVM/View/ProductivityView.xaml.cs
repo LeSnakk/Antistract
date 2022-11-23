@@ -500,7 +500,7 @@ namespace antistract.MVVM.View
         public static void ShouldCheckYes()
         {
             ShouldCheck = true;
-            if (!GlobalVariables.OnlyPausing)
+            if (!GlobalVariables.OnlyPausing && GlobalVariables.BrowserClose)
             {
                 SetExtensionCheckModeClosing();
             } else
@@ -929,6 +929,7 @@ namespace antistract.MVVM.View
 
         private void FilterWebsites_Checked(object sender, RoutedEventArgs e)
         {
+            GlobalVariables.BrowserClose = FilterWebsites.IsChecked.Value;
             checkBrowser = FilterWebsites.IsChecked.Value;
             FilteringTextMsg();
         }

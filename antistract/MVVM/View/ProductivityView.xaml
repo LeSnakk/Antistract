@@ -327,8 +327,11 @@
                               Checked="FilterPrograms_Checked"
                               Unchecked="FilterPrograms_Checked"
                               IsChecked="True" Content="Programs"/>
-                    <Button x:Name="EditPrograms"
-                            Click="EditPrograms_Click" Content="edit"/>
+                    
+                    <RadioButton x:Name="EditPrograms"
+                                 GroupName="EditPanel"
+                                 Style="{StaticResource BlacklistEditButtonTheme}"
+                                 Click="EditPrograms_Click"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal"
@@ -343,8 +346,11 @@
                               VerticalAlignment="Center"
                               Checked="FilterWebsites_Checked"
                               Unchecked="FilterWebsites_Checked" Content="Websites"/>
-                    <Button x:Name="EditWebsites"
-                            Click="EditWebsites_Click" Content="edit"/>
+
+                    <RadioButton x:Name="EditWebsites"
+                                 GroupName="EditPanel"
+                                 Style="{StaticResource BlacklistEditButtonTheme}"
+                                 Click="EditWebsites_Click"/>
                 </StackPanel>
 
                 <!--Blacklists area-->
@@ -398,12 +404,11 @@
                         Grid.Row="5"
                         Grid.ColumnSpan="2"
                         HorizontalAlignment="Center"
-                        Style="{StaticResource BasicButtonTheme}"
+                        Style="{StaticResource StandardButtonTheme}"
                         Content="Start" 
-                        Padding="20,0,20,5"
+                        Padding="20,-2.5,20,5"
                         Margin="0,0,0,2"
                         FontFamily="/Fonts/#Dosis"
-                        Foreground="#F3E9D2"
                         FontSize="40" 
                         IsEnabled="{Binding Source={x:Static properties:Settings.Default}, Path=StartEnabled, Mode=TwoWay}"
                         Click="StartTimer_Click">
@@ -418,12 +423,11 @@
                         Grid.Row="5"
                         Grid.ColumnSpan="2"
                         HorizontalAlignment="Center"
-                        Style="{StaticResource BasicButtonTheme}"
+                        Style="{StaticResource StandardButtonTheme}"
                         Content="Stop" 
                         Padding="23.5,0,23.5,5"
                         Margin="0,0,0,2"
                         FontFamily="/Fonts/#Dosis"
-                        Foreground="#F3E9D2"
                         FontSize="40" 
                         Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Converter={StaticResource BoolToVis}, Mode=TwoWay}"
                         Click="StopTimer_Click">

@@ -76,9 +76,11 @@
 
                         <ListBox x:Name="listBox" 
                                  SelectionChanged="listBox_SelectionChanged"
+                                 Style="{StaticResource BlacklistListboxTheme}"
                                  HorizontalAlignment="Left" 
                                  Margin="5,46,0,10" 
                                  Width="200"
+                                 BorderBrush="#48CAE4"
                                  Visibility="Hidden">
                             <ListBoxItem/>
                         </ListBox>
@@ -106,6 +108,8 @@
 
                         <ListBox x:Name="blacklistList" 
                                  SelectionChanged="blacklistList_SelectionChanged"
+                                 Style="{StaticResource BlacklistListboxTheme}"
+                                 BorderBrush="#48CAE4"
                                  HorizontalAlignment="Right" 
                                  Margin="0,46,8,10" 
                                  Width="200"
@@ -176,15 +180,6 @@
                                    FontFamily="/Fonts/#Joan"/>
                         </StackPanel>
 
-                        <ListBox x:Name="WebsiteslistBox" 
-                                 SelectionChanged="listBox_SelectionChanged"
-                                 HorizontalAlignment="Left" 
-                                 Margin="5,46,0,10" 
-                                 Width="200"
-                                 Visibility="Hidden">
-                            <ListBoxItem/>
-                        </ListBox>
-
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     Margin="0,0,40.5,0">
@@ -229,6 +224,8 @@
 
                         <ListBox x:Name="WebsitesBlacklistList" 
                                  SelectionChanged="WebsitesBlacklistList_SelectionChanged"
+                                 Style="{StaticResource BlacklistListboxTheme}"
+                                 BorderBrush="#48CAE4"
                                  HorizontalAlignment="Center" 
                                  VerticalAlignment="Bottom"
                                  Margin="0,0,40,5"

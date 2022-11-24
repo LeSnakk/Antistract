@@ -25,6 +25,7 @@
                 <ResourceDictionary Source="Theme/ActionTypeLeftButton.xaml" />
                 <ResourceDictionary Source="Theme/ActionTypeRightButton.xaml" />
                 <ResourceDictionary Source="Theme/WebsiteLinksTextBox.xaml" />
+                <ResourceDictionary Source="Theme/StopButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">

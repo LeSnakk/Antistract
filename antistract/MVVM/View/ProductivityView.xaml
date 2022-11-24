@@ -154,6 +154,7 @@
                         CornerRadius="0,0,20,20"
                         BorderBrush="#48cae4"
                         Margin="0,-175,0,0">
+                    
 
 
                     <Grid>
@@ -170,6 +171,16 @@
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
+
+                        <Label x:Name="InfoField"
+                               HorizontalAlignment="right"
+                               VerticalAlignment="Top"
+                               Margin="0,40,18,0"
+                               FontSize="12"
+                               FontFamily="/Fonts/#Dosis"
+                               Foreground="#023E8A"
+                               Visibility="Hidden"
+                               Content="Already present!"/>
 
                         <StackPanel Margin="0,0,0,22">
                             <TextBlock Text="Which websites distract you?"

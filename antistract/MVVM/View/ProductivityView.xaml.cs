@@ -36,7 +36,7 @@ namespace antistract.MVVM.View
         string CheckMode;
 
         private string SelectedProgramName;
-        private string SelectedProcessName;      
+        private string SelectedProcessName;
         private string SelectedProcessPath;
         private string SelectedWebsite;
 
@@ -124,7 +124,7 @@ namespace antistract.MVVM.View
 
             blacklistList.Items.Clear();
             WebsitesBlacklistList.Items.Clear();
-            
+
             foreach (string name in DisplayBlacklistedNames)
             {
                 Debug.WriteLine(name);
@@ -146,7 +146,8 @@ namespace antistract.MVVM.View
                 if (temp < 1)
                 {
                     SyncToXML(name, true, "add");
-                } else
+                }
+                else
                 {
                     SyncToXML(name, false, "add");
                 }
@@ -172,10 +173,10 @@ namespace antistract.MVVM.View
             btn_CallLoad.Visibility = Visibility.Hidden;
             LoadingText.Visibility = Visibility.Visible;
             Thread thread = new Thread(loadInstalledPrograms) { IsBackground = true };
-            thread.Start(); 
+            thread.Start();
         }
 
-        public static void LoadInstalledPrograms() 
+        public static void LoadInstalledPrograms()
         {
             var FOLDERID_AppsFolder = new Guid("{1e87508d-89c2-42f0-8a7e-645a0f50ca58}");
             ShellObject appsFolder = (ShellObject)KnownFolderHelper.FromKnownFolderId(FOLDERID_AppsFolder);
@@ -196,7 +197,7 @@ namespace antistract.MVVM.View
             string processName = "";
             if (programType == "reg")
             {
-                
+
                 programPath = programPath.Replace("/", "\\");
                 processName = programPath.Split("\\").Last();
 
@@ -219,7 +220,7 @@ namespace antistract.MVVM.View
         }
         public static void AddDuplicateEntry(string programName, string processName, int i)
         {
-            if (programs.ContainsKey(programName + " (" + i + ")")) 
+            if (programs.ContainsKey(programName + " (" + i + ")"))
             {
                 AddDuplicateEntry(programName, processName, ++i);
             }
@@ -241,7 +242,7 @@ namespace antistract.MVVM.View
         }
 
 
-        private void ShowListCallBack ()
+        private void ShowListCallBack()
         {
             Application.Current.Dispatcher.Invoke(new Action(() => { ShowTheList(); }));
         }
@@ -266,10 +267,10 @@ namespace antistract.MVVM.View
             ToggleAddToBlacklistButton(true);
             ToggleRemoveFromBlacklistButton(true);
             blacklistList.IsEnabled = true;
-        } 
+        }
 
         public static void startChecking()
-        {            
+        {
             StartChecking();
             TimerWindow.TimerOnHoldNO();
         }
@@ -291,12 +292,12 @@ namespace antistract.MVVM.View
             namesList = Settings.Default.BlacklistedProcesses.Cast<string>().ToList();
             namesList.AddRange(Settings.Default.BlacklistedPrograms.Cast<string>().ToList());
             DisplayBlacklistedNames = Settings.Default.BlacklistedDisplayNames.Cast<string>().ToList();
-            
+
             while (isChecked())
             {
                 //higher = slower = lower CPU usage
                 Thread.Sleep(500);
-                
+
                 Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
                 Debug.WriteLine(processes.Length);
                 if (processes.Length == 0 && !checkBrowser && checkPrograms)
@@ -313,7 +314,7 @@ namespace antistract.MVVM.View
                 else if (processes.Length >= 1 && checkPrograms)
                 {
                     Debug.WriteLine("Notepad is running");
-                    
+
                     foreach (Process process in processes)
                     {
                         Debug.WriteLine(process);
@@ -378,7 +379,7 @@ namespace antistract.MVVM.View
                         }
                     }
                 }
-                
+
             }
             Debug.WriteLine("Checking stopped");
         }
@@ -409,7 +410,8 @@ namespace antistract.MVVM.View
 
         public bool ReadGCExData()
         {
-            try {
+            try
+            {
                 using (var fs = new FileStream(GCExLocation, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 using (var sr = new StreamReader(fs, Encoding.ASCII))
                 {
@@ -427,7 +429,8 @@ namespace antistract.MVVM.View
                         return false;
                     }
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex);
                 return default;
@@ -503,7 +506,8 @@ namespace antistract.MVVM.View
             if (!GlobalVariables.OnlyPausing && GlobalVariables.BrowserClose)
             {
                 SetExtensionCheckModeClosing();
-            } else
+            }
+            else
             {
                 SetExtensionCheckModePausing();
             }
@@ -547,7 +551,7 @@ namespace antistract.MVVM.View
             {
                 //if (!String.IsNullOrWhiteSpace(BrowserWebsites.Text))
                 //{
-                    TransmitToBrowserExtension();
+                TransmitToBrowserExtension();
                 //}
                 Debug.WriteLine("CSP: " + CurrentlySelectedPlan.SelectedPlan);
                 timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
@@ -568,7 +572,7 @@ namespace antistract.MVVM.View
 
             XmlNodeList checkModeNodeList = doc.GetElementsByTagName("checkMode");
             XmlNode checkMode = checkModeNodeList[0];
-            
+
             checkMode.InnerText = CheckMode;
 
             doc.Save("BrowserExtensions/Chrome/data.xml");
@@ -616,7 +620,7 @@ namespace antistract.MVVM.View
                     }
                     break;
             }
-            doc.Save("BrowserExtensions/Chrome/data.xml");           
+            doc.Save("BrowserExtensions/Chrome/data.xml");
         }
 
         public static void AddWebsiteToSaves(string websiteName)
@@ -742,7 +746,7 @@ namespace antistract.MVVM.View
                     blacklistList.Items.Add(item);
                 }
             }
-            
+
             if (blacklistList.Items.Count <= 0)
             {
                 NoBlacklistPlaceholderText.Visibility = Visibility.Visible;
@@ -803,7 +807,7 @@ namespace antistract.MVVM.View
             }
         }
 
-        public void ToggleStartButton (bool visibility)
+        public void ToggleStartButton(bool visibility)
         {
             if (visibility)
             {
@@ -834,17 +838,32 @@ namespace antistract.MVVM.View
 
         private void AddToWebsitesBlacklist_Click(object sender, RoutedEventArgs e)
         {
-            NoWebsitesBlacklistPlaceholderText.Visibility = Visibility.Hidden;
-            WebsitesBlacklistList.IsEnabled = true;
+            if (!String.IsNullOrWhiteSpace(BrowserWebsites.Text))
+            {
+                NoWebsitesBlacklistPlaceholderText.Visibility = Visibility.Hidden;
+                WebsitesBlacklistList.IsEnabled = true;
 
-            ListBoxItem item = new ListBoxItem();
-            item.Content = BrowserWebsites.Text; // + " (" + SelectedProcessName + ")";
-            WebsitesBlacklistList.Items.Add(item);
+                foreach (ListBoxItem entry in WebsitesBlacklistList.Items)
+                {
+                    Debug.WriteLine(entry.Content);
+                    if (entry.Content.ToString() == BrowserWebsites.Text.ToString())
+                    {
+                        InfoField.Visibility = Visibility.Visible;
+                        return;
+                    }
+                }
 
-            SyncToXML(BrowserWebsites.Text, false, "add");
-            AddWebsiteToSaves(BrowserWebsites.Text);
+                InfoField.Visibility = Visibility.Hidden;
 
-            BrowserWebsites.Clear();
+                ListBoxItem item = new ListBoxItem();
+                item.Content = BrowserWebsites.Text; // + " (" + SelectedProcessName + ")";
+                WebsitesBlacklistList.Items.Add(item);
+
+                SyncToXML(BrowserWebsites.Text, false, "add");
+                AddWebsiteToSaves(BrowserWebsites.Text);
+
+                BrowserWebsites.Clear();
+            }
         }
 
         private void RemoveFromWebsitesBlacklist_Click(object sender, RoutedEventArgs e)

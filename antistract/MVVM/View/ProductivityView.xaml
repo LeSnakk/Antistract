@@ -186,12 +186,13 @@
                             <Label VerticalAlignment="Top"
                                    HorizontalAlignment="Center"
                                    Padding="0"
-                                   Margin="0,43,0,0"
+                                   Margin="0,44,0,0"
                                    Content="http(s)://"></Label>
 
                             <TextBox x:Name="BrowserWebsites"
+                                     Style="{StaticResource WebsiteLinksTextBoxTheme}"
                                      VerticalAlignment="top"
-                                     Margin="0,43,0,0"
+                                     Margin="0,42,0,0"
                                      Width="154.2"
                                         Background="#19CAF0F8"
                                      Text="">

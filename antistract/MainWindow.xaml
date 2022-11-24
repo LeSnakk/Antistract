@@ -158,14 +158,16 @@
                              Foreground="#114B5F"
                              FontSize="25"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding ToDoViewCommand}"/>
+                             Command="{Binding ToDoViewCommand}"
+                             IsEnabled="False"/>
                     <RadioButton Content="Settings"
                              x:Name="MenuButtonsSettings"
                              Height="80.5"
                              Foreground="#114B5F"
                              FontSize="25"
                              Style="{StaticResource MenuButtonThemeLASTBUTTON}"
-                             Command="{Binding SettingsViewCommand}"/>
+                             Command="{Binding SettingsViewCommand}"
+                             IsEnabled="False"/>
 
                 </StackPanel>
 

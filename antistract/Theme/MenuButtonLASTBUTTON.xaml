@@ -14,6 +14,7 @@
 
                             <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                                 <TextBlock Text="{TemplateBinding Property=Content}"
+                                           Foreground="{TemplateBinding Property=Foreground}"
                                        VerticalAlignment="Center" 
                                        Margin="15,0,0,0"
                                        FontFamily="/Fonts/#Dosis"
@@ -32,6 +33,9 @@
                             <Trigger Property="ToggleButton.IsMouseOver" Value="true">
                                 <Setter TargetName="Border" Property="Background" Value="#ade8f4" />
                                 <Setter TargetName="textbox" Property="FontWeight" Value="Medium" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="textbox" Property="Foreground" Value="#90E0EF" />
                             </Trigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>

@@ -474,7 +474,6 @@ namespace antistract.MVVM.View
         private void PickPlanDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             PickPlanDropdownDefaultText.Visibility = Visibility.Hidden;
-            PickPlanDropdown.Width = Double.NaN;
             ComboBox pickPlanDropdown = (ComboBox)sender;
 
             if (GlobalVariables.PlanNames.Count < 1)

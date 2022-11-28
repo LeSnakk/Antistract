@@ -289,7 +289,7 @@
                                    FontFamily="/Fonts/#Dosis"
                                    FontWeight="Bold"/>
                     </StackPanel>
-                    <ComboBox x:Name="PickPlanDropdown"
+                    <ComboBox Style="{DynamicResource DropdownTheme}" x:Name="PickPlanDropdown"
                               Padding="5"
                               HorizontalAlignment="Center"
                               IsEditable="False"

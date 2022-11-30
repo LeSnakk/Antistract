@@ -20,7 +20,6 @@
     <None Remove="Fonts\Joan-Regular.ttf" />
     <None Remove="Images\avatar_placeholder.png" />
     <None Remove="Images\heart_book.png" />
-    <None Remove="Images\pen_6.png" />
     <None Remove="Images\pen_6_0096C7.png" />
     <None Remove="Images\pen_6_023E8A.png" />
     <None Remove="Images\save_023E8A.png" />
@@ -59,9 +58,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\todo_list.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\pen_6.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Content Include="Plans\paradeplan.xml">

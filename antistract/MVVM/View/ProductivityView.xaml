@@ -154,11 +154,10 @@
                         CornerRadius="0,0,20,20"
                         BorderBrush="#48cae4"
                         Margin="0,-175,0,0">
-                    
+
 
 
                     <Grid>
-                        
                         <Image Width="167"
                            Height="167"
                            Source="/Images/heart_book.png"
@@ -222,7 +221,7 @@
                                 FontSize="15"
                                 FontFamily="/Fonts/#Dosis"
                                 IsEnabled="{Binding Text.Length, ElementName=BrowserWebsites}"/>
-                        
+
                         <Button x:Name="RemoveFromWebsitesBlacklist" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                 Click="RemoveFromWebsitesBlacklist_Click"
                                 Style="{StaticResource StandardSmallButtonTheme}"
@@ -341,7 +340,7 @@
                               Checked="FilterPrograms_Checked"
                               Unchecked="FilterPrograms_Checked"
                               IsChecked="True" Content="Programs"/>
-                    
+
                     <RadioButton x:Name="EditPrograms"
                                  GroupName="EditPanel"
                                  Height="26"
@@ -381,10 +380,14 @@
                         Width="550"/>
 
                 <!--Mode area-->
-                <StackPanel Grid.Row="4"
+                <StackPanel x:Name="SubBlacklistArea" 
+                            Grid.Row="4"
+                            Grid.ColumnSpan="2"
+                            Margin="0,-10,0,-80" Grid.RowSpan="2">
+                    <StackPanel Grid.Row="4"
                             Grid.ColumnSpan="2"
                             Margin="0,10,0,0">
-                    <TextBlock x:Name="ModeText"
+                        <TextBlock x:Name="ModeText"
                                Foreground="#114B5F"
                                Padding="0"
                                FontSize="28" 
@@ -394,73 +397,73 @@
                                TextWrapping="Wrap"
                                TextAlignment="Center">
                         Which action shall be taken?
-                    </TextBlock>
+                        </TextBlock>
 
-                    <StackPanel Orientation="Horizontal"
+                        <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                         Margin="0,10,13.5,0">
-                        <RadioButton Style="{StaticResource ActionTypeLeftButtonTheme}" 
+                            <RadioButton Style="{StaticResource ActionTypeLeftButtonTheme}" 
                                      VerticalAlignment="Center"
                                      Content="Close distracting"
                                      FontFamily="/Fonts/#Dosis"
                                      FontSize="15"
                                      Click="Close_Program_Click"/>
-                        <RadioButton Style="{StaticResource ActionTypeRightButtonTheme}" 
+                            <RadioButton Style="{StaticResource ActionTypeRightButtonTheme}" 
                                      VerticalAlignment="Center"
                                      Content="Stop schedule"
                                      FontFamily="/Fonts/#Dosis"
                                      FontSize="15"
                                      Click="Stop_Timer_Click" />
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
 
-                <Label x:Name="BlockStartFields" Grid.Row="4" Grid.ColumnSpan="2"
+                    <Label x:Name="BlockStartFields" Grid.Row="3" Grid.ColumnSpan="2"
+                           HorizontalAlignment="Center"
                                IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}" 
-                               Margin="238,51,237,10"
-                       Width="200"/>
+                               Margin="238,-35,237,10"
+                       Width="278" Height="101"/>
 
-                <!--Start button area-->
-                <Button x:Name="StartTimer"
-                        Grid.Row="5"
+                    <!--Start button area-->
+                    <Button x:Name="StartTimer"
                         Grid.ColumnSpan="2"
                         HorizontalAlignment="Center"
                         Style="{StaticResource StandardButtonTheme}"
                         Content="Start" 
                         Padding="0,-6,0,0"
-                        Margin="0,0,0,2"
-                        Width="120"
+                        Margin="0,-70,0,2"
+                        Width="140"
                         FontFamily="/Fonts/#Dosis"
                         FontSize="40" 
                         IsEnabled="{Binding Source={x:Static properties:Settings.Default}, Path=StartEnabled, Mode=TwoWay}"
-                        Click="StartTimer_Click">
-                    <Button.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#88D" Offset="0.0" />
-                            <GradientStop Color="#FF006977" Offset="1" />
-                        </LinearGradientBrush>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="StopTimer"
+                        Click="StartTimer_Click" Height="60">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                <GradientStop Color="#88D" Offset="0.0" />
+                                <GradientStop Color="#FF006977" Offset="1" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="StopTimer"
                         Grid.Row="5"
                         Grid.ColumnSpan="2"
                         HorizontalAlignment="Center"
                         Style="{StaticResource StopButtonTheme}"
                         Content="Stop" 
-                        Padding="0,-6,0,0"
-                        Margin="0,0,0,2"
-                        Width="120"
+                        Padding="-4,-6,0,0"
+                        Margin="0,-70,0,2"
+                        Width="140"
                         FontFamily="/Fonts/#Dosis"
                         FontSize="40" 
                         Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Converter={StaticResource BoolToVis}, Mode=TwoWay}"
-                        Click="StopTimer_Click">
-                    <Button.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#88D" Offset="0.0" />
-                            <GradientStop Color="#FF006977" Offset="1" />
-                        </LinearGradientBrush>
-                    </Button.Background>
-                </Button>
-
+                        Click="StopTimer_Click" Height="60">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                <GradientStop Color="#88D" Offset="0.0" />
+                                <GradientStop Color="#FF006977" Offset="1" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
                 <Button Grid.Row="2" x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                         Visibility="Hidden"/>
 

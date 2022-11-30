@@ -9,21 +9,28 @@
                     <ControlTemplate TargetType="RadioButton">
                         <Border x:Name="Border"
                                 CornerRadius="0,10,0,0" 
-                                BorderThickness="0"
+                                BorderThickness="0,2,2,0"
+                                Margin="-1,0,0,0"
+                                BorderBrush="#48cae4"
                                 Background="Transparent">
 
                             <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                                <Image Source="/Images/heart_book.png"
-                                       Opacity="0"/>
+                                <Image x:Name="image" 
+                                       
+                                       Width="20"
+                                       Margin="0,0,2,0"
+                                       HorizontalAlignment="Right"
+                                       Opacity="1"/>
                             </Grid>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="False">
                                 <Setter TargetName="Border" Property="Background" Value="#CAF0F8" />
+                                <Setter TargetName="image" Property="Source" Value="/Images/pen_6_0096C7.png" />
                             </Trigger>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Border" Property="BorderThickness" Value="1" />
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#0077B6" />
+                                <Setter TargetName="Border" Property="BorderThickness" Value="2,2,2,0" />
+                                <Setter TargetName="image" Property="Source" Value="/Images/pen_6_023E8A.png" />
                                 <Setter TargetName="Border" Property="Background" Value="#90E0EF" />
                             </Trigger>
                             <Trigger Property="ToggleButton.IsMouseOver" Value="true">
@@ -37,7 +44,6 @@
                                     <Condition Property="IsMouseOver" Value="True" />
                                     <Condition Property="IsChecked" Value="True" />
                                 </MultiTrigger.Conditions>
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#0077B6" />
                                 <Setter TargetName="Border" Property="Background" Value="#90E0EF" />
                             </MultiTrigger>
                         </ControlTemplate.Triggers>

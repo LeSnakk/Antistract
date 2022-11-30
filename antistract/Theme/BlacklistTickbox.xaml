@@ -9,14 +9,17 @@
                     <ControlTemplate TargetType="CheckBox">
                         <Border x:Name="Border"
                                 CornerRadius="10,0,0,0" 
-                                BorderThickness="0"
-                                Background="Transparent">
+                                BorderThickness="2,2,0,0"
+                                BorderBrush="#48CAE4"
+                                Background="Transparent"
+                                Width="100">
 
                             <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                                 
                                 <TextBlock Text="{TemplateBinding Property=Content}"
                                            Padding="0,0,0,3"
                                        VerticalAlignment="Center" 
+                                           HorizontalAlignment="Center"
                                        Margin="10,0,5,0"
                                        FontFamily="/Fonts/#Dosis"
                                            FontSize="21"
@@ -26,14 +29,10 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="Border" Property="BorderThickness" Value="1,1,0,1" />
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#ADE8F4" />
-                                <Setter TargetName="Border" Property="Background" Value="#7FCAF0F8" />
+                                <Setter TargetName="Border" Property="Background" Value="#CAF0F8" />
                                 <Setter TargetName="textbox" Property="Opacity" Value=".5" />
                             </Trigger>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Border" Property="BorderThickness" Value="1,1,0,1" />
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#0077B6" />
                                 <Setter TargetName="Border" Property="Background" Value="#90E0EF" />
                                 <Setter TargetName="textbox" Property="FontWeight" Value="Medium" />
                             </Trigger>
@@ -46,10 +45,18 @@
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
                                     <Condition Property="IsMouseOver" Value="True" />
-                                    <Condition Property="IsChecked" Value="True" />
+                                    <Condition Property="IsChecked" Value="False" />
                                 </MultiTrigger.Conditions>
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#0077B6" />
-                                <Setter TargetName="Border" Property="Background" Value="#90E0EF" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#48CAE4" />
+                                <Setter TargetName="Border" Property="Background" Value="#ADE8F4" />
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True" />
+                                    <Condition Property="IsChecked" Value="true" />
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#48CAE4" />
+                                <Setter TargetName="Border" Property="Background" Value="#ADE8F4" />
                             </MultiTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

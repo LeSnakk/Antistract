@@ -344,6 +344,7 @@
                     <RadioButton x:Name="EditPrograms"
                                  GroupName="EditPanel"
                                  Height="26"
+                                 Width="26"
                                  Style="{StaticResource BlacklistEditButtonTheme}"
                                  Click="EditPrograms_Click"/>
                 </StackPanel>
@@ -367,6 +368,7 @@
                                  GroupName="EditPanel"
                                  Style="{StaticResource BlacklistEditButtonTheme}"
                                  Height="26"
+                                 Width="26"
                                  Content="Programs"
                                  Click="EditWebsites_Click"/>
                 </StackPanel>

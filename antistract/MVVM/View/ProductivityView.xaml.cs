@@ -934,6 +934,7 @@ namespace antistract.MVVM.View
             cubicEase.EasingMode = EasingMode.EaseOut;
             animateMargin.EasingFunction = cubicEase;
             border.BeginAnimation(MarginProperty, animateMargin);
+            AnimateDown(SubBlacklistArea);
         }
 
         private void AnimateUp(Border border)
@@ -943,6 +944,25 @@ namespace antistract.MVVM.View
             cubicEase.EasingMode = EasingMode.EaseOut;
             animateMargin.EasingFunction = cubicEase;
             border.BeginAnimation(MarginProperty, animateMargin);
+            AnimateUp(SubBlacklistArea);
+        }
+
+        private void AnimateDown(StackPanel stackpanel)
+        {
+            ThicknessAnimation animateMargin = new ThicknessAnimation(new Thickness(0, -10, 0, 0), new Duration(TimeSpan.FromMilliseconds(500)));
+            CubicEase cubicEase = new CubicEase();
+            cubicEase.EasingMode = EasingMode.EaseOut;
+            animateMargin.EasingFunction = cubicEase;
+            stackpanel.BeginAnimation(MarginProperty, animateMargin);
+        }
+
+        private void AnimateUp(StackPanel stackpanel)
+        {
+            ThicknessAnimation animateMargin = new ThicknessAnimation(new Thickness(0, -120, 0, 0), new Duration(TimeSpan.FromMilliseconds(500)));
+            CubicEase cubicEase = new CubicEase();
+            cubicEase.EasingMode = EasingMode.EaseOut;
+            animateMargin.EasingFunction = cubicEase;
+            stackpanel.BeginAnimation(MarginProperty, animateMargin);
         }
 
         private void FilterWebsites_Checked(object sender, RoutedEventArgs e)

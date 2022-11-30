@@ -45,14 +45,15 @@
 
                         <Button x:Name="SavePlan"
                                 Style="{StaticResource PlansSaveButtonTheme}"
-                                FontFamily="/Fonts/#Dosis"
-                                FontSize="23"
+
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
-                                Margin="0,5,10,0"
-                                Padding="10,5,10,5"
+                                Height="39"
+                                Width="39"
+                                Margin="-1,5,11,0"
+
                                 Click="SavePlanButton_Click"
-                                IsEnabled="false" Content="S"/>
+                                IsEnabled="false"/>
                         <TextBox 
                                  FontSize="30"
                                  x:Name="EntryName"

@@ -53,7 +53,7 @@ namespace antistract.MVVM.View
 
         private string GCExLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Google/Chrome/User Data/Default/Sync Extension Settings/dkcmjcfdomcigfioegnmleiijjoccfea/000003.log");
         private bool checkBrowser = false;
-        private bool checkPrograms = true;
+        private bool checkPrograms = false;
 
         ThreadStart loadInstalledPrograms = LoadInstalledPrograms;
         TimerWindow timerWindow;
@@ -960,11 +960,13 @@ namespace antistract.MVVM.View
             GlobalVariables.BrowserClose = FilterWebsites.IsChecked.Value;
             checkBrowser = FilterWebsites.IsChecked.Value;
             FilteringTextMsg();
+            CheckBox();
         }
 
         private void FilterPrograms_Checked(object sender, RoutedEventArgs e)
         {
             checkPrograms = FilterPrograms.IsChecked.Value;
+            CheckBox();
             FilteringTextMsg();
         }
 
@@ -985,6 +987,30 @@ namespace antistract.MVVM.View
             else if (checkPrograms && checkBrowser)
             {
                 FilteringText.Text = "To help you focus and increase your productivity, this will keep an eye on your distracting programs and websites.";
+            }
+        }
+
+        private void CheckBox()
+        {
+            if (checkPrograms)
+            {
+                Programs_circle_checked.Visibility = Visibility.Visible;
+                Programs_circle.Visibility = Visibility.Hidden;
+            }
+            else if (!checkPrograms)
+            {
+                Programs_circle.Visibility = Visibility.Visible;
+                Programs_circle_checked.Visibility = Visibility.Hidden;
+            }
+            if (checkBrowser)
+            {
+                Websites_circle_checked.Visibility = Visibility.Visible;
+                Websites_circle.Visibility = Visibility.Hidden;
+            }
+            else if (!checkBrowser)
+            {
+                Websites_circle.Visibility = Visibility.Visible;
+                Websites_circle_checked.Visibility = Visibility.Hidden;
             }
         }
     }

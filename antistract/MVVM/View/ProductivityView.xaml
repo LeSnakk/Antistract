@@ -321,7 +321,7 @@
                                Width="500"
                                TextWrapping="Wrap"
                                TextAlignment="Center">
-                        To help you focus and increase your productivity, this will keep an eye on your distracting programs.
+                        To help you focus and increase your productivity, this will keep an eye on your distracting...
                     </TextBlock>
                 </StackPanel>
 
@@ -338,8 +338,7 @@
                               FontFamily="/Fonts/#Dosis"
                               VerticalAlignment="Center"
                               Checked="FilterPrograms_Checked"
-                              Unchecked="FilterPrograms_Checked"
-                              IsChecked="True" Content="Programs"/>
+                              Unchecked="FilterPrograms_Checked" Content="Programs"/>
 
                     <RadioButton x:Name="EditPrograms"
                                  GroupName="EditPanel"
@@ -347,6 +346,15 @@
                                  Width="26"
                                  Style="{StaticResource BlacklistEditButtonTheme}"
                                  Click="EditPrograms_Click"/>
+                    <Image x:Name="Programs_circle" 
+                           Source="/Images/circle.png" 
+                           Margin="-250,7,0,0"
+                           Height="18"/>
+                    <Image x:Name="Programs_circle_checked" 
+                           Source="/Images/circle_checked.png" 
+                           Margin="-250,7,0,0"
+                           Height="18"
+                           Visibility="Hidden"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal"
@@ -357,7 +365,7 @@
 
                     <CheckBox x:Name="FilterWebsites"
                               Style="{StaticResource BlacklistTickboxTheme}"
-                              Padding="0"
+                              Padding="20"
                               Height="26"
                               FontFamily="/Fonts/#Dosis"
                               VerticalAlignment="Center"
@@ -369,8 +377,18 @@
                                  Style="{StaticResource BlacklistEditButtonTheme}"
                                  Height="26"
                                  Width="26"
-                                 Content="Programs"
+                                 Content="Websites"
                                  Click="EditWebsites_Click"/>
+
+                    <Image x:Name="Websites_circle" 
+                           Source="/Images/circle.png" 
+                           Margin="-250,7,0,0"
+                           Height="18"/>
+                    <Image x:Name="Websites_circle_checked" 
+                           Source="/Images/circle_checked.png" 
+                           Margin="-250,7,0,0"
+                           Height="18"
+                           Visibility="Hidden"/>
                 </StackPanel>
 
                 <!--Blacklists area-->

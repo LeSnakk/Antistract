@@ -19,6 +19,8 @@
     <None Remove="Fonts\Dosis-VariableFont_wght.ttf" />
     <None Remove="Fonts\Joan-Regular.ttf" />
     <None Remove="Images\avatar_placeholder.png" />
+    <None Remove="Images\circle.png" />
+    <None Remove="Images\circle_checked.png" />
     <None Remove="Images\heart_book.png" />
     <None Remove="Images\pen_6_0096C7.png" />
     <None Remove="Images\pen_6_023E8A.png" />
@@ -40,6 +42,12 @@
     <Resource Include="Fonts\Dosis-VariableFont_wght.ttf" />
     <Resource Include="Fonts\Joan-Regular.ttf" />
     <Resource Include="Images\avatar_placeholder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\circle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\circle_checked.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\heart_book.png">

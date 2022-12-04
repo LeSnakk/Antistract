@@ -127,7 +127,6 @@ namespace antistract.MVVM.View
 
             foreach (string name in DisplayBlacklistedNames)
             {
-                Debug.WriteLine(name);
                 ListBoxItem item = new ListBoxItem();
                 item.Content = name;
                 blacklistList.Items.Add(item);
@@ -186,7 +185,6 @@ namespace antistract.MVVM.View
                 //regular installed programs
                 if (app.Properties.System.Link.TargetParsingPath.Value != null)
                 {
-                    //Debug.WriteLine("b " + app.Name + ": " + app.Properties.System.Link.TargetParsingPath.Value);
                     AddToInstalledProgramsList(app.Name, app.Properties.System.Link.TargetParsingPath.Value, "reg");
                 }
             }
@@ -277,7 +275,6 @@ namespace antistract.MVVM.View
 
         public static void StartChecking()
         {
-            Debug.WriteLine("Ich sollte jetzt checken!!");
             bgWorker.RunWorkerAsync();
         }
 
@@ -299,7 +296,6 @@ namespace antistract.MVVM.View
                 Thread.Sleep(500);
 
                 Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
-                Debug.WriteLine(processes.Length);
                 if (processes.Length == 0 && !checkBrowser && checkPrograms)
                 {
                     TimerWindow.TimerOnHoldNO();
@@ -388,7 +384,6 @@ namespace antistract.MVVM.View
         {
             if (checkBrowser)
             {
-                Debug.WriteLine("checking Chrome browser");
                 if (GlobalVariables.OnlyPausing)
                 {
                     if (ReadGCExData())
@@ -484,7 +479,6 @@ namespace antistract.MVVM.View
             {
                 ComboBoxItem selectedPlan = (ComboBoxItem)pickPlanDropdown.SelectedItem;
                 CurrentlySelectedPlan.SelectedPlan = selectedPlan.Content.ToString();
-                Debug.WriteLine("PÜAAAN " + CurrentlySelectedPlan.SelectedPlan);
                 if (GlobalVariables.OnlyPausing != null && CheckMode != "" && Settings.Default.BlacklistedPrograms.Count != 0)
                 {
                     Settings.Default.StartEnabled = true;
@@ -552,7 +546,12 @@ namespace antistract.MVVM.View
                 //{
                 TransmitToBrowserExtension();
                 //}
-                Debug.WriteLine("CSP: " + CurrentlySelectedPlan.SelectedPlan);
+                Debug.WriteLine("\n**********");
+                Debug.WriteLine("Plan: " + CurrentlySelectedPlan.SelectedPlan);
+                Debug.WriteLine("Prog: " + checkPrograms);
+                Debug.WriteLine("Web.: " + checkBrowser);
+                Debug.WriteLine("Mode: " + CheckMode);
+                Debug.WriteLine("**********\n");
                 timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
                 GlobalVariables.timerWindow = timerWindow;
                 GlobalVariables.timerWindow.Show();
@@ -607,7 +606,6 @@ namespace antistract.MVVM.View
                     break;
 
                 case "remove":
-                    Debug.WriteLine("+AA+");
                     foreach (XmlNode website in websitesRoot.ChildNodes)
                     {
                         if (website.InnerText == websiteName)
@@ -639,7 +637,6 @@ namespace antistract.MVVM.View
 
             checkMode.InnerText = "pausing";
             doc.Save("BrowserExtensions/Chrome/data.xml");
-            Debug.WriteLine("SETTING");
         }
         public static void SetExtensionCheckModeClosing()
         {
@@ -651,7 +648,6 @@ namespace antistract.MVVM.View
 
             checkMode.InnerText = "closing";
             doc.Save("BrowserExtensions/Chrome/data.xml");
-            Debug.WriteLine("SETTING");
         }
 
         private void ToggleAddToBlacklistButton(bool isDisabled)
@@ -752,9 +748,6 @@ namespace antistract.MVVM.View
                 blacklistList.IsEnabled = false;
             }
 
-            Debug.WriteLine("Blacklisted Program/Processes count: " + namesList.Count);
-            Debug.WriteLine("Blacklisted Paths count: " + BlacklistedPaths.Count);
-            Debug.WriteLine("DisplaBlacklistedNames count: " + DisplayBlacklistedNames.Count);
             foreach (string name in namesList)
             {
                 Debug.WriteLine(name);
@@ -773,7 +766,6 @@ namespace antistract.MVVM.View
 
                 programs.TryGetValue(lbi.Content.ToString(), out output);
 
-                Debug.WriteLine(output);
                 SelectedProgramName = lbi.Content.ToString();
                 SelectedProcessName = output;
             }
@@ -844,7 +836,6 @@ namespace antistract.MVVM.View
 
                 foreach (ListBoxItem entry in WebsitesBlacklistList.Items)
                 {
-                    Debug.WriteLine(entry.Content);
                     if (entry.Content.ToString() == BrowserWebsites.Text.ToString())
                     {
                         InfoField.Visibility = Visibility.Visible;
@@ -867,7 +858,6 @@ namespace antistract.MVVM.View
 
         private void RemoveFromWebsitesBlacklist_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine(SelectedWebsite);
 
             Settings.Default.BlacklistedWebsites.Remove(SelectedWebsite.ToString());
             Settings.Default.Save();

@@ -187,8 +187,6 @@ namespace antistract
             TimerSeconds.Content = timeLeft.TotalSeconds;
             
             TimerWasted.Content = timeWasted.ToString(@"hh\:mm\:ss");
-            Debug.WriteLine("Current Time" + currentTime);
-            Debug.WriteLine("Closing Time: " + closingTime);
             ClosingTime.Content = closingTime.ToString("HH:mm");
 
             if (timeLeft.TotalSeconds <= 0) 

@@ -16,9 +16,9 @@
 
                             <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                                 <Image x:Name="image" 
-                                       Width="50"
+                                       Width="30"
                                        Margin="0,0,0,0"
-                                       HorizontalAlignment="Right"
+                                       HorizontalAlignment="Center"
                                        Opacity="1"/>
                             </Grid>
                         </Border>

@@ -130,27 +130,30 @@
                              Height="84"
                              Foreground="#114B5F"
                              FontSize="25"
-                             Style="{StaticResource MenuButtonTheme}"
+                             Style="{StaticResource MenuButtonOverviewTheme}"
                              IsChecked="True"
                              Command="{Binding HomeViewCommand}"
-                             Click="MenuButtonOverview_Click"/>
+                             Click="MenuButtonOverview_Click"
+                             GroupName="Navigation"/>
 
                     <RadioButton Content="Be Productive"
                              x:Name="MenuButtonProductivity"
                              Height="84"
                              Foreground="#114B5F"
                              FontSize="25"
-                             Style="{StaticResource MenuButtonTheme}"
+                             Style="{StaticResource MenuButtonProductivityTheme}"
                              Command="{Binding ProductivityViewCommand}"
-                             Click="RemoveGetStartedButton"/>
+                             Click="RemoveGetStartedButton"
+                             GroupName="Navigation"/>
 
                     <RadioButton Content="My Plans"
                              x:Name="MenuButtonPlans"
                              Height="84"
                              Foreground="#114B5F"
                              FontSize="25"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding PlansViewCommand}"/>
+                             Style="{StaticResource MenuButtonPlansTheme}"
+                             Command="{Binding PlansViewCommand}"
+                             GroupName="Navigation"/>
 
                     <RadioButton Content="To-Do Lists"
                              x:Name="MenuButtonsToDo"
@@ -159,7 +162,9 @@
                              FontSize="25"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding ToDoViewCommand}"
-                             IsEnabled="False"/>
+                             IsEnabled="False"
+                             GroupName="Navigation"/>
+                    
                     <RadioButton Content="Settings"
                              x:Name="MenuButtonsSettings"
                              Height="80.5"
@@ -167,7 +172,8 @@
                              FontSize="25"
                              Style="{StaticResource MenuButtonThemeLASTBUTTON}"
                              Command="{Binding SettingsViewCommand}"
-                             IsEnabled="False"/>
+                             IsEnabled="False"
+                             GroupName="Navigation"/>
 
                 </StackPanel>
 
@@ -187,6 +193,7 @@
                             Background="#66FFFFFF"/>
 
                         <Button x:Name="MinButton" 
+                                Style="{StaticResource BlacklistAddRemoveButtonTheme}"
                             Content="Min"
                             Click="MinimizeButton_Click"
                             DockPanel.Dock="Right" 

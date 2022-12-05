@@ -174,7 +174,7 @@
 
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock x:Name="WeekTasksCompleted" 
-                                       Text="12"
+                                       Text="null"
                                        Foreground="#114B5F"
                                        FontSize="40"
                                        Margin="20,5,0,0" 

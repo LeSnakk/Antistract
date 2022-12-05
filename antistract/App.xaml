@@ -9,6 +9,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButton.xaml" />
+                <ResourceDictionary Source="Theme/MenuButtonOverview.xaml" />
+                <ResourceDictionary Source="Theme/MenuButtonProductivity.xaml" />
+                <ResourceDictionary Source="Theme/MenuButtonPlans.xaml" />
                 <ResourceDictionary Source="Theme/MenuButtonLASTBUTTON.xaml" />
                 <ResourceDictionary Source="Theme/BasicButton.xaml" />
                 <ResourceDictionary Source="Theme/PlansListButton.xaml" />

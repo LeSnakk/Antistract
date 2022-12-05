@@ -22,8 +22,11 @@
     <None Remove="Images\circle.png" />
     <None Remove="Images\circle_checked.png" />
     <None Remove="Images\heart_book.png" />
+    <None Remove="Images\home.png" />
     <None Remove="Images\pen_6_0096C7.png" />
     <None Remove="Images\pen_6_023E8A.png" />
+    <None Remove="Images\plans.png" />
+    <None Remove="Images\productive.png" />
     <None Remove="Images\save_023E8A.png" />
     <None Remove="Images\save_90E0EF.png" />
     <None Remove="Images\todo_list.png" />
@@ -53,10 +56,19 @@
     <Resource Include="Images\heart_book.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\home.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\pen_6_0096C7.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\pen_6_023E8A.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\plans.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\productive.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\save_023E8A.png">
@@ -120,6 +132,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Theme\BlacklistTickbox.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\MenuButtonPlans.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\MenuButtonProductivity.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\MenuButtonOverview.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

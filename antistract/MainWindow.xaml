@@ -20,7 +20,7 @@
 
     <!--Window frame-->
     <Border Background="#90e0ef"
-            CornerRadius="0,0,7,0"
+            CornerRadius="0,15,7,0"
             BorderThickness="1"
             Margin="10">
 
@@ -34,7 +34,7 @@
 
 
         <Border Background="#caf0f8"
-                CornerRadius="7"
+                CornerRadius="7,15,7,7"
                 BorderThickness="1"
                 Margin="3,0,0,0">
 
@@ -188,14 +188,17 @@
                     </Border.Background>
                     <DockPanel x:Name="TitleBar" DockPanel.Dock="Top">
                         <Button x:Name="CloseButton" 
-                            Content="X"
+                                Style="{StaticResource CloseButtonTheme}"
+                                Margin="0,-1,-1,0"
+                            Content="  X  "
                             Click="CloseButton_Click"
                             DockPanel.Dock="Right" 
                             Background="#66FFFFFF"/>
 
-                        <Button x:Name="MinButton" 
-                                Style="{StaticResource BlacklistAddRemoveButtonTheme}"
+                        <Button x:Name="MinButton"
+                                Style="{StaticResource MinButtonTheme}"
                             Content="Min"
+                                Margin="0,-1,0,0"
                             Click="MinimizeButton_Click"
                             DockPanel.Dock="Right" 
                             Background="#33FFFFFF"/>

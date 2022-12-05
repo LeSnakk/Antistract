@@ -21,8 +21,10 @@
     <None Remove="Images\avatar_placeholder.png" />
     <None Remove="Images\circle.png" />
     <None Remove="Images\circle_checked.png" />
+    <None Remove="Images\close.png" />
     <None Remove="Images\heart_book.png" />
     <None Remove="Images\home.png" />
+    <None Remove="Images\minimize.png" />
     <None Remove="Images\pen_6_0096C7.png" />
     <None Remove="Images\pen_6_023E8A.png" />
     <None Remove="Images\plans.png" />
@@ -53,10 +55,16 @@
     <Resource Include="Images\circle_checked.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\heart_book.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\home.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\minimize.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\pen_6_0096C7.png">
@@ -124,6 +132,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Theme\ActionTypeLeftButton.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\CloseButton.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\MinButton.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

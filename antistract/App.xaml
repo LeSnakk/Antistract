@@ -30,6 +30,8 @@
                 <ResourceDictionary Source="Theme/WebsiteLinksTextBox.xaml" />
                 <ResourceDictionary Source="Theme/StopButton.xaml" />
                 <ResourceDictionary Source="Theme/Dropdown.xaml" />
+                <ResourceDictionary Source="Theme/MinButton.xaml" />
+                <ResourceDictionary Source="Theme/CloseButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">

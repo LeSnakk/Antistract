@@ -17,5 +17,9 @@ namespace antistract.Core
         public static bool TimerRunning;
 
         public static TimerWindow timerWindow;
+
+        public static bool CheckBrowser = false;
+
+        public static bool CheckPrograms = false;
     }
 }

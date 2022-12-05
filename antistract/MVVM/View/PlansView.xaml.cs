@@ -809,13 +809,6 @@ namespace antistract.MVVM.View
             }
         }
 
-        private void ShowTimerWindow_Click(object sender, RoutedEventArgs e)
-        {
-            TimerWindow timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
-            timerWindow.Show();
-            Debug.WriteLine(CurrentlySelectedPlan.SelectedPlan);
-        }
-
         public void ToggleDeleteButton(bool visibility)
         {
             if (visibility)

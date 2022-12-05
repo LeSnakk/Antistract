@@ -52,8 +52,6 @@ namespace antistract.MVVM.View
         private bool Deselecting = false;
 
         private string GCExLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Google/Chrome/User Data/Default/Sync Extension Settings/dkcmjcfdomcigfioegnmleiijjoccfea/000003.log");
-        private bool checkBrowser = false;
-        private bool checkPrograms = false;
 
         ThreadStart loadInstalledPrograms = LoadInstalledPrograms;
         TimerWindow timerWindow;
@@ -65,6 +63,8 @@ namespace antistract.MVVM.View
             bgWorker.DoWork += BgWorker_DoWork;
             FirstStartup();
             LoadBlacklistUserSave();
+            GlobalVariables.CheckBrowser = false;
+            GlobalVariables.CheckPrograms = false;
             //Debug_ClearUserSettings();
         }
 
@@ -285,6 +285,13 @@ namespace antistract.MVVM.View
             namesList.Clear();
             DisplayBlacklistedNames.Clear();
 
+            bool checkBrowser = GlobalVariables.CheckBrowser;
+            bool checkPrograms = GlobalVariables.CheckPrograms;
+
+            Debug.WriteLine("in bgworker: " + checkBrowser);
+            Debug.WriteLine("in bgworker: " + checkPrograms);
+            Debug.WriteLine("ischecked: " + isChecked());
+
             BlacklistedPaths = Settings.Default.BlacklistedPaths.Cast<string>().ToList();
             namesList = Settings.Default.BlacklistedProcesses.Cast<string>().ToList();
             namesList.AddRange(Settings.Default.BlacklistedPrograms.Cast<string>().ToList());
@@ -296,17 +303,30 @@ namespace antistract.MVVM.View
                 Thread.Sleep(500);
 
                 Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
+
+                Debug.WriteLine("Globalvariables ohlypausing: " + GlobalVariables.OnlyPausing);
+                Debug.WriteLine("Globalvariables checkbrowser: " + GlobalVariables.CheckBrowser);
+                Debug.WriteLine(processes.Length);
+                //When not Browser but Programs
                 if (processes.Length == 0 && !checkBrowser && checkPrograms)
                 {
                     TimerWindow.TimerOnHoldNO();
                     Debug.WriteLine("Notepad is not running");
                     Debug.WriteLine("!1");
                 }
-                else if (processes.Length == 00 && checkBrowser && GlobalVariables.OnlyPausing)
+                else if (!checkPrograms && GlobalVariables.CheckBrowser && GlobalVariables.OnlyPausing)
                 {
+                    Debug.WriteLine("bool is: " + checkBrowser);
                     CheckBrowser();
                     Debug.WriteLine("!2");
                 }
+                else if (processes.Length == 0 && GlobalVariables.CheckBrowser && GlobalVariables.OnlyPausing)
+                {
+                    Debug.WriteLine("bool is: " + checkBrowser);
+                    CheckBrowser();
+                    Debug.WriteLine("!2");
+                }
+                //Check Programs
                 else if (processes.Length >= 1 && checkPrograms)
                 {
                     Debug.WriteLine("Notepad is running");
@@ -382,7 +402,8 @@ namespace antistract.MVVM.View
 
         private void CheckBrowser()
         {
-            if (checkBrowser)
+            Debug.WriteLine("XXXX");
+            if (GlobalVariables.CheckBrowser)
             {
                 if (GlobalVariables.OnlyPausing)
                 {
@@ -391,6 +412,7 @@ namespace antistract.MVVM.View
                         RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
                         TimerWindow.TimerOnHoldYES();
                         Debug.WriteLine("!2.1");
+                        Debug.WriteLine(GlobalVariables.CheckBrowser);
                         Debug.WriteLine("Chrome forbidden tab open");
                     }
                     else if (!ReadGCExData())
@@ -405,6 +427,7 @@ namespace antistract.MVVM.View
 
         public bool ReadGCExData()
         {
+            Debug.WriteLine("go");
             try
             {
                 using (var fs = new FileStream(GCExLocation, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
@@ -413,14 +436,25 @@ namespace antistract.MVVM.View
                     string temp = sr.ReadToEnd();
                     if (temp.Contains("-cT2A;z=YzW}f4ht/H6epiW2!Md*@,"))
                     {
-                        return true;
+                        Debug.WriteLine("true");
+                        Process[] chrome = Process.GetProcessesByName("chrome");
+                        if (chrome.Length > 0)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }                       
                     }
                     else if (temp.Contains("8fj*d-*c@cP}+i3f%aB*BD#63amL*i"))
                     {
+                        Debug.WriteLine("false1");
                         return false;
                     }
                     else
                     {
+                        Debug.WriteLine("false2");
                         return false;
                     }
                 }
@@ -546,12 +580,17 @@ namespace antistract.MVVM.View
                 //{
                 TransmitToBrowserExtension();
                 //}
+                
+                GlobalVariables.CheckBrowser = FilterWebsites.IsChecked.Value;
+                GlobalVariables.CheckPrograms = FilterPrograms.IsChecked.Value;
+
                 Debug.WriteLine("\n**********");
                 Debug.WriteLine("Plan: " + CurrentlySelectedPlan.SelectedPlan);
-                Debug.WriteLine("Prog: " + checkPrograms);
-                Debug.WriteLine("Web.: " + checkBrowser);
+                Debug.WriteLine("Prog: " + GlobalVariables.CheckPrograms);
+                Debug.WriteLine("Web.: " + GlobalVariables.CheckBrowser + " || " + FilterWebsites.IsChecked.Value);
                 Debug.WriteLine("Mode: " + CheckMode);
                 Debug.WriteLine("**********\n");
+
                 timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
                 GlobalVariables.timerWindow = timerWindow;
                 GlobalVariables.timerWindow.Show();
@@ -575,7 +614,7 @@ namespace antistract.MVVM.View
 
             doc.Save("BrowserExtensions/Chrome/data.xml");
 
-            if (!checkBrowser)
+            if (!GlobalVariables.CheckBrowser)
             {
                 SetExtensionCheckModePausing();
             }
@@ -958,33 +997,33 @@ namespace antistract.MVVM.View
         private void FilterWebsites_Checked(object sender, RoutedEventArgs e)
         {
             GlobalVariables.BrowserClose = FilterWebsites.IsChecked.Value;
-            checkBrowser = FilterWebsites.IsChecked.Value;
+            GlobalVariables.CheckBrowser = FilterWebsites.IsChecked.Value;
             FilteringTextMsg();
             CheckBox();
         }
 
         private void FilterPrograms_Checked(object sender, RoutedEventArgs e)
         {
-            checkPrograms = FilterPrograms.IsChecked.Value;
+            GlobalVariables.CheckPrograms = FilterPrograms.IsChecked.Value;
             CheckBox();
             FilteringTextMsg();
         }
 
         private void FilteringTextMsg()
         {
-            if (!checkPrograms && !checkBrowser)
+            if (!GlobalVariables.CheckPrograms && !GlobalVariables.CheckBrowser)
             {
                 FilteringText.Text = "To help you focus and increase your productivity, this will keep an eye on your distracting...";
             }
-            else if (checkPrograms && !checkBrowser)
+            else if (GlobalVariables.CheckPrograms && !GlobalVariables.CheckBrowser)
             {
                 FilteringText.Text = "To help you focus and increase your productivity, this will keep an eye on your distracting programs.";
             }
-            else if (checkBrowser && !checkPrograms)
+            else if (GlobalVariables.CheckBrowser && !GlobalVariables.CheckPrograms)
             {
                 FilteringText.Text = "To help you focus and increase your productivity, this will keep an eye on your distracting websites.";
             }
-            else if (checkPrograms && checkBrowser)
+            else if (GlobalVariables.CheckPrograms && GlobalVariables.CheckBrowser)
             {
                 FilteringText.Text = "To help you focus and increase your productivity, this will keep an eye on your distracting programs and websites.";
             }
@@ -992,22 +1031,22 @@ namespace antistract.MVVM.View
 
         private void CheckBox()
         {
-            if (checkPrograms)
+            if (GlobalVariables.CheckPrograms)
             {
                 Programs_circle_checked.Visibility = Visibility.Visible;
                 Programs_circle.Visibility = Visibility.Hidden;
             }
-            else if (!checkPrograms)
+            else if (!GlobalVariables.CheckPrograms)
             {
                 Programs_circle.Visibility = Visibility.Visible;
                 Programs_circle_checked.Visibility = Visibility.Hidden;
             }
-            if (checkBrowser)
+            if (GlobalVariables.CheckBrowser)
             {
                 Websites_circle_checked.Visibility = Visibility.Visible;
                 Websites_circle.Visibility = Visibility.Hidden;
             }
-            else if (!checkBrowser)
+            else if (!GlobalVariables.CheckBrowser)
             {
                 Websites_circle.Visibility = Visibility.Visible;
                 Websites_circle_checked.Visibility = Visibility.Hidden;

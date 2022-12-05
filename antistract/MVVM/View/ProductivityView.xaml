@@ -337,6 +337,7 @@
                               Height="26"
                               FontFamily="/Fonts/#Dosis"
                               VerticalAlignment="Center"
+                              IsChecked="False"
                               Checked="FilterPrograms_Checked"
                               Unchecked="FilterPrograms_Checked" Content="Programs"/>
 
@@ -371,6 +372,7 @@
                               Height="26"
                               FontFamily="/Fonts/#Dosis"
                               VerticalAlignment="Center"
+                              IsChecked="False"
                               Checked="FilterWebsites_Checked"
                               Unchecked="FilterWebsites_Checked" Content="Websites"/>
 
@@ -490,6 +492,9 @@
                 </StackPanel>
                 <Button Grid.Row="2" x:Name="GoToPlansViewButton" Command="{Binding DataContext.PlansViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                         Visibility="Hidden"/>
+
+                <Label x:Name="BlockInput"
+                       IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}" Grid.ColumnSpan="2" Margin="0,0,0,31" Grid.RowSpan="4" />
 
             </Grid>
         </Border>

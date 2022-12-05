@@ -348,13 +348,15 @@
                                  Click="EditPrograms_Click"/>
                     <Image x:Name="Programs_circle" 
                            Source="/Images/circle.png" 
-                           Margin="-250,7,0,0"
-                           Height="18"/>
+                           Margin="-250,4.5,0,0"
+                           Height="18"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
                     <Image x:Name="Programs_circle_checked" 
                            Source="/Images/circle_checked.png" 
-                           Margin="-250,7,0,0"
+                           Margin="-250,4.5,0,0"
                            Height="18"
-                           Visibility="Hidden"/>
+                           Visibility="Hidden"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal"
@@ -382,13 +384,15 @@
 
                     <Image x:Name="Websites_circle" 
                            Source="/Images/circle.png" 
-                           Margin="-250,7,0,0"
-                           Height="18"/>
+                           Margin="-250,4.5,0,0"
+                           Height="18"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
                     <Image x:Name="Websites_circle_checked" 
                            Source="/Images/circle_checked.png" 
-                           Margin="-250,7,0,0"
+                           Margin="-250,4.5,0,0"
                            Height="18"
-                           Visibility="Hidden"/>
+                           Visibility="Hidden"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
                 </StackPanel>
 
                 <!--Blacklists area-->

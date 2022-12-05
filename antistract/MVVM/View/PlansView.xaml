@@ -94,15 +94,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -150,15 +150,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -206,15 +206,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -262,15 +262,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -318,15 +318,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -374,15 +374,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -430,15 +430,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -486,15 +486,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -542,15 +542,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -598,15 +598,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -654,15 +654,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -710,15 +710,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -766,15 +766,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -822,15 +822,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -878,15 +878,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -934,15 +934,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -990,15 +990,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1046,15 +1046,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1102,15 +1102,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1158,15 +1158,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1214,15 +1214,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1270,15 +1270,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1326,15 +1326,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1382,15 +1382,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1438,15 +1438,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1494,15 +1494,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1550,15 +1550,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1606,15 +1606,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1662,15 +1662,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1718,15 +1718,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1774,15 +1774,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1830,15 +1830,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1886,15 +1886,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1942,15 +1942,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -1998,15 +1998,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2054,15 +2054,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2110,15 +2110,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2166,15 +2166,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2222,15 +2222,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2278,15 +2278,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2334,15 +2334,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2390,15 +2390,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2446,15 +2446,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2502,15 +2502,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2558,15 +2558,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2614,15 +2614,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2670,15 +2670,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2726,15 +2726,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2782,15 +2782,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2838,15 +2838,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2894,15 +2894,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -2950,15 +2950,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -3006,15 +3006,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -3062,15 +3062,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -3118,15 +3118,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -3174,15 +3174,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -3230,15 +3230,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -3286,15 +3286,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -3342,15 +3342,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -3398,15 +3398,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Grid.Row="0"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Title"/>
                                             <Label Grid.Column="0" Grid.Row="1"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Type"/>
                                             <Label Grid.Column="0" Grid.Row="2"
-                                                   FontSize="13"
+                                                   FontSize="13" Foreground="#114B5F"
                                                    FontWeight="Medium"
                                                    FontFamily="/Fonts/#Dosis" Content="Duration"/>
 
@@ -3467,6 +3467,7 @@
 
                         <StackPanel>
                             <TextBlock Grid.Row="0" 
+                                       Foreground="#114B5F"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                FontFamily="/Fonts/#Dosis"

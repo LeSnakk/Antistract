@@ -93,6 +93,7 @@
 
 
                             <TextBlock x:Name="UsernameDisplay"
+                                       Foreground="#114B5F"
                                    VerticalAlignment="Top" 
                                    HorizontalAlignment="Center"
                                    Grid.Row="1"

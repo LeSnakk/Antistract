@@ -17,11 +17,11 @@
             Margin="0,564.75,0,0" 
             Background="#ffffff"
             CornerRadius="0,0,7,0">
-        
+
         <Border CornerRadius="31,7,7,0"
                 Padding="0,30,0,0"
                 Margin="0,-565,0,0">
-            
+
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <LinearGradientBrush.RelativeTransform>
@@ -150,6 +150,101 @@
                         </Border.Clip>
 
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40*"/>
+                                <RowDefinition Height="20*"/>
+                                <RowDefinition Height="20*"/>
+                                <RowDefinition Height="20*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Image Width="180"
+                           Height="180"
+                           Source="/Images/todo_list.png"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom" Margin="0,0,-35,-8" RenderTransformOrigin="0.54,0.708" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="4">
+                                <Image.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-16.852"/>
+                                        <TranslateTransform X="9.783" Y="-3.427"/>
+                                    </TransformGroup>
+                                </Image.RenderTransform>
+                            </Image>
+
+                            <StackPanel
+                                        Grid.ColumnSpan="4">
+                                <TextBlock Text="Achievements"
+                                           
+                                   Foreground="#114B5F"
+                                   FontSize="45"
+                                   Margin="20,10,10,0" 
+                                   FontFamily="/Fonts/#Dosis"/>
+                            </StackPanel>
+                            
+                            <Image x:Name="ProductiveToday" 
+                                   Grid.Row="1"
+                                   Grid.Column="0" />
+                            <Image x:Name="CompletedCycles" 
+                                   Grid.Row="1"
+                                   Grid.Column="1" />
+                            <Image x:Name="NoDistraction" 
+                                   Grid.Row="1"
+                                   Grid.Column="2" />
+                            <Image x:Name="WeekCombo" 
+                                   Grid.Row="1"
+                                   Grid.Column="3" />
+
+                            <Image x:Name="min15ThisWeek" 
+                                   Grid.Row="2"
+                                   Grid.Column="0" />
+                            <Image x:Name="h10ThisWeek" 
+                                   Grid.Row="2"
+                                   Grid.Column="1" />
+                            <Image x:Name="h30ThisWeek" 
+                                   Grid.Row="2"
+                                   Grid.Column="2" />
+                            <Image x:Name="h50ThisWeek" 
+                                   Grid.Row="2"
+                                   Grid.Column="3" />
+
+                            <Image x:Name="h1ThisWeek" 
+                                   Grid.Row="3"
+                                   Grid.Column="0" />
+                            <Image x:Name="h20ThisWeek" 
+                                   Grid.Row="3"
+                                   Grid.Column="1" />
+                            <Image x:Name="h40ThisWeek" 
+                                   Grid.Row="3"
+                                   Grid.Column="2" />
+                            <Image x:Name="h100ThisWeek" 
+                                   Grid.Row="3"
+                                   Grid.Column="3" />
+                        </Grid>
+                    </Border>
+
+                    <!--
+                    <Border Width="300"
+                    Height="200"
+                    HorizontalAlignment="Right" Margin="12.5,0,25,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                <GradientStop Color="#90E0EF" Offset="0.0" />
+                                <GradientStop Color="#CAF0F8" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Clip>
+                            <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,300,200" />
+                        </Border.Clip>
+
+                        <Grid>
                             <Image Width="180"
                            Height="180"
                            Source="/Images/todo_list.png"
@@ -197,8 +292,7 @@
                             </StackPanel>
                         </Grid>
                     </Border>
-
-
+                    -->
 
                 </StackPanel>
 

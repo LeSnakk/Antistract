@@ -134,6 +134,7 @@ namespace antistract
             GlobalVariables.TimerRunning = false;
             Settings.Default.StartEnabled = true;
             Settings.Default.BlacklistBlocked = false;
+            Settings.Default.TodayDate = DateTime.Now.Date.ToString();
             Settings.Default.Save();
             this.Close();
         }

@@ -161,5 +161,17 @@ namespace antistract.Properties {
                 this["TotalLearnTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TodayDate {
+            get {
+                return ((string)(this["TodayDate"]));
+            }
+            set {
+                this["TodayDate"] = value;
+            }
+        }
     }
 }

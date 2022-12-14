@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,16 +38,52 @@ namespace antistract.MVVM.View
 
         public void UpdateTotalWeekStudyHours()
         {
+            GetCurrentWeek();
+
             if ((int)Settings.Default["WeeklyLearnTime"] >= 3600)
             {
                 WeekStudyHours.Text = ((int)Settings.Default["WeeklyLearnTime"] / 3600).ToString();
                 TimeUnit.Text = "  hours.";
+            }
+            else if ((int)Settings.Default["WeeklyLearnTime"] < 60)
+            {
+                WeekStudyHours.Text = ((int)Settings.Default["WeeklyLearnTime"] / 60).ToString();
+                RewardText.Text = "Are your ready?";
+            }
+            else if ((int)Settings.Default["WeeklyLearnTime"] < 120)
+            {
+                WeekStudyHours.Text = ((int)Settings.Default["WeeklyLearnTime"] / 60).ToString();
+                TimeUnit.Text = "  minute.";
             }
             else
             {
                 WeekStudyHours.Text = ((int)Settings.Default["WeeklyLearnTime"] / 60).ToString();
                 TimeUnit.Text = "  minutes.";
             }          
+        }
+
+        public void GetCurrentWeek()
+        {
+            var cultureInfo = Thread.CurrentThread.CurrentCulture;
+
+            DateTime dt = DateTime.Now;
+
+            DayOfWeek firstDay = cultureInfo.DateTimeFormat.FirstDayOfWeek;
+            CalendarWeekRule weekRule = cultureInfo.DateTimeFormat.CalendarWeekRule;
+            System.Globalization.Calendar cal = cultureInfo.Calendar;
+            int week = cal.GetWeekOfYear(dt, weekRule, firstDay);
+
+            if (Settings.Default.Week == 0)
+            {
+                Settings.Default.Week = week;
+                Settings.Default.Save();
+            } 
+            else if (Settings.Default.Week != week)
+            {
+                Settings.Default.WeeklyLearnTime = 0;
+                Settings.Default.Week = week;
+                Settings.Default.Save();
+            }
         }
     }
 }

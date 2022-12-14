@@ -137,5 +137,17 @@ namespace antistract.Properties {
                 this["BlacklistedWebsites"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Week {
+            get {
+                return ((int)(this["Week"]));
+            }
+            set {
+                this["Week"] = value;
+            }
+        }
     }
 }

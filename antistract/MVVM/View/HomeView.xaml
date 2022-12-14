@@ -152,10 +152,11 @@
 
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="40*"/>
-                                <RowDefinition Height="20*"/>
-                                <RowDefinition Height="20*"/>
-                                <RowDefinition Height="20*"/>
+                                <RowDefinition Height="34*"/>
+                                <RowDefinition Height="22*"/>
+                                <RowDefinition Height="22*"/>
+                                <RowDefinition Height="22*"/>
+                                <RowDefinition Height="3*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -188,57 +189,103 @@
                                    Margin="20,10,10,0" 
                                    FontFamily="/Fonts/#Dosis"/>
                             </StackPanel>
-                            
+
                             <Image x:Name="ProductiveToday" 
                                    Grid.Row="1"
                                    Grid.Column="0"
+                                   Margin="0"
+                                   Source="/Images/Achievements/productiveTodayDisabled.png"
+                                   Opacity=".2"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="CompletedCycles" 
                                    Grid.Row="1"
                                    Grid.Column="1"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
-                            <Image x:Name="NoDistraction" 
-                                   Grid.Row="1"
-                                   Grid.Column="2"
+                                   Margin="0"
+                                   Source="/Images/Achievements/completedLearningCyclesDisabled.png"
+                                   Opacity=".2"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="WeekCombo" 
                                    Grid.Row="1"
+                                   Grid.Column="2"
+                                   Height="39"
+                                   Margin="0"
+                                   Source="/Images/Achievements/weekComboDisabled.png"
+                                   Opacity=".2"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
+                            <Image x:Name="NoDistraction" 
+                                   Grid.Row="1"
                                    Grid.Column="3"
+                                   Margin="0"
+                                   Source="/Images/Achievements/noDistractionDisabled.png"
+                                   Opacity=".2"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
 
                             <Image x:Name="min15ThisWeek" 
                                    Grid.Row="2"
                                    Grid.Column="0"
+                                   Margin="0"
+                                   Source="/Images/Achievements/min15disabled.png"
+                                   Opacity=".2"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="h10ThisWeek" 
                                    Grid.Row="2"
                                    Grid.Column="1"
+                                   Margin="0"
+                                   Source="/Images/Achievements/h10disabled.png"
+                                   Opacity=".2"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="h30ThisWeek" 
                                    Grid.Row="2"
                                    Grid.Column="2"
+                                   Margin="0"
+                                   Source="/Images/Achievements/h30disabled.png"
+                                   Opacity=".2"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="h50ThisWeek" 
                                    Grid.Row="2"
                                    Grid.Column="3"
+                                   Margin="0"
+                                   Source="/Images/Achievements/h50disabled.png"
+                                   Opacity=".2"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
 
                             <Image x:Name="h1ThisWeek" 
                                    Grid.Row="3"
                                    Grid.Column="0"
+                                   Margin="0"
+                                   Source="/Images/Achievements/h1disabled.png"
+                                   Opacity=".2"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="h20ThisWeek" 
                                    Grid.Row="3"
                                    Grid.Column="1"
+                                   Margin="0"
+                                   Source="/Images/Achievements/h20disabled.png"
+                                   Opacity=".2"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="h40ThisWeek" 
                                    Grid.Row="3"
                                    Grid.Column="2"
+                                   Margin="0"
+                                   Source="/Images/Achievements/h40disabled.png"
+                                   Opacity=".2"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="h100ThisWeek" 
                                    Grid.Row="3"
                                    Grid.Column="3"
+                                   Margin="0"
+                                   Source="/Images/Achievements/h100disabled.png"
+                                   Opacity=".2"
                                    RenderOptions.BitmapScalingMode="HighQuality" />
+                            
+                            <TextBlock x:Name="WeekComboNumber"
+                                       FontFamily="/Fonts/#Dosis"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontWeight="SemiBold"
+                                       FontSize="20"
+                                       Text="" 
+                                       Grid.Column="2" Grid.Row="1" />
                         </Grid>
                     </Border>
 

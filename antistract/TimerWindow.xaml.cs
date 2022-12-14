@@ -35,6 +35,7 @@ namespace antistract
         TimeSpan timeLeft;
         TimeSpan timeWasted;
         TimeSpan weeklyLearnTime;
+        TimeSpan totalLearnTime;
 
         DateTime currentTime;
         DateTime closingTime;
@@ -145,6 +146,7 @@ namespace antistract
             timeWasted = TimeSpan.FromSeconds(timeWasted.TotalSeconds);
 
             weeklyLearnTime = TimeSpan.FromSeconds((int)Settings.Default["WeeklyLearnTime"]);
+            totalLearnTime = TimeSpan.FromSeconds((int)Settings.Default["TotalLearnTime"]);
 
             Timer.Content = (int)Minutes;
             timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
@@ -169,9 +171,12 @@ namespace antistract
                 {
                     Paint("green");
                     weeklyLearnTime = weeklyLearnTime.Add(TimeSpan.FromSeconds(1));
+                    totalLearnTime = totalLearnTime.Add(TimeSpan.FromSeconds(1));
                     Settings.Default["WeeklyLearnTime"] = (int)weeklyLearnTime.TotalSeconds;
+                    Settings.Default["TotalLearnTime"] = (int)totalLearnTime.TotalSeconds;
                     Settings.Default.Save();
-                    Debug.WriteLine(Settings.Default["WeeklyLearnTime"]);
+                    Debug.WriteLine("WeekLearnTime: " + Settings.Default["WeeklyLearnTime"]);
+                    Debug.WriteLine("TotalLearnTime: " + Settings.Default["TotalLearnTime"]);
                 }
             }
             else if (TimerOnHold == true)

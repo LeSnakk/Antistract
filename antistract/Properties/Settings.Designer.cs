@@ -149,5 +149,17 @@ namespace antistract.Properties {
                 this["Week"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int TotalLearnTime {
+            get {
+                return ((int)(this["TotalLearnTime"]));
+            }
+            set {
+                this["TotalLearnTime"] = value;
+            }
+        }
     }
 }

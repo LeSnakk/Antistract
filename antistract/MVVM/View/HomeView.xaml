@@ -84,6 +84,7 @@
                            Height="167"
                            Source="/Images/heart_book.png"
                            HorizontalAlignment="Right"
+                                   RenderOptions.BitmapScalingMode="HighQuality"
                            VerticalAlignment="Bottom" Margin="0,0,-35,-4" RenderTransformOrigin="0.5,0.5">
                                 <Image.RenderTransform>
                                     <TransformGroup>
@@ -166,6 +167,7 @@
                            Height="180"
                            Source="/Images/todo_list.png"
                            HorizontalAlignment="Right"
+                                   RenderOptions.BitmapScalingMode="HighQuality"
                            VerticalAlignment="Bottom" Margin="0,0,-35,-8" RenderTransformOrigin="0.54,0.708" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="4">
                                 <Image.RenderTransform>
                                     <TransformGroup>
@@ -189,42 +191,54 @@
                             
                             <Image x:Name="ProductiveToday" 
                                    Grid.Row="1"
-                                   Grid.Column="0" />
+                                   Grid.Column="0"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="CompletedCycles" 
                                    Grid.Row="1"
-                                   Grid.Column="1" />
+                                   Grid.Column="1"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="NoDistraction" 
                                    Grid.Row="1"
-                                   Grid.Column="2" />
+                                   Grid.Column="2"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="WeekCombo" 
                                    Grid.Row="1"
-                                   Grid.Column="3" />
+                                   Grid.Column="3"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
 
                             <Image x:Name="min15ThisWeek" 
                                    Grid.Row="2"
-                                   Grid.Column="0" />
+                                   Grid.Column="0"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="h10ThisWeek" 
                                    Grid.Row="2"
-                                   Grid.Column="1" />
+                                   Grid.Column="1"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="h30ThisWeek" 
                                    Grid.Row="2"
-                                   Grid.Column="2" />
+                                   Grid.Column="2"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="h50ThisWeek" 
                                    Grid.Row="2"
-                                   Grid.Column="3" />
+                                   Grid.Column="3"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
 
                             <Image x:Name="h1ThisWeek" 
                                    Grid.Row="3"
-                                   Grid.Column="0" />
+                                   Grid.Column="0"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="h20ThisWeek" 
                                    Grid.Row="3"
-                                   Grid.Column="1" />
+                                   Grid.Column="1"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="h40ThisWeek" 
                                    Grid.Row="3"
-                                   Grid.Column="2" />
+                                   Grid.Column="2"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
                             <Image x:Name="h100ThisWeek" 
                                    Grid.Row="3"
-                                   Grid.Column="3" />
+                                   Grid.Column="3"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
                         </Grid>
                     </Border>
 

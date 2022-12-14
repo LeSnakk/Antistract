@@ -18,6 +18,30 @@
   <ItemGroup>
     <None Remove="Fonts\Dosis-VariableFont_wght.ttf" />
     <None Remove="Fonts\Joan-Regular.ttf" />
+    <None Remove="Images\Achievements\completedLearningCycles.png" />
+    <None Remove="Images\Achievements\completedLearningCyclesDisabled.png" />
+    <None Remove="Images\Achievements\h1.png" />
+    <None Remove="Images\Achievements\h10.png" />
+    <None Remove="Images\Achievements\h100.png" />
+    <None Remove="Images\Achievements\h100disabled.png" />
+    <None Remove="Images\Achievements\h10disabled.png" />
+    <None Remove="Images\Achievements\h1disabled.png" />
+    <None Remove="Images\Achievements\h20.png" />
+    <None Remove="Images\Achievements\h20disabled.png" />
+    <None Remove="Images\Achievements\h30.png" />
+    <None Remove="Images\Achievements\h30disabled.png" />
+    <None Remove="Images\Achievements\h40.png" />
+    <None Remove="Images\Achievements\h40disabled.png" />
+    <None Remove="Images\Achievements\h50.png" />
+    <None Remove="Images\Achievements\h50disabled.png" />
+    <None Remove="Images\Achievements\min15.png" />
+    <None Remove="Images\Achievements\min15disabled.png" />
+    <None Remove="Images\Achievements\noDistraction.png" />
+    <None Remove="Images\Achievements\noDistractionDisabled.png" />
+    <None Remove="Images\Achievements\productiveToday.png" />
+    <None Remove="Images\Achievements\productiveTodayDisabled.png" />
+    <None Remove="Images\Achievements\weekCombo.png" />
+    <None Remove="Images\Achievements\weekComboDisabled.png" />
     <None Remove="Images\avatar_placeholder.png" />
     <None Remove="Images\circle.png" />
     <None Remove="Images\circle_checked.png" />
@@ -46,6 +70,78 @@
   <ItemGroup>
     <Resource Include="Fonts\Dosis-VariableFont_wght.ttf" />
     <Resource Include="Fonts\Joan-Regular.ttf" />
+    <Resource Include="Images\Achievements\completedLearningCycles.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\completedLearningCyclesDisabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h100.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h100disabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h10disabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h1disabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h20disabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h30.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h30disabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h40.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h40disabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h50.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\h50disabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\min15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\min15disabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\noDistraction.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\noDistractionDisabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\productiveToday.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\productiveTodayDisabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\weekCombo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Achievements\weekComboDisabled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\avatar_placeholder.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

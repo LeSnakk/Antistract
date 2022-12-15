@@ -159,13 +159,18 @@ namespace antistract.MVVM.View
                     Settings.Default.Save();
                 }
                 WeekCombo.Opacity = 1;
-                WeekComboNumber.Text = combo.ToString();
-                
+                WeekComboNumber.Text = combo.ToString();              
             } 
             else if (!isFollowingWeek())
             {
                 Settings.Default.WeekCombo = 0;
                 Settings.Default.Save();
+            }
+            if (Settings.Default.TotalLearningCycles > 0)
+            {
+                CompletedCycles.Source = new BitmapImage(new Uri(@"/Images/Achievements/completedLearningCycles.png", UriKind.Relative));
+                CompletedCycles.Opacity = 1;
+                CompletedCyclesNumber.Text = Settings.Default.TotalLearningCycles.ToString();
             }
 
         }

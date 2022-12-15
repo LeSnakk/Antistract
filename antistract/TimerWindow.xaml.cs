@@ -135,6 +135,9 @@ namespace antistract
             Settings.Default.StartEnabled = true;
             Settings.Default.BlacklistBlocked = false;
             Settings.Default.TodayDate = DateTime.Now.Date.ToString();
+            int cycles = Settings.Default.TotalLearningCycles;
+            cycles++;
+            Settings.Default.TotalLearningCycles = cycles;
             Settings.Default.Save();
             this.Close();
         }

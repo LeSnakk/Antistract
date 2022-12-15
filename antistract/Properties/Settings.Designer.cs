@@ -209,5 +209,17 @@ namespace antistract.Properties {
                 this["CheckedForWeekCombo"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int TotalLearningCycles {
+            get {
+                return ((int)(this["TotalLearningCycles"]));
+            }
+            set {
+                this["TotalLearningCycles"] = value;
+            }
+        }
     }
 }

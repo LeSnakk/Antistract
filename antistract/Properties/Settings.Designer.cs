@@ -173,5 +173,41 @@ namespace antistract.Properties {
                 this["TodayDate"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LastWeek {
+            get {
+                return ((int)(this["LastWeek"]));
+            }
+            set {
+                this["LastWeek"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int WeekCombo {
+            get {
+                return ((int)(this["WeekCombo"]));
+            }
+            set {
+                this["WeekCombo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CheckedForWeekCombo {
+            get {
+                return ((bool)(this["CheckedForWeekCombo"]));
+            }
+            set {
+                this["CheckedForWeekCombo"] = value;
+            }
+        }
     }
 }

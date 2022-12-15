@@ -25,6 +25,8 @@ namespace antistract.MVVM.View
     public partial class HomeView : UserControl
     {
         readonly MainWindow mainWndw = (MainWindow)Application.Current.MainWindow;
+
+        int CurrentWeek;
         public HomeView()
         {
             InitializeComponent();
@@ -68,12 +70,11 @@ namespace antistract.MVVM.View
             var cultureInfo = Thread.CurrentThread.CurrentCulture;
 
             DateTime dt = DateTime.Now;
-            DateTime dt2 = DateTime.Parse("02.01.2023 18:59:08");
             DayOfWeek firstDay = cultureInfo.DateTimeFormat.FirstDayOfWeek;
             CalendarWeekRule weekRule = cultureInfo.DateTimeFormat.CalendarWeekRule;
             System.Globalization.Calendar cal = cultureInfo.Calendar;
             int week = cal.GetWeekOfYear(dt, weekRule, firstDay);
-            Debug.WriteLine(cal.GetWeekOfYear(dt2, weekRule, firstDay));
+            CurrentWeek = week;
 
             if (Settings.Default.Week == 0)
             {
@@ -82,8 +83,10 @@ namespace antistract.MVVM.View
             } 
             else if (Settings.Default.Week != week)
             {
+                Settings.Default.LastWeek = Settings.Default.Week;
                 Settings.Default.WeeklyLearnTime = 0;
                 Settings.Default.Week = week;
+                Settings.Default.CheckedForWeekCombo = false;
                 Settings.Default.Save();
             }
         }
@@ -144,7 +147,52 @@ namespace antistract.MVVM.View
                 ProductiveToday.Source = new BitmapImage(new Uri(@"/Images/Achievements/productiveToday.png", UriKind.Relative));
                 ProductiveToday.Opacity = 1;
             }
+            if (Settings.Default.WeeklyLearnTime != 0 && isFollowingWeek())
+            {
+                WeekCombo.Source = new BitmapImage(new Uri(@"/Images/Achievements/weekCombo.png", UriKind.Relative));
+                int combo = Settings.Default.WeekCombo;
+                if (Settings.Default.CheckedForWeekCombo == false)
+                {
+                    combo++;
+                    Settings.Default.WeekCombo = combo;
+                    Settings.Default.CheckedForWeekCombo = true;
+                    Settings.Default.Save();
+                }
+                WeekCombo.Opacity = 1;
+                WeekComboNumber.Text = combo.ToString();
+                
+            } 
+            else if (!isFollowingWeek())
+            {
+                Settings.Default.WeekCombo = 0;
+                Settings.Default.Save();
+            }
 
+        }
+
+        public bool isFollowingWeek()
+        {
+            var cultureInfo = Thread.CurrentThread.CurrentCulture;
+            DateTime dt = DateTime.Now;
+            DayOfWeek firstDay = cultureInfo.DateTimeFormat.FirstDayOfWeek;
+            CalendarWeekRule weekRule = cultureInfo.DateTimeFormat.CalendarWeekRule;
+            System.Globalization.Calendar cal = cultureInfo.Calendar;
+            int week = cal.GetWeekOfYear(dt, weekRule, firstDay);
+
+            DateTime dt2 = dt.AddDays(-7);
+            int week2 = cal.GetWeekOfYear(dt2, weekRule, firstDay);
+            Debug.WriteLine("Week2: " + week2);
+
+            if (week2 == Settings.Default.LastWeek)
+            {
+                Debug.WriteLine("TRUE");
+                return true;
+            }
+            else
+            {
+                Debug.WriteLine("FALSE");
+                return false;
+            }
         }
     }
 }

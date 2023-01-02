@@ -189,6 +189,8 @@ namespace antistract
                 Paint("red");
                 timeWasted = timeWasted.Add(TimeSpan.FromSeconds(1));   
                 closingTime = closingTime.Add(TimeSpan.FromSeconds(1));
+                Settings.Default.DistractedToday = DateTime.Now.Date.ToString();
+                Settings.Default.Save();
                 Debug.WriteLine("Timer has been stopped");
             }
             

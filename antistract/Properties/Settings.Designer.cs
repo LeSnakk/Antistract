@@ -221,5 +221,17 @@ namespace antistract.Properties {
                 this["TotalLearningCycles"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DistractedToday {
+            get {
+                return ((string)(this["DistractedToday"]));
+            }
+            set {
+                this["DistractedToday"] = value;
+            }
+        }
     }
 }

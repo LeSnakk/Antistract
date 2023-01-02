@@ -147,6 +147,12 @@ namespace antistract.MVVM.View
                 ProductiveToday.Source = new BitmapImage(new Uri(@"/Images/Achievements/productiveToday.png", UriKind.Relative));
                 ProductiveToday.Opacity = 1;
             }
+            if ((Settings.Default.TodayDate == DateTime.Now.Date.ToString() && Settings.Default.DistractedToday != DateTime.Now.Date.ToString()))
+            {
+                NoDistraction.Source = new BitmapImage(new Uri(@"/Images/Achievements/noDistraction.png", UriKind.Relative));
+                NoDistraction.Opacity = 1;
+            }
+            //Week Combos
             if (Settings.Default.WeeklyLearnTime != 0 && isFollowingWeek())
             {
                 WeekCombo.Source = new BitmapImage(new Uri(@"/Images/Achievements/weekCombo.png", UriKind.Relative));

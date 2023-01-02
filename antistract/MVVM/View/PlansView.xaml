@@ -117,10 +117,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration0"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration0"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                 x:Name="EntryDelete0"
                                                     FontFamily="/Fonts/#Dosis"
@@ -173,10 +180,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration1"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration1"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -229,10 +243,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration2"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration2"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -285,10 +306,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration3"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration3"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -341,10 +369,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration4"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration4"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -397,10 +432,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration5"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration5"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -453,10 +495,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration6"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration6"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -509,10 +558,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration7"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration7"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -565,10 +621,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration8"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration8"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -621,10 +684,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration9"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration9"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -677,10 +747,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration10"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration10"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -733,10 +810,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration11"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration11"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -789,10 +873,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration12"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration12"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -845,10 +936,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration13"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration13"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -901,10 +999,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration14"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration14"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -957,10 +1062,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration15"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration15"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1013,10 +1125,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration16"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration16"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1069,10 +1188,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration17"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration17"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1125,10 +1251,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration18"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration18"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1181,10 +1314,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration19"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration19"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1237,10 +1377,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration20"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration20"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1293,10 +1440,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration21"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration21"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1349,10 +1503,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration22"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration22"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1405,10 +1566,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration23"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration23"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1461,10 +1629,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration24"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration24"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1517,10 +1692,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration25"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration25"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1573,10 +1755,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration26"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration26"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1629,10 +1818,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration27"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration27"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1685,10 +1881,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration28"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration28"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1741,10 +1944,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration29"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration29"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1797,10 +2007,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration30"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration30"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1853,10 +2070,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration31"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration31"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1909,10 +2133,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration32"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration32"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -1965,10 +2196,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration33"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration33"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2021,10 +2259,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration34"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration34"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2077,10 +2322,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration35"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration35"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2133,10 +2385,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration36"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration36"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2189,10 +2448,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration37"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration37"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2245,10 +2511,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration38"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration38"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2301,10 +2574,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration39"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration39"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2357,10 +2637,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration40"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration40"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2413,10 +2700,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration41"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration41"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2469,10 +2763,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration42"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration42"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2525,10 +2826,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration43"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration43"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2581,10 +2889,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration44"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration44"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2637,10 +2952,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration45"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration45"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2693,10 +3015,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration46"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration46"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2749,10 +3078,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration47"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration47"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2805,10 +3141,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration48"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration48"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2861,10 +3204,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration49"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration49"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2917,10 +3267,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration50"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration50"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -2973,10 +3330,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration51"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration51"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -3029,10 +3393,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration52"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration52"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -3085,10 +3456,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration53"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration53"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -3141,10 +3519,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration54"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration54"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -3197,10 +3582,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration55"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration55"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -3253,10 +3645,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration56"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration56"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -3309,10 +3708,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration57"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration57"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -3365,10 +3771,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration58"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration58"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"
@@ -3421,10 +3834,17 @@
                                                 <ComboBoxItem Content="Work"/>
                                                 <ComboBoxItem Content="Break"/>
                                             </ComboBox>
-                                            <TextBox Grid.Column="1" Grid.Row="2"
-                                                 x:Name="EntryDuration59"
-                                                 Margin="0,3,0,3"
-                                                 PreviewTextInput="NumberValidationTextBox"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                                <TextBox x:Name="EntryDuration59"
+                                                         Margin="0,3,0,3"
+                                                         Width="44"
+                                                         PreviewTextInput="NumberValidationTextBox"/>
+                                                <Label FontSize="13" 
+                                                       Foreground="#114B5F"
+                                                       FontWeight="Medium"
+                                                       FontFamily="/Fonts/#Dosis" 
+                                                       Content="min"/>
+                                            </StackPanel>
                                             <Button Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource StandardSmallButtonTheme}"
                                                     FontFamily="/Fonts/#Dosis"
                                                     FontWeight="DemiBold"

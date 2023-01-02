@@ -72,20 +72,24 @@
                 <!--User profile picture area-->
                 <StackPanel Grid.Row="1">
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="208*"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="150"/>
                         </Grid.RowDefinitions>
 
                         <Ellipse Height="100" Width="100" 
-                             HorizontalAlignment="Center" 
+                             HorizontalAlignment="Left" 
                              VerticalAlignment="Top" 
-                             Margin="0,5,0,0"
-                             RenderOptions.BitmapScalingMode="HighQuality">
+                             Margin="47,5,0,0"
+                             RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="1">
                             <Ellipse.Fill>
                                 <ImageBrush ImageSource="/Images/avatar_placeholder.png" />
                             </Ellipse.Fill>
                         </Ellipse>
-                        <Grid>
+                        <Grid Grid.ColumnSpan="2">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="6.5*" />
                                 <RowDefinition Height="3.5*" />
@@ -165,7 +169,7 @@
                              Command="{Binding ToDoViewCommand}"
                              IsEnabled="False"
                              GroupName="Navigation"/>
-                    
+
                     <RadioButton Content="Settings"
                              x:Name="MenuButtonsSettings"
                              Height="80.5"
@@ -203,13 +207,16 @@
                             DockPanel.Dock="Right" 
                             Background="#33FFFFFF"/>
 
-                        <TextBlock Text="~ antistract"
+                        <Image Source="/Images/icon.png"
+                               Height="22.5" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="ntistract"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                Padding="0,0,0,5"
-                               Foreground="#114B5F"
+                               Foreground="#0096c7"
+                                   FontWeight="Medium"
                                FontSize="22" 
-                               Margin="10,3,0,0"
+                               Margin="0,9,0,0"
                                FontFamily="/Fonts/#Dosis"/>
                     </DockPanel>
                 </Border>

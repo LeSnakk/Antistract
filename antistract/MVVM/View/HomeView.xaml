@@ -165,11 +165,16 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Image Width="180"
-                           Height="180"
-                           Source="/Images/todo_list.png"
-                           HorizontalAlignment="Right"
+                                   Height="180"
+                                   Source="/Images/todo_list.png"
+                                   HorizontalAlignment="Right"
                                    RenderOptions.BitmapScalingMode="HighQuality"
-                           VerticalAlignment="Bottom" Margin="0,0,-35,-8" RenderTransformOrigin="0.54,0.708" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="4">
+                                   VerticalAlignment="Bottom" 
+                                   Margin="0,0,-35,-8" 
+                                   RenderTransformOrigin="0.54,0.708" 
+                                   Grid.Column="2" 
+                                   Grid.ColumnSpan="2" 
+                                   Grid.RowSpan="4">
                                 <Image.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -180,14 +185,12 @@
                                 </Image.RenderTransform>
                             </Image>
 
-                            <StackPanel
-                                        Grid.ColumnSpan="4">
-                                <TextBlock Text="Achievements"
-                                           
-                                   Foreground="#114B5F"
-                                   FontSize="45"
-                                   Margin="20,10,10,0" 
-                                   FontFamily="/Fonts/#Dosis"/>
+                            <StackPanel Grid.ColumnSpan="4">
+                                <TextBlock Text="Achievements"                                         
+                                           Foreground="#114B5F"
+                                           FontSize="45"
+                                           Margin="20,10,10,0" 
+                                           FontFamily="/Fonts/#Dosis"/>
                             </StackPanel>
 
                             <Image x:Name="ProductiveToday" 
@@ -196,14 +199,28 @@
                                    Margin="0"
                                    Source="/Images/Achievements/productiveTodayDisabled.png"
                                    Opacity=".2"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
+                                   RenderOptions.BitmapScalingMode="HighQuality">
+                                <Image.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold">Daily Productivity</TextBlock>
+                                        <TextBlock>You have successfully finished one studying circle today!</TextBlock>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                             <Image x:Name="CompletedCycles" 
                                    Grid.Row="1"
                                    Grid.Column="1"
                                    Margin="0"
                                    Source="/Images/Achievements/completedLearningCyclesDisabled.png"
                                    Opacity=".2"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
+                                   RenderOptions.BitmapScalingMode="HighQuality">
+                                <Image.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold">Cycles Count</TextBlock>
+                                        <TextBlock x:Name="CompletedCyclesToolTip">You have already completed so many studying circles!</TextBlock>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                             <Image x:Name="WeekCombo" 
                                    Grid.Row="1"
                                    Grid.Column="2"
@@ -211,72 +228,172 @@
                                    Margin="0"
                                    Source="/Images/Achievements/weekComboDisabled.png"
                                    Opacity=".2"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
+                                   RenderOptions.BitmapScalingMode="HighQuality">
+                                <Image.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold">Week Routine</TextBlock>
+                                        <TextBlock x:Name="WeekComboToolTip">How long can you keep your Combo?</TextBlock>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                             <Image x:Name="NoDistraction" 
                                    Grid.Row="1"
                                    Grid.Column="3"
                                    Margin="0"
                                    Source="/Images/Achievements/noDistractionDisabled.png"
                                    Opacity=".2"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
-
+                                   RenderOptions.BitmapScalingMode="HighQuality">
+                                <Image.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold">Productivity OG</TextBlock>
+                                        <TextBlock>Nothing can distract you today!</TextBlock>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                             <Image x:Name="min15ThisWeek" 
                                    Grid.Row="2"
                                    Grid.Column="0"
                                    Margin="0"
                                    Source="/Images/Achievements/min15disabled.png"
                                    Opacity=".2"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
+                                   RenderOptions.BitmapScalingMode="HighQuality">
+                                <Image.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold">Grand Opening</TextBlock>
+                                        <TextBlock x:Name="min15_txt1" Visibility="Collapsed">You've been productive for 15 minutes this week.</TextBlock>
+                                        <StackPanel Orientation="Horizontal" x:Name="min15_txt2" Visibility="Visible">
+                                            <TextBlock FontStyle="Italic" Text="Challenge: " />
+                                            <TextBlock x:Name="min15_txt3">Can you start it off with being productive for at least 15 minutes?</TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                             <Image x:Name="h10ThisWeek" 
                                    Grid.Row="2"
                                    Grid.Column="1"
                                    Margin="0"
                                    Source="/Images/Achievements/h10disabled.png"
                                    Opacity=".2"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
+                                   RenderOptions.BitmapScalingMode="HighQuality">
+                                <Image.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold">Studying Professional</TextBlock>
+                                        <TextBlock x:Name="h10_txt1" Visibility="Collapsed">Damn, you're good! You've been productive for 10 hours this week.</TextBlock>
+                                        <StackPanel Orientation="Horizontal" x:Name="h10_txt2" Visibility="Collapsed">
+                                            <TextBlock FontStyle="Italic" Text="Challenge: " /><TextBlock>Double it?</TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                             <Image x:Name="h30ThisWeek" 
                                    Grid.Row="2"
                                    Grid.Column="2"
                                    Margin="0"
                                    Source="/Images/Achievements/h30disabled.png"
                                    Opacity=".2"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
+                                   RenderOptions.BitmapScalingMode="HighQuality">
+                                <Image.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold">Productivity King</TextBlock>
+                                        <TextBlock x:Name="h30_txt1" Visibility="Collapsed">*Impressed Gandalf noises* Look what you've accomplished! You've become a king this week in no more then 30 hours!</TextBlock>
+                                        <StackPanel Orientation="Horizontal" x:Name="h30_txt2" Visibility="Collapsed">
+                                            <TextBlock FontStyle="Italic" Text="Challenge: " />
+                                            <TextBlock>Now only imagine all the things you could become in the next 10 hours!</TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                             <Image x:Name="h50ThisWeek" 
                                    Grid.Row="2"
                                    Grid.Column="3"
                                    Margin="0"
                                    Source="/Images/Achievements/h50disabled.png"
                                    Opacity=".2"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
-
+                                   RenderOptions.BitmapScalingMode="HighQuality">
+                                <Image.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold">Master Of Productivity</TextBlock>
+                                        <TextBlock x:Name="h50_txt1" Visibility="Collapsed">Of yourse you made it to 50 hours this week – you mastered studying and productivity.</TextBlock>
+                                        <StackPanel Orientation="Horizontal" x:Name="h50_txt2" Visibility="Collapsed">
+                                            <TextBlock FontStyle="Italic" Text="Challenge: " />
+                                            <TextBlock>Where is your limit? Can you go triple digits?</TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                             <Image x:Name="h1ThisWeek" 
                                    Grid.Row="3"
                                    Grid.Column="0"
                                    Margin="0"
                                    Source="/Images/Achievements/h1disabled.png"
                                    Opacity=".2"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
+                                   RenderOptions.BitmapScalingMode="HighQuality">
+                                <Image.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold">Productivity Kickoff</TextBlock>
+                                        <TextBlock x:Name="h1_txt1" Visibility="Collapsed">You're starting it off with 1 hour this week. Keep it up!</TextBlock>
+                                        <StackPanel Orientation="Horizontal" x:Name="h1_txt2" Visibility="Collapsed">
+                                            <TextBlock FontStyle="Italic" Text="Note: " />
+                                            <TextBlock>Next stop in 9 hours.</TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                             <Image x:Name="h20ThisWeek" 
                                    Grid.Row="3"
                                    Grid.Column="1"
                                    Margin="0"
                                    Source="/Images/Achievements/h20disabled.png"
                                    Opacity=".2"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
+                                   RenderOptions.BitmapScalingMode="HighQuality">
+                                <Image.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold">Lord Of The Productivity</TextBlock>
+                                        <TextBlock x:Name="h20_txt1" Visibility="Collapsed">Gandalf would be proud of you for being productive for 20 hours already this week!</TextBlock>
+                                        <StackPanel Orientation="Horizontal" x:Name="h20_txt2" Visibility="Collapsed">
+                                            <TextBlock FontStyle="Italic" Text="Note: " />
+                                            <TextBlock>He'd be even more proud at 30 hours...</TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                             <Image x:Name="h40ThisWeek" 
                                    Grid.Row="3"
                                    Grid.Column="2"
                                    Margin="0"
                                    Source="/Images/Achievements/h40disabled.png"
                                    Opacity=".2"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
+                                   RenderOptions.BitmapScalingMode="HighQuality">
+                                <Image.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold">Productivity Emperor</TextBlock>
+                                        <TextBlock x:Name="h40_txt1" Visibility="Collapsed">Screw being a king – after 40 hours of studying this week you are now an Emperor!</TextBlock>
+                                        <StackPanel Orientation="Horizontal" x:Name="h40_txt2" Visibility="Collapsed">
+                                            <TextBlock FontStyle="Italic" Text="Challenge: " />
+                                            <TextBlock>Can you expand even furhter? I bet 50 hours is a no brainer for you...</TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                             <Image x:Name="h100ThisWeek" 
                                    Grid.Row="3"
                                    Grid.Column="3"
                                    Margin="0"
                                    Source="/Images/Achievements/h100disabled.png"
                                    Opacity=".2"
-                                   RenderOptions.BitmapScalingMode="HighQuality" />
+                                   RenderOptions.BitmapScalingMode="HighQuality">
+                                <Image.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold">Productivity God</TextBlock>
+                                        <TextBlock x:Name="h100_txt1" Visibility="Collapsed">Unbelievable! You've studied for 100 hours this week. Be proud of yourself! Your friends may call you "God" from now on.</TextBlock>
+                                        <TextBlock x:Name="h100_txt2" Visibility="Collapsed"> But only as long as this trophy lasts...</TextBlock>
+                                        <StackPanel Orientation="Horizontal" x:Name="h100_txt3" Visibility="Collapsed">
+                                            <TextBlock FontStyle="Italic" Text="Challenge: " />
+                                            <TextBlock>Make your friends call you "God" next week again! We all know you have the potential...</TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Image.ToolTip>
+                            </Image>
                             
                             <TextBlock x:Name="WeekComboNumber"
                                        FontFamily="/Fonts/#Dosis"
@@ -285,6 +402,7 @@
                                        FontWeight="SemiBold"
                                        FontSize="20"
                                        Text="" 
+                                       IsHitTestVisible="False"
                                        Grid.Column="2" Grid.Row="1" />
                             <TextBlock x:Name="CompletedCyclesNumber"
                                        FontFamily="/Fonts/#Dosis"
@@ -294,6 +412,7 @@
                                        FontWeight="SemiBold"
                                        FontSize="20"
                                        Text="" 
+                                       IsHitTestVisible="False"
                                        Grid.Column="1" Grid.Row="1" />
                         </Grid>
                     </Border>

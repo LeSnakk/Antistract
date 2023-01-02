@@ -98,48 +98,65 @@ namespace antistract.MVVM.View
             {
                 min15ThisWeek.Source = new BitmapImage(new Uri(@"/Images/Achievements/min15.png", UriKind.Relative));
                 min15ThisWeek.Opacity = 1;
+                min15_txt1.Visibility = Visibility.Visible;
+                min15_txt2.Visibility = Visibility.Visible;
+                min15_txt3.Text = "Can you make it to 1 hour?";
             }
             //1 Hour
             if ((int)Settings.Default["WeeklyLearnTime"] >= 3600)
             {
                 h1ThisWeek.Source = new BitmapImage(new Uri(@"/Images/Achievements/h1.png", UriKind.Relative));
                 h1ThisWeek.Opacity = 1;
+                h1_txt1.Visibility = Visibility.Visible;
+                h1_txt2.Visibility = Visibility.Visible;
             }
             //10 Hours
             if ((int)Settings.Default["WeeklyLearnTime"] >= 36000)
             {
                 h10ThisWeek.Source = new BitmapImage(new Uri(@"/Images/Achievements/h10.png", UriKind.Relative));
                 h10ThisWeek.Opacity = 1;
+                h10_txt1.Visibility = Visibility.Visible;
+                h10_txt2.Visibility = Visibility.Visible;
             }
             //20 Hours
             if ((int)Settings.Default["WeeklyLearnTime"] >= 72000)
             {
                 h20ThisWeek.Source = new BitmapImage(new Uri(@"/Images/Achievements/h20.png", UriKind.Relative));
                 h20ThisWeek.Opacity = 1;
+                h20_txt1.Visibility = Visibility.Visible;
+                h20_txt2.Visibility = Visibility.Visible;
             }
             //30 Hours
             if ((int)Settings.Default["WeeklyLearnTime"] >= 108000)
             {
                 h30ThisWeek.Source = new BitmapImage(new Uri(@"/Images/Achievements/h30.png", UriKind.Relative));
                 h30ThisWeek.Opacity = 1;
+                h30_txt1.Visibility = Visibility.Visible;
+                h30_txt2.Visibility = Visibility.Visible;
             }
             //40 Hours
             if ((int)Settings.Default["WeeklyLearnTime"] >= 144000)
             {
                 h40ThisWeek.Source = new BitmapImage(new Uri(@"/Images/Achievements/h40.png", UriKind.Relative));
                 h40ThisWeek.Opacity = 1;
+                h40_txt1.Visibility = Visibility.Visible;
+                h40_txt2.Visibility = Visibility.Visible;
             }
             //50 Hours
             if ((int)Settings.Default["WeeklyLearnTime"] >= 180000)
             {
                 h50ThisWeek.Source = new BitmapImage(new Uri(@"/Images/Achievements/h50.png", UriKind.Relative));
                 h50ThisWeek.Opacity = 1;
+                h50_txt1.Visibility = Visibility.Visible;
+                h50_txt2.Visibility = Visibility.Visible;
             }
             //100 Hours
             if ((int)Settings.Default["WeeklyLearnTime"] >= 360000)
             {
                 h100ThisWeek.Source = new BitmapImage(new Uri(@"/Images/Achievements/h100.png", UriKind.Relative));
                 h100ThisWeek.Opacity = 1;
+                h100_txt1.Visibility = Visibility.Visible;
+                h100_txt2.Visibility = Visibility.Visible;
             }
             //Been productive TODAY?
             if (Settings.Default.TodayDate == DateTime.Now.Date.ToString())
@@ -147,6 +164,7 @@ namespace antistract.MVVM.View
                 ProductiveToday.Source = new BitmapImage(new Uri(@"/Images/Achievements/productiveToday.png", UriKind.Relative));
                 ProductiveToday.Opacity = 1;
             }
+            //No Distractions
             if ((Settings.Default.TodayDate == DateTime.Now.Date.ToString() && Settings.Default.DistractedToday != DateTime.Now.Date.ToString()))
             {
                 NoDistraction.Source = new BitmapImage(new Uri(@"/Images/Achievements/noDistraction.png", UriKind.Relative));
@@ -165,7 +183,8 @@ namespace antistract.MVVM.View
                     Settings.Default.Save();
                 }
                 WeekCombo.Opacity = 1;
-                WeekComboNumber.Text = combo.ToString();              
+                WeekComboNumber.Text = combo.ToString();         
+                WeekComboToolTip.Text = "You've been productive every week for the past " + combo.ToString() + " weeks. Let's see how far you can push it!";
             } 
             else if (!isFollowingWeek())
             {
@@ -177,6 +196,7 @@ namespace antistract.MVVM.View
                 CompletedCycles.Source = new BitmapImage(new Uri(@"/Images/Achievements/completedLearningCycles.png", UriKind.Relative));
                 CompletedCycles.Opacity = 1;
                 CompletedCyclesNumber.Text = Settings.Default.TotalLearningCycles.ToString();
+                CompletedCyclesToolTip.Text = "Nice! You have successfully completed " + Settings.Default.TotalLearningCycles.ToString() + " learning cycles so far!";
             }
 
         }

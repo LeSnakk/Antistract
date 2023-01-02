@@ -573,34 +573,37 @@ namespace antistract.MVVM.View
 
         private void StartTimer_Click(object sender, RoutedEventArgs e)
         {
-            timerWindow = null;
-            GlobalVariables.timerWindow = null;
-            if (!GlobalVariables.TimerRunning)
+            if (!(FilterWebsites.IsChecked.Value == false && FilterPrograms.IsChecked.Value == false))
             {
-                //if (!String.IsNullOrWhiteSpace(BrowserWebsites.Text))
-                //{
-                TransmitToBrowserExtension();
-                //}
-                
-                GlobalVariables.CheckBrowser = FilterWebsites.IsChecked.Value;
-                GlobalVariables.CheckPrograms = FilterPrograms.IsChecked.Value;
+                timerWindow = null;
+                GlobalVariables.timerWindow = null;
+                if (!GlobalVariables.TimerRunning)
+                {
+                    //if (!String.IsNullOrWhiteSpace(BrowserWebsites.Text))
+                    //{
+                    TransmitToBrowserExtension();
+                    //}
 
-                Debug.WriteLine("\n**********");
-                Debug.WriteLine("Plan: " + CurrentlySelectedPlan.SelectedPlan);
-                Debug.WriteLine("Prog: " + GlobalVariables.CheckPrograms);
-                Debug.WriteLine("Web.: " + GlobalVariables.CheckBrowser + " || " + FilterWebsites.IsChecked.Value);
-                Debug.WriteLine("Mode: " + CheckMode);
-                Debug.WriteLine("**********\n");
+                    GlobalVariables.CheckBrowser = FilterWebsites.IsChecked.Value;
+                    GlobalVariables.CheckPrograms = FilterPrograms.IsChecked.Value;
 
-                timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
-                GlobalVariables.timerWindow = timerWindow;
-                GlobalVariables.timerWindow.Show();
-                GlobalVariables.TimerRunning = true;
-                Settings.Default.StartEnabled = false;
-                Settings.Default.BlacklistBlocked = true;
-                Settings.Default.Save();
-                Debug.WriteLine(TimerWindow.TimerOnHold);
-                //ToggleStartButton(false);
+                    Debug.WriteLine("\n**********");
+                    Debug.WriteLine("Plan: " + CurrentlySelectedPlan.SelectedPlan);
+                    Debug.WriteLine("Prog: " + GlobalVariables.CheckPrograms);
+                    Debug.WriteLine("Web.: " + GlobalVariables.CheckBrowser + " || " + FilterWebsites.IsChecked.Value);
+                    Debug.WriteLine("Mode: " + CheckMode);
+                    Debug.WriteLine("**********\n");
+
+                    timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
+                    GlobalVariables.timerWindow = timerWindow;
+                    GlobalVariables.timerWindow.Show();
+                    GlobalVariables.TimerRunning = true;
+                    Settings.Default.StartEnabled = false;
+                    Settings.Default.BlacklistBlocked = true;
+                    Settings.Default.Save();
+                    Debug.WriteLine(TimerWindow.TimerOnHold);
+                    //ToggleStartButton(false);
+                }
             }
         }
 

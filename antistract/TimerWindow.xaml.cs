@@ -42,7 +42,7 @@ namespace antistract
 
         bool ShouldAddToWeeklyLearnTime;
 
-        static bool TimerOnHold = false;
+        static public bool TimerOnHold = false;
 
         string EventTitle;
         string EventDescription;
@@ -59,6 +59,7 @@ namespace antistract
             SelectedPlanLabel.DataContext = CurrentlySelectedPlan;
             CurrentlySelectedPlan.SelectedPlan = currentlySelectedPlan;
             GetPlan(CurrentlySelectedPlan.SelectedPlan);
+            TimerOnHold = false;
             InitializeTimer();
         }
 
@@ -131,6 +132,7 @@ namespace antistract
         {
             ProductivityView.ShouldCheckNo();
             ProductivityView.SetExtensionCheckModePausing();
+            TimerOnHoldNO();
             GlobalVariables.TimerRunning = false;
             Settings.Default.StartEnabled = true;
             Settings.Default.BlacklistBlocked = false;
@@ -167,6 +169,7 @@ namespace antistract
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
+            Debug.WriteLine(TimerOnHold);
             if (TimerOnHold == false)
             {
                 timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));

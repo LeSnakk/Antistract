@@ -284,6 +284,7 @@ namespace antistract.MVVM.View
             BlacklistedPaths.Clear();
             namesList.Clear();
             DisplayBlacklistedNames.Clear();
+            Process[] processes;
 
             bool checkBrowser = GlobalVariables.CheckBrowser;
             bool checkPrograms = GlobalVariables.CheckPrograms;
@@ -302,7 +303,7 @@ namespace antistract.MVVM.View
                 //higher = slower = lower CPU usage
                 Thread.Sleep(500);
 
-                Process[] processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
+                processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
 
                 Debug.WriteLine("Globalvariables ohlypausing: " + GlobalVariables.OnlyPausing);
                 Debug.WriteLine("Globalvariables checkbrowser: " + GlobalVariables.CheckBrowser);
@@ -598,6 +599,7 @@ namespace antistract.MVVM.View
                 Settings.Default.StartEnabled = false;
                 Settings.Default.BlacklistBlocked = true;
                 Settings.Default.Save();
+                Debug.WriteLine(TimerWindow.TimerOnHold);
                 //ToggleStartButton(false);
             }
         }
@@ -864,6 +866,9 @@ namespace antistract.MVVM.View
             GlobalVariables.timerWindow.MainTimer.Stop();
             GlobalVariables.timerWindow.WasteTimer.Stop();
             GlobalVariables.timerWindow.Close();
+            TimerWindow.TimerOnHoldNO();
+            TimerWindow.TimerOnHold = false;
+            Debug.WriteLine(TimerWindow.TimerOnHold);
         }
 
         private void AddToWebsitesBlacklist_Click(object sender, RoutedEventArgs e)

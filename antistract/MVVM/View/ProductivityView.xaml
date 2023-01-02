@@ -71,7 +71,7 @@
                                    Foreground="#114B5F"
                                    FontSize="30"
                                    Margin="10,2,10,0" 
-                                   FontFamily="/Fonts/#Joan"/>
+                                   FontFamily="/Fonts/#Dosis"/>
                         </StackPanel>
 
                         <ListBox x:Name="listBox" 
@@ -187,7 +187,7 @@
                                    Foreground="#114B5F"
                                    FontSize="30"
                                    Margin="10,2,10,0" 
-                                   FontFamily="/Fonts/#Joan"/>
+                                   FontFamily="/Fonts/#Dosis"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal"
@@ -351,13 +351,15 @@
                            Source="/Images/circle.png" 
                            Margin="-250,4.5,0,0"
                            Height="18"
-                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                           RenderOptions.BitmapScalingMode="HighQuality"
+                           IsHitTestVisible="False"/>
                     <Image x:Name="Programs_circle_checked" 
                            Source="/Images/circle_checked.png" 
                            Margin="-250,4.5,0,0"
                            Height="18"
                            Visibility="Hidden"
-                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                           RenderOptions.BitmapScalingMode="HighQuality"
+                           IsHitTestVisible="False"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal"
@@ -388,13 +390,15 @@
                            Source="/Images/circle.png" 
                            Margin="-250,4.5,0,0"
                            Height="18"
-                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                           RenderOptions.BitmapScalingMode="HighQuality"
+                           IsHitTestVisible="False"/>
                     <Image x:Name="Websites_circle_checked" 
                            Source="/Images/circle_checked.png" 
                            Margin="-250,4.5,0,0"
                            Height="18"
                            Visibility="Hidden"
-                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                           RenderOptions.BitmapScalingMode="HighQuality"
+                           IsHitTestVisible="False"/>
                 </StackPanel>
 
                 <!--Blacklists area-->

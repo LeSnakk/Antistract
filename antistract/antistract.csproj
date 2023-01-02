@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Images\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -48,6 +49,7 @@
     <None Remove="Images\close.png" />
     <None Remove="Images\heart_book.png" />
     <None Remove="Images\home.png" />
+    <None Remove="Images\icon.ico" />
     <None Remove="Images\minimize.png" />
     <None Remove="Images\pen_6_0096C7.png" />
     <None Remove="Images\pen_6_023E8A.png" />
@@ -160,6 +162,9 @@
     <Resource Include="Images\home.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\minimize.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -184,6 +189,7 @@
     <Resource Include="Images\todo_list.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Images\icon.ico" />
     <Content Include="Plans\paradeplan.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

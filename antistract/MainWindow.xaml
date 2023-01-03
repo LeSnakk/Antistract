@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:antistract"
         xmlns:viewModel="clr-namespace:antistract.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="antistract" 
+        Title="Antistract" 
         Height="620" 
         Width="920"
         WindowStyle="None"

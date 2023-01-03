@@ -231,7 +231,7 @@
                                    RenderOptions.BitmapScalingMode="HighQuality">
                                 <Image.ToolTip>
                                     <StackPanel>
-                                        <TextBlock FontWeight="Bold">Week Routine</TextBlock>
+                                        <TextBlock FontWeight="Bold">Weekly Routine</TextBlock>
                                         <TextBlock x:Name="WeekComboToolTip">How long can you keep your Combo?</TextBlock>
                                     </StackPanel>
                                 </Image.ToolTip>

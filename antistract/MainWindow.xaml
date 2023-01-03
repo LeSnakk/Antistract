@@ -216,7 +216,7 @@
                                Foreground="#0096c7"
                                    FontWeight="Medium"
                                FontSize="22" 
-                               Margin="0,9,0,0"
+                               Margin="-1,9,0,0"
                                FontFamily="/Fonts/#Dosis"/>
                     </DockPanel>
                 </Border>

@@ -30,7 +30,7 @@ namespace antistract.MVVM.View
     public partial class PlansView : UserControl
     {
         private WrapPanel _PlanCreatorWrapPanel;
-        readonly string path = "Plans/paradeplan_2.xml";
+        readonly string path = "Plans/paradeplan.xml";
         public List<Plans> Plans = new List<Plans>();
         private string _currentlySelectedPlan = "";
         private bool _isEdited = false;

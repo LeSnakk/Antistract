@@ -60,7 +60,6 @@
     <None Remove="Images\save_90E0EF.png" />
     <None Remove="Images\todo_list.png" />
     <None Remove="Plans\paradeplan.xml" />
-    <None Remove="Plans\paradeplan_2.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -194,9 +193,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Content Include="Plans\paradeplan.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Plans\paradeplan_2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

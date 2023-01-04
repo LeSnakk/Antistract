@@ -28,7 +28,7 @@ namespace antistract
     public partial class TimerWindow : Window
     {
         CurrentlySelectedPlan CurrentlySelectedPlan = new CurrentlySelectedPlan();
-        readonly string path = "Plans/paradeplan_2.xml";
+        readonly string path = "Plans/paradeplan.xml";
         XmlNode SelectedPlanNodes;
         public DispatcherTimer MainTimer;
         public DispatcherTimer WasteTimer;

@@ -446,7 +446,7 @@ namespace antistract.MVVM.View
                         else
                         {
                             return false;
-                        }                       
+                        }
                     }
                     else if (temp.Contains("8fj*d-*c@cP}+i3f%aB*BD#63amL*i"))
                     {
@@ -706,62 +706,72 @@ namespace antistract.MVVM.View
 
         private void AddToBlacklist_Click(object sender, RoutedEventArgs e)
         {
-            if (SelectedProgramName != null)
+            ProgramNotSupportedMessage.Visibility = Visibility.Hidden;
+            try
             {
-                NoBlacklistPlaceholderText.Visibility = Visibility.Hidden;
-                blacklistList.IsEnabled = true;
-                if (SelectedProcessName.Contains("."))
+                if (SelectedProgramName != null)
                 {
-                    SelectedProcessName = SelectedProcessName.Substring(0, SelectedProcessName.LastIndexOf("."));
-                    SelectedProcessPath = paths[SelectedProgramName];
-                }
-                if (namesList.Count < 1)
-                {
-                    blacklistList.Items.Clear();
-                }
-
-                if (namesList.Contains(SelectedProgramName) && namesList.Contains(SelectedProcessName) && BlacklistedPaths.Contains(SelectedProcessPath))
-                {
-                    return;
-                }
-                else
-                {
-                    namesList.Add(SelectedProcessName);
-                    namesList.Add(SelectedProgramName);
-                    BlacklistedPaths.Add(SelectedProcessPath);
-
-                    DisplayBlacklistedNames.Add(SelectedProgramName);
-
-                    Debug.WriteLine(SelectedProcessPath);
-                    ListBoxItem item = new ListBoxItem();
-                    item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
-                    blacklistList.Items.Add(item);
-
-                    Settings.Default.BlacklistedPrograms.Add(SelectedProgramName.ToString());
-                    Settings.Default.BlacklistedProcesses.Add(SelectedProcessName.ToString());
-                    Settings.Default.BlacklistedPaths.Add(SelectedProcessPath.ToString());
-                    Settings.Default.BlacklistedDisplayNames.Add(SelectedProgramName.ToString());
-
-                    Settings.Default.Save();
-
-                    List<string> test = Settings.Default.BlacklistedPrograms.Cast<string>().ToList();
-                    foreach (string name in test)
+                    NoBlacklistPlaceholderText.Visibility = Visibility.Hidden;
+                    blacklistList.IsEnabled = true;
+                    if (SelectedProcessName.Contains("."))
                     {
-                        Debug.WriteLine("In user Settings:" + name);
+                        SelectedProcessName = SelectedProcessName.Substring(0, SelectedProcessName.LastIndexOf("."));
+                        SelectedProcessPath = paths[SelectedProgramName];
                     }
-                    Debug.WriteLine(Settings.Default.BlacklistedPrograms.Count);
+                    if (namesList.Count < 1)
+                    {
+                        blacklistList.Items.Clear();
+                    }
+
+                    if (namesList.Contains(SelectedProgramName) && namesList.Contains(SelectedProcessName) && BlacklistedPaths.Contains(SelectedProcessPath))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        namesList.Add(SelectedProcessName);
+                        namesList.Add(SelectedProgramName);
+                        BlacklistedPaths.Add(SelectedProcessPath);
+
+                        DisplayBlacklistedNames.Add(SelectedProgramName);
+
+                        Debug.WriteLine(SelectedProcessPath);
+                        ListBoxItem item = new ListBoxItem();
+                        item.Content = SelectedProgramName; // + " (" + SelectedProcessName + ")";
+                        blacklistList.Items.Add(item);
+
+
+                        Settings.Default.BlacklistedPrograms.Add(SelectedProgramName.ToString());
+                        Settings.Default.BlacklistedProcesses.Add(SelectedProcessName.ToString());
+                        Settings.Default.BlacklistedPaths.Add(SelectedProcessPath.ToString());
+                        Settings.Default.BlacklistedDisplayNames.Add(SelectedProgramName.ToString());
+
+                        Settings.Default.Save();
+
+                        List<string> test = Settings.Default.BlacklistedPrograms.Cast<string>().ToList();
+                        foreach (string name in test)
+                        {
+                            Debug.WriteLine("In user Settings:" + name);
+                        }
+                        Debug.WriteLine(Settings.Default.BlacklistedPrograms.Count);
+                    }
                 }
+                SelectedProgramName = null;
+                SelectedProcessName = null;
+                SelectedProcessPath = null;
+                Deselecting = true;
+                listBox.UnselectAll();
+                Deselecting = false;
             }
-            SelectedProgramName = null;
-            SelectedProcessName = null;
-            SelectedProcessPath = null;
-            Deselecting = true;
-            listBox.UnselectAll();
-            Deselecting = false;
+            catch (Exception ex)
+            {
+                ProgramNotSupportedMessage.Visibility = Visibility.Visible;
+            }
         }
 
         private void RemoveFromBlacklist_Click(object sender, RoutedEventArgs e)
         {
+            ProgramNotSupportedMessage.Visibility = Visibility.Hidden;
             if (RemoveSelectedProgramName != null)
             {
                 namesList.Remove(RemoveSelectedProgramName);

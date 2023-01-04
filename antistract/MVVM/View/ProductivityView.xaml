@@ -72,6 +72,7 @@
                                    FontSize="30"
                                    Margin="10,2,10,0" 
                                    FontFamily="/Fonts/#Dosis"/>
+
                         </StackPanel>
 
                         <ListBox x:Name="listBox" 
@@ -120,7 +121,7 @@
                                Content="No programs selected" 
                                VerticalAlignment="Top"
                                HorizontalAlignment="Left" 
-                               Margin="280,102,0,0"
+                               Margin="300,90,0,0"
                                Visibility="Visible"/>
 
                         <Button x:Name="btn_CallLoad" Content="Load programs" Click="GetInstalledPrograms" 
@@ -132,8 +133,18 @@
 
                         <Label x:Name="LoadingText" Content="loading programs..." 
                                HorizontalAlignment="Left"
-                               VerticalAlignment="Top" Margin="43,110,0,0"
+                               VerticalAlignment="Top" Margin="45,88,0,0"
                                Visibility="Hidden"/>
+
+                        <Label x:Name="ProgramNotSupportedMessage"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               FontSize="12"
+                               Margin="0,155,0,0"
+                               FontFamily="/Fonts/#Dosis"
+                               Foreground="#023E8A"
+                               Visibility="Hidden"
+                               Content="Due to Windows policy this program might not be supported!" Height="26"/>
 
                         <Label x:Name="BlockBlacklistFields" 
                                IsHitTestVisible="{Binding Source={x:Static properties:Settings.Default}, Path=BlacklistBlocked, Mode=TwoWay}"/>
@@ -249,7 +260,7 @@
                                Content="No websites to block" 
                                VerticalAlignment="Top"
                                HorizontalAlignment="Left" 
-                               Margin="160,102,0,0"
+                               Margin="155,105,0,0"
                                Visibility="Visible"/>
 
 

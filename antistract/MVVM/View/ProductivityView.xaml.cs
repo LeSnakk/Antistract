@@ -514,7 +514,7 @@ namespace antistract.MVVM.View
             {
                 ComboBoxItem selectedPlan = (ComboBoxItem)pickPlanDropdown.SelectedItem;
                 CurrentlySelectedPlan.SelectedPlan = selectedPlan.Content.ToString();
-                if (GlobalVariables.OnlyPausing != null && CheckMode != "" && Settings.Default.BlacklistedPrograms.Count != 0)
+                if (GlobalVariables.OnlyPausing != null && CheckMode != "" && CareAboutPrograms())
                 {
                     Settings.Default.StartEnabled = true;
                     Settings.Default.Save();
@@ -550,7 +550,7 @@ namespace antistract.MVVM.View
         {
             GlobalVariables.OnlyPausing = false;
             CheckMode = "closing";
-            if (CurrentlySelectedPlan.SelectedPlan != null && Settings.Default.BlacklistedPrograms.Count != 0)
+            if (CurrentlySelectedPlan.SelectedPlan != null && CareAboutPrograms())
             {
                 Settings.Default.StartEnabled = true;
                 Settings.Default.Save();
@@ -563,7 +563,7 @@ namespace antistract.MVVM.View
             GlobalVariables.OnlyPausing = true;
             CheckMode = "pausing";
             SetExtensionCheckModePausing();
-            if (CurrentlySelectedPlan.SelectedPlan != null && Settings.Default.BlacklistedPrograms.Count != 0)
+            if (CurrentlySelectedPlan.SelectedPlan != null && CareAboutPrograms())
             {
                 Settings.Default.StartEnabled = true;
                 Settings.Default.Save();
@@ -573,7 +573,7 @@ namespace antistract.MVVM.View
 
         private void StartTimer_Click(object sender, RoutedEventArgs e)
         {
-            if (!(FilterWebsites.IsChecked.Value == false && FilterPrograms.IsChecked.Value == false))
+            if (!(FilterWebsites.IsChecked.Value == false && FilterPrograms.IsChecked.Value == false) && CareAboutPrograms())
             {
                 timerWindow = null;
                 GlobalVariables.timerWindow = null;
@@ -604,6 +604,23 @@ namespace antistract.MVVM.View
                     Debug.WriteLine(TimerWindow.TimerOnHold);
                     //ToggleStartButton(false);
                 }
+            }
+        }
+
+        private bool CareAboutPrograms()
+        {
+            if (GlobalVariables.CheckPrograms || FilterPrograms.IsChecked.Value == true)
+            {
+                if (Settings.Default.BlacklistedPrograms.Count != 0)
+                {
+                    return true;
+                } else
+                {
+                    return false;
+                }
+            } else
+            {
+                return true;
             }
         }
 
@@ -869,7 +886,7 @@ namespace antistract.MVVM.View
             ShouldCheckNo();
             GlobalVariables.TimerRunning = false;
             SetExtensionCheckModePausing();
-            if (GlobalVariables.OnlyPausing != null && CheckMode != "" && Settings.Default.BlacklistedPrograms.Count != 0)
+            if (GlobalVariables.OnlyPausing != null && CheckMode != "" && CareAboutPrograms())
             {
                 Settings.Default.StartEnabled = true;
                 Settings.Default.Save();

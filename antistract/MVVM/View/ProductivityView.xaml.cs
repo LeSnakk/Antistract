@@ -90,7 +90,8 @@ namespace antistract.MVVM.View
                 Settings.Default.BlacklistedPaths = new StringCollection();
                 Settings.Default.BlacklistedDisplayNames = new StringCollection();
                 Settings.Default.BlacklistedWebsites = new StringCollection();
-
+                Settings.Default.BlacklistedWebsites.Add(("www.youtube.com").ToString());
+                Settings.Default.BlacklistedWebsites.Add(("netflix.com").ToString());
                 Settings.Default.FirstStartup = false;
                 Settings.Default.Save();
 

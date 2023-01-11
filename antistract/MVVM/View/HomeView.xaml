@@ -39,7 +39,7 @@
 
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Hey,  "
+                    <TextBlock Text="Hey, "
                                Foreground="#114B5F"
                                FontSize="28" 
                                HorizontalAlignment="left"

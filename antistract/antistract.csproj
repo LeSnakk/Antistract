@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="BrowserExtensions\Chrome\icon.png" />
     <None Remove="Fonts\Dosis-VariableFont_wght.ttf" />
     <None Remove="Fonts\Joan-Regular.ttf" />
     <None Remove="Images\Achievements\completedLearningCycles.png" />
@@ -70,6 +71,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="BrowserExtensions\Chrome\icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Fonts\Dosis-VariableFont_wght.ttf" />
     <Resource Include="Fonts\Joan-Regular.ttf" />
     <Resource Include="Images\Achievements\completedLearningCycles.png">

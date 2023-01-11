@@ -30,6 +30,8 @@ namespace antistract
             LoadUsername();
             Settings.Default.BlacklistBlocked = false;
             Settings.Default.Save();
+            ProductivityView.ShouldCheckNo();
+            ProductivityView.SetExtensionCheckModePausing();
         }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)

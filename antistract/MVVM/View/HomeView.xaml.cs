@@ -26,7 +26,6 @@ namespace antistract.MVVM.View
     {
         readonly MainWindow mainWndw = (MainWindow)Application.Current.MainWindow;
 
-        int CurrentWeek;
         public HomeView()
         {
             InitializeComponent();
@@ -65,6 +64,7 @@ namespace antistract.MVVM.View
             }          
         }
 
+        //Managing and saving the current week in user settings
         public void GetCurrentWeek()
         {
             var cultureInfo = Thread.CurrentThread.CurrentCulture;
@@ -74,7 +74,6 @@ namespace antistract.MVVM.View
             CalendarWeekRule weekRule = cultureInfo.DateTimeFormat.CalendarWeekRule;
             System.Globalization.Calendar cal = cultureInfo.Calendar;
             int week = cal.GetWeekOfYear(dt, weekRule, firstDay);
-            CurrentWeek = week;
 
             if (Settings.Default.Week == 0)
             {
@@ -91,6 +90,7 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Calculate wether a achievement is unlocked based on weekly learn time
         public void ManageAchievements()
         {
             //15 Minutes
@@ -201,6 +201,7 @@ namespace antistract.MVVM.View
 
         }
 
+        //Calculate if the current week follows the last week to determine week combo
         public bool isFollowingWeek()
         {
             var cultureInfo = Thread.CurrentThread.CurrentCulture;

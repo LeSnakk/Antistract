@@ -76,10 +76,10 @@ namespace antistract.MVVM.View
             Settings.Default.BlacklistedDisplayNames.Clear();
         }
 
+        //Initialize user settings on first start
         public void FirstStartup()
         {
             CheckMode = "";
-
             Settings.Default.StartEnabled = false;
             Settings.Default.Save();
 
@@ -104,18 +104,20 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Load saved blacklist data
         public void LoadBlacklistUserSave()
         {
+            //Location of settings.settings (user settings)
             Debug.WriteLine(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
 
-            //Debug.WriteLine("Current no of stored blacklisted programs: " + Settings.Default.BlacklistedDisplayNames.Count);
-
+            //Reset variables
             BlacklistedPaths.Clear();
             namesList.Clear();
             DisplayBlacklistedNames.Clear();
 
             BlacklistedWebsites.Clear();
 
+            //Load data
             BlacklistedPaths = Settings.Default.BlacklistedPaths.Cast<string>().ToList();
             namesList = Settings.Default.BlacklistedProcesses.Cast<string>().ToList();
             namesList.AddRange(Settings.Default.BlacklistedPrograms.Cast<string>().ToList());
@@ -126,6 +128,7 @@ namespace antistract.MVVM.View
             blacklistList.Items.Clear();
             WebsitesBlacklistList.Items.Clear();
 
+            //Create listbox entries for blacklisted items to be displayed on GUI
             foreach (string name in DisplayBlacklistedNames)
             {
                 ListBoxItem item = new ListBoxItem();
@@ -138,6 +141,8 @@ namespace antistract.MVVM.View
                 blacklistList.IsEnabled = false;
             }
             int temp = 0;
+
+            //Call method to transmit blacklisted websites to Browser extension
             foreach (string name in BlacklistedWebsites)
             {
                 ListBoxItem item = new ListBoxItem();
@@ -160,11 +165,13 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Manage loading the installed programs
         public void GetInstalledPrograms(object sender, RoutedEventArgs e)
         {
             paths.Clear();
             programs.Clear();
 
+            //Callback function to display entries in listbox
             loadInstalledPrograms += () =>
             {
                 ShowListCallBack();
@@ -172,10 +179,13 @@ namespace antistract.MVVM.View
 
             btn_CallLoad.Visibility = Visibility.Hidden;
             LoadingText.Visibility = Visibility.Visible;
+
+            //Loading programs on new thread for the UI to not become unresponsive
             Thread thread = new Thread(loadInstalledPrograms) { IsBackground = true };
             thread.Start();
         }
 
+        //Search for installed programs. Most installed programs are registered in the AppsFolder
         public static void LoadInstalledPrograms()
         {
             var FOLDERID_AppsFolder = new Guid("{1e87508d-89c2-42f0-8a7e-645a0f50ca58}");
@@ -191,6 +201,7 @@ namespace antistract.MVVM.View
             }
         }
 
+        //If a program is selected and added by the user, it's added to blacklist 
         public static void AddToInstalledProgramsList(string programName, string programPath, string programType)
         {
             string processName = "";
@@ -214,9 +225,12 @@ namespace antistract.MVVM.View
             else if (programType == "win")
             {
                 //...
+                //Microsoft store apps are weird. Please don't use Microsoft store.
             }
             Debug.WriteLine(programName + ": " + processName);
         }
+
+        //If certain programs have the same name, a number is added to it's displayed name and path
         public static void AddDuplicateEntry(string programName, string processName, int i)
         {
             if (programs.ContainsKey(programName + " (" + i + ")"))
@@ -240,12 +254,14 @@ namespace antistract.MVVM.View
             }
         }
 
-
+        //To display the installed programs on the UI, a Dispatcher is needed to update the UI from the non-UI thread.
+        //It's running synchronously on the program-loading-thread
         private void ShowListCallBack()
         {
             Application.Current.Dispatcher.Invoke(new Action(() => { ShowTheList(); }));
         }
 
+        //Create listbox items for each installed program
         private void ShowTheList()
         {
             listBox.Items.Clear();
@@ -268,18 +284,19 @@ namespace antistract.MVVM.View
             blacklistList.IsEnabled = true;
         }
 
+        //Begin the timer
         public static void startChecking()
         {
             StartChecking();
             TimerWindow.TimerOnHoldNO();
         }
-
         public static void StartChecking()
         {
             bgWorker.RunWorkerAsync();
         }
 
-
+        //Logic for supervising running programs and communicating to browser extension
+        //This is a background worker. It is used to check every n seconds which programs are running. Running on another thread.
         private void BgWorker_DoWork(object? sender, DoWorkEventArgs e)
         {
             BlacklistedPaths.Clear();
@@ -299,23 +316,27 @@ namespace antistract.MVVM.View
             namesList.AddRange(Settings.Default.BlacklistedPrograms.Cast<string>().ToList());
             DisplayBlacklistedNames = Settings.Default.BlacklistedDisplayNames.Cast<string>().ToList();
 
+            //If isChecked is true the bgworker checks for running programs. Can be false eg when Plan entry is "break"
             while (isChecked())
             {
+                //Checking every n ms
                 //higher = slower = lower CPU usage
                 Thread.Sleep(500);
 
+                //Check if blacklisted program name can be found in active processes. If so, add process to array
                 processes = namesList.SelectMany(name => Process.GetProcessesByName(name)).ToArray();
 
                 Debug.WriteLine("Globalvariables ohlypausing: " + GlobalVariables.OnlyPausing);
                 Debug.WriteLine("Globalvariables checkbrowser: " + GlobalVariables.CheckBrowser);
                 Debug.WriteLine(processes.Length);
-                //When not Browser but Programs
+                //When browser should not be checked but programs
                 if (processes.Length == 0 && !checkBrowser && checkPrograms)
                 {
                     TimerWindow.TimerOnHoldNO();
                     Debug.WriteLine("Notepad is not running");
                     Debug.WriteLine("!1");
                 }
+                //When programs should not be checked but browser
                 else if (!checkPrograms && GlobalVariables.CheckBrowser && GlobalVariables.OnlyPausing)
                 {
                     Debug.WriteLine("bool is: " + checkBrowser);
@@ -328,10 +349,10 @@ namespace antistract.MVVM.View
                     CheckBrowser();
                     Debug.WriteLine("!2");
                 }
-                //Check Programs
+                //If array of blacklisted but running program processes is > 0 and programs should be checked
                 else if (processes.Length >= 1 && checkPrograms)
                 {
-                    Debug.WriteLine("Notepad is running");
+                    Debug.WriteLine("Unallowed process is running");
 
                     foreach (Process process in processes)
                     {
@@ -340,24 +361,29 @@ namespace antistract.MVVM.View
                         {
                             try
                             {
-                                {
+                                {   //Check if the path of the process is also blacklisted to make sure no other program with the same name at another location is falsely suspected
                                     if (BlacklistedPaths.Any(path => process.MainModule.FileName.Replace("/", "\\").Substring(0, process.MainModule.FileName.Replace("/", "\\").LastIndexOf("\\") + 1).Contains(path)))
                                     {
                                         Debug.WriteLine(process.MainModule.FileName);
                                         Debug.WriteLine("Closing...");
+                                        //If checkMode = Closing
                                         if (!GlobalVariables.OnlyPausing)
                                         {
                                             RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                                            //Not pausing timer because...
                                             TimerWindow.TimerOnHoldNO();
                                             Debug.WriteLine("!3");
+                                            //...the process gets killed
                                             while (!process.HasExited)
                                             {
                                                 process.Kill();
                                             }
                                         }
+                                        //If checkMode = Pausing
                                         else if (GlobalVariables.OnlyPausing)
                                         {
                                             RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
+                                            //Pausing the timer as long as program is running
                                             TimerWindow.TimerOnHoldYES();
                                             Debug.WriteLine(process);
                                             Debug.WriteLine("!4");
@@ -402,13 +428,14 @@ namespace antistract.MVVM.View
             Debug.WriteLine("Checking stopped");
         }
 
+        //Actions if a blacklisted website is opened
         private void CheckBrowser()
         {
-            Debug.WriteLine("XXXX");
             if (GlobalVariables.CheckBrowser)
             {
                 if (GlobalVariables.OnlyPausing)
                 {
+                    //If checkMode is pausing and a blacklisted website is opened, the timer is paused
                     if (ReadGCExData())
                     {
                         RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
@@ -417,6 +444,7 @@ namespace antistract.MVVM.View
                         Debug.WriteLine(GlobalVariables.CheckBrowser);
                         Debug.WriteLine("Chrome forbidden tab open");
                     }
+                    //If checkMode is pausing and blacklisted tab is opened, the timer is no longer paused
                     else if (!ReadGCExData())
                     {
                         RoutedEventArgs newEventArgs = new RoutedEventArgs(Button.ClickEvent);
@@ -427,15 +455,17 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Bool that reads the Google Chrome extension data and reports if a tab is opened accordingly
         public bool ReadGCExData()
         {
-            Debug.WriteLine("go");
             try
             {
+                //Reading Google Chrome extension data file
                 using (var fs = new FileStream(GCExLocation, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 using (var sr = new StreamReader(fs, Encoding.ASCII))
                 {
                     string temp = sr.ReadToEnd();
+                    //String that indicates that a blacklisted website has been opened
                     if (temp.Contains("-cT2A;z=YzW}f4ht/H6epiW2!Md*@,"))
                     {
                         Debug.WriteLine("true");
@@ -449,11 +479,13 @@ namespace antistract.MVVM.View
                             return false;
                         }
                     }
+                    //String that indicates that no blacklisted website has been opened
                     else if (temp.Contains("8fj*d-*c@cP}+i3f%aB*BD#63amL*i"))
                     {
                         Debug.WriteLine("false1");
                         return false;
                     }
+                    //Fallback: If error occurs, it's not blocking the software
                     else
                     {
                         Debug.WriteLine("false2");
@@ -473,6 +505,7 @@ namespace antistract.MVVM.View
             return ShouldCheck;
         }
 
+        //Create an entry in the dropdown for each saved plan
         private void FillPickPlanDropdown()
         {
             PickPlanDropdown.Items.Clear();
@@ -487,6 +520,7 @@ namespace antistract.MVVM.View
                 }
             }
             else
+            //If no plan is available, a default message is shown which redirects to the PlansView when selected
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "<Please create a plan first>";
@@ -502,11 +536,13 @@ namespace antistract.MVVM.View
             item.Content = "hallo";
         }
 
+        //If a plan is selected/the selection changed, the selected plan gets stored
         private void PickPlanDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             PickPlanDropdownDefaultText.Visibility = Visibility.Hidden;
             ComboBox pickPlanDropdown = (ComboBox)sender;
 
+            //Redirecting to PlansView
             if (GlobalVariables.PlanNames.Count < 1)
             {
                 SwitchToPlansView();
@@ -515,6 +551,7 @@ namespace antistract.MVVM.View
             {
                 ComboBoxItem selectedPlan = (ComboBoxItem)pickPlanDropdown.SelectedItem;
                 CurrentlySelectedPlan.SelectedPlan = selectedPlan.Content.ToString();
+                //Manages if the Start button should be enabled based on if the other required parameters are given (checkmode, blacklist)
                 if (GlobalVariables.OnlyPausing != null && CheckMode != "" && CareAboutPrograms())
                 {
                     Settings.Default.StartEnabled = true;
@@ -523,12 +560,14 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Method doing exactly what it sounds like
         public void SwitchToPlansView()
         {
             mainWndw.MenuButtonPlans.IsChecked = true;
             GoToPlansViewButton.Command.Execute(null);
         }
 
+        //Handles if the browser should be supervised
         public static void ShouldCheckYes()
         {
             ShouldCheck = true;
@@ -547,10 +586,12 @@ namespace antistract.MVVM.View
             SetExtensionCheckModePausing();
         }
 
+        //If checkMode is set to close the responsible variables are set accordingly
         private void Close_Program_Click(object sender, RoutedEventArgs e)
         {
             GlobalVariables.OnlyPausing = false;
             CheckMode = "closing";
+            //Manages if the Start button should be enabled based on if the other required parameters are given
             if (CurrentlySelectedPlan.SelectedPlan != null && CareAboutPrograms())
             {
                 Settings.Default.StartEnabled = true;
@@ -559,11 +600,13 @@ namespace antistract.MVVM.View
             ModeText.Text = "Distracting processes will be automatically closed.";
         }
 
+        //If checkMode is set to pausing the responsible variables are set accordingly
         private void Stop_Timer_Click(object sender, RoutedEventArgs e)
         {
             GlobalVariables.OnlyPausing = true;
             CheckMode = "pausing";
             SetExtensionCheckModePausing();
+            //Manages if the Start button should be enabled based on if the other required parameters are given
             if (CurrentlySelectedPlan.SelectedPlan != null && CareAboutPrograms())
             {
                 Settings.Default.StartEnabled = true;
@@ -572,22 +615,24 @@ namespace antistract.MVVM.View
             ModeText.Text = "Distracting processes will interrupt your schedule.";
         }
 
+        //Start button is clicked
         private void StartTimer_Click(object sender, RoutedEventArgs e)
         {
+            //Check if all required parameters are given
             if (!(FilterWebsites.IsChecked.Value == false && FilterPrograms.IsChecked.Value == false) && CareAboutPrograms())
             {
+                //Reset Timer Window in case an other plan had been started prior
                 timerWindow = null;
                 GlobalVariables.timerWindow = null;
                 if (!GlobalVariables.TimerRunning)
                 {
-                    //if (!String.IsNullOrWhiteSpace(BrowserWebsites.Text))
-                    //{
+                    //Call method to transmit the blacklist and checkMode information to browser extension
                     TransmitToBrowserExtension();
-                    //}
 
                     GlobalVariables.CheckBrowser = FilterWebsites.IsChecked.Value;
                     GlobalVariables.CheckPrograms = FilterPrograms.IsChecked.Value;
 
+                    //Developer information: What exactly is the timer having an eye on now?
                     Debug.WriteLine("\n**********");
                     Debug.WriteLine("Plan: " + CurrentlySelectedPlan.SelectedPlan);
                     Debug.WriteLine("Prog: " + GlobalVariables.CheckPrograms);
@@ -595,6 +640,7 @@ namespace antistract.MVVM.View
                     Debug.WriteLine("Mode: " + CheckMode);
                     Debug.WriteLine("**********\n");
 
+                    //Instanciate Timerwindow with the currently selected plan
                     timerWindow = new TimerWindow(CurrentlySelectedPlan.SelectedPlan);
                     GlobalVariables.timerWindow = timerWindow;
                     GlobalVariables.timerWindow.Show();
@@ -603,11 +649,11 @@ namespace antistract.MVVM.View
                     Settings.Default.BlacklistBlocked = true;
                     Settings.Default.Save();
                     Debug.WriteLine(TimerWindow.TimerOnHold);
-                    //ToggleStartButton(false);
                 }
             }
         }
 
+        //Bool returns if the running programs should be supervised
         private bool CareAboutPrograms()
         {
             if (GlobalVariables.CheckPrograms || FilterPrograms.IsChecked.Value == true)
@@ -625,6 +671,7 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Transmit checkMode data to browser extension. Communication via XML file
         private void TransmitToBrowserExtension()
         {
             XmlDocument doc = new XmlDocument();
@@ -643,6 +690,8 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Transmit blacklisted websites data to browser extension. Communication via XML file
+        //Takes parameters: website link, should database be cleared first, should said website link be added or removed from database
         public static void SyncToXML(string websiteName, bool clearFirst, string addOrRemove)
         {
             XmlDocument doc = new XmlDocument();
@@ -682,12 +731,12 @@ namespace antistract.MVVM.View
             doc.Save("BrowserExtensions/Chrome/data.xml");
         }
 
+        //Storing website in user settings
         public static void AddWebsiteToSaves(string websiteName)
         {
             Settings.Default.BlacklistedWebsites.Add(websiteName.ToString());
             Settings.Default.Save();
         }
-
 
         public static void SetExtensionCheckModePausing()
         {
@@ -712,15 +761,16 @@ namespace antistract.MVVM.View
             doc.Save("BrowserExtensions/Chrome/data.xml");
         }
 
+        //Manage availability of filter UI
         private void ToggleAddToBlacklistButton(bool isDisabled)
         {
             AddToBlacklist.IsEnabled = isDisabled;
         }
-
         private void ToggleRemoveFromBlacklistButton(bool isDisabled)
         {
             RemoveFromBlacklist.IsEnabled = isDisabled;
         }
+
 
         private void AddToBlacklist_Click(object sender, RoutedEventArgs e)
         {

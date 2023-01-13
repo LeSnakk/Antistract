@@ -771,7 +771,7 @@ namespace antistract.MVVM.View
             RemoveFromBlacklist.IsEnabled = isDisabled;
         }
 
-
+        //Add selected program to the program blacklist
         private void AddToBlacklist_Click(object sender, RoutedEventArgs e)
         {
             ProgramNotSupportedMessage.Visibility = Visibility.Hidden;
@@ -795,6 +795,7 @@ namespace antistract.MVVM.View
                     {
                         return;
                     }
+                    //Store program name, process name and path in blacklist
                     else
                     {
                         namesList.Add(SelectedProcessName);
@@ -831,12 +832,14 @@ namespace antistract.MVVM.View
                 listBox.UnselectAll();
                 Deselecting = false;
             }
+            //Some programs (eg certain Microsoft store apps or system Apps are not supported due to Windows policy)
             catch (Exception ex)
             {
                 ProgramNotSupportedMessage.Visibility = Visibility.Visible;
             }
         }
 
+        //Remove selected program (name, process, path) from blacklist
         private void RemoveFromBlacklist_Click(object sender, RoutedEventArgs e)
         {
             ProgramNotSupportedMessage.Visibility = Visibility.Hidden;
@@ -879,8 +882,10 @@ namespace antistract.MVVM.View
             RemoveSelectedProcessPath = "";
         }
 
+        //Obtain currently selected program listbox entry on selection change
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //Not when listbox selection changes from codebehind (eg after removing program entry from listbox)
             if (!Deselecting)
             {
                 string output;
@@ -893,6 +898,7 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Obtain currently selected already blacklisted program listbox entry on selection change
         private void blacklistList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string output;
@@ -932,6 +938,7 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Timer stop button
         private void StopTimer_Click(object sender, RoutedEventArgs e)
         {
             ShouldCheckNo();
@@ -952,13 +959,16 @@ namespace antistract.MVVM.View
             Debug.WriteLine(TimerWindow.TimerOnHold);
         }
 
+        //Obtain typed in website string and store in blacklist
         private void AddToWebsitesBlacklist_Click(object sender, RoutedEventArgs e)
         {
+            //Check if entry is valid
             if (!String.IsNullOrWhiteSpace(BrowserWebsites.Text))
             {
                 NoWebsitesBlacklistPlaceholderText.Visibility = Visibility.Hidden;
                 WebsitesBlacklistList.IsEnabled = true;
 
+                //Prevent double entries
                 foreach (ListBoxItem entry in WebsitesBlacklistList.Items)
                 {
                     if (entry.Content.ToString() == BrowserWebsites.Text.ToString())
@@ -974,6 +984,7 @@ namespace antistract.MVVM.View
                 item.Content = BrowserWebsites.Text; // + " (" + SelectedProcessName + ")";
                 WebsitesBlacklistList.Items.Add(item);
 
+                //Call to transmit blacklisted website to browser extension
                 SyncToXML(BrowserWebsites.Text, false, "add");
                 AddWebsiteToSaves(BrowserWebsites.Text);
 
@@ -981,6 +992,7 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Remove selected website entry from blacklist
         private void RemoveFromWebsitesBlacklist_Click(object sender, RoutedEventArgs e)
         {
 
@@ -992,6 +1004,8 @@ namespace antistract.MVVM.View
 
             SelectedWebsite = "";
             RemoveFromWebsitesBlacklist.IsEnabled = false;
+
+            //Deselect listbox because item is removed
             Deselecting = true;
             WebsitesBlacklistList.UnselectAll();
             Deselecting = false;
@@ -1002,8 +1016,10 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Obtain currently selected already blacklisted website listbox entry on selection change
         private void WebsitesBlacklistList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //Not when listbox selection changes from codebehind (eg after removing website entry from listbox)
             if (!Deselecting)
             {
                 ListBoxItem lbi = WebsitesBlacklistList.SelectedItem as ListBoxItem;
@@ -1012,6 +1028,7 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Reload website blacklist after entry removal
         private void ReloadWebsitesBlacklistList()
         {
             Deselecting = true;
@@ -1026,6 +1043,7 @@ namespace antistract.MVVM.View
             Deselecting = false;
         }
 
+        //Handle behaviour when pen icon next to programs/websites tab is clicked
         private void EditWebsites_Click(object sender, RoutedEventArgs e)
         {
             AnimateUp(ProgramsBlacklistBorder);
@@ -1033,7 +1051,6 @@ namespace antistract.MVVM.View
             WebsitesBlacklistBorder.Visibility = Visibility.Visible;
             AnimateDown(WebsitesBlacklistBorder);
         }
-
         private void EditPrograms_Click(object sender, RoutedEventArgs e)
         {
             AnimateUp(WebsitesBlacklistBorder);
@@ -1042,6 +1059,8 @@ namespace antistract.MVVM.View
             AnimateDown(ProgramsBlacklistBorder);
         }
 
+        //Animations for programs and websites blacklist area appearance
+            //Margins are changed with easing function to achieve smooth animation
         private void AnimateDown(Border border)
         {
             ThicknessAnimation animateMargin = new ThicknessAnimation(new Thickness(0, 0, 0, 0), new Duration(TimeSpan.FromMilliseconds(500)));
@@ -1051,7 +1070,6 @@ namespace antistract.MVVM.View
             border.BeginAnimation(MarginProperty, animateMargin);
             AnimateDown(SubBlacklistArea);
         }
-
         private void AnimateUp(Border border)
         {
             ThicknessAnimation animateMargin = new ThicknessAnimation(new Thickness(0, -175, 0, 0), new Duration(TimeSpan.FromMilliseconds(500)));
@@ -1061,7 +1079,6 @@ namespace antistract.MVVM.View
             border.BeginAnimation(MarginProperty, animateMargin);
             AnimateUp(SubBlacklistArea);
         }
-
         private void AnimateDown(StackPanel stackpanel)
         {
             ThicknessAnimation animateMargin = new ThicknessAnimation(new Thickness(0, -10, 0, 0), new Duration(TimeSpan.FromMilliseconds(500)));
@@ -1070,7 +1087,6 @@ namespace antistract.MVVM.View
             animateMargin.EasingFunction = cubicEase;
             stackpanel.BeginAnimation(MarginProperty, animateMargin);
         }
-
         private void AnimateUp(StackPanel stackpanel)
         {
             ThicknessAnimation animateMargin = new ThicknessAnimation(new Thickness(0, -120, 0, 0), new Duration(TimeSpan.FromMilliseconds(500)));
@@ -1080,6 +1096,7 @@ namespace antistract.MVVM.View
             stackpanel.BeginAnimation(MarginProperty, animateMargin);
         }
 
+        //Handle if programs and/or websites are selected to be supervised
         private void FilterWebsites_Checked(object sender, RoutedEventArgs e)
         {
             GlobalVariables.BrowserClose = FilterWebsites.IsChecked.Value;
@@ -1087,7 +1104,6 @@ namespace antistract.MVVM.View
             FilteringTextMsg();
             CheckBox();
         }
-
         private void FilterPrograms_Checked(object sender, RoutedEventArgs e)
         {
             GlobalVariables.CheckPrograms = FilterPrograms.IsChecked.Value;
@@ -1095,6 +1111,7 @@ namespace antistract.MVVM.View
             FilteringTextMsg();
         }
 
+        //Change UI information accordingly
         private void FilteringTextMsg()
         {
             if (!GlobalVariables.CheckPrograms && !GlobalVariables.CheckBrowser)
@@ -1115,6 +1132,7 @@ namespace antistract.MVVM.View
             }
         }
 
+        //UI checkbox next to programs and websites tabs
         private void CheckBox()
         {
             if (GlobalVariables.CheckPrograms)

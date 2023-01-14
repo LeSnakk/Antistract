@@ -63,7 +63,7 @@ namespace antistract
             InitializeTimer();
         }
 
-        //Retrieve selected plan data
+        //Retrieve and store selected plan data
         public void GetPlan(string PlanName)
         {
             XmlDocument doc = new XmlDocument();
@@ -78,12 +78,9 @@ namespace antistract
                     {
                         SelectedPlanNodes = Event;
                         TotalEvents = Event.ChildNodes.Count;
-                        Debug.WriteLine("SELECTED PLAN:\n" + Event["entryName"].InnerText);
+
                         for (int j = 1; j < Event.ChildNodes.Count; j++)
                         {
-                            /*Debug.WriteLine(Event.ChildNodes[j]["title"].InnerText);
-                            Debug.WriteLine(Event.ChildNodes[j]["type"].InnerText);
-                            Debug.WriteLine(Event.ChildNodes[j]["duration"].InnerText);*/
                             TotalPlanTime += Int32.Parse(Event.ChildNodes[j]["duration"].InnerText);
                         }
                     }
@@ -92,7 +89,7 @@ namespace antistract
             CalculateClosingTime(TotalPlanTime);
         }
 
-        //First behaviour of the Timer. Starting the supervision of programs/websites
+        //Controls behaviour of the Timer at given CurrentEvent no. Starting the supervision of programs/websites
         private void InitializeTimer()
         {
             if (CurrentEvent < TotalEvents)
@@ -115,8 +112,6 @@ namespace antistract
 
                 EntryTitle.Content = SelectedPlanNodes.ChildNodes[CurrentEvent]["title"].InnerText;
                 StartTimer(Int32.Parse(SelectedPlanNodes.ChildNodes[CurrentEvent]["duration"].InnerText));
-
-                CheckEventType();
             }
             else
             {
@@ -125,11 +120,7 @@ namespace antistract
             }
         }
 
-        private void CheckEventType()
-        {
-            
-        }
-
+        //Reset all parameters and variables after plan has been finished
         public void EndTimer()
         {
             ProductivityView.ShouldCheckNo();
@@ -146,6 +137,7 @@ namespace antistract
             this.Close();
         }
 
+        //Each event gets an own timer. It is set here
         public void StartTimer(int Minutes)
         {
             MainTimer = new DispatcherTimer();
@@ -158,6 +150,8 @@ namespace antistract
 
             Timer.Content = (int)Minutes;
             timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
+
+            //Set time interval of the timer (ticks every second)
             MainTimer.Tick += dispatcherTimer_Tick;
             MainTimer.Interval = new TimeSpan(0, 0, 1);
 
@@ -166,12 +160,13 @@ namespace antistract
             MainTimer.Start();
             WasteTimer.Start();
             
-            //Timer.Content = timeLeft.TotalMinutes;
             ClosingTime.Content = closingTime.ToString("HH:mm");
         }
+
+        //Every second this code gets executed once
+        //Controls behaviour of timer
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            Debug.WriteLine(TimerOnHold);
             if (TimerOnHold == false)
             {
                 timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
@@ -205,6 +200,7 @@ namespace antistract
             TimerWasted.Content = timeWasted.ToString(@"hh\:mm\:ss");
             ClosingTime.Content = closingTime.ToString("HH:mm");
 
+            //If the event has been finished, a new timer gets called for the next event
             if (timeLeft.TotalSeconds <= 0) 
             {
                 MainTimer.Stop();
@@ -214,6 +210,7 @@ namespace antistract
             }
         }
 
+        //Change color of the TimerWindow
         private void Paint(string color)
         {
             Color colour;
@@ -232,12 +229,12 @@ namespace antistract
             TimerBorder.Background = new SolidColorBrush(colour);
         }
 
-
         private void CalculateClosingTime(int TotalMinutes)
         {
             closingTime = currentTime.AddMinutes(TotalMinutes);
         }
 
+        //Make window movable
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -259,6 +256,7 @@ namespace antistract
             TimerWastedTabTextAfter.Visibility = Visibility.Hidden;
         }
 
+        //Gets called from ProductivityView to change the behaviour of the timer
         public static void TimerOnHoldYES()
         {
             TimerOnHold = true;

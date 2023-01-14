@@ -84,6 +84,7 @@
             <Label x:Name="TimerSeconds"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
+                   Visibility="Hidden"
                    FontSize="7" Margin="280,0,0,0"/>
 
             <!--Wasted time timer area-->

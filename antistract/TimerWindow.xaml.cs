@@ -63,6 +63,7 @@ namespace antistract
             InitializeTimer();
         }
 
+        //Retrieve selected plan data
         public void GetPlan(string PlanName)
         {
             XmlDocument doc = new XmlDocument();
@@ -91,6 +92,7 @@ namespace antistract
             CalculateClosingTime(TotalPlanTime);
         }
 
+        //First behaviour of the Timer. Starting the supervision of programs/websites
         private void InitializeTimer()
         {
             if (CurrentEvent < TotalEvents)

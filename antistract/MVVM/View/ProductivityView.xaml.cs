@@ -981,7 +981,7 @@ namespace antistract.MVVM.View
                 InfoField.Visibility = Visibility.Hidden;
 
                 ListBoxItem item = new ListBoxItem();
-                item.Content = BrowserWebsites.Text; // + " (" + SelectedProcessName + ")";
+                item.Content = BrowserWebsites.Text;
                 WebsitesBlacklistList.Items.Add(item);
 
                 //Call to transmit blacklisted website to browser extension

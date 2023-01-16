@@ -99,6 +99,7 @@ namespace antistract
                     Paint("green");
                     ShouldAddToWeeklyLearnTime = true;
 
+                    //Communicates to ProductivityView to start supervision
                     ProductivityView.ShouldCheckYes();
                     ProductivityView.startChecking();                         
                 }
@@ -154,7 +155,6 @@ namespace antistract
             //Set time interval of the timer (ticks every second)
             MainTimer.Tick += dispatcherTimer_Tick;
             MainTimer.Interval = new TimeSpan(0, 0, 1);
-
             WasteTimer.Interval = new TimeSpan(0, 0, 1);
 
             MainTimer.Start();

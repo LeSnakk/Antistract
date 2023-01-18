@@ -29,7 +29,6 @@ namespace antistract.MVVM.View
 {
     public partial class PlansView : UserControl
     {
-        private WrapPanel _PlanCreatorWrapPanel;
         readonly string path = "Plans/paradeplan.xml";
         public List<Plans> Plans = new List<Plans>();
         private string _currentlySelectedPlan = "";
@@ -41,9 +40,7 @@ namespace antistract.MVVM.View
         public PlansView()
         {
             InitializeComponent();
-
             DisplayPlans();
-            _PlanCreatorWrapPanel = PlanCreatorWrapPanel;
         }
 
         public bool isEdited()
@@ -55,12 +52,14 @@ namespace antistract.MVVM.View
             _isEdited = isEdited;
         }
 
+        //Check if the input contains only numbers (for "duration" parameter in plan events)
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 
+        //Read plans from global variables
         public void GVPlanNamesToOCPlanNames()
         {
             Plans plans = new Plans();
@@ -74,6 +73,7 @@ namespace antistract.MVVM.View
             PlanOverviewStackPanel.DataContext = plans.EntryNames;
         }
 
+        //Load plans from XML database into global variables class
         public void LoadPlans()
         {
             GlobalVariables.PlanNames.Clear();
@@ -86,39 +86,7 @@ namespace antistract.MVVM.View
             {
                 foreach (XmlNode Event in elements[i].ChildNodes)
                 {
-                    Debug.WriteLine(Event["entryName"].InnerText);
-                    for (int j = 1; j < Event.ChildNodes.Count; j++)
-                    {
-                        Debug.WriteLine(Event.ChildNodes[j]["title"].InnerText);
-                        Debug.WriteLine(Event.ChildNodes[j]["type"].InnerText);
-                        Debug.WriteLine(Event.ChildNodes[j]["duration"].InnerText);
-                    }
                     GlobalVariables.PlanNames.Add(Event["entryName"].InnerText);
-                }
-            }
-            Debug.WriteLine("XXX");
-        }
-
-        public void GetPlan(string PlanName)
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(path);
-            XmlNodeList elements = doc.ChildNodes;
-
-            for (int i = 0; i < elements.Count; i++)
-            {
-                foreach (XmlNode Event in elements[i].ChildNodes)
-                {
-                    if (Event["entryName"].InnerText == PlanName)
-                    {
-                        Debug.WriteLine("SELECTED PLAN:\n" + Event["entryName"].InnerText);
-                        for (int j = 1; j < Event.ChildNodes.Count; j++)
-                        {
-                            Debug.WriteLine(Event.ChildNodes[j]["title"].InnerText);
-                            Debug.WriteLine(Event.ChildNodes[j]["type"].InnerText);
-                            Debug.WriteLine(Event.ChildNodes[j]["duration"].InnerText);
-                        }
-                    }
                 }
             }
         }
@@ -126,23 +94,9 @@ namespace antistract.MVVM.View
         public void DisplayPlans()
         {
             GVPlanNamesToOCPlanNames();
-            /*Plans plans = new Plans();
-
-            for (int i = 0; i < 4; i++)
-            {
-                Entries entries = new Entries();
-                entries.entryName = //Weise ich hier den Plans zu oder ziehe ich aus den Plans? Muss der Verweis nicht beim
-            }                             //Einlesen der XML stattfinden? Warte nein, die ObservableCollection existiert ja noch nicht
-                                            //Muss aus der GlobalVariables die PlanNames nehmen. Brauche in der Plans Class ja dann
-                                            //Nur die entryName Variable, oder? GlobalVatiables.PlanNames -> ObservableCollection -> StackPanel
-            foreach (String planName in GlobalVariables.PlanNames)
-            {
-                Debug.WriteLine(planName);
-                RadioButton radioButton = new RadioButton() { Content = planName };
-                PlanOverviewStackPanel.Children.Add((radioButton));
-            }*/
         }
 
+        //Load selected plan from XML document and display it on PLansView
         public void ShowSelectedPlan(string PlanName)
         {
             ResetPlanCreatorItems();
@@ -182,22 +136,16 @@ namespace antistract.MVVM.View
             DisableInvalidInputText();
         }
 
+        //Button on plansview which saves the plan
         private void SavePlanButton_Click(object sender, RoutedEventArgs e)
         {
             saveEnabled = false;
+            //Check for plan name duplicate
             if ((!GlobalVariables.PlanNames.Contains(EntryName.Text) || isEdited()) && EntryName.Text != "")
             {
-                Debug.WriteLine("WENT!!!");
                 SavePlanButton_Click();
                 if (saveEnabled)
-                {
-                    //check for bool if is valid or so
-                    /*for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
-                    {
-                        //TogglePlanCreatorItem(i, false);
-                        
-                    }*/
-                    
+                {                    
                     ToggleAddButton(false);
                     ToggleRemoveButton(false);
 
@@ -229,7 +177,9 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Save plan to XML file
         private void SavePlanButton_Click() {
+            //If it's an edited plan
             if (isEdited())
             {
                 if (EntryName.Text != CurrentlySelectedPlan.SelectedPlan && !GlobalVariables.PlanNames.Contains(EntryName.Text))
@@ -244,32 +194,32 @@ namespace antistract.MVVM.View
                 doc1.Load(path);
                 XmlNodeList elements = doc1.ChildNodes;
 
+                //Loop through each event
                 for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 2; i++)
                 {
                     TextBox title = (TextBox)this.FindName("EntryTitle" + i);
                     ComboBox type = (ComboBox)this.FindName("EntryType" + i);
                     TextBox duration = (TextBox)this.FindName("EntryDuration" + i);
 
+                    //If event is completely empty, ignore it
                     if (String.IsNullOrEmpty(title.Text) && String.IsNullOrEmpty(type.Text) && String.IsNullOrEmpty(duration.Text))
                     {
-                        //I GUESS NO – maybe fill variables with empty content?
                         continue;
                     }
                     else
                     {
+                        //Invalid title name input
                         if (String.IsNullOrWhiteSpace(title.Text))
                         {
-                            Debug.WriteLine("Invalid input TEXT0 " + i);
                             InvalidInput("text");
                             saveEnabled = false;
                             return;
                         }
                         else
                         {
-                            Debug.WriteLine(i + " " + title.Text + "totallength= " + PlanCreatorWrapPanel.Children.Count);
                             saveEnabled = true;
                         }
-
+                        //Invalid type input
                         if (String.IsNullOrWhiteSpace(type.Text))
                         {
                             InvalidInput("type");
@@ -280,7 +230,7 @@ namespace antistract.MVVM.View
                         {
                             saveEnabled = true;
                         }
-
+                        //Invalid duration input
                         if (String.IsNullOrWhiteSpace(duration.Text))
                         {
                             InvalidInput("duration");
@@ -294,29 +244,27 @@ namespace antistract.MVVM.View
                     }
                 }
 
-                for (int l = 0; l < elements.Count; l++)    //All elements in XML
+                //Loop through XML
+                for (int l = 0; l < elements.Count; l++)
                 {
                     foreach (XmlNode Event in elements[l].ChildNodes)
                     {
-                        if (Event["entryName"].InnerText == CurrentlySelectedPlan.SelectedPlan)     //Find right entry by Plan Name
+                        //Find and remove edited plan
+                        if (Event["entryName"].InnerText == CurrentlySelectedPlan.SelectedPlan)
                         {
-                            Debug.WriteLine("\nEvent before delete: \n" + Event.ChildNodes.Count + "\n");
                             int i = 1;
                             while (i < Event.ChildNodes.Count)
                             {
                                 Event.RemoveChild(Event.ChildNodes[i]);
                             }
-                            Debug.WriteLine("\nEvent after delete: \n" + Event.ChildNodes.Count + "\n");
                         }
                     }
                 }
                 Save(null, doc1, path);
 
-                //doc1.Save(path);
-
+                //Save "new" edited plan to XML
                 XDocument doc = XDocument.Load(path);
                 XElement root = doc.Descendants("entry").FirstOrDefault(p => p.Attribute("PlanName").Value == CurrentlySelectedPlan.SelectedPlan);
-                Debug.WriteLine("\nROOT BEFORE REPLACEMENT\n" + root);
 
                 for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
                 {
@@ -329,14 +277,12 @@ namespace antistract.MVVM.View
 
                     if (String.IsNullOrEmpty(title.Text) && String.IsNullOrEmpty(type.Text) && String.IsNullOrEmpty(duration.Text))
                     {
-                        //I GUESS NO – maybe fill variables with empty content?
                         continue;
                     }
                     else
                     {
                         if (String.IsNullOrWhiteSpace(title.Text))
                         {
-                            Debug.WriteLine("Invalid input TEXT1");
                             InvalidInput("text");
                             saveEnabled = false;
                             return;
@@ -345,7 +291,6 @@ namespace antistract.MVVM.View
                             _title = title.Text;
                             saveEnabled = true;
                         }
-
                         if (String.IsNullOrWhiteSpace(type.Text))
                         {
                             InvalidInput("type");
@@ -356,7 +301,6 @@ namespace antistract.MVVM.View
                             _type = type.Text;
                             saveEnabled = true;
                         }
-
                         if (String.IsNullOrWhiteSpace(duration.Text))
                         {
                             InvalidInput("duration");
@@ -369,22 +313,16 @@ namespace antistract.MVVM.View
                         }
 
                         WriteToXMLFile(doc, root, _title, _type, _duration);
-                        Debug.WriteLine("\nROOT AFTER REPLACEMENT DURCHGANG " + i + "\n" + root);
                     }
                 }
-
-                
-
-                //doc.Save(path);
                 Save(doc, null, path);
                 LoadPlans();
                 DisplayPlans();
             }
-            //THIS IS ONLY CALLED IF NO EDIT ( = NEW ENTRY)
+
+            //If it's a new plan
             else
             {
-                Debug.WriteLine("\n\nWENT INTO NO EDIT\n\n");
-
                 string _entryName = EntryName.Text;
                 XDocument doc = XDocument.Load(path);
                 XElement root = new XElement("entry", new XAttribute("PlanName", _entryName));
@@ -404,14 +342,12 @@ namespace antistract.MVVM.View
 
                         if (String.IsNullOrEmpty(title.Text) && String.IsNullOrEmpty(type.Text) && String.IsNullOrEmpty(duration.Text))
                         {
-                            //maybe fill variables with empty content?
                             continue;
                         }
                         else
                         {
                             if (String.IsNullOrWhiteSpace(title.Text))
                             {
-                                Debug.WriteLine("Invalid input TEXT2");
                                 InvalidInput("text");
                                 saveEnabled = false;
                                 return;
@@ -421,7 +357,6 @@ namespace antistract.MVVM.View
                                 _title = title.Text;
                                 saveEnabled = true;
                             }
-
                             if (String.IsNullOrWhiteSpace(type.Text))
                             {
                                 InvalidInput("type");
@@ -433,7 +368,6 @@ namespace antistract.MVVM.View
                                 _type = type.Text;
                                 saveEnabled = true;
                             }
-
                             if (String.IsNullOrWhiteSpace(duration.Text))
                             {
                                 InvalidInput("duration");
@@ -445,7 +379,6 @@ namespace antistract.MVVM.View
                                 _duration = duration.Text;
                                 saveEnabled = true;
                             }
-
                             WriteToXMLFile(doc, root, _title, _type, _duration);
                         }
                     }
@@ -456,10 +389,12 @@ namespace antistract.MVVM.View
                     Save(doc, null, path);
                 }
             }
+            //Re-load plans
             LoadPlans();
             DisplayPlans();
         }
     
+        //Handle input error messages
         private void InvalidInput(string type)
         {
             if (String.IsNullOrWhiteSpace(EntryName.Text))
@@ -477,6 +412,7 @@ namespace antistract.MVVM.View
             InfoField.Content = "Please fill in all fields.";
         }
 
+        //Write data collected from save method to XML file
         public void WriteToXMLFile(XDocument doc, XElement root, string _title, string _type, string _duration)
         {
             if (!string.IsNullOrEmpty(_title))
@@ -488,19 +424,7 @@ namespace antistract.MVVM.View
             }
         }
 
-        public void ReplaceInXMLFile(XDocument doc, XElement root, string _title, string _type, string _duration)
-        {
-            XElement toReplace = doc.Descendants("entry").FirstOrDefault(el => el.Attribute("PlanName")?.Value == CurrentlySelectedPlan.SelectedPlan);
-
-            if (!string.IsNullOrEmpty(_title))
-            {
-                toReplace.ReplaceNodes(new XElement("event",
-                    new XElement("title", _title),
-                    new XElement("type", _type),
-                    new XElement("duration", _duration)));
-            }
-        }
-
+        //Wipe PlansView event elements
         public void ResetPlanCreatorItems()
         {
             for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)   //Changed: i from 1 to 0, and -1 to -2
@@ -522,6 +446,7 @@ namespace antistract.MVVM.View
             DisableInvalidInputText();
         }
 
+        //Keep selected plan ticked (visually)
         private void TickPlan(string PlanName)
         {
             EntryNames planName = new EntryNames();
@@ -539,6 +464,7 @@ namespace antistract.MVVM.View
             DisableInvalidInputText();
         }
 
+        //Save modified XML file after change
         private void Save(XDocument document, XmlDocument xmldoc, string path)
         {
             if (document == null)
@@ -552,6 +478,7 @@ namespace antistract.MVVM.View
             DisableInvalidInputText();
         }
 
+        //Toggle "add" button visibility
         public void ToggleAddButton(bool visibility)
         {
             if (visibility)
@@ -564,6 +491,7 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Toggle individual event item accessibility
         public void TogglePlanCreatorItem(int item, bool toggle)
         {
             TextBox title = (TextBox)this.FindName("EntryTitle" + (item));
@@ -582,6 +510,7 @@ namespace antistract.MVVM.View
                 border.Visibility = Visibility.Collapsed;
             }
         }
+        //Toggle all event item accessibility
         public void TogglePlanCreatorItems(bool toggle)
         {
             for (int i = 0; i < PlanCreatorWrapPanel.Children.Count - 1; i++)
@@ -597,6 +526,7 @@ namespace antistract.MVVM.View
             }
         }
 
+        //If user wants to add a new plan
         private void AddPlanButton_Click(object sender, RoutedEventArgs e)
         {
             GoToPlansViewButton.Command.Execute(null);
@@ -616,10 +546,10 @@ namespace antistract.MVVM.View
 
             ToggleDeleteButton(false);
             ToggleEditButton(false);
-            DisableInvalidInputText();
-            
+            DisableInvalidInputText();            
         }
 
+        //If user wants to add another event item
         private void AddElementButton_Click(object sender, RoutedEventArgs e)
         {
             foreach (Object PlanCreatorItem in PlanCreatorWrapPanel.Children)
@@ -636,15 +566,16 @@ namespace antistract.MVVM.View
             }
         }
 
-        private void EventDelete_Click(object sender, RoutedEventArgs e)    //Event List
+        //If user wants to delete specific event item
+        private void EventDelete_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             Grid grid = button.Parent as Grid;
             Border border = grid.Parent as Border;
             int eventToDeleteIndex = PlanCreatorWrapPanel.Children.IndexOf(border);
             int currentlyEnabledEntrySlots = CurrentlyEnabledEntrySlots();
-            Debug.WriteLine("This was event no " + eventToDeleteIndex + "\nTotal active events: " + currentlyEnabledEntrySlots);
 
+            //Copy data from following event item into previous event item and delete last 
             for (int i = eventToDeleteIndex; i < currentlyEnabledEntrySlots; i++)
             {
                 bool last = true;
@@ -672,7 +603,6 @@ namespace antistract.MVVM.View
 
                 if (i == currentlyEnabledEntrySlots-1 && !last)
                 {
-                    Debug.WriteLine("NOT LAST - clearing entry slot: " + i);
                     title2.Clear();
                     type2.SelectedIndex = -1;
                     duration2.Clear();
@@ -680,40 +610,15 @@ namespace antistract.MVVM.View
                 } 
                 else if (i == currentlyEnabledEntrySlots-1 && last)
                 {
-                    Debug.WriteLine("IS LAST - clearing entry slot: " + i);
                     title.Clear();
                     type.SelectedIndex = -1;
                     duration.Clear();
                     PlanCreatorWrapPanel.Children[currentlyEnabledEntrySlots-1].Visibility = Visibility.Collapsed;
                 }
             }
-
-/*
-            foreach (Object element in grid.Children)
-            {
-                if (element is TextBox)
-                {
-                    var textBox = (TextBox)element;
-                    textBox.Clear();
-                }
-                else if (element is ComboBox)
-                {
-                    var comboBox = (ComboBox)element;
-                    comboBox.SelectedIndex = -1;
-                }
-            }
-            border.Visibility = Visibility.Collapsed;
-
-            SavePlanButton_Click(); //Nicht alles saven hier
-            LoadPlans();
-            DisplayPlans();
-            ShowSelectedPlan(CurrentlySelectedPlan.SelectedPlan);
-            EditButtonClick();
-            ToggleRemoveButton(true);
-            TickPlan(CurrentlySelectedPlan.SelectedPlan);
-*/
         }
 
+        //Obtain number of used event items
         private int CurrentlyEnabledEntrySlots()
         {
             int slots = 0;
@@ -731,10 +636,10 @@ namespace antistract.MVVM.View
             return slots;
         }
 
+        //If user clicks on a plan in navbar
         private void PlanEntryNameList_Click(object sender, RoutedEventArgs e)  //Plan List
         {
             RadioButton radiobutton = (RadioButton)sender;
-            GetPlan(radiobutton.Content.ToString());
             CurrentlySelectedPlan.SelectedPlan = radiobutton.Content.ToString();
             ShowSelectedPlan(CurrentlySelectedPlan.SelectedPlan);
             ToggleDeleteButton(true);
@@ -745,12 +650,12 @@ namespace antistract.MVVM.View
             DisableInvalidInputText();
         }
 
+        //If user wants to delete a plan. Plan is removed from XML file
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
             XDocument doc = XDocument.Load(path);
             doc.Descendants("entry").Where(p => p.Attribute("PlanName").Value == CurrentlySelectedPlan.SelectedPlan).FirstOrDefault().Remove();
             Save(doc, null, path);
-            //doc.Save(path);
 
             ResetPlanCreatorItems();
             ToggleAddButton(false);
@@ -762,6 +667,7 @@ namespace antistract.MVVM.View
             DisableInvalidInputText();
         }
 
+        //If user wants to edit a plan
         private void Edit_Button_Click(object sender, RoutedEventArgs e)
         {
             EditButtonClick();
@@ -769,6 +675,7 @@ namespace antistract.MVVM.View
             ToggleEditButton(false);
             SavePlan.IsEnabled = true;
         }
+        //Event item space is set to "edit" mode
         private void EditButtonClick()
         {
             EntryName.Text = CurrentlySelectedPlan.SelectedPlan;
@@ -780,6 +687,7 @@ namespace antistract.MVVM.View
             ToggleAddButton(true);
             isEdited(true);
         }
+        //Event items get the option to be removed
         private void ToggleRemoveButton(bool visibility)
         {
             foreach (Object PlanCreatorItem in PlanCreatorWrapPanel.Children)
@@ -809,6 +717,7 @@ namespace antistract.MVVM.View
             }
         }
 
+        //Enable/Disable UI buttons
         public void ToggleDeleteButton(bool visibility)
         {
             if (visibility)

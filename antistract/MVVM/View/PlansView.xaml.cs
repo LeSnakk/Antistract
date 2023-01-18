@@ -73,7 +73,7 @@ namespace antistract.MVVM.View
             PlanOverviewStackPanel.DataContext = plans.EntryNames;
         }
 
-        //Load plans from XML database into global variables class
+        //Load plan namse from XML database into global variables class
         public void LoadPlans()
         {
             GlobalVariables.PlanNames.Clear();
@@ -96,7 +96,7 @@ namespace antistract.MVVM.View
             GVPlanNamesToOCPlanNames();
         }
 
-        //Load selected plan from XML document and display it on PLansView
+        //Load selected plan from XML document and display it on PlansView
         public void ShowSelectedPlan(string PlanName)
         {
             ResetPlanCreatorItems();
@@ -187,8 +187,6 @@ namespace antistract.MVVM.View
                     isEdited(false);
                     SavePlanButton_Click();
                 }
-
-                Debug.WriteLine("\n\nWENT INTO EDIT MODE\n\n");
 
                 XmlDocument doc1 = new XmlDocument();
                 doc1.Load(path);

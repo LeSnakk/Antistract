@@ -186,7 +186,7 @@
     <event>
       <title>Break</title>
       <type>Break</type>
-      <duration>15</duration>
+      <duration>20</duration>
     </event>
     <event>
       <title>Study</title>
@@ -196,7 +196,7 @@
     <event>
       <title>Break</title>
       <type>Break</type>
-      <duration>15</duration>
+      <duration>20</duration>
     </event>
     <event>
       <title>Study</title>
@@ -206,7 +206,7 @@
     <event>
       <title>Break</title>
       <type>Break</type>
-      <duration>15</duration>
+      <duration>20</duration>
     </event>
     <event>
       <title>Study</title>

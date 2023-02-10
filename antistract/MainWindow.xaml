@@ -168,6 +168,7 @@
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding ToDoViewCommand}"
                              IsEnabled="False"
+                             Visibility="Hidden"
                              GroupName="Navigation"/>
 
                     <RadioButton Content="Settings"
@@ -178,6 +179,7 @@
                              Style="{StaticResource MenuButtonThemeLASTBUTTON}"
                              Command="{Binding SettingsViewCommand}"
                              IsEnabled="False"
+                             Visibility="Hidden"
                              GroupName="Navigation"/>
 
                 </StackPanel>

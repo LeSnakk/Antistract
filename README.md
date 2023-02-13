@@ -30,7 +30,9 @@ Next, you can choose which action shall be taken by <i>Antistract</i> if it dete
 #### My Plans ####
 Devise your own Time blocking plans. Try around and create a plan that suits you best.
 
-## Disclaimer
-Not all system and Microsoft Store applications may be blacklistable due to Windows restrictions.
+## Disclaimers
+- Not all system and Microsoft Store applications may be blacklistable due to Windows restrictions.
+- Requires administrator permissions in order to be able to access Windows' process structures.
+- Application has not been signed (yet).
 
 - - - -
